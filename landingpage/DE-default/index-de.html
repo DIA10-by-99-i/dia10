@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>DIA-10 — Decentralized Intelligence Assets</title>
+<meta name="description" content="DIA-10: Crowdfunding von Convertible Participation Certificates (CPC). Bauen, lernen und mitbesitzen.">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet">
+<meta property="og:title" content="DIA-10 — Decentralized Intelligence Assets">
+<meta property="og:description" content="Mach mit bei DIA-10. CPC-Zeichnung mit QR-verifiziertem Zertifikat – Conversion beim Token-Launch.">
+<meta property="og:type" content="website">
+<meta name="author" content="Markus Goffin">
+<meta name="last-modified" content="2025-08-26">
+<link rel="icon" type="image/x-icon" href="https://99-i.com/dia10/images/99i_favicon_16x16.ico" sizes="16x16">
+<link rel="icon" type="image/x-icon" href="https://99-i.com/dia10/images/99i_favicon_32x32.ico" sizes="32x32">
+<link rel="icon" type="image/x-icon" href="https://99-i.com/dia10/images/99i_favicon_48x48.ico" sizes="48x48">
+<!-- Canonical & hreflang -->
+<link rel="canonical" href="https://dia10.de/">
+<link rel="alternate" href="https://dia10.io/" hreflang="en">
+<link rel="alternate" href="https://dia10.de/" hreflang="de">
+<link rel="alternate" href="https://dia10.io/?lang=ro" hreflang="ro">
+<link rel="alternate" href="https://dia10.io/" hreflang="x-default">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/chart.js/4.4.3/chart.umd.min.js"></script>
+<style>
+  :root{
+    --bg:#0a0f18; --panel:#0f1624; --panel2:#0c1320; --ink:#e6f2ff; --muted:#9fb3c8; --acc:#58a6ff;
+    --ok:#14d19a; --warn:#ffce3a; --err:#ff6b6b; --line:#1e2a45;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.5 Inter,system-ui,sans-serif;scroll-behavior:smooth}
+  a{color:var(--acc);text-decoration:none}
+  header{position:sticky;top:0;z-index:20;background:linear-gradient(180deg,rgba(10,15,24,.85),rgba(10,15,24,.6));border-bottom:1px solid var(--line);backdrop-filter:blur(10px)}
+  .nav{max-width:1200px;margin:auto;padding:12px 18px;display:flex;align-items:center;gap:12px}
+  .brand{display:flex;align-items:center;gap:12px;font-weight:900}
+  .logo{
+    width:40px;height:40px;border-radius:10px;
+    background:radial-gradient(120% 120% at 50% 30%, rgba(42,108,255,.25), transparent 60%);
+    border:1px solid #2a3b5f; display:grid; place-items:center;
+    box-shadow:0 0 18px rgba(127,179,255,.25);
+  }
+  .logo svg{width:26px;height:26px;display:block}
+  .spacer{flex:1}
+  .nav a.btn{padding:8px 12px;border:1px solid #2a3b5f;border-radius:10px;background:#0e1a33;color:var(--ink)}
+  .cta{background:linear-gradient(90deg,#2a6cff,#6aa8ff);border:none;color:#07101a;font-weight:800}
+  .wrap{max-width:1200px;margin:22px auto;padding:0 18px}
+  .card{background:linear-gradient(180deg,var(--panel),var(--panel2));border:1px solid var(--line);border-radius:16px;padding:18px;box-shadow:0 6px 30px rgba(0,0,0,.25)}
+  .grid{display:grid;gap:18px}
+  @media(min-width:900px){ .grid.cols-2{grid-template-columns:1fr 1fr} .grid.cols-3{grid-template-columns:repeat(3,1fr)} }
+  .hero{padding:44px 18px;text-align:center;background:radial-gradient(60% 60% at 50% 0%,rgba(88,166,255,.15),transparent 60%)}
+  .h1{font-size:clamp(28px,4.6vw,56px);line-height:1.1;margin:.2em 0 .4em}
+  .sub{color:var(--muted);font-size:clamp(16px,2.4vw,20px)}
+  .actions{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:18px}
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:12px 16px;border:1px solid #2a3b5f;border-radius:12px;background:#0e1a33;color:var(--ink);cursor:pointer}
+  h2{font-size:clamp(22px,3vw,30px);margin:0 0 10px}
+  .muted{color:var(--muted)}
+  .pill{display:inline-flex;gap:8px;align-items:center;padding:6px 10px;border:1px solid #27406c;border-radius:999px;background:#0e1a33;color:#cfe2ff;font-size:13px}
+  .feature{display:flex;gap:12px}
+  .icon{width:40px;height:40px;border-radius:10px;background:linear-gradient(135deg,#2a6cff,#7fb3ff);display:grid;place-items:center;font-weight:900;color:#07101a}
+  .timeline{position:relative;padding-left:26px}
+  .timeline::before{content:"";position:absolute;left:10px;top:4px;bottom:4px;width:2px;background:#1f2c46;border-radius:2px}
+  .milestone{position:relative;margin:10px 0;padding:8px 10px 8px 0}
+  .milestone::before{content:"";position:absolute;left:-16px;top:10px;width:12px;height:12px;border-radius:50%;background:#2a6cff;box-shadow:0 0 0 3px rgba(42,108,255,.25)}
+  .kpi{display:grid;gap:12px}
+  @media(min-width:700px){ .kpi{grid-template-columns:repeat(3,1fr)} }
+  .tile{background:#101b31;border:1px solid #223456;border-radius:12px;padding:12px}
+  .lab{font-size:12px;color:#a7bde0}
+  .big{font-size:28px;font-weight:900}
+  .mini{height:56px}
+  .member{display:flex;gap:12px;align-items:center}
+  .avatar{width:54px;height:54px;border-radius:50%;background:#12203c;border:1px solid #27406c;display:grid;place-items:center;color:#7fb3ff;font-weight:800}
+  details{background:#0e1a33;border:1px solid #27406c;border-radius:12px;padding:10px;margin:8px 0}
+  summary{cursor:pointer;font-weight:800}
+  footer{border-top:1px solid var(--line);margin-top:28px}
+  .foot{max-width:1200px;margin:auto;padding:22px 18px;color:#a7bde0;font-size:14px}
+  .footgrid{display:grid;gap:18px}
+  @media(min-width:900px){ .footgrid{grid-template-columns:2fr 1fr 1fr} }
+  .top{position:fixed;right:18px;bottom:18px;background:#0e1a33;border:1px solid #2a3b5f;color:#e6f2ff;border-radius:999px;padding:10px 12px;cursor:pointer;opacity:.85}
+  .top:hover{opacity:1}
+</style>
+</head>
+<body>
+  <header>
+    <nav class="nav">
+      <div class="brand">
+        <div class="logo" aria-hidden="true">
+          <!-- Diamond-Logo (SVG) -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 9l9-6 9 6-9 12-9-12zM12 3v18M3 9h18M7 9l5 12m5-12l-5 12"/>
+          </svg>
+        </div>
+        <div>DIA-10</div>
+      </div>
+      <a href="#about" class="btn">Über uns</a>
+      <a href="#product" class="btn">Produkt</a>
+      <a href="#roadmap" class="btn">Roadmap</a>
+      <a href="#metrics" class="btn">Kennzahlen</a>
+      <a href="#faq" class="btn">FAQ</a>
+      <a href="#contact" class="btn">Kontakt</a>
+      <div class="spacer"></div>
+      <a href="https://99-i.com/dia10/crowdfunding/crowdfunding.html" class="btn cta">Crowdfunding</a>
+    </nav>
+  </header>
+
+  <section class="hero wrap" id="about">
+    <div class="pill" style="margin:auto;justify-content:center">Jetzt offen: CPC-Crowdfunding-Runde</div>
+    <h1 class="h1">Bauen, lernen & mitbesitzen<br/>Decentralized Intelligence Assets.</h1>
+    <p class="sub">Zeichne via CPC, erhalte ein QR-verifiziertes Zertifikat und konvertiere beim Token-Launch.</p>
+    <div class="actions">
+      <a class="btn cta" href="https://99-i.com/dia10/crowdfunding/crowdfunding.html">Zur Runde</a>
+      <a class="btn" href="https://99-i.com/dia10/whitepaper.html">Whitepaper lesen</a>
+      <a class="btn" href="https://99-i.com/dia10/crowdfunding/verify.html">Zertifikat prüfen</a>
+    </div>
+  </section>
+
+  <section class="wrap grid cols-3">
+    <div class="card feature">
+      <div class="icon">1</div>
+      <div>
+        <h3>Klare Wertschöpfung</h3>
+        <div class="muted">AI-native Education, Tools & Community, die Lernen in On-chain-Assets verwandeln.</div>
+      </div>
+    </div>
+    <div class="card feature">
+      <div class="icon">2</div>
+      <div>
+        <h3>Investor-freundliche CPCs</h3>
+        <div class="muted">Convertible Participation Certificates mit Discount & Floor/Cap für fairen Einstieg.</div>
+      </div>
+    </div>
+    <div class="card feature">
+      <div class="icon">3</div>
+      <div>
+        <h3>Regulatorische Klarheit</h3>
+        <div class="muted">EU-(ECSP)-fähige Unterlagen & Jurisdiktions-Setup, klare KYC-Schwellen.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap grid cols-2" id="product">
+    <div class="card">
+      <h2>Was wir bauen</h2>
+      <ul class="muted" style="margin-top:6px">
+        <li>DIA-10 Academy: kurze, ergebnisorientierte Module & Templates.</li>
+        <li>Creator-Toolkit: Prompt-Packs, Micro-Apps & Revenue-Experimente.</li>
+        <li>On-chain: Membership, verifizierte Zertifikate & tokenisierte Perks.</li>
+        <li>Community: Weekly Sessions, Co-Builds und kuratierte Opportunities.</li>
+      </ul>
+      <div class="pill" style="margin-top:10px">Pilot live — stufenweiser Ausbau über 12 Monate.</div>
+    </div>
+    <div class="card">
+      <h2>Produkt-Preview</h2>
+      <div class="grid" style="grid-template-columns:1fr 1fr;gap:10px">
+        <div style="aspect-ratio:16/10;border:1px solid #203259;border-radius:12px;background:#0b1428"></div>
+        <div style="aspect-ratio:16/10;border:1px solid #203259;border-radius:12px;background:#0b1428"></div>
+        <div style="aspect-ratio:16/10;border:1px solid #203259;border-radius:12px;background:#0b1428"></div>
+        <div style="aspect-ratio:16/10;border:1px solid #203259;border-radius:12px;background:#0b1428"></div>
+      </div>
+      <div class="muted" style="margin-top:8px">Platzhalter — jederzeit mit Screenshots ersetzbar.</div>
+    </div>
+  </section>
+
+  <section class="wrap grid cols-2" id="roadmap">
+    <div class="card">
+      <h2>Roadmap</h2>
+      <div class="timeline">
+        <div class="milestone"><b>Q1: Fundament</b><div class="muted">Crowdfunding, Academy-Pilot, erste verifizierte Zertifikate.</div></div>
+        <div class="milestone"><b>Q2: Produktisierung</b><div class="muted">Creator-Toolkit v1, Community Scale-up, Partnerschaften.</div></div>
+        <div class="milestone"><b>Q3: On-chain</b><div class="muted">Token-Mechaniken, Wallet-Import, Governance-Pilot.</div></div>
+        <div class="milestone"><b>Q4: Expansion</b><div class="muted">Regionale Chapters, B2B-Angebote, Growth-Experimente.</div></div>
+      </div>
+    </div>
+    <div class="card" id="metrics">
+      <h2>Kennzahlen</h2>
+      <div class="kpi">
+        <div class="tile"><div class="lab">Soft-Cap-Fortschritt</div><div class="big" id="kpi1">€0</div></div>
+        <div class="tile"><div class="lab">Community (Ziel)</div><div class="big" id="kpi2">0</div></div>
+        <div class="tile"><div class="lab">Kursabschlüsse</div><div class="big" id="kpi3">0</div></div>
+      </div>
+      <div class="grid" style="margin-top:10px;grid-template-columns:1fr 1fr;gap:12px">
+        <div class="tile"><div class="lab">Crowdfunding (€)</div><canvas id="c1" class="mini"></canvas></div>
+        <div class="tile"><div class="lab">Community-Wachstum</div><canvas id="c2" class="mini"></canvas></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap grid cols-3" id="faq">
+    <div class="card">
+      <h2>Warum jetzt</h2>
+      <div class="muted">AI-Adoption explodiert. Praxisnahe Bildung + Tools + Community senken Hürden und wandeln Lernen in Umsatz.</div>
+    </div>
+    <div class="card">
+      <h2>Team</h2>
+      <div class="member"><div class="avatar">MG</div><div><b>Markus Goffin</b><div class="muted">Founder • Produkt & Community</div></div></div>
+      <div class="member" style="margin-top:8px"><div class="avatar">AD</div><div><b>Advisors</b><div class="muted">Legal • Tokenomics • Growth</div></div></div>
+    </div>
+    <div class="card">
+      <h2>FAQ (kurz)</h2>
+      <details open><summary>Was, wenn die Soft-Cap nicht erreicht wird?</summary><div class="muted">Verlängerung oder Beendigung. Bei Abbruch Erstattung abzüglich zwingender Bankgebühren.</div></details>
+      <details><summary>Wann erhalte ich Tokens?</summary><div class="muted">Zertifikat nach Zahlungseingang. On-chain-Zuteilung in Batches (typisch wöchentlich), danach Wallet-Import.</div></details>
+      <details><summary>Welche Jurisdiktionen sind ausgeschlossen?</summary><div class="muted">Sanktionierte Länder, US-Personen (vorerst) sowie Regionen, in denen das Angebot untersagt ist.</div></details>
+      <details><summary>Welche KYC-Schwellen gelten?</summary><div class="muted">≥ 15.000 € (rollierende 12 Monate) erfordern KYC/KYB. „Source of Funds“ kann angefragt werden.</div></details>
+    </div>
+  </section>
+
+  <section class="wrap">
+    <div class="card" style="text-align:center">
+      <h2>Bereit für DIA-10?</h2>
+      <p class="muted">Zeichne via CPC und erhalte ein QR-verifiziertes Zertifikat.</p>
+      <div class="actions">
+        <a class="btn cta" href="https://99-i.com/dia10/crowdfunding/crowdfunding.html">Jetzt starten</a>
+        <a class="btn" href="https://99-i.com/dia10/whitepaper.html">Whitepaper</a>
+        <a class="btn" href="mailto:mgoffin@web.de?subject=DIA-10%20Anfrage">Sprich mit uns</a>
+      </div>
+    </div>
+  </section>
+
+  <footer id="contact">
+    <div class="foot">
+      <div class="footgrid">
+        <div>
+          <div class="brand" style="gap:12px">
+            <div class="logo" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 9l9-6 9 6-9 12-9-12zM12 3v18M3 9h18M7 9l5 12m5-12l-5 12"/>
+              </svg>
+            </div>
+            <div><b>DIA-10</b><div class="muted">Decentralized Intelligence Assets</div></div>
+          </div>
+          <p class="muted" style="margin-top:8px">© DIA-10. Alle Rechte vorbehalten.</p>
+        </div>
+        <div>
+          <b>Links</b>
+          <div style="margin-top:8px;display:grid;gap:6px">
+            <a href="https://99-i.com/dia10/crowdfunding/crowdfunding.html">Crowdfunding</a>
+            <a href="https://99-i.com/dia10/crowdfunding/verify.html">Zertifikat prüfen</a>
+            <a href="https://99-i.com/dia10/whitepaper.html">Whitepaper</a>
+          </div>
+        </div>
+        <div>
+          <b>Kontakt</b>
+          <div class="muted" style="margin-top:8px;line-height:1.6">
+            Markus Goffin<br/>MAGO SERVICE TRADE SRL<br/>
+            Aleea Textilistilor Nr.1 – BL. MY1, Sc.1, App. 16, Sectorul 3<br/>
+            032801 Bucuresti, Romania<br/>
+            J40/5941/2015 · CUI–34523632<br/>
+            <a href="tel:+40752307711">+40 752 30 77 11</a> · <a href="mailto:mgoffin@web.de">mgoffin@web.de</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <button class="top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">↑</button>
+
+<script>
+  // Demo-Zahlen (später mit echten Daten verdrahten)
+  let currentRaised=125000, targetCommunity=1500, courseCompletions=320;
+  document.addEventListener('DOMContentLoaded', ()=>{
+    document.getElementById('kpi1').textContent=new Intl.NumberFormat('de-DE',{style:'currency',currency:'EUR'}).format(currentRaised);
+    document.getElementById('kpi2').textContent=new Intl.NumberFormat('de-DE').format(targetCommunity);
+    document.getElementById('kpi3').textContent=new Intl.NumberFormat('de-DE').format(courseCompletions);
+    const opts={responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{enabled:false}},elements:{point:{radius:0},line:{tension:.35}}};
+    new Chart(document.getElementById('c1').getContext('2d'),{type:'line',data:{labels:[1,2,3,4,5,6,7,8,9,10,11,12],datasets:[{data:[10,18,22,30,45,62,74,90,105,116,121,125].map(x=>x*1000)}]},options:opts});
+    new Chart(document.getElementById('c2').getContext('2d'),{type:'line',data:{labels:[1,2,3,4,5,6,7,8,9,10,11,12],datasets:[{data:[120,200,260,330,420,520,680,820,980,1150,1350,1500]}]},options:opts});
+  });
+</script>
+</body>
+</html>

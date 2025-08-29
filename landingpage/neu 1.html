@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>DIA-10 — Decentralized Intelligence Assets</title>
+<meta name="description" content="DIA-10: Crowdfunding DIA-10 Convertible Participation Certificates (CPC). Build, learn, and co-own.">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg width='64' height='64' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop stop-color='%232a6cff'/%3E%3Cstop offset='1' stop-color='%237fb3ff'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect rx='12' ry='12' width='64' height='64' fill='url(%23g)'/%3E%3C/svg%3E">
+<meta property="og:title" content="DIA-10 — Decentralized Intelligence Assets">
+<meta property="og:description" content="Join the DIA-10 journey. Crowdfunding now with CPC certificates (QR-verified).">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://99-i.com/dia10/og.jpg">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/chart.js/4.4.3/chart.umd.min.js"></script>
+<style>
+  :root{
+    --bg:#0a0f18; --panel:#0f1624; --panel2:#0c1320; --ink:#e6f2ff; --muted:#9fb3c8; --acc:#58a6ff;
+    --ok:#14d19a; --warn:#ffce3a; --err:#ff6b6b; --line:#1e2a45;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.5 Inter,system-ui,sans-serif;scroll-behavior:smooth}
+  a{color:var(--acc);text-decoration:none}
+  /* Nav */
+  header{position:sticky;top:0;z-index:20;background:linear-gradient(180deg,rgba(10,15,24,.85),rgba(10,15,24,.6));border-bottom:1px solid var(--line);backdrop-filter:blur(10px)}
+  .nav{max-width:1200px;margin:auto;padding:12px 18px;display:flex;align-items:center;gap:12px}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:900}
+  .logo{width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,#2a6cff,#7fb3ff);box-shadow:0 0 18px rgba(127,179,255,.35)}
+  .spacer{flex:1}
+  .nav a.btn{padding:8px 12px;border:1px solid #2a3b5f;border-radius:10px;background:#0e1a33;color:var(--ink)}
+  .cta{background:linear-gradient(90deg,#2a6cff,#6aa8ff);border:none;color:#07101a;font-weight:800}
+  .langs{display:flex;gap:8px}
+  .langbtn{background:#0e1a33;border:1px solid #2a3b5f;color:#e6f2ff;padding:8px 10px;border-radius:8px;cursor:pointer}
+  .langbtn.active{border-color:#79b3ff;box-shadow:0 0 0 1px #79b3ff55 inset}
+
+  /* Layout */
+  .wrap{max-width:1200px;margin:22px auto;padding:0 18px}
+  .card{background:linear-gradient(180deg,var(--panel),var(--panel2));border:1px solid var(--line);border-radius:16px;padding:18px;box-shadow:0 6px 30px rgba(0,0,0,.25)}
+  .grid{display:grid;gap:18px}
+  @media(min-width:900px){ .grid.cols-2{grid-template-columns:1fr 1fr} .grid.cols-3{grid-template-columns:repeat(3,1fr)} .grid.cols-4{grid-template-columns:repeat(4,1fr)} }
+
+  /* Hero */
+  .hero{padding:44px 18px;text-align:center;background:
+        radial-gradient(60% 60% at 50% 0%,rgba(88,166,255,.15),transparent 60%)}
+  .h1{font-size:clamp(28px,4.6vw,56px);line-height:1.1;margin:.2em 0 .4em}
+  .sub{color:var(--muted);font-size:clamp(16px,2.4vw,20px)}
+  .actions{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:18px}
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:12px 16px;border:1px solid #2a3b5f;border-radius:12px;background:#0e1a33;color:var(--ink);cursor:pointer}
+
+  /* Sections */
+  h2{font-size:clamp(22px,3vw,30px);margin:0 0 10px}
+  .muted{color:var(--muted)}
+  .pill{display:inline-flex;gap:8px;align-items:center;padding:6px 10px;border:1px solid #27406c;border-radius:999px;background:#0e1a33;color:#cfe2ff;font-size:13px}
+
+  /* Feature cards */
+  .feature{display:flex;gap:12px}
+  .icon{width:40px;height:40px;border-radius:10px;background:linear-gradient(135deg,#2a6cff,#7fb3ff);display:grid;place-items:center;font-weight:900;color:#07101a}
+
+  /* Timeline */
+  .timeline{position:relative;padding-left:26px}
+  .timeline::before{content:"";position:absolute;left:10px;top:4px;bottom:4px;width:2px;background:#1f2c46;border-radius:2px}
+  .milestone{position:relative;margin:10px 0;padding:8px 10px 8px 0}
+  .milestone::before{content:"";position:absolute;left:-16px;top:10px;width:12px;height:12px;border-radius:50%;background:#2a6cff;box-shadow:0 0 0 3px rgba(42,108,255,.25)}
+
+  /* KPI */
+  .kpi{display:grid;gap:12px}
+  @media(min-width:700px){ .kpi{grid-template-columns:repeat(3,1fr)} }
+  .tile{background:#101b31;border:1px solid #223456;border-radius:12px;padding:12px}
+  .lab{font-size:12px;color:#a7bde0}
+  .big{font-size:28px;font-weight:900}
+  .mini{height:56px}
+
+  /* Team */
+  .member{display:flex;gap:12px;align-items:center}
+  .avatar{width:54px;height:54px;border-radius:50%;background:#12203c;border:1px solid #27406c;display:grid;place-items:center;color:#7fb3ff;font-weight:800}
+
+  /* FAQ */
+  details{background:#0e1a33;border:1px solid #27406c;border-radius:12px;padding:10px;margin:8px 0}
+  summary{cursor:pointer;font-weight:800}
+
+  /* Footer */
+  footer{border-top:1px solid var(--line);margin-top:28px}
+  .foot{max-width:1200px;margin:auto;padding:22px 18px;color:#a7bde0;font-size:14px}
+  .footgrid{display:grid;gap:18px}
+  @media(min-width:900px){ .footgrid{grid-template-columns:2fr 1fr 1fr} }
+
+  /* Back-to-top */
+  .top{position:fixed;right:18px;bottom:18px;background:#0e1a33;border:1px solid #2a3b5f;color:#e6f2ff;border-radius:999px;padding:10px 12px;cursor:pointer;opacity:.85}
+  .top:hover{opacity:1}
+</style>
+</head>
+<body>
+  <!-- NAV -->
+  <header>
+    <nav class="nav">
+      <div class="brand"><div class="logo"></div><span>DIA-10</span></div>
+      <a href="#about" class="btn" data-i18n="nav_about">About</a>
+      <a href="#product" class="btn" data-i18n="nav_product">Product</a>
+      <a href="#roadmap" class="btn" data-i18n="nav_roadmap">Roadmap</a>
+      <a href="#metrics" class="btn" data-i18n="nav_metrics">Metrics</a>
+      <a href="#faq" class="btn" data-i18n="nav_faq">FAQ</a>
+      <a href="#contact" class="btn" data-i18n="nav_contact">Contact</a>
+      <div class="spacer"></div>
+      <div class="langs">
+        <button class="langbtn active" data-lang="en">EN</button>
+        <button class="langbtn" data-lang="de">DE</button>
+        <button class="langbtn" data-lang="ro">RO</button>
+      </div>
+      <a href="crowdfunding/index.html" class="btn cta" data-i18n="nav_crowd">Crowdfunding</a>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero wrap" id="about">
+    <div class="pill" style="margin:auto;justify-content:center" data-i18n="hero_pill">Now open: CPC Crowdfunding Round</div>
+    <h1 class="h1" data-i18n="hero_h1">Build, learn & co-own <br/>Decentralized Intelligence Assets.</h1>
+    <p class="sub" data-i18n="hero_sub">Join DIA-10. Contribute via CPC certificates, get verified QR certificates, and convert at token launch.</p>
+    <div class="actions">
+      <a class="btn cta" href="crowdfunding/index.html" data-i18n="hero_btn1">Join the round</a>
+      <a class="btn" href="whitepaper.html" data-i18n="hero_btn2">Read the whitepaper</a>
+      <a class="btn" href="crowdfunding/verify.html" data-i18n="hero_btn3">Verify certificate</a>
+    </div>
+  </section>
+
+  <!-- VALUE / FEATURES -->
+  <section class="wrap grid cols-3">
+    <div class="card feature">
+      <div class="icon">1</div>
+      <div>
+        <h3 data-i18n="f1_t">Clear value creation</h3>
+        <div class="muted" data-i18n="f1_d">AI-native education, tools & community that turn learning into on-chain assets.</div>
+      </div>
+    </div>
+    <div class="card feature">
+      <div class="icon">2</div>
+      <div>
+        <h3 data-i18n="f2_t">Investor-friendly CPCs</h3>
+        <div class="muted" data-i18n="f2_d">Convertible Participation Certificates with discount & floor/cap provide fair entry.</div>
+      </div>
+    </div>
+    <div class="card feature">
+      <div class="icon">3</div>
+      <div>
+        <h3 data-i18n="f3_t">Regulatory clarity</h3>
+        <div class="muted" data-i18n="f3_d">EU (ECSP)-ready messaging & materials, clean jurisdiction set-up and KYC thresholds.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUCT -->
+  <section class="wrap grid cols-2" id="product">
+    <div class="card">
+      <h2 data-i18n="prod_h2">What we’re building</h2>
+      <ul class="muted" style="margin-top:6px">
+        <li data-i18n="prod_l1">DIA-10 Academy: short, outcome-driven modules & templates.</li>
+        <li data-i18n="prod_l2">Creator toolkit: prompt packs, micro-apps & revenue experiments.</li>
+        <li data-i18n="prod_l3">On-chain: membership, verified certificates & tokenized perks.</li>
+        <li data-i18n="prod_l4">Community: weekly sessions, co-builds, and curated opportunities.</li>
+      </ul>
+      <div class="pill" style="margin-top:10px" data-i18n="prod_note">Pilot live — phased expansion over 12 months.</div>
+    </div>
+    <div class="card">
+      <h2 data-i18n="prod_prev">Product preview</h2>
+      <div class="grid" style="grid-template-columns:1fr 1fr;gap:10px">
+        <div style="aspect-ratio:16/10;border:1px solid #203259;border-radius:12px;background:#0b1428"></div>
+        <div style="aspect-ratio:16/10;border:1px solid #203259;border-radius:12px;background:#0b1428"></div>
+        <div style="aspect-ratio:16/10;border:1px solid #203259;border-radius:12px;background:#0b1428"></div>
+        <div style="aspect-ratio:16/10;border:1px solid #203259;border-radius:12px;background:#0b1428"></div>
+      </div>
+      <div class="muted" style="margin-top:8px" data-i18n="prod_cap">Placeholders — replace with your screenshots anytime.</div>
+    </div>
+  </section>
+
+  <!-- ROADMAP -->
+  <section class="wrap grid cols-2" id="roadmap">
+    <div class="card">
+      <h2 data-i18n="road_h2">Roadmap</h2>
+      <div class="timeline">
+        <div class="milestone">
+          <b data-i18n="road_q1t">Q1: Foundation</b>
+          <div class="muted" data-i18n="road_q1d">Crowdfunding, academy pilot, first verified certificates.</div>
+        </div>
+        <div class="milestone">
+          <b data-i18n="road_q2t">Q2: Productize</b>
+          <div class="muted" data-i18n="road_q2d">Creator toolkit v1, community scale-up, partnerships.</div>
+        </div>
+        <div class="milestone">
+          <b data-i18n="road_q3t">Q3: On-chain</b>
+          <div class="muted" data-i18n="road_q3d">Token mechanics test, wallet import, governance pilot.</div>
+        </div>
+        <div class="milestone">
+          <b data-i18n="road_q4t">Q4: Expansion</b>
+          <div class="muted" data-i18n="road_q4d">Regional chapters, B2B offerings, growth experiments.</div>
+        </div>
+      </div>
+    </div>
+    <div class="card" id="metrics">
+      <h2 data-i18n="kpi_h2">Key metrics</h2>
+      <div class="kpi">
+        <div class="tile"><div class="lab" data-i18n="kpi1_l">Soft cap progress</div><div class="big" id="kpi1">€0</div></div>
+        <div class="tile"><div class="lab" data-i18n="kpi2_l">Community (target)</div><div class="big" id="kpi2">0</div></div>
+        <div class="tile"><div class="lab" data-i18n="kpi3_l">Course completions</div><div class="big" id="kpi3">0</div></div>
+      </div>
+      <div class="grid" style="margin-top:10px;grid-template-columns:1fr 1fr;gap:12px">
+        <div class="tile"><div class="lab" data-i18n="chart1">Crowdfunding (€)</div><canvas id="c1" class="mini"></canvas></div>
+        <div class="tile"><div class="lab" data-i18n="chart2">Community growth</div><canvas id="c2" class="mini"></canvas></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOCIAL PROOF / TEAM -->
+  <section class="wrap grid cols-3">
+    <div class="card">
+      <h2 data-i18n="sp_h2">Why now</h2>
+      <div class="muted" data-i18n="sp_p">AI adoption is exploding. Practical education + tools + community lower the barrier and convert learning into revenue.</div>
+    </div>
+    <div class="card">
+      <h2 data-i18n="team_h2">Team</h2>
+      <div class="member"><div class="avatar">MG</div><div><b>Markus Goffin</b><div class="muted" data-i18n="team_mg">Founder • Product & Community</div></div></div>
+      <div class="member" style="margin-top:8px"><div class="avatar">AD</div><div><b>Advisors</b><div class="muted" data-i18n="team_ad">Legal • Tokenomics • Growth</div></div></div>
+    </div>
+    <div class="card" id="faq">
+      <h2 data-i18n="faq_h2">FAQ (short)</h2>
+      <details open><summary data-i18n="q1">What if soft cap is not reached?</summary><div class="muted" data-i18n="a1">Round may be extended or closed. If closed, refunds minus mandatory bank fees.</div></details>
+      <details><summary data-i18n="q2">When do I receive tokens?</summary><div class="muted" data-i18n="a2">Certificate after payment. On-chain allocation in batches (typically weekly), then wallet import.</div></details>
+      <details><summary data-i18n="q3">Which jurisdictions are excluded?</summary><div class="muted" data-i18n="a3">Sanctioned countries, US persons (for now), and regions where the offer is prohibited.</div></details>
+      <details><summary data-i18n="q4">KYC thresholds?</summary><div class="muted" data-i18n="a4">≥ €15,000 (rolling 12 months) requires KYC/KYB. “Source of funds” may be requested.</div></details>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="wrap">
+    <div class="card" style="text-align:center">
+      <h2 data-i18n="cta_h2">Ready to join DIA-10?</h2>
+      <p class="muted" data-i18n="cta_p">Contribute via CPC and receive your QR-verified certificate.</p>
+      <div class="actions">
+        <a class="btn cta" href="crowdfunding/index.html" data-i18n="cta_btn1">Start now</a>
+        <a class="btn" href="whitepaper.html" data-i18n="cta_btn2">Whitepaper</a>
+        <a class="btn" href="mailto:mgoffin@web.de?subject=DIA-10%20Inquiry" data-i18n="cta_btn3">Talk to us</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer id="contact">
+    <div class="foot">
+      <div class="footgrid">
+        <div>
+          <div class="brand" style="gap:12px"><div class="logo"></div><div><b>DIA-10</b><div class="muted" data-i18n="foot_tag">Decentralized Intelligence Assets</div></div></div>
+          <p class="muted" style="margin-top:8px" data-i18n="foot_copy">© DIA-10. All rights reserved.</p>
+        </div>
+        <div>
+          <b data-i18n="foot_links">Links</b>
+          <div style="margin-top:8px;display:grid;gap:6px">
+            <a href="crowdfunding/index.html" data-i18n="foot_crowd">Crowdfunding</a>
+            <a href="crowdfunding/verify.html" data-i18n="foot_verify">Verify certificate</a>
+            <a href="whitepaper.html" data-i18n="foot_wp">Whitepaper</a>
+          </div>
+        </div>
+        <div>
+          <b data-i18n="foot_contact">Contact</b>
+          <div class="muted" style="margin-top:8px;line-height:1.6">
+            Markus Goffin<br/>MAGO SERVICE TRADE SRL<br/>
+            Aleea Textilistilor Nr.1 – BL. MY1, Sc.1, App. 16, Sectorul 3<br/>
+            032801 Bucuresti, Romania<br/>
+            J40/5941/2015 · CUI–34523632<br/>
+            <a href="tel:+40752307711">+40 752 30 77 11</a> · <a href="mailto:mgoffin@web.de">mgoffin@web.de</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <button class="top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">↑</button>
+
+<script>
+  // ===== i18n strings =====
+  const T = {
+    en:{
+      nav_about:"About", nav_product:"Product", nav_roadmap:"Roadmap", nav_metrics:"Metrics", nav_faq:"FAQ", nav_contact:"Contact", nav_crowd:"Crowdfunding",
+      hero_pill:"Now open: CPC Crowdfunding Round",
+      hero_h1:"Build, learn & co-own Decentralized Intelligence Assets.",
+      hero_sub:"Join DIA-10. Contribute via CPC certificates, get verified QR certificates, and convert at token launch.",
+      hero_btn1:"Join the round", hero_btn2:"Read the whitepaper", hero_btn3:"Verify certificate",
+      f1_t:"Clear value creation", f1_d:"AI-native education, tools & community that turn learning into on-chain assets.",
+      f2_t:"Investor-friendly CPCs", f2_d:"Convertible Participation Certificates with discount & floor/cap provide fair entry.",
+      f3_t:"Regulatory clarity", f3_d:"EU (ECSP)-ready messaging & materials, clean jurisdiction set-up and KYC thresholds.",
+      prod_h2:"What we’re building", prod_l1:"DIA-10 Academy: short, outcome-driven modules & templates.",
+      prod_l2:"Creator toolkit: prompt packs, micro-apps & revenue experiments.",
+      prod_l3:"On-chain: membership, verified certificates & tokenized perks.",
+      prod_l4:"Community: weekly sessions, co-builds, and curated opportunities.",
+      prod_note:"Pilot live — phased expansion over 12 months.",
+      prod_prev:"Product preview", prod_cap:"Placeholders — replace with your screenshots anytime.",
+      road_h2:"Roadmap", road_q1t:"Q1: Foundation", road_q1d:"Crowdfunding, academy pilot, first verified certificates.",
+      road_q2t:"Q2: Productize", road_q2d:"Creator toolkit v1, community scale-up, partnerships.",
+      road_q3t:"Q3: On-chain", road_q3d:"Token mechanics test, wallet import, governance pilot.",
+      road_q4t:"Q4: Expansion", road_q4d:"Regional chapters, B2B offerings, growth experiments.",
+      kpi_h2:"Key metrics", kpi1_l:"Soft cap progress", kpi2_l:"Community (target)", kpi3_l:"Course completions",
+      chart1:"Crowdfunding (€)", chart2:"Community growth",
+      sp_h2:"Why now", sp_p:"AI adoption is exploding. Practical education + tools + community lower the barrier and convert learning into revenue.",
+      team_h2:"Team", team_mg:"Founder • Product & Community", team_ad:"Legal • Tokenomics • Growth",
+      faq_h2:"FAQ (short)", q1:"What if soft cap is not reached?", a1:"Round may be extended or closed. If closed, refunds minus mandatory bank fees.",
+      q2:"When do I receive tokens?", a2:"Certificate after payment. On-chain allocation in batches (typically weekly), then wallet import.",
+      q3:"Which jurisdictions are excluded?", a3:"Sanctioned countries, US persons (for now), and regions where the offer is prohibited.",
+      q4:"KYC thresholds?", a4:"≥ €15,000 (rolling 12 months) requires KYC/KYB. “Source of funds” may be requested.",
+      cta_h2:"Ready to join DIA-10?", cta_p:"Contribute via CPC and receive your QR-verified certificate.",
+      cta_btn1:"Start now", cta_btn2:"Whitepaper", cta_btn3:"Talk to us",
+      foot_tag:"Decentralized Intelligence Assets", foot_links:"Links", foot_crowd:"Crowdfunding",
+      foot_verify:"Verify certificate", foot_wp:"Whitepaper", foot_contact:"Contact", foot_copy:"© DIA-10. All rights reserved."
+    },
+    de:{
+      nav_about:"Über uns", nav_product:"Produkt", nav_roadmap:"Roadmap", nav_metrics:"Kennzahlen", nav_faq:"FAQ", nav_contact:"Kontakt", nav_crowd:"Crowdfunding",
+      hero_pill:"Jetzt offen: CPC-Crowdfunding-Runde",
+      hero_h1:"Bauen, lernen & mitbesitzen — Decentralized Intelligence Assets.",
+      hero_sub:"Mach mit bei DIA-10. Zeichne via CPC-Zertifikat, erhalte ein QR-verifiziertes Zertifikat und konvertiere beim Token-Launch.",
+      hero_btn1:"Zur Runde", hero_btn2:"Whitepaper lesen", hero_btn3:"Zertifikat prüfen",
+      f1_t:"Klare Wertschöpfung", f1_d:"AI-native Education, Tools & Community, die Lernen in On-chain-Assets verwandeln.",
+      f2_t:"Investor-freundliche CPCs", f2_d:"Convertible Participation Certificates mit Discount & Floor/Cap für fairen Einstieg.",
+      f3_t:"Regulatorische Klarheit", f3_d:"EU-(ECSP)-fähige Unterlagen & Jurisdiktions-Setup, klare KYC-Schwellen.",
+      prod_h2:"Was wir bauen", prod_l1:"DIA-10 Academy: kurze, ergebnisorientierte Module & Templates.",
+      prod_l2:"Creator-Toolkit: Prompt-Packs, Micro-Apps & Revenue-Experimente.",
+      prod_l3:"On-chain: Membership, verifizierte Zertifikate & tokenisierte Perks.",
+      prod_l4:"Community: Weekly Sessions, Co-Builds und kuratierte Opportunities.",
+      prod_note:"Pilot live — stufenweiser Ausbau über 12 Monate.",
+      prod_prev:"Produkt-Preview", prod_cap:"Platzhalter — jederzeit mit Screenshots ersetzbar.",
+      road_h2:"Roadmap", road_q1t:"Q1: Fundament", road_q1d:"Crowdfunding, Academy-Pilot, erste verifizierte Zertifikate.",
+      road_q2t:"Q2: Produktisierung", road_q2d:"Creator-Toolkit v1, Community-Scale-up, Partnerschaften.",
+      road_q3t:"Q3: On-chain", road_q3d:"Token-Mechaniken, Wallet-Import, Governance-Pilot.",
+      road_q4t:"Q4: Expansion", road_q4d:"Regionale Chapters, B2B-Angebote, Growth-Experimente.",
+      kpi_h2:"Kennzahlen", kpi1_l:"Soft-Cap-Fortschritt", kpi2_l:"Community (Ziel)", kpi3_l:"Kursabschlüsse",
+      chart1:"Crowdfunding (€)", chart2:"Community-Wachstum",
+      sp_h2:"Warum jetzt", sp_p:"AI-Adoption explodiert. Praxisnahe Bildung + Tools + Community senken Hürden und wandeln Lernen in Umsatz.",
+      team_h2:"Team", team_mg:"Founder • Produkt & Community", team_ad:"Legal • Tokenomics • Growth",
+      faq_h2:"FAQ (kurz)", q1:"Was, wenn die Soft-Cap nicht erreicht wird?", a1:"Verlängerung oder Beendigung. Bei Abbruch Erstattung abzüglich zwingender Bankgebühren.",
+      q2:"Wann erhalte ich Tokens?", a2:"Zertifikat nach Zahlungseingang. On-chain-Zuteilung in Batches (typisch wöchentlich), danach Wallet-Import.",
+      q3:"Welche Jurisdiktionen sind ausgeschlossen?", a3:"Sanktionierte Länder, US-Personen (vorerst) sowie Regionen mit verbotenem Angebot.",
+      q4:"Welche KYC-Schwellen?", a4:"≥ 15.000 € (rollierende 12 Monate) erfordert KYC/KYB. „Source of Funds“ kann angefragt werden.",
+      cta_h2:"Bereit für DIA-10?", cta_p:"Zeichne via CPC und erhalte ein QR-verifiziertes Zertifikat.",
+      cta_btn1:"Jetzt starten", cta_btn2:"Whitepaper", cta_btn3:"Sprich mit uns",
+      foot_tag:"Decentralized Intelligence Assets", foot_links:"Links", foot_crowd:"Crowdfunding",
+      foot_verify:"Zertifikat prüfen", foot_wp:"Whitepaper", foot_contact:"Kontakt", foot_copy:"© DIA-10. Alle Rechte vorbehalten."
+    },
+    ro:{
+      nav_about:"Despre", nav_product:"Produs", nav_roadmap:"Roadmap", nav_metrics:"Metrici", nav_faq:"FAQ", nav_contact:"Contact", nav_crowd:"Crowdfunding",
+      hero_pill:"Acum deschis: runda CPC",
+      hero_h1:"Construiește, învață și co-deține — Decentralized Intelligence Assets.",
+      hero_sub:"Alătură-te DIA-10. Contribuie prin certificate CPC, primești certificat QR-verificat și convertești la lansarea tokenului.",
+      hero_btn1:"Intră în rundă", hero_btn2:"Citește whitepaper", hero_btn3:"Verifică certificatul",
+      f1_t:"Creație clară de valoare", f1_d:"Educație, instrumente și comunitate native AI — transformă învățarea în active on-chain.",
+      f2_t:"CPC prietenoase investitorilor", f2_d:"Certificate convertibile cu discount & floor/cap pentru intrare corectă.",
+      f3_t:"Claritate de reglementare", f3_d:"Materiale compatibile UE (ECSP), set-up juridic curat și praguri KYC.",
+      prod_h2:"Ce construim", prod_l1:"DIA-10 Academy: module scurte, orientate pe rezultate.",
+      prod_l2:"Creator toolkit: pachete de prompturi, micro-aplicații și experimente de venit.",
+      prod_l3:"On-chain: membership, certificate verificate & perk-uri tokenizate.",
+      prod_l4:"Comunitate: sesiuni săptămânale, co-build, oportunități curate.",
+      prod_note:"Pilot live — extindere în etape pe 12 luni.",
+      prod_prev:"Previzualizare produs", prod_cap:"Placeholder — înlocuiește oricând cu capturi reale.",
+      road_h2:"Roadmap", road_q1t:"Q1: Fundament", road_q1d:"Crowdfunding, pilot academy, primele certificate verificate.",
+      road_q2t:"Q2: Productizare", road_q2d:"Creator toolkit v1, creștere comunitate, parteneriate.",
+      road_q3t:"Q3: On-chain", road_q3d:"Test mecanici token, import wallet, pilot guvernanță.",
+      road_q4t:"Q4: Expansiune", road_q4d:"Capitole regionale, oferte B2B, experimente de growth.",
+      kpi_h2:"Metrici cheie", kpi1_l:"Progres soft-cap", kpi2_l:"Comunitate (țintă)", kpi3_l:"Finalizări cursuri",
+      chart1:"Crowdfunding (€)", chart2:"Creștere comunitate",
+      sp_h2:"De ce acum", sp_p:"Adopția AI explodează. Educație practică + instrumente + comunitate transformă învățarea în venit.",
+      team_h2:"Echipă", team_mg:"Fondator • Produs & Comunitate", team_ad:"Legal • Tokenomics • Growth",
+      faq_h2:"FAQ (scurt)", q1:"Dacă nu atingem soft-cap?", a1:"Runda se poate prelungi sau închide. Dacă se închide: rambursări – taxe bancare obligatorii reținute.",
+      q2:"Când primesc tokenuri?", a2:"Certificat după plată. Alocare on-chain în loturi (de regulă săptămânal), apoi import în wallet.",
+      q3:"Ce jurisdicții sunt excluse?", a3:"Țări sancționate, persoane din SUA (deocamdată) și regiuni unde oferta e interzisă.",
+      q4:"Praguri KYC?", a4:"≥ 15.000 € (12 luni) necesită KYC/KYB. Se pot cere dovezi privind originea fondurilor.",
+      cta_h2:"Pregătit pentru DIA-10?", cta_p:"Contribuie prin CPC și primește certificat QR-verificat.",
+      cta_btn1:"Începe acum", cta_btn2:"Whitepaper", cta_btn3:"Scrie-ne",
+      foot_tag:"Decentralized Intelligence Assets", foot_links:"Linkuri", foot_crowd:"Crowdfunding",
+      foot_verify:"Verifică certificatul", foot_wp:"Whitepaper", foot_contact:"Contact", foot_copy:"© DIA-10. Toate drepturile rezervate."
+    }
+  };
+  const LOCALE = {en:'en-GB', de:'de-DE', ro:'ro-RO'};
+  let LANG = (localStorage.getItem('dia10_lp_lang') || document.documentElement.lang || 'en').slice(0,2);
+  if(!['en','de','ro'].includes(LANG)) LANG='en';
+
+  function i18nApply(lang){
+    LANG = lang;
+    localStorage.setItem('dia10_lp_lang', LANG);
+    document.documentElement.lang = LANG;
+    document.querySelectorAll('[data-i18n]').forEach(el=>{
+      const k = el.getAttribute('data-i18n'); if(T[LANG][k]) el.textContent = T[LANG][k];
+    });
+    document.querySelectorAll('.langbtn').forEach(b=> b.classList.toggle('active', b.dataset.lang===LANG));
+    // update numbers formatting if needed
+    document.getElementById('kpi1').textContent = new Intl.NumberFormat(LOCALE[LANG],{style:'currency',currency:'EUR'}).format(currentRaised);
+    document.getElementById('kpi2').textContent = new Intl.NumberFormat(LOCALE[LANG]).format(targetCommunity);
+    document.getElementById('kpi3').textContent = new Intl.NumberFormat(LOCALE[LANG]).format(courseCompletions);
+  }
+  document.querySelectorAll('.langbtn').forEach(b=> b.addEventListener('click', ()=> i18nApply(b.dataset.lang)));
+
+  // ===== Simple demo data (replace with live later) =====
+  let currentRaised = 125000; // €
+  let targetCommunity = 1500; // members
+  let courseCompletions = 320;
+
+  // Set initial KPI numbers
+  document.addEventListener('DOMContentLoaded', ()=>{
+    i18nApply(LANG);
+    // Charts
+    const opts = {
+      responsive:true,
+      maintainAspectRatio:false,
+      plugins:{legend:{display:false}, tooltip:{enabled:false}},
+      elements:{point:{radius:0}, line:{tension:.35}}
+    };
+    const c1 = document.getElementById('c1').getContext('2d');
+    const c2 = document.getElementById('c2').getContext('2d');
+    new Chart(c1,{type:'line',data:{labels:[1,2,3,4,5,6,7,8,9,10,11,12],
+      datasets:[{data:[10,18,22,30,45,62,74,90,105,116,121,125].map(x=>x*1000)}]},options:opts});
+    new Chart(c2,{type:'line',data:{labels:[1,2,3,4,5,6,7,8,9,10,11,12],
+      datasets:[{data:[120,200,260,330,420,520,680,820,980,1150,1350,1500]}]},options:opts});
+
+    // Fill KPIs
+    document.getElementById('kpi1').textContent = new Intl.NumberFormat(LOCALE[LANG],{style:'currency',currency:'EUR'}).format(currentRaised);
+    document.getElementById('kpi2').textContent = new Intl.NumberFormat(LOCALE[LANG]).format(targetCommunity);
+    document.getElementById('kpi3').textContent = new Intl.NumberFormat(LOCALE[LANG]).format(courseCompletions);
+  });
+</script>
+</body>
+</html>

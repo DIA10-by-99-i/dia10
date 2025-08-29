@@ -1,0 +1,1222 @@
+<!-- Hello, my name is Markus Goffin 
+🇩🇪 Deutsch
+
+Ideen- und Konzeptinhaber von DIA-10
+Markus Goffin ist der alleinige Urheber und Inhaber der ursprünglichen Idee, des Namens, des Konzepts sowie der Markenidentität von DIA-10 – einer diamant­inspirierten Kryptowährung. Die Entwicklung, Gestaltung und strategische Ausrichtung des Projekts basieren ausschließlich auf seiner kreativen und unternehmerischen Arbeit.
+
+🇬🇧 English
+
+Creator and Concept Owner of DIA-10
+Markus Goffin is the sole originator and owner of the idea, name, concept, and brand identity of DIA-10 — a diamond-inspired cryptocurrency. The project’s development, design, and strategic direction are entirely based on his creative vision and entrepreneurial expertise.
+
+🇷🇴 Română
+
+Autor și deținător al conceptului DIA-10
+Markus Goffin este inițiatorul și proprietarul exclusiv al ideii, numelui, conceptului și identității de brand DIA-10 — o criptomonedă inspirată de diamante. Dezvoltarea, designul și direcția strategică a proiectului se bazează în întregime pe viziunea sa creativă și expertiza sa antreprenorială.
+--> 
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta charset="by Markus Goffin, 01.08.2025"> 
+<meta charset="last update Markus Goffin, 17.08.2025">
+<meta name="description" content="99i Investment Company offers smart investment solutions to help you secure your financial future. Learn more about our services and investment strategies.">
+<link rel="icon" type="image/x-icon" href="../images/99i_favicon_16x16.ico" sizes="16x16">
+<link rel="icon" type="image/x-icon" href="../images/99i_favicon_32x32.ico" sizes="32x32">
+<link rel="icon" type="image/x-icon" href="../images/99i_favicon_48x48.ico" sizes="48x48">
+<title>DIA-10 — Official</title>
+<link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@300;400;600;800&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+<style>
+  :root{
+    --bg:#0a0f18; --panel:#0f1624; --ink:#e6f2ff;
+    --acc:#58a6ff; --accent-2:#b9d1ff; --silver:#c9d2e3; --ok:#3bd3a0; --warn:#ffdd57; --err:#ff6b6b;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0; background:radial-gradient(1200px 600px at 20% -10%,#101a2b 0%,#0a0f18 60%), #0a0f18;
+    color:var(--ink); font:400 16px/1.5 'Urbanist',system-ui,sans-serif;
+  }
+  a{color:var(--acc); text-decoration:none}
+  header{
+    position:sticky; top:0; z-index:10; backdrop-filter: blur(10px);
+    background:linear-gradient(180deg,rgba(10,15,24,.85),rgba(10,15,24,.6));
+    border-bottom:1px solid #1d2b45;
+  }
+  .nav{
+    max-width:1200px; margin:auto; padding:14px 18px; display:flex; align-items:center; gap:14px;
+  }
+  .brand{display:flex; align-items:center; gap:12px; font-weight:800; letter-spacing:.5px}
+  .brand .logo{
+    width:36px; height:36px; border-radius:8px; background:
+      radial-gradient(circle at 30% 30%, #8fb8ff 0 25%, transparent 25% 100%),
+      linear-gradient(135deg,#2a6cff 0%, #7fb3ff 100%);
+    box-shadow:0 0 24px rgba(127,179,255,.35), inset 0 0 16px rgba(0,0,0,.25);
+  }
+  .spacer{flex:1}
+  .nav a.btn{padding:8px 14px; border:1px solid #2a3b5f; border-radius:8px}
+  .nav .cta{background:linear-gradient(90deg,#2a6cff,#6aa8ff); color:#08101a; font-weight:700; border:none}
+
+  .hero{
+    max-width:1200px; margin:32px auto; padding:0 18px; display:grid; gap:18px;
+    grid-template-columns:1fr; text-align:center;
+  }
+  .hero h1{font-size:clamp(28px,4vw,48px); margin:.2em 0 .15em}
+  .pitch{font-size:clamp(16px,2.4vw,22px); color:var(--accent-2)}
+  .lang {display:flex; gap:8px; justify-content:center; margin-top:8px}
+  .lang button{background:#101a2b; color:var(--ink); border:1px solid #223456; border-radius:8px; padding:8px 12px; cursor:pointer}
+
+  .grid{
+    max-width:1200px; margin:24px auto; padding:0 18px;
+    display:grid; gap:18px; grid-template-columns: repeat(12,1fr);
+  }
+  .card{
+    background:linear-gradient(180deg,#0f1624,#0c1320);
+    border:1px solid #1e2a45; border-radius:14px; padding:18px; box-shadow:0 6px 30px rgba(0,0,0,.25);
+  }
+  .card h3{margin:0 0 8px; font-size:20px}
+  .muted{color:#adc7ffcc; font-size:14px}
+  .kpi{display:flex; gap:18px; flex-wrap:wrap; margin-top:10px}
+  .kpi .b{
+    min-width:140px; background:#11203b; padding:10px 12px; border-radius:10px; border:1px solid #213456;
+  }
+  .row{display:flex; gap:12px; flex-wrap:wrap}
+  label{font-size:14px; color:#bcd1ff}
+  input,textarea,select,button{
+    font:inherit; color:var(--ink); background:#0c1526; border:1px solid #27406c; border-radius:10px; padding:10px 12px;
+  }
+  input::placeholder, textarea::placeholder{color:#8fb0ff7e}
+  button.cta{background:linear-gradient(90deg,#2a6cff,#6aa8ff); color:#08101a; font-weight:800; border:none; cursor:pointer}
+  .wide{grid-column:1/-1}
+  .col6{grid-column: span 12}
+  @media(min-width:900px){ .col6{grid-column: span 6} }
+  footer{max-width:1200px; margin:32px auto 60px; padding:0 18px; color:#93b5ff8f; font-size:14px}
+  .ok{color:var(--ok)} .err{color:var(--err)} .chip{display:inline-block; padding:4px 8px; border:1px solid #2b4068; border-radius:999px; font-size:12px}
+
+  .modal{position:fixed; inset:0; display:none; place-items:center; background:rgba(5,10,18,.65)}
+  .modal .panel{width:min(560px,92vw); background:#0f1626; border:1px solid #203259; border-radius:14px; padding:18px}
+  .flex{display:flex; gap:12px; align-items:center; justify-content:space-between}
+  .mt8{margin-top:8px} .mt12{margin-top:12px} .mt16{margin-top:16px} .mt20{margin-top:20px}
+  .small{font-size:12px; color:#96b2ffb2}
+  .center{text-align:center}
+
+  .pill {display:inline-flex; align-items:center; gap:8px; padding:6px 10px; border:1px solid #27406c; border-radius:999px; font-size:13px; background:#0e1a33;}
+  .link-btn {display:inline-block; padding:8px 12px; border:1px solid #2a3b5f; border-radius:8px; background:#0e1a33;}
+  .warn{color:var(--warn); font-weight:700}
+  
+  /* Compact styles — blends with your palette */
+  .dia-showcase{background:linear-gradient(180deg,#0f1624,#0c1320);border:1px solid #1e2a45;border-radius:14px;padding:18px;margin-top:18px;box-shadow:0 6px 30px rgba(0,0,0,.25)}
+  .dia-showcase h3{margin:0 0 8px;font-size:20px}
+  .dia-showcase .muted{color:#adc7ffcc;font-size:14px}
+  .ds-grid{display:grid;gap:14px;grid-template-columns:repeat(12,1fr)}
+  .ds-card{grid-column:span 12;background:#0e1a33;border:1px solid #213456;border-radius:12px;padding:14px}
+  @media(min-width:900px){ .ds-6{grid-column:span 6} .ds-4{grid-column:span 4} }
+  .shape-grid,.clarity-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
+  .shape{display:grid;place-items:center;padding:8px;border:1px solid #213456;border-radius:10px;background:#0d182e}
+  .shape span{font-size:12px;color:#bcd1ff;margin-top:6px}
+  .chip{display:inline-flex;align-items:center;gap:8px;padding:6px 10px;border:1px solid #27406c;border-radius:999px;font-size:12px;background:#0e1a33}
+  .scale{display:flex;gap:6px;flex-wrap:wrap}
+  .color-box{width:40px;height:18px;border-radius:4px;border:1px solid #223456}
+  .legend{font-size:12px;color:#bcd1ff;margin-top:8px}
+  .clarity-cell{display:grid;place-items:center;padding:8px;border:1px solid #213456;border-radius:10px;background:#0d182e}
+  .clarity-cell span{font-size:12px;color:#bcd1ff;margin-top:6px}
+  .note{font-size:12px;color:#96b2ffb2;margin-top:8px}
+</style>
+</head>
+<body>
+  <header>
+    <nav class="nav">
+      <div class="brand"><div class="logo" aria-hidden="true"></div> <span>DIA-10</span></div>
+      <div class="spacer"></div>
+      <a href="../index.html" class="btn">Home</a>
+      <a href="#live" class="btn">Live Data</a>
+      <a href="#kb" class="btn">Knowledge</a>
+      <a href="#certificate" class="btn">Certificate</a>
+      <a href="#whitepaper" class="btn">Whitepaper</a>
+      <button id="btnLoginOpen" class="btn cta">Member Login</button>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h1>DIA-10</h1>
+    <div id="pitch" class="pitch">Investiere in echte Werte: DIA-10 verbindet digitale Effizienz mit der zeitlosen Stärke von Diamanten.</div>
+    <div class="lang">
+      <button data-lang="de">DE</button>
+      <button data-lang="en">EN</button>
+      <button data-lang="ro">RO</button>
+    </div>
+  </section>
+
+  <section id="live" class="grid">
+ 
+
+   <!-- ===== Diamond Knowledge Hub ===== -->
+<div id="diamondHub" class="card wide">
+  <h3 id="diaTitle">Diamant-Wissen</h3>
+  <div class="muted" id="diaIntro">
+    Preisindex über 10 Jahre nach Karat & Qualitäts-Preset (Index, Basisjahr = 100).
+  </div>
+
+  <!-- Steuerung -->
+  <div class="row mt12" style="align-items:flex-end">
+    <label><span id="diaCaratLabel">Karat</span><br>
+      <select id="diaCarat">
+        <option value="0.30">0,30 ct</option>
+        <option value="0.50">0,50 ct</option>
+        <option value="1.00" selected>1,00 ct</option>
+        <option value="2.00">2,00 ct</option>
+      </select>
+    </label>
+    <label><span id="diaGradeLabel">Qualität (Farbe/Reinheit)</span><br>
+      <select id="diaGrade">
+        <option value="D_IF">D / IF</option>
+        <option value="F_VVS2">F / VVS2</option>
+        <option value="H_VS2" selected>H / VS2</option>
+        <option value="J_SI1">J / SI1</option>
+      </select>
+    </label>
+    <button id="diaRefresh" class="btn cta">Aktualisieren</button>
+  </div>
+
+  <!-- Chart -->
+  <div class="mt12" style="background:#0e1a33;border:1px solid #213456;border-radius:12px;padding:10px">
+    <canvas id="diaChart" height="140" aria-label="Diamond 10y Index" role="img"></canvas>
+  </div>
+  <div class="small mt12" id="diaNote">Hinweis: Beispiel-/Platzhalterdaten zur Illustration.</div>
+
+  <!-- Grundlagen & Checkliste -->
+  <div class="row mt16" style="gap:16px; flex-wrap:wrap">
+    <div class="card" style="flex:1; min-width:280px">
+      <h4 style="margin:0 0 6px" id="sec1Title">Diamant vs. Brillant</h4>
+      <ul class="muted" id="sec1List" style="margin:0; padding-left:18px; line-height:1.6"></ul>
+    </div>
+    <div class="card" style="flex:1; min-width:280px">
+      <h4 style="margin:0 0 6px" id="sec2Title">Die 4C – kurz erklärt</h4>
+      <ul class="muted" id="sec2List" style="margin:0; padding-left:18px; line-height:1.6"></ul>
+    </div>
+  </div>
+
+  <div class="row mt16" style="gap:16px; flex-wrap:wrap">
+    <div class="card" style="flex:1; min-width:280px">
+      <h4 style="margin:0 0 6px" id="sec3aTitle">Zertifikate</h4>
+      <ul class="muted" id="sec3aList" style="margin:0; padding-left:18px; line-height:1.6"></ul>
+    </div>
+    <div class="card" style="flex:1; min-width:280px">
+      <h4 style="margin:0 0 6px" id="sec3bTitle">Kauf-Checkliste</h4>
+      <ul class="muted" id="sec3bList" style="margin:0; padding-left:18px; line-height:1.6"></ul>
+    </div>
+  </div>
+
+
+<section id="diamondShowcase" class="dia-showcase">
+  <h3 id="ds_title">Diamant-Wissen — Formen, Farbe & Reinheit</h3>
+  <div class="muted" id="ds_intro">Anschauliche Übersicht. Bildungsinhalte – kein Verkauf.</div>
+
+  <div class="ds-grid" style="margin-top:12px">
+    <!-- Shapes -->
+    <div class="ds-card ds-6">
+      <div class="chip">◼️ <b id="ds_shapes_t" style="margin-left:6px">Formen</b></div>
+      <div class="shape-grid" style="margin-top:10px">
+        <!-- Round -->
+        <div class="shape">
+          <svg viewBox="0 0 80 80" width="56" height="56" aria-hidden="true">
+            <circle cx="40" cy="40" r="26" fill="none" stroke="#58a6ff" stroke-width="2"/>
+            <path d="M18,40 L62,40 M40,18 L40,62 M26,26 L54,54 M54,26 L26,54" stroke="#58a6ff" stroke-width="2" opacity=".7"/>
+          </svg>
+          <span id="lbl_round">Brillant</span>
+        </div>
+        <!-- Princess (square) -->
+        <div class="shape">
+          <svg viewBox="0 0 80 80" width="56" height="56">
+            <rect x="18" y="18" width="44" height="44" fill="none" stroke="#58a6ff" stroke-width="2" rx="6"/>
+            <path d="M18,18 L62,62 M62,18 L18,62" stroke="#58a6ff" stroke-width="2" opacity=".7"/>
+          </svg>
+          <span id="lbl_princess">Princess</span>
+        </div>
+        <!-- Emerald -->
+        <div class="shape">
+          <svg viewBox="0 0 80 80" width="56" height="56">
+            <path d="M28,18 H52 L62,28 V52 L52,62 H28 L18,52 V28 Z" fill="none" stroke="#58a6ff" stroke-width="2"/>
+            <rect x="30" y="22" width="20" height="36" fill="none" stroke="#58a6ff" stroke-width="1.5" opacity=".7"/>
+          </svg>
+          <span id="lbl_emerald">Smaragd</span>
+        </div>
+        <!-- Oval -->
+        <div class="shape">
+          <svg viewBox="0 0 80 80" width="56" height="56">
+            <ellipse cx="40" cy="40" rx="26" ry="20" fill="none" stroke="#58a6ff" stroke-width="2"/>
+            <path d="M24,40 L56,40" stroke="#58a6ff" stroke-width="2" opacity=".7"/>
+          </svg>
+          <span id="lbl_oval">Oval</span>
+        </div>
+        <!-- Cushion -->
+        <div class="shape">
+          <svg viewBox="0 0 80 80" width="56" height="56">
+            <path d="M26,18 H54 C60,18 62,20 62,26 V54 C62,60 60,62 54,62 H26 C20,62 18,60 18,54 V26 C18,20 20,18 26,18 Z"
+                  fill="none" stroke="#58a6ff" stroke-width="2"/>
+          </svg>
+          <span id="lbl_cushion">Kissen</span>
+        </div>
+        <!-- Pear -->
+        <div class="shape">
+          <svg viewBox="0 0 80 80" width="56" height="56">
+            <path d="M40,18 Q50,26 56,36 Q62,46 56,54 Q50,62 40,62 Q30,62 24,54 Q18,46 24,36 Q30,26 40,18 Z"
+                  fill="none" stroke="#58a6ff" stroke-width="2"/>
+          </svg>
+          <span id="lbl_pear">Tropfen</span>
+        </div>
+        <!-- Heart -->
+        <div class="shape">
+          <svg viewBox="0 0 80 80" width="56" height="56">
+            <path d="M40,58 L22,40 C16,32 20,22 30,22 C36,22 38,26 40,28 C42,26 44,22 50,22 C60,22 64,32 58,40 Z"
+                  fill="none" stroke="#58a6ff" stroke-width="2"/>
+          </svg>
+          <span id="lbl_heart">Herz</span>
+        </div>
+        <!-- Radiant -->
+        <div class="shape">
+          <svg viewBox="0 0 80 80" width="56" height="56">
+            <path d="M24,24 H56 L62,40 L56,56 H24 L18,40 Z" fill="none" stroke="#58a6ff" stroke-width="2"/>
+          </svg>
+          <span id="lbl_radiant">Radiant</span>
+        </div>
+        <!-- Asscher -->
+        <div class="shape">
+          <svg viewBox="0 0 80 80" width="56" height="56">
+            <polygon points="28,18 52,18 62,28 62,52 52,62 28,62 18,52 18,28" fill="none" stroke="#58a6ff" stroke-width="2"/>
+            <polygon points="32,24 48,24 56,32 56,48 48,56 32,56 24,48 24,32" fill="none" stroke="#58a6ff" stroke-width="1.6" opacity=".7"/>
+          </svg>
+          <span id="lbl_asscher">Asscher</span>
+        </div>
+        <!-- Marquise -->
+        <div class="shape">
+          <svg viewBox="0 0 80 80" width="56" height="56">
+            <path d="M12,40 Q40,16 68,40 Q40,64 12,40 Z" fill="none" stroke="#58a6ff" stroke-width="2"/>
+          </svg>
+          <span id="lbl_marquise">Marquise</span>
+        </div>
+      </div>
+      <div class="legend" id="ds_shapes_note" style="margin-top:8px">
+        „Brillant“ ist der runde Schliff (57/58 Facetten); andere Formen tragen eigene Namen.
+      </div>
+    </div>
+
+    <!-- Color scale -->
+    <div class="ds-card ds-6">
+      <div class="chip">🌈 <b id="ds_color_t" style="margin-left:6px">Farbe (D–Z) & Fancy</b></div>
+      <div class="scale" style="margin-top:12px">
+        <!-- 10 sample boxes D–N (illustrative) -->
+        <div><div class="color-box" style="background:#ffffff"></div><div class="legend">D</div></div>
+        <div><div class="color-box" style="background:#f9fbff"></div><div class="legend">E</div></div>
+        <div><div class="color-box" style="background:#f4f8ff"></div><div class="legend">F</div></div>
+        <div><div class="color-box" style="background:#f2f7ff"></div><div class="legend">G</div></div>
+        <div><div class="color-box" style="background:#eef4ff"></div><div class="legend">H</div></div>
+        <div><div class="color-box" style="background:#edf1ff"></div><div class="legend">I</div></div>
+        <div><div class="color-box" style="background:#f7f0cf"></div><div class="legend">J</div></div>
+        <div><div class="color-box" style="background:#f6e8b8"></div><div class="legend">K</div></div>
+        <div><div class="color-box" style="background:#f3e09b"></div><div class="legend">L</div></div>
+        <div><div class="color-box" style="background:#efd77e"></div><div class="legend">M–N</div></div>
+      </div>
+      <div class="legend" id="ds_color_note">D = farblos → Z = deutlich gelblich. „Fancy“ = intensiv gefärbt (z. B. Gelb, Pink, Blau).</div>
+      <div class="scale" style="margin-top:8px">
+        <span class="chip">Fancy Yellow</span>
+        <span class="chip">Fancy Pink</span>
+        <span class="chip">Fancy Blue</span>
+        <span class="chip">Fancy Green</span>
+        <span class="chip">Champagne</span>
+      </div>
+    </div>
+
+    <!-- Clarity -->
+    <div class="ds-card ds-12">
+      <div class="chip">🔬 <b id="ds_clarity_t" style="margin-left:6px">Reinheit (Clarity)</b></div>
+      <div class="clarity-grid" style="margin-top:10px">
+        <!-- Each cell uses dots to illustrate increasing inclusions -->
+        <div class="clarity-cell">
+          <svg viewBox="0 0 80 80" width="56" height="56"><circle cx="40" cy="40" r="26" fill="none" stroke="#58a6ff" stroke-width="2"/></svg>
+          <span>IF</span>
+        </div>
+        <div class="clarity-cell">
+          <svg viewBox="0 0 80 80" width="56" height="56">
+            <circle cx="40" cy="40" r="26" fill="none" stroke="#58a6ff" stroke-width="2"/>
+            <circle cx="46" cy="36" r="1.5" fill="#58a6ff"/>
+          </svg><span>VVS1</span>
+        </div>
+        <div class="clarity-cell">
+          <svg viewBox="0 0 80 80" width="56" height="56">
+            <circle cx="40" cy="40" r="26" fill="none" stroke="#58a6ff" stroke-width="2"/>
+            <circle cx="46" cy="36" r="1.5" fill="#58a6ff"/><circle cx="34" cy="44" r="1.5" fill="#58a6ff"/>
+          </svg><span>VVS2</span>
+        </div>
+        <div class="clarity-cell">
+          <svg viewBox="0 0 80 80" width="56" height="56">
+            <circle cx="40" cy="40" r="26" fill="none" stroke="#58a6ff" stroke-width="2"/>
+            <circle cx="46" cy="36" r="1.8" fill="#58a6ff"/><circle cx="34" cy="44" r="1.8" fill="#58a6ff"/>
+          </svg><span>VS1</span>
+        </div>
+        <div class="clarity-cell">
+          <svg viewBox="0 0 80 80" width="56" height="56">
+            <circle cx="40" cy="40" r="26" fill="none" stroke="#58a6ff" stroke-width="2"/>
+            <circle cx="46" cy="36" r="2" fill="#58a6ff"/><circle cx="34" cy="44" r="2" fill="#58a6ff"/><circle cx="40" cy="48" r="1.6" fill="#58a6ff"/>
+          </svg><span>VS2</span>
+        </div>
+        <div class="clarity-cell">
+          <svg viewBox="0 0 80 80" width="56" height="56">
+            <circle cx="40" cy="40" r="26" fill="none" stroke="#58a6ff" stroke-width="2"/>
+            <circle cx="46" cy="36" r="2.1" fill="#58a6ff"/><circle cx="34" cy="44" r="2.1" fill="#58a6ff"/><circle cx="40" cy="48" r="2" fill="#58a6ff"/>
+          </svg><span>SI1</span>
+        </div>
+        <div class="clarity-cell">
+          <svg viewBox="0 0 80 80" width="56" height="56">
+            <circle cx="40" cy="40" r="26" fill="none" stroke="#58a6ff" stroke-width="2"/>
+            <circle cx="46" cy="36" r="2.2" fill="#58a6ff"/><circle cx="34" cy="44" r="2.2" fill="#58a6ff"/>
+            <circle cx="40" cy="48" r="2.2" fill="#58a6ff"/><circle cx="36" cy="34" r="1.8" fill="#58a6ff"/>
+          </svg><span>SI2</span>
+        </div>
+        <div class="clarity-cell">
+          <svg viewBox="0 0 80 80" width="56" height="56">
+            <circle cx="40" cy="40" r="26" fill="none" stroke="#58a6ff" stroke-width="2"/>
+            <g fill="#58a6ff">
+              <circle cx="46" cy="36" r="2.4"/><circle cx="34" cy="44" r="2.4"/><circle cx="40" cy="48" r="2.4"/>
+              <circle cx="36" cy="34" r="2"/><circle cx="44" cy="50" r="2"/><circle cx="30" cy="40" r="2"/>
+            </g>
+          </svg><span>I1–I3</span>
+        </div>
+      </div>
+      <div class="note" id="ds_clarity_note">
+        Illustrative Darstellung. Maßgeblich ist stets das Laborzertifikat (z. B. GIA/HRD/IGI).
+      </div>
+    </div>
+
+    <!-- Cut quick note -->
+    <div class="ds-card ds-12">
+      <div class="chip">✨ <b id="ds_cut_t" style="margin-left:6px">Schliffqualität (Cut)</b></div>
+      <div class="legend" id="ds_cut_note" style="margin-top:8px">
+        Cut (Excellent–Poor) ist der Haupttreiber für Brillanz/Feuer; oft wichtiger als ein halber Farb- oder Reinheitsgrad.
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+    <div id="certificate" class="card wide">
+      <h3>Investor Certificate — DIA-10</h3>
+      <div class="muted">Kaufeintrag simulieren, Zertifikat generieren (PDF), fortlaufende Nummer.</div>
+      <div class="row mt12">
+        <label>Betrag (EUR)<br><input id="amount" type="number" min="100" step="50" placeholder="1000"></label>
+        <label>Preis pro Anteil (EUR)<br><input id="price" type="number" min="1" step="0.1" value="10"></label>
+        <label>Name<br><input id="invName" placeholder="Vor- und Nachname"></label>
+        <label>E-Mail<br><input id="invMail" placeholder="name@example.com"></label>
+      </div>
+      <div class="row mt12">
+        <button id="calc" class="btn">Anteile berechnen</button>
+        <div class="small">Anteile: <span id="shares">—</span></div>
+      </div>
+      <div class="row mt12">
+        <button id="genPdf" class="btn cta">📄 Zertifikat (PDF)</button>
+        <button id="saveQA" class="btn">⬇️ Antwort & Frage (.txt)</button>
+        <span id="certStatus" class="small"></span>
+      </div>
+      <div class="small mt12">
+        IBAN: RO34BRDE426SV66680914260 • BIC: BRDEROBU • MAGO SERVICE TRADE SRL, București  
+        Nach Zahlungseingang gilt das Zertifikat als gültig.
+      </div>
+    </div>
+ </div>
+    <div id="whitepaper" class="card wide">
+      <h3>Whitepaper / Deck</h3>
+      <div class="row mt12">
+        <button class="btn"><a href="../whitepaper.html">⬇️ Whitepaper</a></button>
+        <button class="btn"><a href="../marketing/marketing_concept_map.html">⬇️ Marketing Deck</a></button>
+      </div>
+    </div>
+
+  </section>
+
+  <footer>© DIA-10 • Contact: mgoffin@web.de • <a href="https://99-i.com" target="_blank">99-i.com</a></footer>
+
+  <!-- Login Modal -->
+  <div id="loginModal" class="modal">
+    <div class="panel">
+      <div class="flex"><h3>Member Login</h3><button id="btnLoginClose" class="btn">×</button></div>
+      <div class="mt8">E-Mail</div>
+      <input id="loginMail" placeholder="you@example.com" style="width:100%">
+      <div class="mt12">Passwort</div>
+      <input id="loginPass" type="password" placeholder="••••••••" style="width:100%">
+      <div class="mt16 flex">
+        <button id="doLogin" class="btn cta">Login</button>
+        <span id="loginMsg" class="small"></span>
+      </div>
+      <div class="small mt20">Hinweis: Demo-Login speichert nur ein Session-Token (localStorage).</div>
+    </div>
+  </div>
+
+<script src="https://cdn.jsdelivr.net/npm/dexie@3.2.4/dist/dexie.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/mammoth@1.6.0/mammoth.browser.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+// ===== Dummy-Daten (Index = 100 im Startjahr) =====
+const DIA_YEARS = Array.from({length:10}, (_,i)=> String(new Date().getFullYear()-9+i));
+const DIA_DATA = {
+  "0.30":{ D_IF:[100,103,105,108,110,112,114,116,118,120],
+           F_VVS2:[100,102,104,106,109,111,113,115,117,119],
+           H_VS2:[100,101,102,104,106,108,110,111,113,115],
+           J_SI1:[100, 98, 97, 98,100,102,103,104,106,107] },
+  "0.50":{ D_IF:[100,104,107,111,114,117,120,122,125,128],
+           F_VVS2:[100,103,106,109,112,115,118,120,123,126],
+           H_VS2:[100,102,104,106,108,111,113,115,117,120],
+           J_SI1:[100, 99, 98, 99,101,103,104,106,107,109] },
+  "1.00":{ D_IF:[100,105,110,116,121,125,129,133,138,142],
+           F_VVS2:[100,104,108,112,116,120,124,128,132,136],
+           H_VS2:[100,103,106,110,113,116,119,122,126,129],
+           J_SI1:[100, 98, 97, 98,100,102,104,106,108,110] },
+  "2.00":{ D_IF:[100,106,112,119,125,131,136,142,148,155],
+           F_VVS2:[100,105,110,115,120,125,130,135,140,145],
+           H_VS2:[100,103,106,110,114,118,122,126,130,134],
+           J_SI1:[100, 97, 96, 97, 99,101,104,106,108,111] }
+};
+
+// ===== Chart =====
+let diaChart=null;
+function renderDiaChart(){
+  const carat = document.getElementById('diaCarat').value;
+  const grade = document.getElementById('diaGrade').value;
+  const data  = DIA_DATA[carat][grade];
+
+  const cfg = {
+    type:'line',
+    data:{
+      labels: DIA_YEARS,
+      datasets:[{
+        label:`${carat} ct – ${grade.replace('_',' / ')}`,
+        data, tension:.3, borderColor:'#58a6ff',
+        backgroundColor:'rgba(88,166,255,.18)', borderWidth:2, pointRadius:0, fill:true
+      }]
+    },
+    options:{
+      responsive:true, maintainAspectRatio:false,
+      plugins:{ legend:{labels:{color:'#dfeaff'}}, tooltip:{callbacks:{label:(c)=>`Index: ${c.parsed.y}`}}},
+      scales:{ x:{ticks:{color:'#bcd0ff'}, grid:{color:'rgba(255,255,255,.06)'}},
+               y:{ticks:{color:'#bcd0ff'}, grid:{color:'rgba(255,255,255,.06)'}}}
+    }
+  };
+  if(diaChart) diaChart.destroy();
+  diaChart = new Chart(document.getElementById('diaChart'), cfg);
+}
+['diaRefresh','diaCarat','diaGrade'].forEach(id=>{
+  const el=document.getElementById(id);
+  el && el.addEventListener(id==='diaRefresh'?'click':'change', renderDiaChart);
+});
+renderDiaChart();
+
+// ===== i18n für die Sektion =====
+const DIA_TXT = {
+  de:{
+    title:'Diamant-Wissen',
+    intro:'Preisindex über 10 Jahre nach Karat & Qualitäts-Preset (Index, Basisjahr = 100).',
+    carat:'Karat', grade:'Qualität (Farbe/Reinheit)', refresh:'Aktualisieren',
+    note:'Hinweis: Beispiel-/Platzhalterdaten zur Illustration.',
+    s1:'Diamant vs. Brillant',
+    s1list:[
+      '<b>Diamant</b> = Mineral (reiner Kohlenstoff, kubisch).',
+      '<b>Brillant</b> = Schliffart: runder Brillant mit 57/58 Facetten.',
+      'Jeder Brillant ist ein Diamant – nicht jeder Diamant ist ein Brillant.'
+    ],
+    s2:'Die 4C – kurz erklärt',
+    s2list:[
+      '<b>Carat (ct)</b>: Gewicht, 1 ct = 0,2 g.',
+      '<b>Color</b>: D (farblos) bis Z (gelblich).',
+      '<b>Clarity</b>: IF, VVS, VS, SI, I (Einschlüsse).',
+      '<b>Cut</b>: Schliffqualität (Excellent–Poor). Wichtigster Funkenfaktor.'
+    ],
+    s3a:'Zertifikate',
+    s3alist:[
+      'Anerkannte Labore: GIA, HRD, IGI (je nach Markt).',
+      'Zert-Nr. online prüfen (z. B. GIA Lookup).',
+      'Maße/Proportionen, Fluoreszenz, Symmetrie, Politur beachten.'
+    ],
+    s3b:'Kauf-Checkliste',
+    s3blist:[
+      'Zweck & Budget definieren (Schmuck/Investment).',
+      'Ziel-4C festlegen (z. B. 1,00 ct, H/VS2, EX/EX/EX).',
+      'Vertrauenswürdiger Händler, Rückgaberecht, Rechnung.',
+      'Pflege, Fassung, Versicherung bedenken.'
+    ]
+  },
+  en:{
+    title:'Diamond Knowledge',
+    intro:'10-year price index by carat & quality preset (index, base year = 100).',
+    carat:'Carat', grade:'Quality (Color/Clarity)', refresh:'Update',
+    note:'Note: Example/placeholder data for illustration.',
+    s1:'Diamond vs. Brilliant',
+    s1list:[
+      '<b>Diamond</b> = mineral (pure carbon, cubic).',
+      '<b>Brilliant</b> = cut style: round brilliant with 57/58 facets.',
+      'Every brilliant is a diamond — not every diamond is a brilliant.'
+    ],
+    s2:'The 4C — quick guide',
+    s2list:[
+      '<b>Carat (ct)</b>: weight, 1 ct = 0.2 g.',
+      '<b>Color</b>: D (colorless) to Z (yellowish).',
+      '<b>Clarity</b>: IF, VVS, VS, SI, I (inclusions).',
+      '<b>Cut</b>: cut grade (Excellent–Poor). The main sparkle driver.'
+    ],
+    s3a:'Certificates',
+    s3alist:[
+      'Trusted labs: GIA, HRD, IGI (market dependent).',
+      'Verify report number online (e.g., GIA Lookup).',
+      'Check proportions, fluorescence, symmetry, polish.'
+    ],
+    s3b:'Buying checklist',
+    s3blist:[
+      'Define purpose & budget (jewelry/investment).',
+      'Set target 4C (e.g., 1.00 ct, H/VS2, EX/EX/EX).',
+      'Trusted dealer, return policy, invoice.',
+      'Care, setting, insurance.'
+    ]
+  },
+  ro:{
+    title:'Bază de cunoștințe despre diamante',
+    intro:'Indice de preț pe 10 ani după carataj și calitate (index, anul de bază = 100).',
+    carat:'Carat', grade:'Calitate (Culoare/Puritate)', refresh:'Actualizează',
+    note:'Notă: Date exemplificative/placeholder.',
+    s1:'Diamant vs. Briliant',
+    s1list:[
+      '<b>Diamant</b> = mineral (carbon pur, cubic).',
+      '<b>Briliant</b> = stil de tăietură: rotund cu 57/58 fațete.',
+      'Orice briliant este diamant — nu orice diamant este briliant.'
+    ],
+    s2:'Cele 4C — pe scurt',
+    s2list:[
+      '<b>Carat (ct)</b>: greutate, 1 ct = 0,2 g.',
+      '<b>Culoare</b>: D (incolor) până la Z (gălbui).',
+      '<b>Claritate</b>: IF, VVS, VS, SI, I (incluziuni).',
+      '<b>Tăietură</b>: calitatea tăieturii (Excellent–Poor). Sursa principală a strălucirii.'
+    ],
+    s3a:'Certificate',
+    s3alist:[
+      'Laboratoare recunoscute: GIA, HRD, IGI.',
+      'Verifică online numărul certificatului (ex: GIA Lookup).',
+      'Verifică proporțiile, fluorescența, simetria, finisajul.'
+    ],
+    s3b:'Checklist de cumpărare',
+    s3blist:[
+      'Definește scopul și bugetul (bijuterie/investiție).',
+      'Stabilește 4C țintă (ex: 1,00 ct, H/VS2, EX/EX/EX).',
+      'Vânzător de încredere, retur, factură.',
+      'Îngrijire, montură, asigurare.'
+    ]
+  }
+};
+
+function applyDiaLang(lang){
+  const t = DIA_TXT[lang] || DIA_TXT.de;
+  const set = (id, html)=>{ const n=document.getElementById(id); if(n) n.innerHTML = html; };
+  set('diaTitle', t.title);
+  set('diaIntro', t.intro);
+  set('diaCaratLabel', t.carat);
+  set('diaGradeLabel', t.grade);
+  document.getElementById('diaRefresh').textContent = t.refresh;
+  set('diaNote', t.note);
+  set('sec1Title', t.s1); set('sec1List', t.s1list.map(li=>`<li>${li}</li>`).join(''));
+  set('sec2Title', t.s2); set('sec2List', t.s2list.map(li=>`<li>${li}</li>`).join(''));
+  set('sec3aTitle', t.s3a); set('sec3aList', t.s3alist.map(li=>`<li>${li}</li>`).join(''));
+  set('sec3bTitle', t.s3b); set('sec3bList', t.s3blist.map(li=>`<li>${li}</li>`).join(''));
+}
+// beim ersten Laden (DE) …
+applyDiaLang('de');
+// … und an die vorhandenen Sprachbuttons andocken (Zusatzlistener)
+document.querySelectorAll('.lang button').forEach(b=>{
+  b.addEventListener('click', ()=> applyDiaLang(b.dataset.lang));
+});
+</script>
+
+<script type="module">
+import * as pdfjsLib from 'https://mozilla.github.io/pdf.js/build/pdf.mjs';
+pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://mozilla.github.io/pdf.js/build/pdf.worker.mjs';
+window.pdfjsLib = pdfjsLib;
+</script>
+<script src="https://cdn.jsdelivr.net/npm/ethers@6.12.1/dist/ethers.min.js"></script>
+<script>
+/* ===== Language Pitch ===== */
+const pitches = {
+  de: "Investiere in echte Werte: DIA-10 verbindet digitale Effizienz mit der zeitlosen Stärke von Diamanten.",
+  en: "Invest in real value: DIA-10 fuses digital efficiency with the timeless strength of diamonds.",
+  ro: "Investește în valoare reală: DIA-10 unește eficiența digitală cu forța atemporală a diamantelor."
+};
+document.querySelectorAll('.lang button').forEach(b=>{
+  b.onclick=()=>{ document.getElementById('pitch').textContent = pitches[b.dataset.lang]; }
+});
+
+/* ===== Login Modal (Demo) ===== */
+const modal = document.getElementById('loginModal');
+document.getElementById('btnLoginOpen').onclick = ()=> modal.style.display='grid';
+document.getElementById('btnLoginClose').onclick = ()=> modal.style.display='none';
+document.getElementById('doLogin').onclick = ()=>{
+  const mail = (document.getElementById('loginMail').value||'').trim();
+  const pass = (document.getElementById('loginPass').value||'').trim();
+  const msg = document.getElementById('loginMsg');
+  if(!mail || !pass){ msg.textContent='Bitte E-Mail & Passwort eingeben.'; return; }
+  localStorage.setItem('dia10_token', 'ok-'+Date.now());
+  modal.style.display='none';
+  renderMember();
+};
+document.getElementById('btnLogout').onclick = ()=>{ localStorage.removeItem('dia10_token'); renderMember(); };
+function renderMember(){
+  const area = document.getElementById('memberArea');
+  const token = localStorage.getItem('dia10_token');
+  if(token){
+    area.innerHTML = `
+      <div class="ok">🔓 Zugriff gewährt</div>
+      <ul>
+        <li>Investor Deck (intern)</li>
+        <li>Roadmap & Milestones</li>
+        <li>Partner & Audits</li>
+      </ul>`;
+    document.getElementById('btnLogout').style.display='';
+  } else {
+    area.innerHTML = '<span class="chip">🔒 Bitte einloggen</span>';
+    document.getElementById('btnLogout').style.display='none';
+  }
+}
+renderMember();
+
+/* ===== Knowledge Base (IndexedDB) ===== */
+const db = new Dexie('dia10Knowledge');
+db.version(1).stores({ docs:'++id,name,text' });
+
+async function extractTextFromPDF(arrayBuffer){
+  const pdf = await window.pdfjsLib.getDocument({data: arrayBuffer}).promise;
+  let out = '';
+  for(let p=1;p<=pdf.numPages;p++){
+    const page = await pdf.getPage(p);
+    const content = await page.getTextContent();
+    out += content.items.map(it=>it.str).join(' ') + '\n';
+  }
+  return out;
+}
+
+document.getElementById('btnPickFolder').onclick = async ()=>{
+  if(!window.showDirectoryPicker){ alert('Dein Browser unterstützt Ordnerzugriff nicht (Edge/Chrome Desktop verwenden).'); return; }
+  const dir = await window.showDirectoryPicker();
+  let count=0;
+  async function walk(d, prefix=''){
+    for await (const e of d.values()){
+      if(e.kind==='directory'){ await walk(e, prefix+e.name+'/'); }
+      else if(e.kind==='file'){
+        const name = e.name.toLowerCase();
+        if(name.endsWith('.docx') || name.endsWith('.pdf')){
+          const file = await e.getFile(); const buf = await file.arrayBuffer();
+          let text='';
+          if(name.endsWith('.docx')){
+            const res = await window.mammoth.extractRawText({arrayBuffer:buf});
+            text = res.value;
+          } else { text = await extractTextFromPDF(buf); }
+          await db.docs.add({ name: prefix+e.name, text });
+          count++;
+        }
+      }
+    }
+  }
+  await walk(dir);
+  alert(`Gespeichert: ${count} Dateien`);
+};
+
+document.getElementById('btnUploadPDF').onclick = async ()=>{
+  const i=document.createElement('input'); i.type='file'; i.accept='.pdf'; i.click();
+  i.onchange=async ()=>{
+    const f=i.files[0]; const buf=await f.arrayBuffer();
+    const text=await extractTextFromPDF(buf);
+    await db.docs.add({name:f.name,text}); alert('PDF gespeichert: '+f.name);
+  };
+};
+document.getElementById('btnUploadDOCX').onclick = async ()=>{
+  const i=document.createElement('input'); i.type='file'; i.accept='.docx'; i.click();
+  i.onchange=async ()=>{
+    const f=i.files[0]; const buf=await f.arrayBuffer();
+    const res=await window.mammoth.extractRawText({arrayBuffer:buf});
+    await db.docs.add({name:f.name,text:res.value}); alert('DOCX gespeichert: '+f.name);
+  };
+};
+
+function highlight(text, kw){
+  const re=new RegExp(`(${kw.replace(/[.*+?^${}()|[\\]\\\\]/g,'\\\\$&')})`,'gi');
+  return text.replace(re,'<mark>$1</mark>');
+}
+function getAllMatches(text, keyword){
+  const matches=[]; const lower=text.toLowerCase(); const kw=keyword.toLowerCase();
+  let pos=0; while((pos=lower.indexOf(kw,pos))!==-1){
+    const sn=text.substring(Math.max(0,pos-60), Math.min(text.length,pos+160)).replace(/\s+/g,' ');
+    matches.push(`…${sn}…`); pos+=kw.length;
+  } return matches;
+}
+document.getElementById('btnSearch').onclick = async ()=>{
+  const kw=(document.getElementById('search').value||'').trim();
+  const resDiv=document.getElementById('results'); resDiv.innerHTML='';
+  if(!kw) return;
+  const docs=await db.docs.toArray(); let any=false;
+  for(const d of docs){
+    const hits=getAllMatches(d.text,kw); if(!hits.length) continue; any=true;
+    const box=document.createElement('div'); box.className='card'; box.style.marginTop='12px';
+    box.innerHTML=`<div style="font-weight:700;margin-bottom:6px">${d.name}</div>`+
+      hits.slice(0,12).map(s=>`<div class="muted">${highlight(s,kw)}</div>`).join('');
+    resDiv.appendChild(box);
+  }
+  if(!any) resDiv.textContent='Keine Treffer.';
+};
+
+/* ===== Blockchain Live Data via ethers.js ===== */
+let provider=null, contract=null;
+let mmProvider=null, signer=null, myAccount=null;
+let rpcChainId=null, walletChainId=null;
+
+document.getElementById('btnConnect').onclick = async ()=>{
+  const url=(document.getElementById('rpc').value||'').trim();
+  if(!url){ document.getElementById('liveStatus').textContent='RPC URL fehlt'; return; }
+  try{
+    provider=new ethers.JsonRpcProvider(url);
+    const net=await provider.getNetwork();
+    rpcChainId = Number(net.chainId);
+    document.getElementById('netName').textContent = net.name || String(net.chainId);
+    document.getElementById('liveStatus').textContent='Verbunden.';
+    updateNetworkGuard();
+  }catch(e){ console.error(e); document.getElementById('liveStatus').textContent='Fehler bei RPC.'; }
+};
+
+document.getElementById('btnWallet').onclick = async ()=>{
+  try{
+    if(!window.ethereum){ alert('MetaMask nicht gefunden.'); return; }
+    mmProvider = new ethers.BrowserProvider(window.ethereum);
+    await mmProvider.send('eth_requestAccounts',[]);
+    signer = await mmProvider.getSigner();
+    myAccount = await signer.getAddress();
+    const net = await mmProvider.getNetwork();
+    walletChainId = Number(net.chainId);
+    document.getElementById('wallet').textContent = myAccount.slice(0,6)+'…'+myAccount.slice(-4);
+    document.getElementById('netName').textContent = net.name || String(net.chainId);
+    await updateMyBalance();
+    // Events
+    if(window.ethereum && !window.ethereum._dia10_bound){
+      window.ethereum.on('accountsChanged', async (acc)=>{ myAccount = acc[0]||null; document.getElementById('wallet').textContent = myAccount? myAccount.slice(0,6)+'…'+myAccount.slice(-4) : '—'; await updateMyBalance(); });
+      window.ethereum.on('chainChanged', async ()=>{
+        const n=await mmProvider.getNetwork(); walletChainId = Number(n.chainId);
+        document.getElementById('netName').textContent = n.name || String(n.chainId);
+        updateNetworkGuard(); await updateMyBalance();
+      });
+      window.ethereum._dia10_bound = true;
+    }
+    updateNetworkGuard();
+  }catch(e){ console.error(e); alert('Wallet-Verbindung fehlgeschlagen.'); }
+};
+
+document.getElementById('btnLoad').onclick = async ()=>{
+  const addr=(document.getElementById('contract').value||'').trim();
+  let abiStr=(document.getElementById('abi').value||'').trim();
+  if(!provider && !mmProvider) { document.getElementById('liveStatus').textContent='Erst RPC oder Wallet verbinden.'; return; }
+  try{
+    const fallbackABI = '[{"constant":true,"inputs":[],"name":"symbol","outputs":[{"name":"","type":"string"}],"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"decimals","outputs":[{"name":"","type":"uint8"}],"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"totalSupply","outputs":[{"name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"a","type":"address"}],"name":"balanceOf","outputs":[{"name":"","type":"uint256"}],"stateMutability":"view","type":"function"}]';
+    const abi = JSON.parse(abiStr || fallbackABI);
+    const prov = provider || mmProvider;
+    contract = new ethers.Contract(addr, abi, prov);
+    const [sym,total,dec] = await Promise.all([
+      contract.symbol().catch(()=>null),
+      contract.totalSupply().catch(()=>null),
+      (contract.decimals? contract.decimals().catch(()=>18) : 18)
+    ]);
+    document.getElementById('sym').textContent   = sym || '—';
+    document.getElementById('supply').textContent= total ? ethers.formatUnits(total, dec) : '—';
+    document.getElementById('holders').textContent = '— (API notwendig)';
+    await updateMyBalance(dec);
+    document.getElementById('liveStatus').textContent='Contract geladen.';
+    updateNetworkGuard();
+  }catch(e){ console.error(e); document.getElementById('liveStatus').textContent='Fehler beim Laden.'; }
+};
+
+function updateNetworkGuard(){
+  const guard = document.getElementById('netGuard');
+  guard.textContent = '';
+  if(rpcChainId && walletChainId && rpcChainId !== walletChainId){
+    guard.textContent = `⚠ Netzwerk-Konflikt: RPC ${rpcChainId} ≠ Wallet ${walletChainId}`;
+  }
+}
+
+async function updateMyBalance(decimalsGuess=18){
+  try{
+    if(!myAccount){ document.getElementById('myBal').textContent='— (Wallet nicht verbunden)'; return; }
+    if(!contract){ document.getElementById('myBal').textContent='— (Contract nicht geladen)'; return; }
+    const dec = contract.decimals ? await contract.decimals().catch(()=>decimalsGuess) : decimalsGuess;
+    const bal = await contract.balanceOf(myAccount);
+    document.getElementById('myBal').textContent = ethers.formatUnits(bal, dec);
+  }catch(e){ console.error(e); document.getElementById('myBal').textContent='—'; }
+}
+
+/* ===== Zertifikat (PDF) — unverändert ===== */
+let certSeq = Number(localStorage.getItem('dia10_cert_seq')||'10001');
+function nextCertNo(){ certSeq++; localStorage.setItem('dia10_cert_seq', String(certSeq)); return certSeq; }
+document.getElementById('calc').onclick = ()=>{
+  const amount = Number(document.getElementById('amount').value||0);
+  const price  = Number(document.getElementById('price').value||10);
+  const shares = amount>0 && price>0 ? (amount/price) : 0;
+  document.getElementById('shares').textContent = shares.toLocaleString(undefined,{maximumFractionDigits:4});
+};
+document.getElementById('genPdf').onclick = async ()=>{
+  const amount = Number(document.getElementById('amount').value||0);
+  const price  = Number(document.getElementById('price').value||10);
+  const shares = amount>0 && price>0 ? (amount/price) : 0;
+  const name = (document.getElementById('invName').value||'').trim();
+  const mail = (document.getElementById('invMail').value||'').trim();
+  if(!amount || !name){ document.getElementById('certStatus').textContent='Bitte Name & Betrag prüfen.'; return; }
+  const no = nextCertNo();
+  const pdf = await (await fetch('https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js')).text();
+  const blob = new Blob([pdf],{type:'text/javascript'}); const url = URL.createObjectURL(blob);
+  await import(url); const { jsPDF } = window.jspdf;
+
+  const doc = new jsPDF('p','pt','a4');
+  doc.setDrawColor(42,108,255); doc.setLineWidth(2);
+  doc.rect(32,32,531,777);
+  doc.setFillColor(15,22,36); doc.rect(32,32,531,120,'F');
+  doc.setFillColor(42,108,255); doc.circle(70,92,28,'F');
+  doc.setFont('helvetica','bold'); doc.setTextColor(185,209,255);
+  doc.setFontSize(28); doc.text('DIA-10 — Investor Certificate', 120, 90);
+
+  doc.setTextColor(230,242,255); doc.setFontSize(12);
+  doc.text('MAGO SERVICE TRADE SRL • Aleea Textilistilor Nr.1 – BL. MY1, Sc.1, Ap.16, Sector 3, 032801 București, Romania', 48, 160);
+  doc.text('J40/5941/2015 • CUI–34523632 • IBAN: RO34BRDE426SV66680914260 • BIC: BRDEROBU •  +40 752 30 77 11 • 99-i.com', 48, 178);
+
+  doc.setTextColor(185,209,255); doc.setFontSize(18);
+  doc.text('Certificate Details', 48, 220);
+  doc.setFontSize(13); doc.setTextColor(220,230,255);
+  const lines = [
+    `Certificate No.: DIA10-${no}`,
+    `Investor: ${name}`,
+    `E-Mail: ${mail || '—'}`,
+    `Amount: € ${amount.toLocaleString()}`,
+    `Price per Share: € ${price.toLocaleString()}`,
+    `Allocated Shares: ${shares.toLocaleString(undefined,{maximumFractionDigits:4})}`,
+    `Date: ${new Date().toLocaleString()}`
+  ];
+  lines.forEach((t,i)=>doc.text(t, 60, 254 + i*22));
+  doc.setTextColor(230,242,255);
+  doc.text('Note: Certificate becomes valid upon receipt of funds to the IBAN above.', 48, 420);
+  doc.save(`DIA10-Certificate-${no}.pdf`);
+  document.getElementById('certStatus').textContent='PDF erstellt.';
+};
+
+/* ===== Alpha Vantage – Crypto (Auto-Refresh + Persistenz + Fallback FX) ===== */
+const av = { apiKey: 'JLKLF9YTSKFQ9BQQ', chart:null, timer:null };
+const avSymbol = document.getElementById('avSymbol');
+const avFiat   = document.getElementById('avFiat');
+const avMsg    = document.getElementById('avMsg');
+const avSpot   = document.getElementById('avSpot');
+const avChange = document.getElementById('avChange');
+const avTime   = document.getElementById('avTime');
+const avInterval = document.getElementById('avInterval');
+const avAutoBtn = document.getElementById('avAuto');
+
+function saveAVSettings(){
+  localStorage.setItem('dia10_av_symbol', avSymbol.value);
+  localStorage.setItem('dia10_av_fiat', avFiat.value);
+  localStorage.setItem('dia10_av_interval', String(Math.max(15, parseInt(avInterval.value||'60'))));
+  localStorage.setItem('dia10_av_auto', av.timer ? '1' : '0');
+}
+function loadAVSettings(){
+  const s = localStorage.getItem('dia10_av_symbol'); if(s) avSymbol.value = s;
+  const f = localStorage.getItem('dia10_av_fiat');   if(f) avFiat.value   = f;
+  const i = localStorage.getItem('dia10_av_interval'); if(i) avInterval.value = i;
+  const a = localStorage.getItem('dia10_av_auto')==='1';
+  if(a) { startAVAuto(); } else { stopAVAuto(false); }
+}
+
+/* --- Helpers --- */
+async function avFetchJSON(url){
+  const r = await fetch(url);
+  if(!r.ok) throw new Error('HTTP '+r.status);
+  const j = await r.json();
+  if(j.Note || j.Information || j['Error Message']){
+    throw new Error(j.Note || j.Information || j['Error Message']);
+  }
+  return j;
+}
+function fmtMoney(v, ccy){ try{ return new Intl.NumberFormat('de-DE',{style:'currency',currency:ccy}).format(v); } catch{ return Number(v).toLocaleString(); } }
+
+/* ECB / exchangerate.host Fallback for FX */
+async function fxRate(base, target){
+  if(base===target) return 1;
+  const u = `https://api.exchangerate.host/latest?base=${encodeURIComponent(base)}&symbols=${encodeURIComponent(target)}`;
+  const r = await fetch(u); if(!r.ok) throw new Error('FX HTTP '+r.status);
+  const j = await r.json(); if(!j || !j.rates || j.rates[target]==null) throw new Error('FX data missing');
+  return Number(j.rates[target]);
+}
+
+async function loadAlphaVantage(){
+  avMsg.textContent = 'Lade…';
+  const sym  = avSymbol.value.trim().toUpperCase();
+  const fiat = avFiat.value.trim().toUpperCase();
+
+  let spotRate = null, lastRef = '';
+  let labels = [], values = [];
+
+  try{
+    // Try spot direct
+    const spotUrl = `https://www.alphavantage.co/query?function=CURRENCY_EXCHANGE_RATE&from_currency=${sym}&to_currency=${fiat}&apikey=${av.apiKey}`;
+    const spot = await avFetchJSON(spotUrl);
+    const data = spot['Realtime Currency Exchange Rate'] || {};
+    spotRate = Number(data['5. Exchange Rate'] || '0');
+    lastRef  = data['6. Last Refreshed'] || '';
+  }catch(e){
+    // Fallback: sym/USD * FX(USD->fiat)
+    try{
+      const s2 = await avFetchJSON(`https://www.alphavantage.co/query?function=CURRENCY_EXCHANGE_RATE&from_currency=${sym}&to_currency=USD&apikey=${av.apiKey}`);
+      const d2 = s2['Realtime Currency Exchange Rate'] || {};
+      const usd = Number(d2['5. Exchange Rate'] || '0');
+      const fx  = await fxRate('USD', fiat);
+      spotRate = usd * fx;
+      lastRef  = d2['6. Last Refreshed'] || '';
+      avMsg.textContent = 'Spot via USD→Fiat Fallback';
+    }catch(e2){
+      avMsg.textContent = 'Spot Fallback fehlgeschlagen (Rate-Limit?)';
+    }
+  }
+  avSpot.textContent = spotRate ? fmtMoney(spotRate, fiat) : '—';
+  avTime.textContent = lastRef || '—';
+
+  // Daily Series (30 Tage)
+  try{
+    const dailyUrl = `https://www.alphavantage.co/query?function=DIGITAL_CURRENCY_DAILY&symbol=${sym}&market=${fiat}&apikey=${av.apiKey}`;
+    const daily = await avFetchJSON(dailyUrl);
+    const series = daily['Time Series (Digital Currency Daily)'] || {};
+    const days = Object.keys(series).sort().slice(-30);
+    labels = []; values = [];
+    for(const d of days){
+      const row = series[d];
+      const keyFiat = `4a. close (${fiat})`;
+      const keyUSD  = `4b. close (USD)`;
+      const val = Number(row[keyFiat] || row[keyUSD] || '0');
+      values.push(val); labels.push(d);
+    }
+  }catch(e){
+    // Fallback: USD-Serie * Einmal-FX
+    try{
+      const dailyUSD = await avFetchJSON(`https://www.alphavantage.co/query?function=DIGITAL_CURRENCY_DAILY&symbol=${sym}&market=USD&apikey=${av.apiKey}`);
+      const seriesU = dailyUSD['Time Series (Digital Currency Daily)'] || {};
+      const days = Object.keys(seriesU).sort().slice(-30);
+      const rate = await fxRate('USD', fiat);
+      labels = []; values = [];
+      for(const d of days){
+        const valUSD = Number(seriesU[d]['4b. close (USD)'] || '0');
+        values.push(valUSD * rate); labels.push(d);
+      }
+      avMsg.textContent = (avMsg.textContent ? avMsg.textContent+' · ' : '') + 'Chart via USD→Fiat Fallback';
+    }catch(e2){
+      avMsg.textContent = (avMsg.textContent ? avMsg.textContent+' · ' : '') + 'Chart Fallback fehlgeschlagen';
+    }
+  }
+
+  // 24h change
+  if(values.length >= 2){
+    const last = values[values.length-1], prev = values[values.length-2];
+    const chg  = prev ? ((last-prev)/prev)*100 : 0;
+    avChange.textContent = (chg>=0? '▲ ':'▼ ')+chg.toFixed(2)+'%';
+    avChange.style.color = chg>=0 ? 'var(--ok)' : 'var(--err)';
+  } else { avChange.textContent='—'; avChange.style.color=''; }
+
+  // Chart
+  const ctx = document.getElementById('avChart').getContext('2d');
+  if(av.chart) av.chart.destroy();
+  av.chart = new Chart(ctx, {
+    type:'line',
+    data:{ labels, datasets:[{ label:`${sym}/${fiat}`, data:values, borderColor:'#58a6ff', backgroundColor:'rgba(88,166,255,.18)', fill:true, tension:.25, pointRadius:0 }]},
+    options:{ plugins:{legend:{labels:{color:'#dfeaff'}}}, scales:{ x:{ticks:{color:'#bcd0ff'}}, y:{ticks:{color:'#bcd0ff'}} } }
+  });
+
+  avMsg.textContent = avMsg.textContent || '';
+  saveAVSettings();
+}
+
+document.getElementById('avLoad').onclick = loadAlphaVantage;
+
+// SYMBOL_SEARCH (mit Fallbackliste)
+const STATIC_COINS = ['BTC','ETH','SOL','ADA','BNB','XRP','DOGE','AVAX','DOT','MATIC','TRX','LINK','LTC','ARB','OP'];
+async function searchSymbols(){
+  const kw = (document.getElementById('avSearch').value||'').trim();
+  if(!kw){ avMsg.textContent='Bitte Suchbegriff eingeben.'; return; }
+  avMsg.textContent='Suche…';
+  try{
+    const url = `https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords=${encodeURIComponent(kw)}&apikey=${av.apiKey}`;
+    const j = await avFetchJSON(url);
+    const list = (j.bestMatches||[])
+      .map(m => (m['1. symbol']||'').toUpperCase())
+      .filter(s => s.length<=6);
+    const merged = Array.from(new Set([...list, ...STATIC_COINS])).slice(0,30);
+    avSymbol.innerHTML = merged.map(s=>`<option ${s===avSymbol.value?'selected':''}>${s}</option>`).join('');
+    avMsg.textContent = `Treffer: ${list.length}`;
+  }catch(e){
+    avSymbol.innerHTML = STATIC_COINS.map(s=>`<option ${s===avSymbol.value?'selected':''}>${s}</option>`).join('');
+    avMsg.textContent = 'Fallback-Liste genutzt.';
+  }
+}
+document.getElementById('avFind').onclick = searchSymbols;
+
+// Persist selections immediately
+avSymbol.onchange = ()=>{ saveAVSettings(); loadAlphaVantage(); };
+avFiat.onchange   = ()=>{ saveAVSettings(); loadAlphaVantage(); };
+avInterval.onchange = ()=> saveAVSettings();
+
+// Auto-Refresh Kurs (mit Persistenz)
+function startAVAuto(){
+  const sec = Math.max(15, parseInt(avInterval.value||'60'));
+  if(av.timer) clearInterval(av.timer);
+  loadAlphaVantage();
+  av.timer = setInterval(loadAlphaVantage, sec*1000);
+  avAutoBtn.textContent='Auto-Refresh Stop';
+  avMsg.textContent=`Auto-Refresh: alle ${sec}s`;
+  saveAVSettings();
+}
+function stopAVAuto(showMsg=true){
+  if(av.timer){ clearInterval(av.timer); av.timer=null; }
+  avAutoBtn.textContent='Auto-Refresh Start';
+  if(showMsg) avMsg.textContent='Auto-Refresh aus.';
+  saveAVSettings();
+}
+let avAutoOnUI=false;
+avAutoBtn.onclick = ()=>{
+  if(av.timer){ stopAVAuto(); } else { startAVAuto(); }
+};
+
+// Load saved
+loadAVSettings();
+if(!av.timer) loadAlphaVantage();
+
+/* ===== Gas via ethers Provider (Auto-Refresh + Persistenz) ===== */
+let gasTimer=null;
+const gasIntervalInput = document.getElementById('gasInterval');
+const gasAutoBtn = document.getElementById('gasAuto');
+
+function saveGasSettings(){
+  localStorage.setItem('dia10_gas_interval', String(Math.max(15, parseInt(gasIntervalInput.value||'60'))));
+  localStorage.setItem('dia10_gas_auto', gasTimer ? '1' : '0');
+}
+function loadGasSettings(){
+  const i = localStorage.getItem('dia10_gas_interval'); if(i) gasIntervalInput.value=i;
+  const a = localStorage.getItem('dia10_gas_auto')==='1';
+  if(a) { startGasAuto(); } else { stopGasAuto(false); }
+}
+
+async function refreshGas(){
+  const elL = document.getElementById('gas_legacy');
+  const elM = document.getElementById('gas_max');
+  const elP = document.getElementById('gas_tip');
+  const msg = document.getElementById('gasMsg');
+
+  const prov = provider || mmProvider;
+  if(!prov){
+    msg.textContent = 'Tipp: RPC oder Wallet verbinden, dann Gas abrufen.';
+    elL.textContent = elM.textContent = elP.textContent = '—';
+    return;
+  }
+  try{
+    const fee = await prov.getFeeData();
+    const gwei = n => (Number(n)/1e9).toFixed(2)+' Gwei';
+    elL.textContent = fee.gasPrice ? gwei(fee.gasPrice) : '—';
+    elM.textContent = fee.maxFeePerGas ? gwei(fee.maxFeePerGas) : '—';
+    elP.textContent = fee.maxPriorityFeePerGas ? gwei(fee.maxPriorityFeePerGas) : '—';
+    msg.textContent = 'Gas aktualisiert.';
+  }catch(e){
+    console.error(e);
+    msg.textContent = 'Gas-Abruf fehlgeschlagen.';
+  }
+}
+
+function startGasAuto(){
+  const sec = Math.max(15, parseInt(gasIntervalInput.value||'60'));
+  if(gasTimer) clearInterval(gasTimer);
+  refreshGas();
+  gasTimer = setInterval(refreshGas, sec*1000);
+  gasAutoBtn.textContent='Auto-Refresh Stop';
+  document.getElementById('gasMsg').textContent=`Auto-Refresh: alle ${sec}s`;
+  saveGasSettings();
+}
+function stopGasAuto(showMsg=true){
+  if(gasTimer){ clearInterval(gasTimer); gasTimer=null; }
+  gasAutoBtn.textContent='Auto-Refresh Start';
+  if(showMsg) document.getElementById('gasMsg').textContent='Auto-Refresh aus.';
+  saveGasSettings();
+}
+
+document.getElementById('gasReload').onclick = refreshGas;
+gasIntervalInput.onchange = saveGasSettings;
+gasAutoBtn.onclick = ()=>{ if(gasTimer){ stopGasAuto(); } else { startGasAuto(); } };
+
+// Load saved
+loadGasSettings();
+</script>
+
+<script>
+/* === i18n for the showcase (hooks into your existing DE/EN/RO buttons) === */
+const DS_TXT = {
+  de:{
+    title:'Diamant-Wissen — Formen, Farbe & Reinheit',
+    intro:'Anschauliche Übersicht. Bildungsinhalte – kein Verkauf.',
+    shapes_t:'Formen',
+    shapes_note:'„Brillant“ ist der runde Schliff (57/58 Facetten); andere Formen tragen eigene Namen.',
+    color_t:'Farbe (D–Z) & Fancy',
+    color_note:'D = farblos → Z = deutlich gelblich. „Fancy“ = intensiv gefärbt (z. B. Gelb, Pink, Blau).',
+    clarity_t:'Reinheit (Clarity)',
+    clarity_note:'Illustrative Darstellung. Maßgeblich ist stets das Laborzertifikat (z. B. GIA/HRD/IGI).',
+    cut_t:'Schliffqualität (Cut)',
+    cut_note:'Cut (Excellent–Poor) ist der Haupttreiber für Brillanz/Feuer; oft wichtiger als ein halber Farb- oder Reinheitsgrad.',
+    labels:{round:'Brillant',princess:'Princess',emerald:'Smaragd',oval:'Oval',cushion:'Kissen',pear:'Tropfen',heart:'Herz',radiant:'Radiant',asscher:'Asscher',marquise:'Marquise'}
+  },
+  en:{
+    title:'Diamond Knowledge — Shapes, Color & Clarity',
+    intro:'Visual overview for education — no sales.',
+    shapes_t:'Shapes',
+    shapes_note:'“Brilliant” refers to the round cut (57/58 facets); other shapes have distinct names.',
+    color_t:'Color (D–Z) & Fancy',
+    color_note:'D = colorless → Z = noticeably yellow. “Fancy” = intentionally colored (e.g., yellow, pink, blue).',
+    clarity_t:'Clarity',
+    clarity_note:'Illustrative only. Always refer to the lab report (e.g., GIA/HRD/IGI).',
+    cut_t:'Cut Grade',
+    cut_note:'Cut (Excellent–Poor) is the main driver of sparkle/fire, often more impactful than a half step in color/clarity.',
+    labels:{round:'Round',princess:'Princess',emerald:'Emerald',oval:'Oval',cushion:'Cushion',pear:'Pear',heart:'Heart',radiant:'Radiant',asscher:'Asscher',marquise:'Marquise'}
+  },
+  ro:{
+    title:'Ghid de diamant — Forme, culoare & claritate',
+    intro:'Prezentare vizuală pentru educație — fără vânzare.',
+    shapes_t:'Forme',
+    shapes_note:'„Briliant” = tăietura rotundă (57/58 fațete); celelalte forme au denumiri proprii.',
+    color_t:'Culoare (D–Z) & Fancy',
+    color_note:'D = incolor → Z = vizibil gălbui. „Fancy” = colorat intenționat (ex: galben, roz, albastru).',
+    clarity_t:'Claritate',
+    clarity_note:'Ilustrativ. Consultă certificatul de laborator (GIA/HRD/IGI).',
+    cut_t:'Calitatea tăieturii',
+    cut_note:'Cut (Excellent–Poor) determină strălucirea; adesea mai important decât o jumătate de treaptă la culoare/claritate.',
+    labels:{round:'Briliant',princess:'Princess',emerald:'Emerald',oval:'Oval',cushion:'Cushion',pear:'Pară',heart:'Inimă',radiant:'Radiant',asscher:'Asscher',marquise:'Marquise'}
+  }
+};
+function applyDsLang(lang){
+  const t = DS_TXT[lang] || DS_TXT.de;
+  const set=(id,txt)=>{ const el=document.getElementById(id); if(el) el.textContent=txt; };
+  set('ds_title', t.title); set('ds_intro', t.intro);
+  set('ds_shapes_t', t.shapes_t); set('ds_shapes_note', t.shapes_note);
+  set('ds_color_t', t.color_t); set('ds_color_note', t.color_note);
+  set('ds_clarity_t', t.clarity_t); set('ds_clarity_note', t.clarity_note);
+  set('ds_cut_t', t.cut_t); set('ds_cut_note', t.cut_note);
+  const L=t.labels;
+  document.getElementById('lbl_round').textContent=L.round;
+  document.getElementById('lbl_princess').textContent=L.princess;
+  document.getElementById('lbl_emerald').textContent=L.emerald;
+  document.getElementById('lbl_oval').textContent=L.oval;
+  document.getElementById('lbl_cushion').textContent=L.cushion;
+  document.getElementById('lbl_pear').textContent=L.pear;
+  document.getElementById('lbl_heart').textContent=L.heart;
+  document.getElementById('lbl_radiant').textContent=L.radiant;
+  document.getElementById('lbl_asscher').textContent=L.asscher;
+  document.getElementById('lbl_marquise').textContent=L.marquise;
+}
+applyDsLang('de');
+document.querySelectorAll('.lang button').forEach(b=> b.addEventListener('click',()=>applyDsLang(b.dataset.lang)));
+</script>
+</body>
+</html>

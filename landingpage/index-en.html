@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>DIA-10 — Decentralized Intelligence Assets</title>
+<meta name="description" content="DIA-10: Crowdfunding DIA-10 Convertible Participation Certificates (CPC). Build, learn, and co-own.">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet">
+<meta property="og:title" content="DIA-10 — Decentralized Intelligence Assets">
+<meta property="og:description" content="Join DIA-10. Subscribe via CPC, receive a QR-verified certificate, convert at token launch.">
+<meta property="og:type" content="website">
+<meta name="author" content="Markus Goffin">
+<meta name="last-modified" content="2025-08-26">
+<link rel="icon" type="image/x-icon" href="https://99-i.com/dia10/images/99i_favicon_16x16.ico" sizes="16x16">
+<link rel="icon" type="image/x-icon" href="https://99-i.com/dia10/images/99i_favicon_32x32.ico" sizes="32x32">
+<link rel="icon" type="image/x-icon" href="https://99-i.com/dia10/images/99i_favicon_48x48.ico" sizes="48x48">
+<!-- === SEO: canonical & hreflang (EN default) === -->
+<link rel="canonical" href="https://dia10.io/">
+<link rel="alternate" href="https://dia10.io/" hreflang="en">
+<link rel="alternate" href="https://dia10.de/" hreflang="de">
+<link rel="alternate" href="https://dia10.io/?lang=ro" hreflang="ro">
+<link rel="alternate" href="https://dia10.io/" hreflang="x-default">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/chart.js/4.4.3/chart.umd.min.js"></script>
+<style>
+  :root{
+    --bg:#0a0f18; --panel:#0f1624; --panel2:#0c1320; --ink:#e6f2ff; --muted:#9fb3c8; --acc:#58a6ff;
+    --ok:#14d19a; --warn:#ffce3a; --err:#ff6b6b; --line:#1e2a45;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.5 Inter,system-ui,sans-serif;scroll-behavior:smooth}
+  a{color:var(--acc);text-decoration:none}
+  header{position:sticky;top:0;z-index:20;background:linear-gradient(180deg,rgba(10,15,24,.85),rgba(10,15,24,.6));border-bottom:1px solid var(--line);backdrop-filter:blur(10px)}
+  .nav{max-width:1200px;margin:auto;padding:12px 18px;display:flex;align-items:center;gap:12px}
+  .brand{display:flex;align-items:center;gap:12px;font-weight:900}
+  .logo{
+    width:40px;height:40px;border-radius:10px;
+    background:radial-gradient(120% 120% at 50% 30%, rgba(42,108,255,.25), transparent 60%);
+    border:1px solid #2a3b5f; display:grid; place-items:center;
+    box-shadow:0 0 18px rgba(127,179,255,.25);
+  }
+  .logo svg{width:26px;height:26px;display:block}
+  .spacer{flex:1}
+  .nav a.btn{padding:8px 12px;border:1px solid #2a3b5f;border-radius:10px;background:#0e1a33;color:var(--ink)}
+  .cta{background:linear-gradient(90deg,#2a6cff,#6aa8ff);border:none;color:#07101a;font-weight:800}
+  .wrap{max-width:1200px;margin:22px auto;padding:0 18px}
+  .card{background:linear-gradient(180deg,var(--panel),var(--panel2));border:1px solid var(--line);border-radius:16px;padding:18px;box-shadow:0 6px 30px rgba(0,0,0,.25)}
+  .grid{display:grid;gap:18px}
+  @media(min-width:900px){ .grid.cols-2{grid-template-columns:1fr 1fr} .grid.cols-3{grid-template-columns:repeat(3,1fr)} }
+  .hero{padding:44px 18px;text-align:center;background:radial-gradient(60% 60% at 50% 0%,rgba(88,166,255,.15),transparent 60%)}
+  .h1{font-size:clamp(28px,4.6vw,56px);line-height:1.1;margin:.2em 0 .4em}
+  .sub{color:var(--muted);font-size:clamp(16px,2.4vw,20px)}
+  .actions{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:18px}
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:12px 16px;border:1px solid #2a3b5f;border-radius:12px;background:#0e1a33;color:var(--ink);cursor:pointer}
+  h2{font-size:clamp(22px,3vw,30px);margin:0 0 10px}
+  .muted{color:var(--muted)}
+  .pill{display:inline-flex;gap:8px;align-items:center;padding:6px 10px;border:1px solid #27406c;border-radius:999px;background:#0e1a33;color:#cfe2ff;font-size:13px}
+  .feature{display:flex;gap:12px}
+  .icon{width:40px;height:40px;border-radius:10px;background:linear-gradient(135deg,#2a6cff,#7fb3ff);display:grid;place-items:center;font-weight:900;color:#07101a}
+  .timeline{position:relative;padding-left:26px}
+  .timeline::before{content:"";position:absolute;left:10px;top:4px;bottom:4px;width:2px;background:#1f2c46;border-radius:2px}
+  .milestone{position:relative;margin:10px 0;padding:8px 10px 8px 0}
+  .milestone::before{content:"";position:absolute;left:-16px;top:10px;width:12px;height:12px;border-radius:50%;background:#2a6cff;box-shadow:0 0 0 3px rgba(42,108,255,.25)}
+  .kpi{display:grid;gap:12px}
+  @media(min-width:700px){ .kpi{grid-template-columns:repeat(3,1fr)} }
+  .tile{background:#101b31;border:1px solid #223456;border-radius:12px;padding:12px}
+  .lab{font-size:12px;color:#a7bde0}
+  .big{font-size:28px;font-weight:900}
+  .mini{height:56px}
+  .member{display:flex;gap:12px;align-items:center}
+  .avatar{width:54px;height:54px;border-radius:50%;background:#12203c;border:1px solid #27406c;display:grid;place-items:center;color:#7fb3ff;font-weight:800}
+  details{background:#0e1a33;border:1px solid #27406c;border-radius:12px;padding:10px;margin:8px 0}
+  summary{cursor:pointer;font-weight:800}
+  footer{border-top:1px solid var(--line);margin-top:28px}
+  .foot{max-width:1200px;margin:auto;padding:22px 18px;color:#a7bde0;font-size:14px}
+  .footgrid{display:grid;gap:18px}
+  @media(min-width:900px){ .footgrid{grid-template-columns:2fr 1fr 1fr} }
+  .top{position:fixed;right:18px;bottom:18px;background:#0e1a33;border:1px solid #2a3b5f;color:#e6f2ff;border-radius:999px;padding:10px 12px;cursor:pointer;opacity:.85}
+  .top:hover{opacity:1}
+    .preview-grid{
+    display:grid; gap:12px;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  }
+  .shot{
+    aspect-ratio:16/10;
+    border:1px solid #203259; border-radius:12px;
+    background:#0b1428; overflow:hidden; position:relative;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .shot img{
+    width:100%; height:100%; object-fit:cover; display:block;
+  }
+  /* dezenter Placeholder, falls Bild fehlt */
+  .shot::after{
+    content:"";
+    position:absolute; inset:0;
+    background:repeating-linear-gradient(
+      135deg, #0f1b36 0 12px, #0b1428 12px 24px
+    );
+    opacity:.25; pointer-events:none;
+    transition:opacity .2s ease;
+  }
+  .shot.has-image::after{ opacity:0; }
+  .shot.broken::after{ opacity:.45; }
+</style>
+</head>
+<body>
+  <header>
+    <nav class="nav">
+      <div class="brand">
+        <div class="logo" aria-hidden="true">
+          <!-- simple diamond glyph -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 9l9-6 9 6-9 12-9-12zM12 3v18M3 9h18M7 9l5 12m5-12l-5 12"/>
+          </svg>
+        </div>
+        <div>DIA-10</div>
+      </div>
+      <a href="#about" class="btn">About</a>
+      <a href="#product" class="btn">Product</a>
+      <a href="#roadmap" class="btn">Roadmap</a>
+      <a href="#metrics" class="btn">Metrics</a>
+      <a href="#faq" class="btn">FAQ</a>
+      <a href="#contact" class="btn">Contact</a>
+      <div class="spacer"></div>
+	  <a href="https://99-i.com/dia10/" class="btn">Visit website</a>
+      <a href="https://99-i.com/dia10/crowdfunding/crowdfunding.html" class="btn cta">Crowdfunding</a>
+    </nav>
+  </header>
+
+  <section class="hero wrap" id="about">
+    <div class="pill" style="margin:auto;justify-content:center">Open now: CPC crowdfunding round</div>
+    <h1 class="h1">Build, learn & co-own<br/>Decentralized Intelligence Assets.</h1>
+    <p class="sub">Join DIA-10. Subscribe via CPC, receive a QR-verified certificate, convert at token launch.</p>
+    <div class="actions">
+      <a class="btn cta" href="https://99-i.com/dia10/crowdfunding/crowdfunding.html">Join the round</a>
+      <a class="btn" href="https://99-i.com/dia10/whitepaper.html">Read the whitepaper</a>
+      <a class="btn" href="https://99-i.com/dia10/crowdfunding/verify.html">Verify a certificate</a>
+    </div>
+  </section>
+
+  <section class="wrap grid cols-3">
+    <div class="card feature">
+      <div class="icon">1</div>
+      <div>
+        <h3>Clear value creation</h3>
+        <div class="muted">AI-native education, tools & community that convert learning into on-chain assets.</div>
+      </div>
+    </div>
+    <div class="card feature">
+      <div class="icon">2</div>
+      <div>
+        <h3>Investor-friendly CPCs</h3>
+        <div class="muted">Convertible Participation Certificates with discount & floor/cap for fair entry.</div>
+      </div>
+    </div>
+    <div class="card feature">
+      <div class="icon">3</div>
+      <div>
+        <h3>Regulatory clarity</h3>
+        <div class="muted">EU (ECSP)-ready docs & jurisdiction setup, clear KYC thresholds.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap grid cols-2" id="product">
+    <div class="card">
+      <h2>What we build</h2>
+      <ul class="muted" style="margin-top:6px">
+        <li>DIA-10 Academy: concise, outcome-driven modules & templates.</li>
+        <li>Creator Toolkit: prompt packs, micro-apps & revenue experiments.</li>
+        <li>On-chain: membership, verified certificates & tokenized perks.</li>
+        <li>Community: weekly sessions, co-builds and curated opportunities.</li>
+      </ul>
+      <div class="pill" style="margin-top:10px">Pilot live — phased roll-out over 12 months.</div>
+    </div>
+    <div class="card">
+      <h2>Product preview</h2>
+      <div class="preview-grid">
+  <!-- 1 -->
+  <figure class="shot">
+    <img src="DIA10_academy_browse_courses.png" alt="DIA-10 Academy — browse courses"
+         loading="lazy"
+         onload="this.parentElement.classList.add('has-image')"
+         onerror="this.parentElement.classList.add('broken'); this.remove();">
+  </figure>
+
+  <!-- 2 -->
+  <figure class="shot">
+    <img src="DIA10_academy_nashssrd.png" alt="DIA-10 Academy — online class"
+         loading="lazy"
+         onload="this.parentElement.classList.add('has-image')"
+         onerror="this.parentElement.classList.add('broken'); this.remove();">
+  </figure>
+
+  <!-- 3 -->
+  <figure class="shot">
+    <img src="DIA10_roadmap_2025.png" alt="DIA-10 token & KPI dashboard"
+         loading="lazy"
+         onload="this.parentElement.classList.add('has-image')"
+         onerror="this.parentElement.classList.add('broken'); this.remove();">
+  </figure>
+
+  <!-- 4 -->
+  <figure class="shot">
+    <img src="DIA10_investor_certificate.png" alt="DIA-10 Investor Certificate preview"
+         loading="lazy"
+         onload="this.parentElement.classList.add('has-image')"
+         onerror="this.parentElement.classList.add('broken'); this.remove();">
+  </figure>
+</div>
+  </section>
+
+  <section class="wrap grid cols-2" id="roadmap">
+    <div class="card">
+      <h2>Roadmap</h2>
+      <div class="timeline">
+        <div class="milestone"><b>Q1: Foundation</b><div class="muted">Crowdfunding, academy pilot, first verified certificates.</div></div>
+        <div class="milestone"><b>Q2: Productization</b><div class="muted">Creator Toolkit v1, community scale-up, partnerships.</div></div>
+        <div class="milestone"><b>Q3: On-chain</b><div class="muted">Token mechanics, wallet import, governance pilot.</div></div>
+        <div class="milestone"><b>Q4: Expansion</b><div class="muted">Regional chapters, B2B offerings, growth experiments.</div></div>
+      </div>
+    </div>
+    <div class="card" id="metrics">
+      <h2>Key metrics</h2>
+      <div class="kpi">
+        <div class="tile"><div class="lab">Soft-cap progress</div><div class="big" id="kpi1">€0</div></div>
+        <div class="tile"><div class="lab">Community (target)</div><div class="big" id="kpi2">0</div></div>
+        <div class="tile"><div class="lab">Course completions</div><div class="big" id="kpi3">0</div></div>
+      </div>
+      <div class="grid" style="margin-top:10px;grid-template-columns:1fr 1fr;gap:12px">
+        <div class="tile"><div class="lab">Crowdfunding (€)</div><canvas id="c1" class="mini"></canvas></div>
+        <div class="tile"><div class="lab">Community growth</div><canvas id="c2" class="mini"></canvas></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap grid cols-3" id="faq">
+    <div class="card">
+      <h2>Why now</h2>
+      <div class="muted">AI adoption is exploding. Practical education + tools + community reduce friction and turn learning into revenue.</div>
+    </div>
+    <div class="card">
+      <h2>Team</h2>
+      <div class="member"><div class="avatar">MG</div><div><b>Markus Goffin</b><div class="muted">Founder • Product & Community</div></div></div>
+      <div class="member" style="margin-top:8px"><div class="avatar">AD</div><div><b>Advisors</b><div class="muted">Legal • Tokenomics • Growth</div></div></div>
+    </div>
+    <div class="card">
+      <h2>FAQ (short)</h2>
+      <details open><summary>What if the soft cap is not reached?</summary><div class="muted">Round may be extended or closed. If closed, refunds are issued minus mandatory bank fees.</div></details>
+      <details><summary>When will I receive tokens?</summary><div class="muted">Certificate after payment. On-chain allocation in batches (typically weekly), then wallet import.</div></details>
+      <details><summary>Which jurisdictions are excluded?</summary><div class="muted">Sanctioned countries, US persons (for now), and regions where the offer is prohibited.</div></details>
+      <details><summary>Which KYC thresholds apply?</summary><div class="muted">≥ €15,000 (rolling 12 months) requires KYC/KYB. “Source of funds” may be requested.</div></details>
+    </div>
+  </section>
+
+  <section class="wrap">
+    <div class="card" style="text-align:center">
+      <h2>Ready for DIA-10?</h2>
+      <p class="muted">Subscribe via CPC and receive a QR-verified certificate.</p>
+      <div class="actions">
+        <a class="btn cta" href="https://99-i.com/dia10/crowdfunding/crowdfunding.html">Get started</a>
+        <a class="btn" href="https://99-i.com/dia10/whitepaper.html">Whitepaper</a>
+        <a class="btn" href="mailto:mgoffin@web.de?subject=DIA-10%20Inquiry">Talk to us</a>
+      </div>
+    </div>
+  </section>
+
+  <footer id="contact">
+    <div class="foot">
+      <div class="footgrid">
+        <div>
+          <div class="brand" style="gap:12px">
+            <div class="logo" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 9l9-6 9 6-9 12-9-12zM12 3v18M3 9h18M7 9l5 12m5-12l-5 12"/>
+              </svg>
+            </div>
+            <div><b>DIA-10</b><div class="muted">Decentralized Intelligence Assets</div></div>
+          </div>
+          <p class="muted" style="margin-top:8px">© DIA-10. All rights reserved.</p>
+        </div>
+        <div>
+          <b>Links</b>
+          <div style="margin-top:8px;display:grid;gap:6px">
+            <a href="https://99-i.com/dia10/crowdfunding/crowdfunding.html">Crowdfunding</a>
+            <a href="https://99-i.com/dia10/crowdfunding/verify.html">Verify certificate</a>
+            <a href="https://99-i.com/dia10/whitepaper.html">Whitepaper</a>
+          </div>
+        </div>
+        <div>
+          <b>Contact</b>
+          <div class="muted" style="margin-top:8px;line-height:1.6">
+            Markus Goffin<br/>MAGO SERVICE TRADE SRL<br/>
+            Aleea Textilistilor Nr.1 – BL. MY1, Sc.1, App. 16, Sectorul 3<br/>
+            032801 Bucuresti, Romania<br/>
+            J40/5941/2015 · CUI–34523632<br/>
+            <a href="tel:+40752307711">+40 752 30 77 11</a> · <a href="mailto:mgoffin@web.de">mgoffin@web.de</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <button class="top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">↑</button>
+
+<!-- ===== DIA-10 Cookie Consent (drop-in) ===== -->
+<style>
+  :root{
+    --bg:#0a1430; --panel:#0d1a3a; --ink:#f3f7ff; --muted:#b9c7da;
+    --blue:#1b6fff; --cyan:#74c7ff; --silver:#c9d3df;
+    --ok:#11d09a; --warn:#ffcf4a; --bad:#ff6b6a;
+    --radius:16px; --shadow:0 10px 28px rgba(0,0,0,.35);
+  }
+  /* floating trigger (unten LINKS; falls rechts gewünscht → right:16px; left:auto) */
+  .cc-trigger{
+    position:fixed; left:16px; bottom:16px; z-index:9997;
+    background:#0a1d44; color:var(--ink); border:1px solid rgba(255,255,255,.12);
+    padding:10px 12px; border-radius:12px; font:600 14px/1 Inter,system-ui,sans-serif;
+    display:flex; align-items:center; gap:8px; cursor:pointer; box-shadow:var(--shadow);
+  }
+  .cc-trigger svg{width:18px;height:18px}
+
+  /* Overlay + Banner */
+  .cc-overlay{
+    position:fixed; inset:0; background:rgba(5,10,20,.55); backdrop-filter:blur(4px);
+    display:none; z-index:9998;
+  }
+  .cc-overlay.show{display:block}
+  .cc-card{
+    position:fixed; left:50%; transform:translateX(-50%);
+    bottom:18px; width:min(980px, calc(100% - 24px));
+    background:linear-gradient(180deg,#0d1a3a,#0a1531);
+    border:1px solid rgba(255,255,255,.12);
+    border-radius:var(--radius); color:var(--ink); box-shadow:var(--shadow);
+    padding:16px; z-index:9999;
+  }
+  .cc-top{display:flex; gap:12px; align-items:flex-start}
+  .cc-icon{
+    width:40px; height:40px; border-radius:10px; display:grid; place-items:center;
+    background:linear-gradient(135deg,#0a1d44,#1b6fff 70%,#74c7ff);
+    box-shadow:inset 0 0 0 2px rgba(255,255,255,.06);
+    flex:0 0 auto;
+  }
+  .cc-title{margin:0; font:900 18px/1.2 Inter,system-ui,sans-serif}
+  .cc-text{margin:6px 0 0; color:var(--muted); font:500 14px/1.5 Inter,system-ui,sans-serif}
+  .cc-links a{color:var(--cyan); text-decoration:none}
+  .cc-links a:hover{color:#d7eeff}
+
+  .cc-controls{display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin-top:12px}
+  .cc-btn{
+    background:#0a1d44; color:var(--ink); border:1px solid rgba(255,255,255,.12);
+    border-radius:10px; padding:10px 14px; font:700 14px/1 Inter,system-ui,sans-serif; cursor:pointer;
+  }
+  .cc-btn.primary{background:linear-gradient(90deg,#1b6fff,#74c7ff); color:#07101a; border:none}
+  .cc-btn.ghost{background:transparent}
+  .cc-spacer{flex:1}
+
+  .cc-cats{display:flex; gap:10px; flex-wrap:wrap; margin-top:10px}
+  .cc-cat{
+    display:flex; align-items:center; gap:10px; padding:10px 12px;
+    background:#0a1d44; border:1px solid rgba(255,255,255,.12); border-radius:12px;
+  }
+  .cc-switch{appearance:none; width:46px; height:26px; border-radius:999px; position:relative;
+    background:#233150; border:1px solid #2b3c63; outline:none; cursor:pointer}
+  .cc-switch::after{
+    content:""; position:absolute; top:2px; left:2px; width:20px; height:20px; border-radius:50%;
+    background:#c9d3df; transition:transform .2s ease;
+  }
+  .cc-switch:checked{background:#0f845e; border-color:#0f845e}
+  .cc-switch:checked::after{transform:translateX(20px)}
+  .cc-lock{opacity:.6}
+  .cc-lock .cc-switch{pointer-events:none; filter:grayscale(.3)}
+</style>
+
+<button id="ccTrigger" class="cc-trigger" type="button" aria-haspopup="dialog" aria-controls="ccOverlay">
+  <!-- gear icon -->
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <circle cx="12" cy="12" r="3"></circle>
+    <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09a1.65 1.65 0 0 0 1.51-1 1.65 1.65 0 0 0-.33-1.82l-.06-.06A2 2 0 1 1 7.04 3.3l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9c0 .64.38 1.22 1 1.51.18.08.37.12.57.12H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+  </svg>
+  <span>Cookie settings</span>
+</button>
+
+<div id="ccOverlay" class="cc-overlay" role="dialog" aria-modal="true" aria-labelledby="ccTitle" aria-describedby="ccDesc">
+  <div class="cc-card" role="document">
+    <div class="cc-top">
+      <div class="cc-icon" aria-hidden="true">
+        <!-- cookie icon -->
+        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#ffffff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20 12a8 8 0 1 1-8-8 3 3 0 0 0 3 3 3 3 0 0 0 3 3 3 3 0 0 0 2 2z"/>
+          <circle cx="8.5" cy="13.5" r="1.25"/>
+          <circle cx="12" cy="9" r="1.25"/>
+          <circle cx="14.5" cy="15" r="1.25"/>
+        </svg>
+      </div>
+      <div>
+        <h2 id="ccTitle" class="cc-title">We use cookies</h2>
+        <p id="ccDesc" class="cc-text">
+          We use necessary cookies for site functionality. With your consent we also use analytics and marketing cookies.
+          See our <span class="cc-links"><a href="https://99-i.com/dia10/#privacy" target="_blank" rel="noopener">Privacy Policy</a></span>.
+        </p>
+
+        <div class="cc-cats">
+          <label class="cc-cat cc-lock" title="Always on">
+            <input class="cc-switch" type="checkbox" checked disabled aria-label="Necessary cookies">
+            <span>Necessary</span>
+          </label>
+          <label class="cc-cat">
+            <input id="ccAnalytics" class="cc-switch" type="checkbox" aria-label="Analytics cookies">
+            <span>Analytics</span>
+          </label>
+          <label class="cc-cat">
+            <input id="ccMarketing" class="cc-switch" type="checkbox" aria-label="Marketing cookies">
+            <span>Marketing</span>
+          </label>
+        </div>
+
+        <div class="cc-controls">
+          <button id="ccReject" class="cc-btn ghost" type="button">Reject all</button>
+          <button id="ccSave" class="cc-btn" type="button">Save selection</button>
+          <div class="cc-spacer"></div>
+          <button id="ccAccept" class="cc-btn primary" type="button">Accept all</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ---------- Cookie Consent Controller ---------- */
+const CC_KEY='dia10Consent';
+const $ = (q)=>document.querySelector(q);
+const trigger = $('#ccTrigger'), overlay = $('#ccOverlay');
+const a = $('#ccAnalytics'), m = $('#ccMarketing');
+const bAccept = $('#ccAccept'), bSave = $('#ccSave'), bReject = $('#ccReject');
+
+function showCC(){ overlay.classList.add('show'); }
+function hideCC(){ overlay.classList.remove('show'); }
+
+function readConsent(){ try{ return JSON.parse(localStorage.getItem(CC_KEY))||null }catch{ return null } }
+function writeConsent(c){ localStorage.setItem(CC_KEY, JSON.stringify({...c, ts:Date.now()})); }
+
+function applyConsent(c){
+  // Analytics (Beispiel: GA4 nur laden, wenn erlaubt)
+  if(c.analytics){ enableGA(); }
+  // Marketing: hier ggf. Ad/Pixel-Lader hinterlegen
+}
+
+function enableGA(){
+  if(window._gaLoaded) return;
+  window._gaLoaded = true;
+  // TODO: ersetze G-XXXXXXX durch deine ID oder entferne diesen Block
+  const s=document.createElement('script');
+  s.async=true; s.src='https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX';
+  document.head.appendChild(s);
+  window.dataLayer=window.dataLayer||[];
+  window.gtag=function(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXX', {anonymize_ip:true});
+}
+
+// Initialisieren
+document.addEventListener('DOMContentLoaded', ()=>{
+  // Trigger öffnen
+  trigger.addEventListener('click', showCC);
+  // Overlay klick außerhalb schließt
+  overlay.addEventListener('click', (e)=>{ if(e.target===overlay) hideCC(); });
+
+  const saved = readConsent();
+  if(saved){
+    // Switches spiegeln
+    a.checked = !!saved.analytics;
+    m.checked = !!saved.marketing;
+    applyConsent(saved);
+  }else{
+    // Erstbesuch → Banner zeigen
+    showCC();
+  }
+
+  bAccept.addEventListener('click', ()=>{
+    const c={necessary:true, analytics:true, marketing:true};
+    writeConsent(c); applyConsent(c); hideCC();
+  });
+  bReject.addEventListener('click', ()=>{
+    const c={necessary:true, analytics:false, marketing:false};
+    writeConsent(c); applyConsent(c); hideCC();
+  });
+  bSave.addEventListener('click', ()=>{
+    const c={necessary:true, analytics:a.checked, marketing:m.checked};
+    writeConsent(c); applyConsent(c); hideCC();
+  });
+});
+
+/* ---------- dein bestehender Chart-Code (unverändert) ---------- */
+let currentRaised=125000, targetCommunity=1500, courseCompletions=320;
+document.addEventListener('DOMContentLoaded', ()=>{
+  document.getElementById('kpi1').textContent=new Intl.NumberFormat('de-DE',{style:'currency',currency:'EUR'}).format(currentRaised);
+  document.getElementById('kpi2').textContent=new Intl.NumberFormat('de-DE').format(targetCommunity);
+  document.getElementById('kpi3').textContent=new Intl.NumberFormat('de-DE').format(courseCompletions);
+  const opts={responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{enabled:false}},elements:{point:{radius:0},line:{tension:.35}}};
+  new Chart(document.getElementById('c1').getContext('2d'),{type:'line',data:{labels:[1,2,3,4,5,6,7,8,9,10,11,12],datasets:[{data:[10,18,22,30,45,62,74,90,105,116,121,125].map(x=>x*1000)}]},options:opts});
+  new Chart(document.getElementById('c2').getContext('2d'),{type:'line',data:{labels:[1,2,3,4,5,6,7,8,9,10,11,12],datasets:[{data:[120,200,260,330,420,520,680,820,980,1150,1350,1500]}]},options:opts});
+});
+</script>
+
+
+</body>
+</html>
