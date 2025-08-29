@@ -1,0 +1,1896 @@
+<!-- SPDX-License-Identifier: MIT -->
+<!-- Hello, my name is Markus Goffin 
+🇩🇪 Deutsch
+
+Ideen- und Konzeptinhaber von DIA-10
+Markus Goffin ist der alleinige Urheber und Inhaber der ursprünglichen Idee, des Namens, des Konzepts sowie der Markenidentität von DIA-10 – einer diamant­inspirierten Kryptowährung. Die Entwicklung, Gestaltung und strategische Ausrichtung des Projekts basieren ausschließlich auf seiner kreativen und unternehmerischen Arbeit.
+
+🇬🇧 English
+
+Creator and Concept Owner of DIA-10
+Markus Goffin is the sole originator and owner of the idea, name, concept, and brand identity of DIA-10 — a diamond-inspired cryptocurrency. The project’s development, design, and strategic direction are entirely based on his creative vision and entrepreneurial expertise.
+
+🇷🇴 Română
+
+Autor și deținător al conceptului DIA-10
+Markus Goffin este inițiatorul și proprietarul exclusiv al ideii, numelui, conceptului și identității de brand DIA-10 — o criptomonedă inspirată de diamante. Dezvoltarea, designul și direcția strategică a proiectului se bazează în întregime pe viziunea sa creativă și expertiza sa antreprenorială.
+--> 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<!-- Canonical & Hreflang (empfohlen: je Sprache eigene URL, z.B. /en/ /de/ /ro/) -->
+<link rel="canonical" href="https://99-i.com/dia10/">
+<link rel="canonical" href="https://dia10.de/">
+<link rel="alternate" hreflang="en" href="https://99-i.com/dia10/">
+<link rel="alternate" hreflang="de" href="https://99-i.com/dia10/">
+<link rel="alternate" hreflang="ro" href="https://99-i.com/dia10/">
+<link rel="alternate" hreflang="x-default" href="https://99-i.com/dia10/">
+
+<!-- Meta -->
+<title>DIA-10 – Diamond-anchored digital value</title>
+<meta name="description" content="DIA-10 is a diamond-inspired digital asset designed for resilience and clarity. Learn about tokenomics, certificates and partners.">
+
+<!-- Open Graph / Twitter -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="DIA-10">
+<meta property="og:title" content="DIA-10 – Diamond-anchored digital value">
+<meta property="og:description" content="Diamond-inspired digital asset, transparent tokenomics and partner network.">
+<meta property="og:url" content="https://99-i.com/dia10/">
+<meta property="og:image" content="https://99-i.com/dia10/images/dia10.svg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@99iDia10">
+<meta name="theme-color" content="#0a0c10">
+
+<!-- Google Fonts: schneller laden -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700;800;900&display=swap" rel="stylesheet">
+<meta name="author" content="Markus Goffin">
+<meta name="last-modified" content="2025-08-17">
+<link rel="icon" type="image/x-icon" href="images/99i_favicon_16x16.ico" sizes="16x16">
+<link rel="icon" type="image/x-icon" href="images/99i_favicon_32x32.ico" sizes="32x32">
+<link rel="icon" type="image/x-icon" href="images/99i_favicon_48x48.ico" sizes="48x48">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700;800;900&display=swap" rel="stylesheet">
+/* SPDX-License-Identifier: MIT */
+<style>
+  :root{
+    --bg:#0a0c10;        /* deep black-blue */
+    --panel:#0f1218;     /* card bg */
+    --ink:#eaf6ff;       /* near-white */
+    --muted:#9fb3c8;
+    --accent:#49b3ff;    /* 99‑i vibe cyan/blue */
+    --accent-2:#7dd3fc;  /* lighter cyan */
+    --silver:#c0cad6;
+    --brand:#1b6fff;     /* DIA‑10 deep blue */
+    --ok:#14d19a;
+    --warn:#ffce3a;
+    --danger:#ff5d6c;
+    --radius:16px;
+    --shadow:0 10px 30px rgba(0,0,0,.35);
+  }
+
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0; background:radial-gradient(1200px 800px at 80% -10%, rgba(73,179,255,.08), transparent 60%), var(--bg);
+    color:var(--ink); font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  }
+  a{color:var(--accent); text-decoration:none}
+  a:hover{color:#bfe6ff}
+
+  /* Top Nav */
+  .nav{
+    position:fixed; inset:0 0 auto 0; height:72px; display:flex; align-items:center; justify-content:space-between;
+    padding:0 20px; z-index:50; backdrop-filter: blur(8px);
+    background:linear-gradient(to bottom, rgba(10,12,16,.85), rgba(10,12,16,.35) 70%, transparent);
+    border-bottom:1px solid rgba(255,255,255,.06);
+  }
+  .brand{display:flex; align-items:center; gap:12px; font-weight:800; letter-spacing:.5px}
+  .brand-logo{
+    width:42px; aspect-ratio:1; border-radius:12px;
+    background: conic-gradient(from 210deg, #0a84ff, #49b3ff, #7dd3fc, #0a84ff);
+    box-shadow: inset 0 0 0 2px rgba(255,255,255,.06), var(--shadow);
+    position:relative; overflow:hidden;
+  }
+  /* Stylized diamond glyph */
+  .brand-logo::after{
+    content:""; position:absolute; inset:20% 20% 35% 20%;
+    background: linear-gradient(145deg,#e9f3ff,#9cc9ff);
+    clip-path: polygon(50% 0%, 100% 45%, 80% 100%, 20% 100%, 0% 45%);
+    opacity:.95;
+  }
+  .nav-links{display:flex; gap:20px; align-items:center}
+  .nav-links a{font-weight:600; color:var(--ink); opacity:.85}
+  .nav-links a:hover{opacity:1}
+  .lang{display:flex; gap:8px}
+  .lang button{
+    background:#101521; color:var(--ink); border:1px solid rgba(255,255,255,.08);
+    padding:8px 12px; border-radius:10px; font-weight:600; cursor:pointer;
+  }
+  .lang button.active{border-color:var(--accent); color:#dff4ff}
+  .login-btn{
+    background:linear-gradient(135deg, var(--brand), #0a84ff);
+    color:white; padding:10px 16px; border:none; border-radius:12px; font-weight:800; cursor:pointer;
+    box-shadow:0 10px 20px rgba(27,111,255,.3);
+  }
+
+  /* Hero */
+  .hero{
+    position:relative; padding-top:120px; min-height:92vh; display:grid; place-items:center; text-align:center;
+  }
+  canvas#bgParticles{position:absolute; inset:0; z-index:0}
+  .hero-inner{position:relative; z-index:1; max-width:1100px; padding:0 20px}
+  .suptitle{
+    color:var(--silver); font-weight:700; letter-spacing:.18em; text-transform:uppercase; font-size:.85rem; opacity:.9
+  }
+  .title{
+    font-size:clamp(40px,7vw,92px); line-height:1.02; margin:12px 0 10px; font-weight:900;
+    background:linear-gradient(180deg,#ffffff, #bfe6ff 60%, #7dd3fc);
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+    text-shadow: 0 2px 40px rgba(73,179,255,.25);
+  }
+  .subtitle{
+    font-size:clamp(18px,2.2vw,28px); color:var(--muted); font-weight:500; margin:0 auto 26px; max-width:900px;
+  }
+  .cta{display:flex; gap:14px; justify-content:center; flex-wrap:wrap}
+  .btn{
+    background:#121722; color:#eaf6ff; border:1px solid rgba(255,255,255,.08);
+    padding:14px 18px; border-radius:14px; font-weight:800; letter-spacing:.3px;
+  }
+  .btn.primary{background:linear-gradient(135deg, var(--brand), #0a84ff); border:none}
+  .btn.ghost:hover{border-color:var(--accent); color:#dff4ff}
+
+  /* Sections */
+  section{padding:80px 20px; display:flex; justify-content:center}
+  .container{width:min(1200px,100%); display:grid; gap:26px}
+  .panel{
+    background:linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,0));
+    border:1px solid rgba(255,255,255,.07); border-radius:var(--radius); padding:28px; box-shadow:var(--shadow)
+  }
+  .section-title{font-size:32px; font-weight:900; margin:0 0 8px}
+  .section-copy{color:var(--muted); margin:0 0 16px}
+  .grid-2{display:grid; grid-template-columns:1.2fr .8fr; gap:22px}
+  .grid-3{display:grid; grid-template-columns:repeat(3,1fr); gap:22px}
+  @media (max-width:980px){ .grid-2, .grid-3{grid-template-columns:1fr} }
+
+  .list{
+    display:grid; gap:12px; margin:14px 0 0;
+  }
+  .list .row{display:flex; align-items:center; gap:12px}
+  .tag{font-size:.8rem; background:#122032; color:#bfe6ff; border:1px solid rgba(98,184,255,.25); padding:6px 10px; border-radius:10px}
+  .note{font-size:.9rem; color:#9fb3c8}
+
+  /* Login Modal */
+  .modal{
+    position:fixed; inset:0; display:none; place-items:center; background:rgba(0,0,0,.6); z-index:100;
+  }
+  .modal.open{display:grid}
+  .card{
+    width:min(480px,92%); background:var(--panel); border:1px solid rgba(255,255,255,.08); border-radius:16px; padding:24px;
+    box-shadow:0 20px 60px rgba(0,0,0,.6);
+  }
+  .field{display:grid; gap:6px; margin-top:14px}
+  .field label{font-weight:700; color:#d9ecff}
+  .field input{
+    background:#0c1119; border:1px solid rgba(255,255,255,.1); color:#eaf6ff; padding:12px 14px; border-radius:12px; outline:none;
+  }
+  .row-between{display:flex; align-items:center; justify-content:space-between; gap:12px}
+  .caps{letter-spacing:.12em; text-transform:uppercase; color:#9fb3c8; font-weight:700; font-size:.8rem}
+  .err{color:var(--danger); font-weight:700; min-height:1.2em}
+
+  /* Footer */
+  footer{padding:60px 20px; text-align:center; color:#7e93a8}
+  .logos{display:flex; justify-content:center; gap:16px; filter:grayscale(100%); opacity:.8}
+  .tiny{font-size:.8rem; color:#7e93a8; margin-top:12px}
+
+  /* Micro interactions */
+  .panel:hover{transform:translateY(-2px); transition:transform .25s ease}
+  .btn,.login-btn{transition:transform .15s ease}
+  .btn:active,.login-btn:active{transform:translateY(1px)}
+  
+  /* ===== Diamond Social Buttons ===== */
+.footer-social{
+  display:flex; gap:14px; justify-content:center; align-items:center;
+  margin-top:18px; flex-wrap:wrap;
+}
+.diamond-link{
+  width:144px; height:44px; display:inline-grid; place-items:center;
+  color:#fff; position:relative; border-radius:12px; /* klick-area */
+  transition:transform .15s ease, color .2s ease, filter .2s ease;
+}
+.diamond-link:hover{ color:var(--acc); transform:translateY(-1px);
+  filter: drop-shadow(0 4px 14px rgba(88,166,255,.35));
+}
+.diamond-link svg{ width:150%; height:150% }
+.diamond-link .frame{ stroke:currentColor; stroke-width:1.8; fill:transparent; opacity:.150 }
+.diamond-link .icon{ fill:currentColor; stroke:currentColor; stroke-width:0; opacity:.150 }
+
+/* optional: kleine Textlabels */
+.footer-social .label{ font-size:12px; color:#93b5ff8f; margin-left:8px }
+
+/* ===== Sponsors / Investor Logos ===== */
+.sponsors { padding-top: 20px }
+.sponsors .section-title { display:flex; align-items:center; gap:10px }
+/* ===== Sponsors / Investor Logos (fix) ===== */
+html,body{overflow-x:hidden} /* falls Browser minimalen Overflow erzeugt */
+
+.sponsor-marquee{
+  --gap:18px; --card-bg:#0f1624; --card-line:#1e2a45;
+  --speed:42s; --fade:0%;
+  margin-top:10px; position:relative; overflow:hidden; border-radius:16px;
+  border:1px solid rgba(255,255,255,.07);
+  background:linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,0));
+  padding:0;                 
+  -webkit-mask-image:none;   
+  mask-image:none;
+}
+
+.sponsor-track{
+  display:flex; gap:var(--gap); padding:12px 16px;
+  will-change:transform;
+  animation:sponsor-scroll var(--speed) linear infinite;
+}
+.sponsor-marquee:hover .sponsor-track{ animation-play-state: paused; }
+
+
+@keyframes sponsor-scroll{
+  from{transform:translateX(0)}
+  to  {transform:translateX(calc(-1 * var(--loop-distance, 50%)))} /* per JS gesetzt */
+}
+
+/* Optional: Panel clippt jeden Pixel-Drift */
+.sponsors .panel{overflow:hidden}
+
+
+
+.sponsor-card{
+  display:flex; align-items:center; gap:12px;
+  padding:12px 14px; border-radius:14px; min-width:240px; max-width:380px;
+  background: var(--card-bg); border:1px solid var(--card-line);
+  text-decoration:none; color:var(--ink);
+  transition:transform .15s ease, box-shadow .2s ease, border-color .2s ease;
+}
+.sponsor-card:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(73,179,255,.18);
+  border-color: rgba(98,184,255,.35);
+}
+.sponsor-logo-wrap{
+  width:64px; height:64px; border-radius:14px; position:relative; flex:0 0 64px;
+  background: radial-gradient(circle at 30% 30%, #8fb8ff33 0 40%, transparent 45% 100%),
+              linear-gradient(135deg, #2a6cff33, #7fb3ff33);
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.06);
+}
+.sponsor-logo{
+  width:100%; height:100%; object-fit:contain; padding:10px; filter: saturate(1.05) contrast(1.05);
+}
+.sponsor-meta{ display:flex; flex-direction:column; gap:4px; min-width:0 }
+.sponsor-name{ font-weight:800; letter-spacing:.2px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis }
+.sponsor-tag{ color:var(--muted); font-size:.9rem; line-height:1.25; white-space:nowrap; overflow:hidden; text-overflow:ellipsis }
+
+/* --- Legal / Footer --- */
+footer .foot-links{margin:10px 0; display:flex; gap:14px; justify-content:center; flex-wrap:wrap}
+footer .foot-links a{color:#bfe6ff; opacity:.9}
+footer .foot-links a:hover{opacity:1; color:#7dd3fc}
+.legal-section{padding:60px 20px; display:flex; justify-content:center}
+.legal{width:min(1000px,100%); background:linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,0));
+  border:1px solid rgba(255,255,255,.07); border-radius:16px; padding:26px; box-shadow:var(--shadow)}
+.legal h3{margin:0 0 8px; font-size:28px; font-weight:900}
+.legal h4{margin:18px 0 6px; font-size:18px}
+.legal p,.legal li{color:#9fb3c8}
+.lang-block{display:none}
+</style>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "DIA-10",
+  "legalName": "MAGO SERVICE TRADE SRL",
+  "url": "https://dia-10.com/",
+  "logo": "https://dia-10.com/assets/logo.png",
+  "sameAs": [
+    "https://www.facebook.com/profile.php?id=61579047583726",
+    "https://www.instagram.com/_dia__10_/",
+    "https://x.com/99iDia10",
+    "https://www.linkedin.com/in/markusgoffin",
+    "https://www.youtube.com/@DIA10"
+  ],
+  "contactPoint": [{
+    "@type": "ContactPoint",
+    "contactType": "customer support",
+    "email": "mgoffin@web.de",
+    "telephone": "+40-752-307711",
+    "areaServed": "EU",
+    "availableLanguage": ["en","de","ro"]
+  }]
+}
+</script>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-KRSBX6GJSH"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-KRSBX6GJSH');
+</script>
+
+
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="brand">
+    <div class="brand-logo" aria-hidden="true"></div>
+    <div>DIA‑10</div>
+  </div>
+  <div class="nav-links">
+    <a href="#about" data-i18n="nav_about">Overview</a>
+    <a href="#docs" data-i18n="nav_docs">Documents</a>
+    <a href="#nft" data-i18n="nav_nft">NFT</a>
+    <a href="#crowd" data-i18n="nav_crowd">Crowdfunding</a>
+    <a href="live_metrics.html" data-i18n="live_metrics">Live Metrics</a>
+    <a href="#contact" data-i18n="nav_contact">Contact</a>
+    <div class="lang">
+      <button class="langbtn" data-lang="de">DE</button>
+      <button class="langbtn active" data-lang="en">EN</button>
+      <button class="langbtn" data-lang="ro">RO</button>
+    </div>
+    <button class="login-btn" id="openLogin" data-i18n="login">Login</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero" id="top">
+  <canvas id="bgParticles"></canvas>
+  <div class="hero-inner">
+    <div class="suptitle" data-i18n="hero_sup">Diamond‑anchored digital value</div>
+    <h1 class="title">DIA‑10</h1>
+    <p class="subtitle" data-i18n="hero_sub">
+      A modern, transparent asset layer inspired by the timeless resilience of diamonds. Built for real‑world utility, trust, and long‑term alignment.
+    </p>
+    <div class="cta">
+      <a href="#about" class="btn primary" data-i18n="cta_learn">Learn more</a>
+      <a href="#docs" class="btn ghost" data-i18n="cta_docs">Whitepaper & Marketing Map</a>
+      <a href="#cert" class="btn ghost" data-i18n="cta_cert">Investor Certificate</a>
+    </div>
+  </div>
+</header>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container grid-2">
+    <div class="panel">
+      <h2 class="section-title" data-i18n="about_title">Why DIA‑10</h2>
+      <p class="section-copy" data-i18n="about_copy">
+        Simple thesis: strong brand + disciplined tokenomics + clear backing narrative. DIA‑10 aims to blend scarcity signals (diamonds) with modern, auditable rails.
+      </p>
+      <div class="list">
+        <div class="row"><span class="tag">Token</span><span data-i18n="about_t1">1,000,000 max supply, 18 decimals</span></div>
+        <div class="row"><span class="tag">Utility</span><span data-i18n="about_t2">Access, staking, gated docs, governance experiments</span></div>
+        <div class="row"><span class="tag">Roadmap</span><span data-i18n="about_t3">NFT tie‑ins, crowdfund rails, optional RWA bridges</span></div>
+      </div>
+    </div>
+    <div class="panel">
+      <h3 class="section-title" data-i18n="about_pitch_t">Elevator Pitch</h3>
+      <p class="section-copy" data-i18n="about_pitch">
+        DIA‑10 is a diamond‑inspired digital asset designed for resilience and clarity. We pair a timeless store‑of‑value narrative with practical web3 tooling—so individuals and partners can coordinate, fund, and build with confidence.
+      </p>
+      <div class="note" data-i18n="about_note">
+        *Not financial advice. DIA‑10 is an experimental project; always assess risks.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT MARKUS -->
+<section id="markus">
+  <div class="container grid-2">
+    <!-- Linke Spalte: Bio -->
+    <div class="panel">
+      <h2 class="section-title" data-i18n="markus_title">Über Markus Goffin</h2>
+      <p class="section-copy" data-i18n="markus_intro">
+        Mit über 35 Jahren Erfahrung in der Schmuck‑ und Diamantenbranche vereine ich Produkt‑,
+        Marken‑ und Vertriebskompetenz mit internationalem Netzwerk (u. a. Antwerpen & Israel).
+        Ich habe Unternehmen aufgebaut, Marken positioniert und Innovationen zur Marktreife gebracht –
+        heute setze ich dieses Know‑how in DIA‑10 ein.
+		
+      </p>
+
+      <h3 class="section-title" style="font-size:24px" data-i18n="markus_highlights_t">Highlights</h3>
+      <ul class="section-copy" style="margin-top:8px; line-height:1.6">
+        <li data-i18n="markus_h1"><b>Innovation:</b> „Rubin in der Ringinnenschiene®“ (internationales Patent) & „DER TRAURING DER ANZIEHT®“.</li>
+        <li data-i18n="markus_h2"><b>Unternehmensaufbau:</b> MODEGO, AMORE DUE®, Mitinhaber DORA® (Istanbul); CI‑/Marketing‑Leitung & Messeauftritte.</li>
+        <li data-i18n="markus_h3"><b>Netzwerk:</b> enge Beziehungen in Antwerpen & Israel für Diamantenhandel und Expertise.</li>
+        <li data-i18n="markus_h4"><b>Weiterbildung:</b> Diamanten‑, Edelstein‑, Goldschmiede‑ & Uhrmacherkunde; Marketing, Webdesign & Unternehmensberatung.</li>
+        <li data-i18n="markus_h5"><b>Brückenbauer:</b> echte Werte (Diamanten) × moderne Blockchain – klare Narrative, geprüfte Prozesse.</li>
+      </ul>
+
+      <div class="note" style="margin-top:14px" data-i18n="markus_motto">
+        Motto: „Echte Werte verdienen echte Visionen.“
+      </div><br>
+	  <div class="cta" style="justify-content:flex-start">
+		<a class="btn primary" href="diamonds/diamonds.html" target="_blank">Diamonds</a>
+		</div>
+    </div>
+
+    <!-- Rechte Spalte: Kurzprofil / Kontakt -->
+    <div class="panel">
+    <img src="images/markus_goffin.jpg" alt="Markus Goffin" style="width:100%; border-radius:11px; margin-bottom:15px">
+      <h3 class="section-title" data-i18n="markus_profile_t">Kurzprofil & Kontakt</h3>
+      <div class="list">
+        <div class="row"><span class="tag">Role</span><span data-i18n="markus_role">Founder & Strategy Lead DIA‑10</span></div>
+        <div class="row"><span class="tag">Expertise</span><span data-i18n="markus_expertise">Diamonds, Branding, Tokenomics, GTM</span></div>
+        <div class="row"><span class="tag">Network</span><span data-i18n="markus_network">Antwerpen • Israel • EU</span></div>
+      </div>
+
+      <p class="section-copy" style="margin-top:14px">
+        <b>Web:</b> <a href="https://99-i.com/" target="_blank">99‑i.com</a><br>
+        <b>Portfolio:</b> <a href="https://mgoffin.com/" target="_blank">mgoffin.com</a><br>
+        <b>E‑Mail:</b> <a href="mailto:mgoffin@web.de">mgoffin@web.de</a>
+      </p>
+
+      <div class="cta" style="justify-content:flex-start">
+        <a class="btn primary" href="ueber_mich.html" target="_blank">1985</a>
+        <a class="btn ghost" href="#contact" data-i18n="markus_contact">Kontakt</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- DOCS -->
+<section id="docs">
+  <div class="container grid-3">
+    <div class="panel">
+      <h3 class="section-title" data-i18n="docs_map_t">Marketing & Concept Map</h3>
+      <p class="section-copy" data-i18n="docs_map_d">Download the printable PDF—brand, tokenomics, and positioning at a glance.</p><br>
+      <a class="btn primary" href="marketing/marketing_concept_map.html" target="_blank">Open</a>
+    </div>
+    <div class="panel">
+      <h3 class="section-title">Whitepaper</h3>
+      <p class="section-copy" data-i18n="docs_wp_d">Full rationale, mechanics, and roadmap. Updated iteratively.</p><br>
+      <a class="btn primary" href="whitepaper.html" target="_blank">Open</a>
+    </div>
+    <div class="panel" id="cert">
+      <h3 class="section-title" data-i18n="docs_cert_t">Investor Certificate</h3>
+      <p class="section-copy" data-i18n="docs_cert_d">Generate a numbered PDF certificate after purchase confirmation.</p><br>
+      <a class="btn primary" href="certificat/certificate_overview.html" data-i18n="open">Open</a>
+    </div>
+  </div>
+</section>
+
+
+<!-- NFT / OPENSEA -->
+<section id="nft">
+  <div class="container grid-2">
+    <div class="panel">
+      <h3 class="section-title">OpenSea Collection</h3>
+      <p class="section-copy" data-i18n="nft_d">
+        Branded DIA‑10 collectibles with on‑chain provenance. Early supporter perks and gated utilities.
+      </p>
+      <div class="cta">
+        <a class="btn primary" href="https://opensea.io/collection/mgoffin" target="_blank">OpenSea</a>
+        <a class="btn ghost" href="nft/gallery.html" target="_blank" data-i18n="view_gallery">View gallery</a>
+      </div>
+    </div>
+<div class="panel">
+  <h3 class="section-title" data-i18n="live_t">Live Data</h3>
+  <p class="section-copy">DIA-10 Test-Token auf Ethereum Sepolia. Wallet verbinden, Token importieren, Balance prüfen.</p>
+
+  <div class="list">
+    <div class="row"><span class="tag">Network</span><span id="netName">—</span></div>
+    <div class="row"><span class="tag">Token</span><span><code id="tokenAddr">—</code></span></div>
+    <div class="row"><span class="tag">Symbol</span><span id="tokenSymbol">—</span></div>
+    <div class="row"><span class="tag">Decimals</span><span id="tokenDecimals">—</span></div>
+    <div class="row"><span class="tag">Total Supply</span><span id="totSupply">—</span></div>
+    <div class="row"><span class="tag">Your Wallet</span><span id="walletAddr">—</span></div>
+    <div class="row"><span class="tag">Your Balance</span><span id="walletBal">—</span></div>
+    <div class="row"><span class="tag">Status</span><span id="liveMsg">—</span></div>
+  </div>
+
+  <div class="cta" style="margin-top:14px; gap:10px; flex-wrap:wrap; justify-content:flex-start">
+    <button class="btn" id="btnConnect">Connect Wallet</button>
+    <button class="btn" id="btnSwitch">Switch to Sepolia</button>
+    <button class="btn" id="btnImport">Import Token (MetaMask)</button>
+    <button class="btn" id="btnRefresh">Refresh</button>
+  </div>
+
+  <div class="note" style="margin-top:12px">
+    🔗 <a id="linkEtherscan" href="https://sepolia.etherscan.io/token/0xd9145CCE52D386f254917e481eB44e9943F39138" target="_blank" rel="noopener">Etherscan (Sepolia)</a>
+    &nbsp;•&nbsp; 🦊 <a id="linkMM" href="chrome-extension://nkbihfbeogaeaoehlefnkodbefgpgknn/home.html#asset/0xaa36a7/0xd9145CCE52D386f254917e481eB44e9943F39138" target="_blank" rel="noopener">In MetaMask öffnen*</a>
+    <div class="tiny">*MetaMask-Link funktioniert nur im gleichen Browser mit installiertem MetaMask.</div>
+  </div>
+</div>
+</section>
+
+<!-- CROWDFUND -->
+<section id="crowd">
+  <div class="container">
+    <div class="panel">
+      <h3 class="section-title" data-i18n="crowd_t">Crowdfunding</h3>
+      <p class="section-copy" data-i18n="crowd_d">
+        Tiered allocations, vesting options, and transparent dashboards. Join the waitlist to be notified on launch.
+      </p>
+      <div class="row-between">
+        <a class="btn primary" href="crowdfunding/crowdfunding.html" data-i18n="Join">Join</a>
+      </div>
+      <div class="note" id="waitMsg"></div>
+    </div>
+  </div>
+</section>
+
+<!-- SPONSORS / INVESTOR LOGOS -->
+<section id="sponsors" class="sponsors">
+  <div class="container">
+    <div class="panel">
+      <h3 class="section-title" data-i18n="sponsors_t">Partners & Diamond Suppliers</h3>
+      <p class="section-copy" data-i18n="sponsors_d">
+        We showcase investors and sourcing partners. Click a logo to visit their website.
+      </p>
+      <div class="sponsor-marquee" aria-label="DIA-10 sponsor logos scrolling">
+        <div class="sponsor-track" id="sponsorTrack">
+          <!-- Wird per JS befüllt & dupliziert -->
+          <noscript>
+            <!-- Fallback ohne JS -->
+            <a class="sponsor-card" href="#" aria-label="Your Company" onClick="return false">
+              <div class="sponsor-logo-wrap">
+                <img class="sponsor-logo" alt="Your Company logo"
+                     src="data:image/svg+xml;utf8,
+                     <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 80'>
+                       <defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'>
+                         <stop offset='0' stop-color='%238fb8ff'/><stop offset='1' stop-color='%237fb3ff'/></linearGradient></defs>
+                       <rect width='200' height='80' rx='12' fill='url(%23g)'/>
+                       <text x='100' y='46' font-family='Inter, Arial' font-size='16' font-weight='800'
+                             fill='white' text-anchor='middle'>YOUR COMPANY</text>
+                     </svg>" />
+              </div>
+              <div class="sponsor-meta">
+                <div class="sponsor-name">Your Company</div>
+                <div class="sponsor-tag">Diamonds • Antwerp</div>
+              </div>
+            </a>
+          </noscript>
+        </div>
+      </div>
+      <div class="tiny" style="margin-top:10px">
+        <span data-i18n="sponsors_note">Interested? Become a DIA-10 partner and appear here.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- KNOWLEDGEDADABASE -->
+<section id="crowd">
+  <div class="container">
+    <div class="panel">
+      <h3 class="section-title" data-i18n="know_a">Knowledge Database</h3>
+      <p class="section-copy" data-i18n="know_b">
+        New to crypto & payments? The DIA-10 Knowledge Base explains everything clearly and fast (EN/DE/RO) — explore now →
+      </p>
+      <div class="row-between">
+        <a class="btn primary" href="knowledge_database/glossary.html" data-i18n="Join">Explore now →</a>
+      </div>
+      <div class="note" id="waitMsg"></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container grid-2">
+    <div class="panel">
+      <h3 class="section-title" data-i18n="contact_t">Contact</h3>
+      <p class="section-copy">
+        MAGO SERVICE TRADE SRL<br>
+        Aleea Textilistilor Nr.1 – BL. MY1, Sc.1, App. 16, Sectorul 3<br>
+        032801 Bucuresti / Bucharest — Romania<br><br>
+        <b>Phone:</b> +40 (0) 752 30 77 11<br>
+        <b>Web:</b> <a href="https://99-i.com/" target="_blank">99‑i.com</a><br>
+        <b>Mail:</b> <a href="mailto:mgoffin@web.de">mgoffin@web.de</a>
+		<h5 class="section-title" data-i18n="contact_n">Note: This is not financial advice. Digital assets are risky; please conduct your own research.</h5>
+      </p>
+    </div>
+    <div class="panel">
+      <h3 class="section-title">Banking</h3>
+      <p class="section-copy">
+        BRD – Bucharest<br>
+        IBAN: RO34BRDE426SV66680914260<br>
+        BIC: BRDEROBU
+      </p>
+      <div class="logos">
+        <img alt="BRD" src="https://dummyimage.com/120x36/1b2330/8fa9c7.png&text=BRD" />
+        <img alt="Visa" src="https://dummyimage.com/90x36/1b2330/8fa9c7.png&text=VISA" />
+        <img alt="Mastercard" src="https://dummyimage.com/120x36/1b2330/8fa9c7.png&text=MC" />
+      </div>
+      <div class="tiny">Logos for illustration only.</div>
+    </div>
+  </div>
+</section>
+
+<div class="footer-social" aria-label="DIA-10 Social media">
+  <!-- Facebook -->
+  <a class="diamond-link" aria-label="Facebook" title="Facebook" target="_blank" rel="noopener"
+     href="https://www.facebook.com/profile.php?id=61579047583726">
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <!-- Diamond frame -->
+      <path class="frame" d="M3 9l9-6 9 6-9 12-9-12zM12 3v18M3 9h18M7 9l5 12m5-12l-5 12"/>
+      <!-- FB glyph (vereinfacht) -->
+      <path class="icon" d="M14.2 6.2h2V3h-2.6c-2.6 0-4.1 1.6-4.1 4.1v2H7.8v3h1.7v8h3.2v-8h2.1l.5-3h-2.6V7.6c0-.9.3-1.4 1.5-1.4z"/>
+    </svg>
+  </a>
+
+  <!-- TikTok -->
+  <a class="diamond-link" aria-label="TikTok" title="TikTok" target="_blank" rel="noopener"
+     href="https://www.tiktok.com/@dia_10_">
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path class="frame" d="M3 9l9-6 9 6-9 12-9-12zM12 3v18M3 9h18M7 9l5 12m5-12l-5 12"/>
+      <!-- einfache Musiknote-Form -->
+      <path class="icon" d="M13 4v7.7a3.3 3.3 0 1 1-2.7-3.2v2.2a1.6 1.6 0 1 0 1 1.5V6.7c1 .5 2.2.9 3.6.9v-2a4.9 4.9 0 0 1-3.6-1.6z"/>
+    </svg>
+  </a>
+
+  <!-- Instagram -->
+  <a class="diamond-link" aria-label="Instagram" title="Instagram" target="_blank" rel="noopener"
+     href="https://www.instagram.com/_dia__10_/">
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path class="frame" d="M3 9l9-6 9 6-9 12-9-12zM12 3v18M3 9h18M7 9l5 12m5-12l-5 12"/>
+      <!-- cam-outline + lens -->
+      <rect class="icon" x="7" y="7" width="10" height="10" rx="2.5" ry="2.5" fill="none" stroke="currentColor" stroke-width="1.8"/>
+      <circle class="icon" cx="12" cy="12" r="3"/>
+      <circle class="icon" cx="15.6" cy="8.4" r="0.9"/>
+    </svg>
+  </a>
+
+  <!-- LinkedIn -->
+  <a class="diamond-link" aria-label="LinkedIn" title="LinkedIn" target="_blank" rel="noopener"
+     href="https://www.linkedin.com/in/markusgoffin">
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path class="frame" d="M3 9l9-6 9 6-9 12-9-12zM12 3v18M3 9h18M7 9l5 12m5-12l-5 12"/>
+      <!-- IN glyph -->
+      <circle class="icon" cx="8" cy="8" r="1.2"/>
+      <rect class="icon" x="6.7" y="10" width="2.6" height="6.8"/>
+      <path class="icon" d="M11.5 10h2.6v1.2c.5-.8 1.3-1.4 2.6-1.4 2 0 3.2 1.3 3.2 3.8v5.2h-2.8v-4.7c0-1.2-.5-2-1.7-2-1 0-1.6.6-1.9 1.3-.1.2-.1.5-.1.8v4.6h-2.8V10z"/>
+    </svg>
+  </a>
+  
+  <!-- X (Twitter) -->
+<a class="diamond-link" aria-label="X (Twitter)" title="X"  target="_blank" rel="noopener"
+   href="https://x.com/99iDia10">
+  <svg viewBox="0 0 24 24" aria-hidden="true">
+    <!-- Diamond frame -->
+    <path class="frame" d="M3 9l9-6 9 6-9 12-9-12zM12 3v18M3 9h18M7 9l5 12m5-12l-5 12"/>
+    <!-- X-Glyph (zwei Diagonalen) -->
+    <path class="icon" d="M7 7l10 10M17 7L7 17"
+          style="fill:none;stroke-width:1.8;stroke-linecap:round"/>
+  </svg>
+</a>
+
+<!-- YouTube -->
+<a class="diamond-link" aria-label="YouTube" title="YouTube" target="_blank" rel="noopener"
+   href="https://www.youtube.com/@DIA10by99i">
+  <svg viewBox="0 0 24 24" aria-hidden="true">
+    <path class="frame" d="M3 9l9-6 9 6-9 12-9-12zM12 3v18M3 9h18M7 9l5 12m5-12l-5 12"/>
+    <!-- Play-Triangle -->
+    <path class="icon" d="M9 8l8 4-8 4z"/>
+  </svg>
+</a>
+</div>
+
+
+<footer>
+  © <span id="year"></span> DIA-10. All rights reserved.
+<div class="foot-links">
+  <a href="#imprint" data-i18n="f_imprint">Impressum</a>
+  <a href="#terms" data-i18n="f_terms">AGB / Terms</a>
+  <a href="#privacy" data-i18n="f_privacy">Datenschutz</a>
+  <a href="#contact" data-i18n="f_contact">Contact</a>
+  <a href="press_kit.html" target="_blank" data-i18n="f_press">PRESS-KIT</a>
+  <a href="https://github.com/DIA10-by-99-i/dia10" target="_blank" data-i18n="f_github">On GitHub©</a>
+</div>
+  <div class="tiny" data-i18n="f_disclaimer">
+    Not financial advice. Digital assets are risky; please do your own research.
+  </div>
+</footer>
+
+
+<div class="modal" id="loginModal" aria-hidden="true">
+  <div class="card">
+    <div class="row-between">
+      <div class="caps" data-i18n="login_title">Member Login</div>
+      <button class="btn" id="closeLogin">✕</button>
+    </div>
+    <div class="field">
+      <label data-i18n="login_user">Email</label>
+      <input id="loginEmail" type="email" placeholder="you@example.com">
+    </div>
+    <div class="field">
+      <label data-i18n="login_pass">Password</label>
+      <input id="loginPass" type="password" placeholder="••••••••">
+    </div>
+    <div class="err" id="loginErr"></div>
+    <div class="row-between" style="margin-top:12px">
+      <div class="caps"><input type="checkbox" id="remember"> <label for="remember" data-i18n="remember">Remember</label></div>
+      <button class="login-btn" id="doLogin" data-i18n="login_btn">Login</button>
+    </div>
+  </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/ethers@6.12.1/dist/ethers.min.js"></script>
+<script>
+
+const i18n = {
+  en:{
+    nav_about:"Overview", nav_docs:"Documents", nav_nft:"NFT", nav_crowd:"Crowdfunding", nav_contact:"Contact",
+    login:"Login",
+    hero_sup:"Diamond-anchored digital value",
+    hero_sub:"A modern, transparent asset layer inspired by the timeless resilience of diamonds. Built for real-world utility, trust, and long-term alignment.",
+    cta_learn:"Learn more", cta_docs:"Whitepaper & Marketing Map", cta_cert:"Investor Certificate",
+    about_title:"Why DIA-10", about_copy:"Simple thesis: strong brand + disciplined tokenomics + clear backing narrative. DIA-10 aims to blend scarcity signals (diamonds) with modern, auditable rails.",
+    about_t1:"1,000,000 max supply, 18 decimals", about_t2:"Access, staking, gated docs, governance experiments", about_t3:"NFT tie-ins, crowdfund rails, optional RWA bridges",
+    about_pitch_t:"Elevator Pitch", about_pitch:"DIA-10 is a diamond-inspired digital asset designed for resilience and clarity. We pair a timeless store-of-value narrative with practical web3 tooling—so individuals and partners can coordinate, fund, and build with confidence.",
+    about_note:"*Not financial advice. DIA-10 is an experimental project; always assess risks.",
+    docs_map_t:"Marketing & Concept Map", docs_map_d:"Download the printable PDF—brand, tokenomics, and positioning at a glance.", download:"Download",
+    docs_wp_d:"Full rationale, mechanics, and roadmap. Updated iteratively.",
+    docs_cert_t:"Investor Certificate", docs_cert_d:"Generate a numbered PDF certificate after purchase confirmation.", open:"Open",
+    nft_d:"Branded DIA-10 collectibles with on-chain provenance. Early supporter perks and gated utilities.", view_gallery:"View gallery",
+    live_t:"Live Data", live_d:"Pull basic chain data (placeholder). Replace with your RPC & contract.",
+    crowd_t:"Crowdfunding", crowd_d:"Tiered allocations, vesting options, and transparent dashboards. Join the waitlist to be notified on launch.", join:"Join",
+	know_a:"Knowledge Database", know_b:"New to crypto & payments? The DIA-10 Knowledge Base explains everything clearly and fast (EN/DE/RO)", join:"Explore now →",
+    contact_t:"Contact",
+    contact_n:"Note: This is not financial advice. Digital assets are risky; please conduct your own research.",
+    login_title:"Member Login", login_user:"Email", login_pass:"Password", remember:"Remember", login_btn:"Login",
+
+    nav_markus:"About Markus",
+    markus_title:"About Markus Goffin",
+    markus_intro:"With 35+ years in jewelry & diamonds, I blend product, brand and go-to-market with an international network (Antwerp & Israel). I’ve built companies, positioned brands, and shipped innovations—now focused on DIA-10.",
+    markus_highlights_t:"Highlights",
+    markus_h1:"Innovation: “Ruby in the ring’s inner rail®” (international patent) & “The ring that attracts®”.",
+    markus_h2:"Company building: MODEGO, AMORE DUE®, co-owner DORA® (Istanbul); CI/marketing leadership & trade shows.",
+    markus_h3:"Network: deep ties across Antwerp & Israel for diamond trade & expertise.",
+    markus_h4:"Education: Diamonds, gemstones, goldsmithing & watchmaking; marketing, web design & consulting.",
+    markus_h5:"Bridge builder: real-world value (diamonds) × modern blockchain — clear narrative, audited processes.",
+    markus_motto:"Motto: “Real values deserve real vision.”",
+    markus_profile_t:"Profile & Contact",
+    markus_role:"Founder & Strategy Lead DIA-10",
+    markus_expertise:"Diamonds, Branding, Tokenomics, GTM",
+    markus_network:"Antwerp • Israel • EU",
+    markus_cv:"Download Profile (PDF)",
+    markus_contact:"Contact",
+
+  
+    f_imprint:"Imprint", f_terms:"Terms", f_privacy:"Privacy", f_contact:"Contact", f_press:"PRESS-KIT", f_github:"On GitHub©",
+    f_disclaimer:"Not financial advice. Digital assets are risky; please do your own research."
+  },
+  de:{
+    nav_about:"Überblick", nav_docs:"Dokumente", nav_nft:"NFT", nav_crowd:"Crowdfunding", nav_contact:"Kontakt", 
+    login:"Login",
+    hero_sup:"Diamant-gestützter digitaler Wert",
+    hero_sub:"Ein modernes, transparentes Asset-Layer – inspiriert von der Beständigkeit von Diamanten. Für Praxisnutzen, Vertrauen und Langfristorientierung.",
+    cta_learn:"Mehr erfahren", cta_docs:"Whitepaper & Marketing-Mappe", cta_cert:"Investor-Zertifikat",
+    about_title:"Warum DIA-10", about_copy:"Einfache These: starke Marke + disziplinierte Tokenomics + klares Narrativ. DIA-10 verbindet Knappheitssignale (Diamanten) mit modernen, prüfbaren Rails.",
+    about_t1:"1.000.000 Max Supply, 18 Dezimalstellen", about_t2:"Access, Staking, geschützte Dokumente, Governance-Experimente", about_t3:"NFT-Anbindung, Crowdfunding-Rails, optionale RWA-Brücken",
+    about_pitch_t:"Elevator Pitch", about_pitch:"DIA-10 ist ein diamantinspiriertes Digital-Asset für Resilienz und Klarheit. Zeitloses Value-Narrativ trifft auf praktisches Web3-Tooling – für koordiniertes Bauen und Finanzieren.",
+    about_note:"*Keine Anlageberatung. DIA-10 ist experimentell; Risiken eigenständig prüfen.",
+    docs_map_t:"Marketing- & Konzeptmappe", docs_map_d:"Druckbares PDF – Marke, Tokenomics & Positionierung auf einen Blick.", download:"Download",
+    docs_wp_d:"Begründung, Mechanik, Roadmap – iterativ aktualisiert.",
+    docs_cert_t:"Investor-Zertifikat", docs_cert_d:"Nummeriertes PDF-Zertifikat nach Zahlungseingang generieren.", open:"Öffnen",
+    nft_d:"Gebrandete DIA-10-Collectibles mit On-Chain-Provenienz. Perks für Early Supporter und gated Utilities.", view_gallery:"Galerie ansehen",
+    live_t:"Live-Daten", live_d:"Einfache Chain-Daten (Platzhalter). Mit deinem RPC & Vertrag ersetzen.",
+    crowd_t:"Crowdfunding", crowd_d:"Gestaffelte Allokationen, Vesting und transparente Dashboards. Warteliste beitreten.", join:"Beitreten",
+	know_a:"Wissensdatenbank", know_b:"Fragen zu Krypto & Payments? Die DIA-10 Wissensdatenbank erklärt alles kurz & einfach (EN/DE/RO)", join:"Jetzt entdecken →",
+    contact_t:"Kontakt",
+    contact_n:"Hinweis: Keine Finanzberatung. Digitale Assets sind riskant; bitte eigene Prüfung vornehmen.",
+    login_title:"Login", login_user:"E-Mail", login_pass:"Passwort", remember:"Merken", login_btn:"Login",
+
+    nav_markus:"Über Markus",
+    markus_title:"Über Markus Goffin",
+    markus_intro:"Über 35 Jahre Schmuck- & Diamantenpraxis: Produkt, Marke, Vertrieb und internationales Netzwerk (Antwerpen & Israel). Ich habe Unternehmen aufgebaut, Marken positioniert und Innovationen umgesetzt – heute fokussiert in DIA-10.",
+    markus_highlights_t:"Highlights",
+    markus_h1:"Innovation: „Rubin in der Ringinnenschiene®“ (internationales Patent) & „Der Trauring der anzieht®“.",
+    markus_h2:"Unternehmensaufbau: MODEGO, AMORE DUE®, Mitinhaber DORA® (Istanbul); CI/Marketing-Leitung & Messen.",
+    markus_h3:"Netzwerk: starke Verbindungen nach Antwerpen & Israel (Diamantenhandel/Expertise).",
+    markus_h4:"Weiterbildung: Diamant-, Edelstein-, Goldschmiede- & Uhrmacherkunde; Marketing, Webdesign & Beratung.",
+    markus_h5:"Brückenbauer: echte Werte (Diamanten) × moderne Blockchain – klares Narrativ, geprüfte Prozesse.",
+    markus_motto:"Motto: „Echte Werte verdienen echte Visionen.“",
+    markus_profile_t:"Kurzprofil & Kontakt",
+    markus_role:"Gründer & Strategy Lead DIA-10",
+    markus_expertise:"Diamanten, Branding, Tokenomics, Go-to-Market",
+    markus_network:"Antwerpen • Israel • EU",
+    markus_cv:"Profil als PDF",
+    markus_contact:"Kontakt",
+
+ 
+    f_imprint:"Impressum", f_terms:"AGB / Terms", f_privacy:"Datenschutz", f_contact:"Kontakt", f_press:"PRESSEMAPPE", f_github:"On GitHub©",
+    f_disclaimer:"Keine Finanzberatung. Digitale Assets sind riskant; bitte eigene Prüfung vornehmen."
+  },
+  ro:{
+    nav_about:"Prezentare", nav_docs:"Documente", nav_nft:"NFT", nav_crowd:"Crowdfunding", nav_contact:"Contact",
+    login:"Autentificare",
+    hero_sup:"Valoare digitală ancorată în diamant",
+    hero_sub:"Un strat modern, transparent, inspirat de reziliența atemporală a diamantelor. Utilitate reală, încredere și aliniere pe termen lung.",
+    cta_learn:"Află mai mult", cta_docs:"Whitepaper & Harta Marketing", cta_cert:"Certificat Investitor",
+    about_title:"De ce DIA-10", about_copy:"Teză simplă: brand puternic + tokenomics disciplinat + narativ clar. DIA-10 combină semnalele de raritate (diamante) cu infrastructură modernă și auditabilă.",
+    about_t1:"1.000.000 supply maxim, 18 zecimale", about_t2:"Access, staking, documente restricționate, experimente de guvernanță", about_t3:"NFT, mecanisme de crowdfunding, punți RWA opționale",
+    about_pitch_t:"Elevator Pitch", about_pitch:"DIA-10 este un activ digital inspirat de diamante, creat pentru reziliență și claritate. Îmbină o poveste de valoare atemporală cu instrumente web3 practice.",
+    about_note:"*Nu constituie consultanță financiară. Proiect experimental; evaluați riscurile.",
+    docs_map_t:"Harta Marketing & Concept", docs_map_d:"PDF imprimabil — brand, tokenomics și poziționare pe scurt.", download:"Descarcă",
+    docs_wp_d:"Raționament, mecanică și roadmap — actualizări iterative.",
+    docs_cert_t:"Certificat Investitor", docs_cert_d:"Generează PDF numerotat după confirmarea plății.", open:"Deschide",
+    nft_d:"Colecții DIA-10 cu proveniență on-chain. Beneficii pentru susținătorii timpurii.", view_gallery:"Vezi galeria",
+    live_t:"Date Live", live_d:"Date on-chain de bază (exemplu). Înlocuiește cu RPC/contractul tău.",
+    crowd_t:"Crowdfunding", crowd_d:"Alocări pe niveluri, vesting și dashboard transparent. Înscrie-te pe lista de așteptare.", join:"Înscrie-mă",
+	know_a:"Baza de date cu informații", know_b:"Nou în cripto & plăți? Baza de cunoștințe DIA-10 explică totul pe scurt (EN/DE/RO)", join:"Vezi aici →",
+    contact_t:"Contact",
+    contact_n:"Notă: Acesta nu este un sfat financiar. Activele digitale sunt riscante; vă rugăm să efectuați propriile cercetări.",
+    login_title:"Autentificare", login_user:"Email", login_pass:"Parolă", remember:"Reține", login_btn:"Intră",
+
+    nav_markus:"Despre Markus",
+    markus_title:"Despre Markus Goffin",
+    markus_intro:"Peste 35 de ani în bijuterii & diamante: produs, brand, vânzări și rețea internațională (Anvers & Israel). Am construit companii, am poziționat branduri și am livrat inovații — acum, focalizat pe DIA-10.",
+    markus_highlights_t:"Repere",
+    markus_h1:"Inovație: „Rubin pe șina interioară a inelului®” (patent internațional) & „Inelul care atrage®”.",
+    markus_h2:"Construirea afacerii: MODEGO, AMORE DUE®, co-owner DORA® (Istanbul); leadership CI/marketing & târguri.",
+    markus_h3:"Rețea: conexiuni solide în Anvers & Israel pentru tranzacții și expertiză în diamante.",
+    markus_h4:"Formare: diamante, pietre prețioase, orfevrărie & ceasornicărie; marketing, web design & consultanță.",
+    markus_h5:"Conector: valoare reală (diamante) × blockchain modern — narativ clar, procese auditate.",
+    markus_motto:"Motto: „Valorile reale merită viziuni reale.”",
+    markus_profile_t:"Profil & Contact",
+    markus_role:"Fondator & Strategy Lead DIA-10",
+    markus_expertise:"Diamante, Branding, Tokenomics, GTM",
+    markus_network:"Anvers • Israel • UE",
+    markus_cv:"Descarcă Profil (PDF)",
+    markus_contact:"Contact",
+
+    
+    f_imprint:"Imprint", f_terms:"Termeni", f_privacy:"Confidențialitate", f_contact:"Contact", f_press:"Dosar de presă", f_github:"On GitHub©",
+    f_disclaimer:"Acesta nu este un sfat financiar. Activele digitale sunt riscante; cercetați pe cont propriu."
+  }
+};
+
+let currentLang = 'en';
+document.addEventListener('DOMContentLoaded', () => applyLang('en'));
+
+function updateLangBlocks(){
+  document.querySelectorAll('.lang-block').forEach(el=>{
+    el.style.display = el.classList.contains('lang-'+currentLang) ? 'block' : 'none';
+  });
+}
+
+function applyLang(lang){
+  currentLang = lang;
+  localStorage.setItem('dia10_lang', lang);
+
+  
+  document.documentElement.setAttribute('lang', lang);
+  window.currentLang = lang;
+
+ 
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const key = el.getAttribute('data-i18n');
+    if(i18n[lang] && i18n[lang][key]) el.textContent = i18n[lang][key];
+  });
+
+
+  document.querySelectorAll('.langbtn').forEach(b=>{
+    const on = b.dataset.lang === lang;
+    b.classList.toggle('active', on);
+    b.setAttribute('aria-pressed', on);
+  });
+
+  updateLangBlocks();
+}
+
+
+document.querySelectorAll('.langbtn').forEach(b=>{
+  b.addEventListener('click', (e)=>{
+    applyLang(e.currentTarget.dataset.lang);
+  });
+});
+document.addEventListener('DOMContentLoaded', ()=> applyLang(currentLang || 'en'));
+
+
+
+const modal = document.getElementById('loginModal');
+document.getElementById('openLogin').onclick = () => modal.classList.add('open');
+document.getElementById('closeLogin').onclick = () => modal.classList.remove('open');
+document.getElementById('doLogin').onclick = () => {
+  const email = document.getElementById('loginEmail').value.trim();
+  const pass = document.getElementById('loginPass').value.trim();
+  const err = document.getElementById('loginErr');
+  if(!email || !pass){ err.textContent = 'Missing credentials.'; return; }
+  err.textContent = '';
+  if(document.getElementById('remember').checked){
+    localStorage.setItem('dia10_user', email);
+  }
+  modal.classList.remove('open');
+  alert('Logged in (demo). Gate your premium pages here.');
+};
+
+
+{
+  const joinBtn = document.getElementById('joinWait');
+  const emailEl = document.getElementById('waitEmail');
+  const msgEl   = document.getElementById('waitMsg');
+  if (joinBtn && emailEl && msgEl) {
+    joinBtn.addEventListener('click', () => {
+      const email = (emailEl.value || '').trim();
+      if(!email){ msgEl.textContent = 'Enter a valid email.'; return; }
+      msgEl.textContent = 'Thanks! You are on the list.';
+    });
+  }
+}
+
+
+
+const c = document.getElementById('bgParticles');
+const ctx = c.getContext('2d');
+
+let w, h, dpr, particles = [];
+const COUNT = 90;
+const LINK_DIST = 110;
+const POINTER_LINK_DIST = 140;
+const DIAMOND_RADIUS = 120;   
+const ATTRACT_STRENGTH = 0.015; 
+const FRICTION = 0.98;
+const MAX_SPEED = 0.1;
+
+const pointer = { x: 0, y: 0, active: false };
+
+function resize() {
+  dpr = Math.max(1, window.devicePixelRatio || 1);
+  w = c.width = Math.floor(window.innerWidth  * dpr);
+  h = c.height = Math.floor(Math.max(window.innerHeight * 0.92, 560) * dpr);
+  c.style.width = Math.floor(w / dpr) + 'px';
+  c.style.height = Math.floor(h / dpr) + 'px';
+  ctx.setTransform(1,0,0,1,0,0);
+  ctx.scale(dpr, dpr);
+}
+window.addEventListener('resize', resize);
+resize();
+
+function rand(min, max){ return Math.random()*(max-min)+min; }
+
+function makeParticles(){
+  const cssW = w / dpr, cssH = h / dpr;
+  particles = Array.from({length: COUNT}, () => ({
+    x: Math.random()*cssW,
+    y: Math.random()*cssH,
+    r: Math.random()*2 + 0.6,
+    vx: rand(-0.4, 0.4),
+    vy: rand(-0.4, 0.4)
+  }));
+}
+makeParticles();
+
+
+function toLocal(e){
+  const rect = c.getBoundingClientRect();
+  return {
+    x: (e.clientX - rect.left),
+    y: (e.clientY - rect.top)
+  };
+}
+c.addEventListener('mouseenter', e => { pointer.active = true; });
+c.addEventListener('mouseleave', e => { pointer.active = false; });
+c.addEventListener('mousemove', e => {
+  const p = toLocal(e);
+  pointer.x = p.x;
+  pointer.y = p.y;
+});
+
+function clamp(v, min, max){ return v < min ? min : v > max ? max : v; }
+
+function drawDiamond(x, y, size, glow = 0.18){
+  const s  = size;              
+  const cH = 0.50 * s;         
+  const pH = 1.10 * s;          
+  const gW = 1.15 * s;          
+  const tW = 0.55 * s;         
+
+  
+  const leftG  = { x: x - gW,        y: y };
+  const crownL = { x: x - 0.65*gW,   y: y - 0.55*cH };
+  const tableL = { x: x - tW,        y: y - cH };
+  const tableR = { x: x + tW,        y: y - cH };
+  const crownR = { x: x + 0.65*gW,   y: y - 0.55*cH };
+  const rightG = { x: x + gW,        y: y };
+  const tip    = { x: x,             y: y + pH };
+
+ 
+  ctx.save();
+  ctx.beginPath();
+  ctx.moveTo(leftG.x,  leftG.y);
+  ctx.lineTo(crownL.x, crownL.y);
+  ctx.lineTo(tableL.x, tableL.y);
+  ctx.lineTo(tableR.x, tableR.y);
+  ctx.lineTo(crownR.x, crownR.y);
+  ctx.lineTo(rightG.x, rightG.y);
+  ctx.lineTo(tip.x,    tip.y);
+  ctx.closePath();
+
+  
+  const g = ctx.createLinearGradient(x, y - cH, x, y + pH);
+  g.addColorStop(0.00, `rgba(233,243,255,${0.90 + glow})`); 
+  g.addColorStop(0.55, `rgba(170,215,255,${0.75})`);
+  g.addColorStop(1.00, `rgba(73,179,255,${0.85})`);         
+  ctx.fillStyle = g;
+  ctx.fill();
+
+
+  ctx.lineWidth = 1.2;
+  ctx.strokeStyle = 'rgba(255,255,255,0.85)';
+  ctx.stroke();
+
+ 
+  ctx.beginPath();
+  ctx.moveTo(leftG.x, leftG.y);
+  ctx.lineTo(rightG.x, rightG.y);
+  ctx.strokeStyle = 'rgba(255,255,255,0.55)';
+  ctx.lineWidth = 0.9;
+  ctx.stroke();
+
+ 
+  ctx.beginPath();
+  ctx.moveTo(tableL.x, tableL.y);
+  ctx.lineTo(tableR.x, tableR.y);
+  ctx.strokeStyle = 'rgba(255,255,255,0.55)';
+  ctx.lineWidth = 0.9;
+  ctx.stroke();
+
+  
+  const tableC = { x, y: y - cH }; 
+  ctx.strokeStyle = 'rgba(255,255,255,0.45)';
+  ctx.lineWidth = 0.8;
+
+  
+  ctx.beginPath();
+  ctx.moveTo(tableL.x, tableL.y); ctx.lineTo(tip.x, tip.y);
+  ctx.moveTo(tableR.x, tableR.y); ctx.lineTo(tip.x, tip.y);
+  ctx.moveTo(tableC.x, tableC.y); ctx.lineTo(tip.x, tip.y);
+ 
+  ctx.moveTo(crownL.x, crownL.y); ctx.lineTo(tableC.x, tableC.y);
+  ctx.moveTo(crownR.x, crownR.y); ctx.lineTo(tableC.x, tableC.y);
+  ctx.stroke();
+
+  
+  ctx.globalCompositeOperation = 'lighter';
+  ctx.shadowColor = 'rgba(160,210,255,0.45)';
+  ctx.shadowBlur  = 12;
+  ctx.beginPath();
+  ctx.moveTo(leftG.x,  leftG.y);
+  ctx.lineTo(crownL.x, crownL.y);
+  ctx.lineTo(tableL.x, tableL.y);
+  ctx.lineTo(tableR.x, tableR.y);
+  ctx.lineTo(crownR.x, crownR.y);
+  ctx.lineTo(rightG.x, rightG.y);
+  ctx.lineTo(tip.x,    tip.y);
+  ctx.closePath();
+  ctx.strokeStyle = 'rgba(160,210,255,0.35)';
+  ctx.lineWidth = 0.6;
+  ctx.stroke();
+
+  
+  ctx.globalCompositeOperation = 'source-over';
+  ctx.beginPath();
+  ctx.moveTo(x - 0.20*tW, y - cH - 0.2*s);
+  ctx.lineTo(x + 0.20*tW, y - cH + 0.2*s);
+  ctx.moveTo(x + 0.20*tW, y - cH - 0.2*s);
+  ctx.lineTo(x - 0.20*tW, y - cH + 0.2*s);
+  ctx.strokeStyle = 'rgba(255,255,255,0.60)';
+  ctx.lineWidth = 0.7;
+  ctx.stroke();
+
+  ctx.restore();
+}
+
+function step(){
+  
+  ctx.clearRect(0, 0, w/dpr, h/dpr);
+
+  
+  for (let i = 0; i < particles.length; i++){
+    const p = particles[i];
+
+    
+    p.vx += rand(-0.02, 0.02);
+    p.vy += rand(-0.02, 0.02);
+
+    
+    if (pointer.active){
+      const dx = pointer.x - p.x;
+      const dy = pointer.y - p.y;
+      const dist = Math.hypot(dx, dy);
+     
+      const pull = ATTRACT_STRENGTH * (1 + (DIAMOND_RADIUS / Math.max(40, dist)));
+      p.vx += dx * pull * 0.02;
+      p.vy += dy * pull * 0.02;
+    }
+
+   
+    const sp = Math.hypot(p.vx, p.vy);
+    if (sp > MAX_SPEED){
+      p.vx = (p.vx / sp) * MAX_SPEED;
+      p.vy = (p.vy / sp) * MAX_SPEED;
+    }
+    p.vx *= FRICTION;
+    p.vy *= FRICTION;
+
+   
+    p.x += p.vx;
+    p.y += p.vy;
+
+    
+    const cssW = w/dpr, cssH = h/dpr;
+    if (p.x < 0 || p.x > cssW) p.vx *= -1;
+    if (p.y < 0 || p.y > cssH) p.vy *= -1;
+
+   
+    let drawAsDiamond = false, distToPointer = Infinity;
+    if (pointer.active){
+      const dx = pointer.x - p.x;
+      const dy = pointer.y - p.y;
+      distToPointer = Math.hypot(dx, dy);
+      drawAsDiamond = distToPointer < DIAMOND_RADIUS;
+    }
+
+    if (drawAsDiamond){
+      
+      const t = 1 - (distToPointer / DIAMOND_RADIUS);
+      const size = clamp(p.r * (6 + t * 10), 4, 18);
+      drawDiamond(p.x, p.y, size, 0.12 + t*0.25);
+    } else {
+     
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI*2);
+      ctx.fillStyle = 'rgba(121,196,255,.9)';
+      ctx.fill();
+    }
+  }
+
+  
+  for (let i = 0; i < particles.length; i++){
+    const p = particles[i];
+    for (let j = i+1; j < particles.length; j++){
+      const q = particles[j];
+      const dx = p.x - q.x, dy = p.y - q.y;
+      const dist = Math.hypot(dx, dy);
+      if (dist < LINK_DIST){
+        const alpha = (1 - dist/LINK_DIST) * 0.12;
+        ctx.strokeStyle = `rgba(121,196,255,${alpha})`;
+        ctx.lineWidth = 1;
+        ctx.beginPath();
+        ctx.moveTo(p.x, p.y);
+        ctx.lineTo(q.x, q.y);
+        ctx.stroke();
+      }
+    }
+  }
+
+  
+  if (pointer.active){
+    for (const p of particles){
+      const dx = pointer.x - p.x, dy = pointer.y - p.y;
+      const dist = Math.hypot(dx, dy);
+      if (dist < POINTER_LINK_DIST){
+        const alpha = (1 - dist/POINTER_LINK_DIST) * 0.25;
+        ctx.strokeStyle = `rgba(121,196,255,${alpha})`;
+        ctx.lineWidth = 1;
+        ctx.beginPath();
+        ctx.moveTo(p.x, p.y);
+        ctx.lineTo(pointer.x, pointer.y);
+        ctx.stroke();
+      }
+    }
+
+   
+    ctx.beginPath();
+    ctx.arc(pointer.x, pointer.y, 6, 0, Math.PI*2);
+    ctx.fillStyle = 'rgba(180,220,255,0.35)';
+    ctx.fill();
+  }
+
+  requestAnimationFrame(step);
+}
+step();
+
+
+const TOKEN = {
+  address: '0xd9145CCE52D386f254917e481eB44e9943F39138', 
+  chainIdDec: 11155111,
+  chainIdHex: '0xAA36A7',
+  rpcUrl: 'https://ethereum-sepolia-rpc.publicnode.com'
+}
+
+const el = {
+  netName: document.getElementById('netName'),
+  tokenAddr: document.getElementById('tokenAddr'),
+  tokenSymbol: document.getElementById('tokenSymbol'),
+  tokenDecimals: document.getElementById('tokenDecimals'),
+  totSupply: document.getElementById('totSupply'),
+  walletAddr: document.getElementById('walletAddr'),
+  walletBal: document.getElementById('walletBal'),
+  msg: document.getElementById('liveMsg'),
+  btnConnect: document.getElementById('btnConnect'),
+  btnSwitch: document.getElementById('btnSwitch'),
+  btnImport: document.getElementById('btnImport'),
+  btnRefresh: document.getElementById('btnRefresh'),
+  linkEtherscan: document.getElementById('linkEtherscan'),
+  linkMM: document.getElementById('linkMM')
+};
+
+function setMsg(t){ el.msg.textContent = t; }
+function fmtUnits(v, d){ try { return ethers.formatUnits(v, d); } catch { return String(v); } }
+function short(addr){ return addr ? addr.slice(0,6)+'…'+addr.slice(-4) : '—'; }
+
+function loadScript(src){
+  return new Promise((res,rej)=>{
+    const s=document.createElement('script'); s.src=src; s.onload=res; s.onerror=rej; document.head.appendChild(s);
+  });
+}
+
+async function ensureEthers(){
+  if(!window.ethers){
+    await loadScript('https://cdn.jsdelivr.net/npm/ethers@6.12.1/dist/ethers.min.js');
+  }
+}
+
+let rpcProvider=null, contractRPC=null, mmProvider=null, signer=null, account=null, walletChainId=null;
+
+async function initLive(){
+  
+  el.tokenAddr.textContent = TOKEN.address;
+  el.linkEtherscan.href = `https://sepolia.etherscan.io/token/${TOKEN.address}`;
+  el.linkMM.href = `chrome-extension://nkbihfbeogaeaoehlefnkodbefgpgknn/home.html#asset/${TOKEN.chainIdHex.toLowerCase()}/${TOKEN.address}`;
+
+  try{
+    await ensureEthers();
+    rpcProvider = new ethers.JsonRpcProvider(TOKEN.rpcUrl);
+    const erc20ABI = [
+      "function name() view returns (string)",
+      "function symbol() view returns (string)",
+      "function decimals() view returns (uint8)",
+      "function totalSupply() view returns (uint256)",
+      "function balanceOf(address) view returns (uint256)"
+    ];
+    contractRPC = new ethers.Contract(TOKEN.address, erc20ABI, rpcProvider);
+
+    await loadStatic(); 
+  }catch(e){
+    console.error(e);
+    setMsg('Init fehlgeschlagen (prüfe ethers/RPC).');
+  }
+
+  // Buttons
+  el.btnConnect?.addEventListener('click', connectWallet);
+  el.btnSwitch?.addEventListener('click', switchToSepolia);
+  el.btnImport?.addEventListener('click', importToken);
+  el.btnRefresh?.addEventListener('click', ()=>{ loadStatic(); refreshBalance(); });
+}
+
+async function loadStatic(){
+  try {
+    const net = await rpcProvider.getNetwork();
+    el.netName.textContent = net && net.chainId ? `Sepolia (${Number(net.chainId)})` : 'Sepolia';
+  } catch {
+    el.netName.textContent = 'Sepolia (RPC?)';
+  }
+
+  try {
+    const [sym, dec, total] = await Promise.all([
+      contractRPC.symbol(),
+      contractRPC.decimals(),
+      contractRPC.totalSupply()
+    ]);
+    el.tokenSymbol.textContent = sym;
+    el.tokenDecimals.textContent = dec;
+    el.totSupply.textContent = Number(fmtUnits(total, dec)).toLocaleString('de-DE') + ' ' + sym;
+    setMsg('On-Chain Daten geladen.');
+  }catch(e){
+    console.error(e);
+    setMsg('Token-Daten nicht ladbar (Adresse/Netz prüfen).');
+  }
+}
+
+async function connectWallet(){
+  if(!window.ethereum){ alert('MetaMask nicht gefunden.'); return; }
+  try{
+    const { ethereum } = window;
+    mmProvider = new ethers.BrowserProvider(ethereum);
+    await mmProvider.send('eth_requestAccounts',[]);
+    signer = await mmProvider.getSigner();
+    account = await signer.getAddress();
+    const net = await mmProvider.getNetwork();
+    walletChainId = Number(net.chainId);
+    el.walletAddr.textContent = short(account);
+    setMsg(`Wallet verbunden (Chain ${walletChainId}).`);
+    await refreshBalance();
+
+    if(!ethereum._dia10_bound){
+      ethereum.on('accountsChanged', async (acc)=>{ account = acc[0]||null; el.walletAddr.textContent = short(account); await refreshBalance(); });
+      ethereum.on('chainChanged', async (cid)=>{ walletChainId = Number(cid); await refreshBalance(); guardNetwork(); });
+      ethereum._dia10_bound = true;
+    }
+    guardNetwork();
+  }catch(e){ console.error(e); setMsg('Wallet-Verbindung fehlgeschlagen.'); }
+}
+
+function guardNetwork(){
+  if(walletChainId && walletChainId !== TOKEN.chainIdDec){
+    setMsg(`⚠ MetaMask auf ${walletChainId}. Bitte auf Sepolia wechseln.`);
+  } else if(walletChainId){
+    setMsg('Wallet auf Sepolia ✅');
+  }
+}
+
+async function switchToSepolia(){
+  if(!window.ethereum){ alert('MetaMask nicht gefunden.'); return; }
+  try{
+    await window.ethereum.request({ method: 'wallet_switchEthereumChain', params: [{ chainId: TOKEN.chainIdHex }] });
+  }catch(e){
+    if(e && e.code === 4902){
+      await window.ethereum.request({
+        method:'wallet_addEthereumChain',
+        params: [{
+          chainId: TOKEN.chainIdHex,
+          chainName:'Ethereum Sepolia',
+          rpcUrls:[TOKEN.rpcUrl],
+          nativeCurrency:{ name:'Sepolia ETH', symbol:'ETH', decimals:18 },
+          blockExplorerUrls:['https://sepolia.etherscan.io']
+        }]
+      });
+    } else {
+      console.error(e); alert('Netzwerkwechsel nicht möglich.');
+    }
+  }
+}
+
+async function importToken(){
+  if(!window.ethereum){ alert('MetaMask nicht gefunden.'); return; }
+  try{
+    const [sym, dec] = await Promise.all([ contractRPC.symbol(), contractRPC.decimals() ]);
+    const ok = await window.ethereum.request({
+      method:'wallet_watchAsset',
+      params:{ type:'ERC20', options:{ address:TOKEN.address, symbol:sym, decimals:dec } }
+    });
+    setMsg(ok ? 'Token zu MetaMask hinzugefügt.' : 'Import abgebrochen.');
+  }catch(e){ console.error(e); setMsg('Token-Import nicht möglich.'); }
+}
+
+async function refreshBalance(){
+  try{
+    if(!account){ el.walletBal.textContent='—'; return; }
+    const dec = await contractRPC.decimals().catch(()=>18);
+    const bal = await contractRPC.balanceOf(account);
+    el.walletBal.textContent = Number(fmtUnits(bal, dec)).toLocaleString('de-DE');
+  }catch(e){ console.error(e); el.walletBal.textContent='—'; }
+}
+
+
+window.addEventListener('DOMContentLoaded', initLive);
+
+
+
+
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click', e=>{
+    const id = a.getAttribute('href');
+    if(id.length>1){
+      e.preventDefault();
+      document.querySelector(id).scrollIntoView({behavior:'smooth', block:'start'});
+    }
+  });
+});
+</script>
+
+<script>
+
+const SPONSORS = [
+  { name:"Your Company", url:"https://example.com",
+    tag_en:"Diamond dealer • Antwerp", tag_de:"Diamanthändler • Antwerpen", tag_ro:"Dealer de diamante • Anvers",
+    logo:"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 80'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0' stop-color='%238fb8ff'/><stop offset='1' stop-color='%237fb3ff'/></linearGradient></defs><rect width='200' height='80' rx='12' fill='url(%23g)'/><text x='100' y='46' font-family='Inter, Arial' font-size='16' font-weight='800' fill='white' text-anchor='middle'>YOUR COMPANY</text></svg>"
+  },
+  { name:"Antwerp Diamonds Group", url:"https://example.com/adg",
+    tag_en:"Tier-1 sourcing partner", tag_de:"Tier-1 Sourcing-Partner", tag_ro:"Partener de sourcing Tier-1",
+    logo:"partners/images/dia10.svg"
+  },
+  { name:"Bursa Tel-Aviv Gems", url:"https://example.com/btg",
+    tag_en:"Cut & certification", tag_de:"Schliff & Zertifizierung", tag_ro:"Șlefuire & certificare",
+    logo:"partners/images/DIA10_the_hardest_currency_on_earth_by_markus_goffin.png"
+  }
+];
+
+function sponsorTaglineFor(lang, item){
+  if(lang==='de' && item.tag_de) return item.tag_de;
+  if(lang==='ro' && item.tag_ro) return item.tag_ro;
+  return item.tag_en || item.tag_de || item.tag_ro || '';
+}
+
+function buildSponsors(){
+  const track = document.getElementById('sponsorTrack');
+  if(!track) return;
+  const lang = (window.currentLang || 'en').toLowerCase();
+  track.innerHTML = '';
+ 
+  const frag = document.createDocumentFragment();
+  for(const s of SPONSORS){
+    const a = document.createElement('a');
+    a.className = 'sponsor-card'; a.href = s.url; a.target = '_blank'; a.rel = 'noopener'; a.setAttribute('aria-label', s.name);
+    const wrap = document.createElement('div'); wrap.className = 'sponsor-logo-wrap';
+    const img = document.createElement('img'); img.className = 'sponsor-logo'; img.alt = `${s.name} logo`; img.src = s.logo;
+    wrap.appendChild(img);
+    const meta = document.createElement('div'); meta.className='sponsor-meta';
+    const n = document.createElement('div'); n.className='sponsor-name'; n.textContent = s.name;
+    const t = document.createElement('div'); t.className='sponsor-tag'; t.textContent = sponsorTaglineFor(lang, s);
+    meta.append(n,t); a.append(wrap, meta); frag.appendChild(a);
+  }
+
+  const set1 = document.createElement('div'); set1.style.display='contents'; set1.appendChild(frag);
+  const set2 = document.createElement('div'); set2.style.display='contents'; set2.innerHTML = set1.innerHTML;
+  track.append(set1, set2);
+
+  
+  requestAnimationFrame(()=>{
+    const loop = track.scrollWidth / 2; // Breite eines Sets
+    const seconds = Math.max(18, Math.round(loop * 0.012)); 
+    track.style.setProperty('--loop-distance', `${loop}px`);
+    track.style.setProperty('--speed', `${seconds}s`);
+  });
+
+ 
+  const marquee = track.closest('.sponsor-marquee');
+  if (marquee && !marquee._bound) {
+    marquee.addEventListener('mouseenter', ()=> track.style.animationPlayState='paused');
+    marquee.addEventListener('mouseleave', ()=> track.style.animationPlayState='running');
+    marquee._bound = true;
+  }
+}
+
+
+document.querySelectorAll('.langbtn').forEach(b=> b.addEventListener('click', ()=> setTimeout(buildSponsors, 0)));
+window.addEventListener('load', buildSponsors);
+window.addEventListener('resize', buildSponsors);
+
+
+const today = new Date().toLocaleDateString('de-DE');
+['legalDateDE','termsDateDE','legalDateEN','termsDateEN','legalDateRO','termsDateRO']
+  .forEach(id=>{ const n=document.getElementById(id); if(n) n.textContent = today; });
+</script>
+
+
+
+<section id="imprint" class="legal-section">
+  <div class="legal">
+    <h3>Impressum / Legal Notice</h3>
+
+ 
+    <div class="lang-block lang-de">
+      <h4>Angaben nach § 5 TMG</h4>
+      <p><b>Anbieter:</b> MAGO SERVICE TRADE SRL<br>
+      Aleea Textilistilor Nr. 1 – BL. MY1, Sc. 1, App. 16, Sector 3, 032801 București, Rumänien<br>
+      Handelsregister: J40/5941/2015 · USt-ID/CUI: 34523632<br>
+      Vertretungsberechtigt/Administrator: Markus Goffin</p>
+      <p><b>Kontakt:</b> Tel. +40 (0) 752 30 77 11 · E-Mail: <a href="mailto:mgoffin@web.de">mgoffin@web.de</a></p>
+      <p><b>Inhaltlich Verantwortlicher gem. § 18 Abs. 2 MStV:</b> Markus Goffin, Anschrift wie oben.</p>
+      <h4>Haftung & Urheberrecht</h4>
+      <p>Alle Inhalte wurden mit Sorgfalt erstellt, dennoch ohne Gewähr für Richtigkeit/Vollständigkeit.
+      Für externe Links wird keine Haftung übernommen; für deren Inhalte sind ausschließlich deren Betreiber verantwortlich.
+      Texte, Grafiken & Marken sind urheberrechtlich geschützt.</p>
+      <p><b>ODR-Plattform:</b> <a href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noopener">
+      https://ec.europa.eu/consumers/odr</a></p>
+      <p class="tiny">Stand: <span id="legalDateDE"></span></p>
+    </div>
+
+    
+    <div class="lang-block lang-en">
+      <h4>Provider</h4>
+      <p><b>Operator:</b> MAGO SERVICE TRADE SRL<br>
+      Aleea Textilistilor Nr. 1 – BL. MY1, Sc. 1, App. 16, Sector 3, 032801 Bucharest, Romania<br>
+      Trade Register: J40/5941/2015 · VAT/CUI: 34523632<br>
+      Representative/Administrator: Markus Goffin</p>
+      <p><b>Contact:</b> +40 (0) 752 30 77 11 · <a href="mailto:mgoffin@web.de">mgoffin@web.de</a></p>
+      <h4>Liability & IP</h4>
+      <p>Information is provided “as is” without warranty. We are not responsible for external websites linked here.
+      Content, graphics and trademarks are protected by copyright.</p>
+      <p><b>EU ODR platform:</b> <a href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noopener">
+      https://ec.europa.eu/consumers/odr</a></p>
+      <p class="tiny">Last updated: <span id="legalDateEN"></span></p>
+    </div>
+
+   
+    <div class="lang-block lang-ro">
+      <h4>Date de identificare</h4>
+      <p><b>Operator:</b> MAGO SERVICE TRADE SRL<br>
+      Aleea Textilistilor Nr. 1 – BL. MY1, Sc. 1, Ap. 16, Sector 3, 032801 București, România<br>
+      Registrul Comerțului: J40/5941/2015 · CUI: 34523632<br>
+      Reprezentant/Administrator: Markus Goffin</p>
+      <p><b>Contact:</b> +40 (0) 752 30 77 11 · <a href="mailto:mgoffin@web.de">mgoffin@web.de</a></p>
+      <h4>Răspundere & Drepturi de autor</h4>
+      <p>Informațiile sunt furnizate fără garanții. Nu răspundem pentru site-uri externe. Conținutul și mărcile sunt protejate.</p>
+      <p><b>Platforma SOL:</b> <a href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noopener">
+      https://ec.europa.eu/consumers/odr</a></p>
+      <p class="tiny">Ultima actualizare: <span id="legalDateRO"></span></p>
+    </div>
+  </div>
+</section>
+
+
+<section id="terms" class="legal-section">
+  <div class="legal">
+    <h3>AGB / Terms of Use</h3>
+
+    
+    <div class="lang-block lang-de">
+      <h4>1. Geltungsbereich</h4>
+      <p>Diese AGB gelten für die Website, Kommunikationskanäle und optionale Angebote rund um „DIA-10“ der MAGO SERVICE TRADE SRL.</p>
+      <h4>2. Keine Anlageberatung / Kein Angebot</h4>
+      <p>Alle Inhalte dienen ausschließlich Informations- und Marketingzwecken und stellen weder Anlageberatung noch ein Angebot zum Erwerb
+      von Finanzinstrumenten dar.</p>
+      <h4>3. Compliance & Berechtigung</h4>
+      <p>Nutzer sind verantwortlich, lokale Gesetze einzuhalten. Wir können KYC/AML-Prüfungen verlangen und Nutzer aus sanktionierten
+      Jurisdiktionen ausschließen.</p>
+      <h4>4. Käufe & Zertifikate</h4>
+      <p>Nummerierte Investorenzertifikate werden nach Zahlungseingang ausgestellt. Es besteht kein Anspruch auf Wertentwicklung.
+      Rückerstattungen erfolgen nur, soweit gesetzlich zwingend.</p>
+      <h4>5. Geistiges Eigentum</h4>
+      <p>Marke „DIA-10“, Grafiken und Inhalte sind geschützt. Jegliche Nutzung bedarf der Zustimmung.</p>
+      <h4>6. Haftung</h4>
+      <p>Haftung bei Vorsatz und grober Fahrlässigkeit; im Übrigen ist die Haftung im gesetzlich zulässigen Umfang ausgeschlossen.</p>
+      <h4>7. Änderungen</h4>
+      <p>Wir können diese AGB anpassen. Es gilt die jeweils veröffentlichte Fassung.</p>
+      <h4>8. Recht & Gerichtsstand</h4>
+      <p>Es gilt rumänisches Recht unter Wahrung zwingender Verbraucherrechte der EU. Gerichtsstand: Bukarest.</p>
+      <h4>9. Kontakt</h4>
+      <p><a href="mailto:mgoffin@web.de">mgoffin@web.de</a> · +40 (0) 752 30 77 11</p>
+      <p class="tiny">Stand: <span id="termsDateDE"></span></p>
+    </div>
+
+  
+    <div class="lang-block lang-en">
+      <h4>1. Scope</h4>
+      <p>These Terms govern the website, communications and optional offerings related to “DIA-10” operated by MAGO SERVICE TRADE SRL.</p>
+      <h4>2. No Investment Advice / No Offer</h4>
+      <p>Content is for information and marketing only and does not constitute investment advice or an offer to sell financial instruments.</p>
+      <h4>3. Compliance & Eligibility</h4>
+      <p>Users must comply with local laws. We may request KYC/AML checks and restrict access from sanctioned jurisdictions.</p>
+      <h4>4. Purchases & Certificates</h4>
+      <p>Numbered investor certificates are issued after payment confirmation. No promise of future value; refunds only where required by law.</p>
+      <h4>5. Intellectual Property</h4>
+      <p>“DIA-10” brand, graphics and content are protected. Any reuse requires prior consent.</p>
+      <h4>6. Liability</h4>
+      <p>Liability exists for intent and gross negligence; otherwise limited to the extent permitted by law.</p>
+      <h4>7. Changes</h4>
+      <p>We may update these Terms. The currently published version applies.</p>
+      <h4>8. Governing Law & Venue</h4>
+      <p>Romanian law, preserving mandatory EU consumer rights. Venue: Bucharest.</p>
+      <h4>9. Contact</h4>
+      <p><a href="mailto:mgoffin@web.de">mgoffin@web.de</a> · +40 (0) 752 30 77 11</p>
+      <p class="tiny">Last updated: <span id="termsDateEN"></span></p>
+    </div>
+
+    
+    <div class="lang-block lang-ro">
+      <h4>1. Domeniu de aplicare</h4>
+      <p>Acești Termeni se aplică site-ului, comunicărilor și ofertelor opționale legate de „DIA-10”, operate de MAGO SERVICE TRADE SRL.</p>
+      <h4>2. Fără consultanță investițională / Fără ofertă</h4>
+      <p>Conținutul are scop informativ și de marketing și nu reprezintă consultanță sau ofertă de instrumente financiare.</p>
+      <h4>3. Conformitate & Eligibilitate</h4>
+      <p>Utilizatorii respectă legile locale. Putem solicita verificări KYC/AML și restricționa accesul din jurisdicții sancționate.</p>
+      <h4>4. Achiziții & Certificate</h4>
+      <p>Certificatele numerotate se emit după confirmarea plății. Nu există garanții privind evoluția valorii; rambursări doar dacă legea impune.</p>
+      <h4>5. Proprietate intelectuală</h4>
+      <p>Marca „DIA-10”, grafica și conținutul sunt protejate. Orice reutilizare necesită acord prealabil.</p>
+      <h4>6. Răspundere</h4>
+      <p>Răspundere pentru intenție și neglijență gravă; în rest, în limitele legii.</p>
+      <h4>7. Modificări</h4>
+      <p>Putem actualiza acești Termeni; se aplică versiunea publicată.</p>
+      <h4>8. Lege aplicabilă & For</h4>
+      <p>Legea română, cu respectarea drepturilor obligatorii ale consumatorilor din UE. For: București.</p>
+      <h4>9. Contact</h4>
+      <p><a href="mailto:mgoffin@web.de">mgoffin@web.de</a> · +40 (0) 752 30 77 11</p>
+      <p class="tiny">Ultima actualizare: <span id="termsDateRO"></span></p>
+    </div>
+  </div>
+</section>
+<section id="privacy" class="legal-section">
+  <div class="legal">
+    <h3>Datenschutz / Privacy</h3>
+
+    <div class="lang-block lang-de">
+      <h4>1. Verantwortlicher</h4>
+      <p>MAGO SERVICE TRADE SRL, Aleea Textilistilor Nr. 1, 032801 Bukarest · <a href="mailto:mgoffin@web.de">mgoffin@web.de</a></p>
+      <h4>2. Zwecke & Rechtsgrundlagen</h4>
+      <p>Webseiten-Betrieb, Kommunikation und Marketing (Art. 6 Abs. 1 lit. b,f DSGVO). Optionale Newsletter nur mit Einwilligung (lit. a).</p>
+      <h4>3. Empfänger & Drittland</h4>
+      <p>Dienstleister (Hosting/Analytics) – nur auf Grundlage von Verträgen/Auftragsverarbeitung; ggf. Drittländer mit Garantien.</p>
+      <h4>4. Speicherdauer</h4>
+      <p>So kurz wie nötig; gesetzliche Aufbewahrungsvorschriften bleiben unberührt.</p>
+      <h4>5. Rechte</h4>
+      <p>Auskunft, Berichtigung, Löschung, Einschränkung, Widerspruch, Datenübertragbarkeit, Beschwerde bei einer Aufsichtsbehörde.</p>
+      <h4>6. Kontakt</h4>
+      <p><a href="mailto:mgoffin@web.de">mgoffin@web.de</a></p>
+    </div>
+
+    <div class="lang-block lang-en">
+      <h4>1. Controller</h4>
+      <p>MAGO SERVICE TRADE SRL, Aleea Textilistilor Nr. 1, 032801 Bucharest · <a href="mailto:mgoffin@web.de">mgoffin@web.de</a></p>
+      <h4>2. Purposes & Legal Basis</h4>
+      <p>Website operation, communications and marketing (Art. 6(1)(b),(f) GDPR). Optional newsletters with consent (Art. 6(1)(a)).</p>
+      <h4>3. Recipients & Third Countries</h4>
+      <p>Service providers (hosting/analytics) under processing agreements; third-country transfers with safeguards.</p>
+      <h4>4. Storage</h4>
+      <p>Kept as long as necessary; statutory retention may apply.</p>
+      <h4>5. Your Rights</h4>
+      <p>Access, rectification, erasure, restriction, objection, portability, and the right to complain to a supervisory authority.</p>
+      <h4>6. Contact</h4>
+      <p><a href="mailto:mgoffin@web.de">mgoffin@web.de</a></p>
+    </div>
+
+    <div class="lang-block lang-ro">
+      <h4>1. Operator</h4>
+      <p>MAGO SERVICE TRADE SRL, Aleea Textilistilor Nr. 1, 032801 București · <a href="mailto:mgoffin@web.de">mgoffin@web.de</a></p>
+      <h4>2. Scop & Temei</h4>
+      <p>Operare site, comunicare și marketing (Art. 6(1)(b),(f) GDPR). Newsletter opțional cu consimțământ (Art. 6(1)(a)).</p>
+      <h4>3. Destinatari & Țări terțe</h4>
+      <p>Furnizori (hosting/analitice) pe bază de contract; transferuri în țări terțe cu garanții.</p>
+      <h4>4. Păstrare</h4>
+      <p>Cât este necesar; pot exista perioade legale de stocare.</p>
+      <h4>5. Drepturi</h4>
+      <p>Acces, rectificare, ștergere, restricționare, opoziție, portabilitate, plângere la autoritate.</p>
+      <h4>6. Contact</h4>
+      <p><a href="mailto:mgoffin@web.de">mgoffin@web.de</a></p>
+    </div>
+  </div>
+</section>
+<script>
+
+(function(){
+  function setDates(){
+    const loc = (window.currentLang || 'en') === 'de' ? 'de-DE'
+               : (window.currentLang || 'en') === 'ro' ? 'ro-RO'
+               : 'en-GB';
+    const today = new Date().toLocaleDateString(loc);
+    ['legalDateDE','termsDateDE','legalDateEN','termsDateEN','legalDateRO','termsDateRO']
+      .forEach(id=>{ const n=document.getElementById(id); if(n) n.textContent=today; });
+  }
+
+  function syncLegal(){
+    if (typeof updateLangBlocks === 'function') updateLangBlocks();
+    setDates();
+  }
+
+  
+  document.addEventListener('DOMContentLoaded', syncLegal);
+
+  
+  document.querySelectorAll('.langbtn').forEach(b=>{
+    b.addEventListener('click', ()=> { syncLegal(); });
+  });
+})();
+</script>
+<!-- ===== DIA-10 Cookie Consent (drop-in) ===== -->
+<style>
+  :root{
+    --bg:#0a1430; --panel:#0d1a3a; --ink:#f3f7ff; --muted:#b9c7da;
+    --blue:#1b6fff; --cyan:#74c7ff; --silver:#c9d3df;
+    --ok:#11d09a; --warn:#ffcf4a; --bad:#ff6b7a;
+    --radius:16px; --shadow:0 10px 28px rgba(0,0,0,.35);
+  }
+  /* floating trigger */
+  .cc-trigger{
+    position:fixed; left:16px; bottom:16px; z-index:9997;
+    background:#0a1d44; color:var(--ink); border:1px solid rgba(255,255,255,.12);
+    padding:10px 12px; border-radius:12px; font:600 14px/1 Inter,system-ui,sans-serif;
+    display:flex; align-items:center; gap:8px; cursor:pointer; box-shadow:var(--shadow);
+  }
+  .cc-trigger svg{width:18px;height:18px}
+
+  /* banner + modal shell */
+  .cc-overlay{
+    position:fixed; inset:0; background:rgba(5,10,20,.55); backdrop-filter:blur(4px);
+    display:none; z-index:9998;
+  }
+  .cc-overlay.show{display:block}
+
+  .cc-card{
+    position:fixed; left:50%; transform:translateX(-50%);
+    bottom:18px; width:min(980px, calc(100% - 24px));
+    background:linear-gradient(180deg,#0d1a3a,#0a1531);
+    border:1px solid rgba(255,255,255,.12);
+    border-radius:var(--radius); color:var(--ink); box-shadow:var(--shadow);
+    padding:16px; z-index:9999;
+  }
+  .cc-top{display:flex; gap:12px; align-items:flex-start}
+  .cc-icon{
+    width:40px; height:40px; border-radius:10px; display:grid; place-items:center;
+    background:linear-gradient(135deg,#0a1d44,#1b6fff 70%,#74c7ff);
+    box-shadow:inset 0 0 0 2px rgba(255,255,255,.06);
+    flex:0 0 auto;
+  }
+  .cc-title{margin:0; font:900 18px/1.2 Inter,system-ui,sans-serif}
+  .cc-text{margin:6px 0 0; color:var(--muted); font:500 14px/1.5 Inter,system-ui,sans-serif}
+  .cc-links a{color:var(--cyan); text-decoration:none}
+  .cc-links a:hover{color:#d7eeff}
+
+  .cc-controls{display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin-top:12px}
+  .cc-btn{
+    background:#0a1d44; color:var(--ink); border:1px solid rgba(255,255,255,.12);
+    border-radius:10px; padding:10px 14px; font:700 14px/1 Inter,system-ui,sans-serif; cursor:pointer;
+  }
+  .cc-btn.primary{background:linear-gradient(90deg,#1b6fff,#74c7ff); color:#07101a; border:none}
+  .cc-btn.ghost{background:transparent}
+  .cc-spacer{flex:1}
+
+  /* category toggles */
+  .cc-cats{
+    display:flex; gap:10px; flex-wrap:wrap; margin-top:10px
+  }
+  .cc-cat{
+    display:flex; align-items:center; gap:10px; padding:10px 12px;
+    background:#0a1d44; border:1px solid rgba(255,255,255,.12); border-radius:12px;
+  }
+  .cc-switch{appearance:none; width:46px; height:26px; border-radius:999px; position:relative;
+    background:#233150; border:1px solid #2b3c63; outline:none; cursor:pointer}
+  .cc-switch::after{
+    content:""; position:absolute; top:2px; left:2px; width:20px; height:20px; border-radius:50%;
+    background:#c9d3df; transition:transform .2s ease;
+  }
+  .cc-switch:checked{background:#0f845e; border-color:#0f845e}
+  .cc-switch:checked::after{transform:translateX(20px)}
+  .cc-lock{opacity:.6}
+  .cc-lock .cc-switch{pointer-events:none; filter:grayscale(.3);}
+
+  /* full settings dialog (optional: same card, centered) */
+  @media (max-width:720px){
+    .cc-card{bottom:8px}
+  }
+</style>
+
+<button id="ccTrigger" class="cc-trigger" type="button" aria-haspopup="dialog" aria-controls="ccOverlay">
+  <!-- gear icon -->
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <circle cx="12" cy="12" r="3"></circle>
+    <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09a1.65 1.65 0 0 0 1.51-1 1.65 1.65 0 0 0-.33-1.82l-.06-.06A2 2 0 1 1 7.04 3.3l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9c0 .64.38 1.22 1 1.51.18.08.37.12.57.12H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+  </svg>
+  <span>Cookie settings</span>
+</button>
+
+<div id="ccOverlay" class="cc-overlay" role="dialog" aria-modal="true" aria-labelledby="ccTitle" aria-describedby="ccDesc">
+  <div class="cc-card" role="document">
+    <div class="cc-top">
+      <div class="cc-icon" aria-hidden="true">
+        <!-- cookie icon -->
+        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#ffffff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20 12a8 8 0 1 1-8-8 3 3 0 0 0 3 3 3 3 0 0 0 3 3 3 3 0 0 0 2 2z"/>
+          <circle cx="8.5" cy="13.5" r="1.25"/>
+          <circle cx="12" cy="9" r="1.25"/>
+          <circle cx="14.5" cy="15" r="1.25"/>
+        </svg>
+      </div>
+      <div>
+        <h2 id="ccTitle" class="cc-title">We use cookies</h2>
+        <p id="ccDesc" class="cc-text">
+          We use necessary cookies for site functionality. With your consent we also use analytics and marketing cookies. 
+          See our <span class="cc-links"><a href="privacy.html" target="_blank" rel="noopener">Privacy Policy</a></span>.
+        </p>
+
+        <div class="cc-cats">
+          <label class="cc-cat cc-lock" title="Always on">
+            <input class="cc-switch" type="checkbox" checked disabled aria-label="Necessary cookies">
+            <span>Necessary</span>
+          </label>
+
+          <label class="cc-cat">
+            <input id="ccAnalytics" class="cc-switch" type="checkbox" aria-label="Analytics cookies">
+            <span>Analytics</span>
+          </label>
+
+          <label class="cc-cat">
+            <input id="ccMarketing" class="cc-switch" type="checkbox" aria-label="Marketing cookies">
+            <span>Marketing</span>
+          </label>
+        </div>
+
+        <div class="cc-controls">
+          <button id="ccReject" class="cc-btn ghost" type="button">Reject all</button>
+          <button id="ccSave" class="cc-btn" type="button">Save selection</button>
+          <div class="cc-spacer"></div>
+          <button id="ccAccept" class="cc-btn primary" type="button">Accept all</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  const KEY='dia10_cookie_v1';
+  const root  = document.getElementById('ccOverlay');
+  const trig  = document.getElementById('ccTrigger');
+  const chkA  = document.getElementById('ccAnalytics');
+  const chkM  = document.getElementById('ccMarketing');
+
+  // i18n
+  const L=(document.documentElement.lang||'en').slice(0,2);
+  const T={
+    en:{title:'We use cookies',desc:'We use necessary cookies for site functionality. With your consent we also use analytics and marketing cookies. See our',
+        settings:'Cookie settings', accept:'Accept all', reject:'Reject all', save:'Save selection',
+        necessary:'Necessary', analytics:'Analytics', marketing:'Marketing', policy:'Privacy Policy'},
+    de:{title:'Wir verwenden Cookies',desc:'Wir setzen technisch notwendige Cookies ein. Mit Ihrer Einwilligung nutzen wir zusätzlich Analyse- und Marketing-Cookies. Mehr dazu in unserer',
+        settings:'Cookie-Einstellungen', accept:'Alle akzeptieren', reject:'Alle ablehnen', save:'Auswahl speichern',
+        necessary:'Notwendig', analytics:'Analyse', marketing:'Marketing', policy:'Datenschutzerklärung'},
+    ro:{title:'Folosim cookie-uri',desc:'Folosim cookie-uri strict necesare. Cu acordul tău folosim și cookie-uri de analiză și marketing. Vezi',
+        settings:'Setări cookie', accept:'Acceptă toate', reject:'Respinge toate', save:'Salvează selecția',
+        necessary:'Necesare', analytics:'Analitice', marketing:'Marketing', policy:'Politica de confidențialitate'}
+  }[(L==='de'||L==='ro')?L:'en'];
+
+  // apply texts
+  document.getElementById('ccTitle').textContent=T.title;
+  document.getElementById('ccDesc').firstChild.textContent = T.desc+' ';
+  document.querySelector('.cc-links a').textContent = T.policy;
+  trig.lastElementChild.textContent=T.settings;
+  document.getElementById('ccAccept').textContent=T.accept;
+  document.getElementById('ccReject').textContent=T.reject;
+  document.getElementById('ccSave').textContent=T.save;
+  document.querySelector('.cc-lock span').textContent=T.necessary;
+  document.querySelector('label[for="ccAnalytics"] span')?.textContent;
+  document.getElementById('ccAnalytics').nextElementSibling.textContent=T.analytics;
+  document.getElementById('ccMarketing').nextElementSibling.textContent=T.marketing;
+
+  // open/close
+  function open(){ root.classList.add('show'); }
+  function close(){ root.classList.remove('show'); }
+  trig.addEventListener('click', open);
+  root.addEventListener('click', (e)=>{ if(e.target===root) close(); });
+  document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') close(); });
+
+  // persistence + apply
+  function load(){ try{ return JSON.parse(localStorage.getItem(KEY)||'null'); }catch{return null;} }
+  function save(p){ localStorage.setItem(KEY, JSON.stringify(p)); apply(p); close(); }
+
+  function apply(p){
+    if(p?.analytics) loadGA();
+    // if(p?.marketing) loadMarketing();
+  }
+
+  // Example: Google Analytics 4 (consent-based load)
+  function loadGA(){
+    if(window.__gaLoaded) return; window.__gaLoaded=true;
+    const s=document.createElement('script');
+    s.async=true;
+    s.src='https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX'; // TODO replace
+    document.head.appendChild(s);
+    window.dataLayer=window.dataLayer||[];
+    function gtag(){ dataLayer.push(arguments); }
+    window.gtag=gtag;
+    gtag('js', new Date());
+    gtag('config','G-XXXXXXX',{anonymize_ip:true});
+  }
+
+  // initial state
+  const pref = load();
+  if(pref){
+    chkA.checked=!!pref.analytics;
+    chkM.checked=!!pref.marketing;
+    apply(pref);
+  }else{
+    // show banner only if no prior choice
+    open();
+  }
+
+  // actions
+  document.getElementById('ccAccept').onclick = ()=> save({necessary:true, analytics:true, marketing:true, ts:Date.now()});
+  document.getElementById('ccReject').onclick = ()=> save({necessary:true, analytics:false, marketing:false, ts:Date.now()});
+  document.getElementById('ccSave').onclick   = ()=> save({necessary:true, analytics:chkA.checked, marketing:chkM.checked, ts:Date.now()});
+})();
+</script>
+<!-- ===== /DIA-10 Cookie Consent ===== -->
+
+</body>
+</html>

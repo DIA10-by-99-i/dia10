@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>DIA-10 | Privacy Policy</title><meta name="description" content="DIA-10: Crowdfunding DIA-10 Convertible Participation Certificates (CPC). Build, learn, and co-own.">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet">
+<meta property="og:title" content="DIA-10 — Decentralized Intelligence Assets">
+<meta property="og:description" content="Join DIA-10. Subscribe via CPC, receive a QR-verified certificate, convert at token launch.">
+<meta property="og:type" content="website">
+<meta name="author" content="Markus Goffin">
+<meta name="last-modified" content="2025-08-01">
+<link rel="icon" type="image/x-icon" href="https://99-i.com/dia10/images/99i_favicon_16x16.ico" sizes="16x16">
+<link rel="icon" type="image/x-icon" href="https://99-i.com/dia10/images/99i_favicon_32x32.ico" sizes="32x32">
+<link rel="icon" type="image/x-icon" href="https://99-i.com/dia10/images/99i_favicon_48x48.ico" sizes="48x48">
+<!-- === SEO: canonical & hreflang (EN default) === -->
+<link rel="canonical" href="https://dia10.io/">
+<link rel="alternate" href="https://dia10.io/" hreflang="en">
+<link rel="alternate" href="https://dia10.de/" hreflang="de">
+<link rel="alternate" href="https://dia10.io/?lang=ro" hreflang="ro">
+<link rel="alternate" href="https://dia10.io/" hreflang="x-default">
+<style>
+  :root{
+    --bg:#0a1430; --panel:#0d1a3a; --ink:#f3f7ff; --muted:#b9c7da;
+    --blue:#1b6fff; --cyan:#74c7ff; --line:rgba(255,255,255,.14);
+    --ok:#11d09a; --warn:#ffcf4a; --bad:#ff6b7a;
+    --radius:18px; --shadow:0 10px 28px rgba(0,0,0,.35);
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0; color:var(--ink); background:
+      radial-gradient(900px 600px at 120% -10%, rgba(116,199,255,.12), transparent 60%),
+      radial-gradient(800px 500px at -20% 10%, rgba(27,111,255,.10), transparent 55%),
+      var(--bg);
+    font:400 16px/1.6 Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  }
+  a{color:#9fd6ff; text-decoration:none}
+  a:hover{color:#d7eeff}
+  /* header */
+  header{position:sticky; top:0; z-index:5; backdrop-filter:blur(8px);
+    background:linear-gradient(180deg,rgba(10,20,48,.88),rgba(10,20,48,.65)); border-bottom:1px solid var(--line)}
+  .nav{max-width:1100px; margin:auto; padding:14px 18px; display:flex; align-items:center; gap:14px}
+  .brand{display:flex; align-items:center; gap:10px; font-weight:900; letter-spacing:.3px}
+  .logo{width:40px; height:40px; border-radius:10px; display:grid; place-items:center;
+        background:linear-gradient(135deg,#0a1d44,#1b6fff 70%,#74c7ff); box-shadow:inset 0 0 0 2px rgba(255,255,255,.06)}
+  .logo svg{width:26px; height:26px; filter:drop-shadow(0 1px 2px rgba(0,0,0,.4))}
+  .spacer{flex:1}
+  .lang{display:flex; gap:8px}
+  .lang button{
+    background:#0a1d44; color:var(--ink); border:1px solid rgba(255,255,255,.12);
+    padding:8px 12px; border-radius:10px; font-weight:700; cursor:pointer
+  }
+  .lang button.active{outline:2px solid #79b3ff66}
+
+  /* layout */
+  .wrap{max-width:1100px; margin:22px auto; padding:0 18px; display:grid; grid-template-columns: 280px 1fr; gap:18px}
+  @media (max-width:980px){ .wrap{grid-template-columns:1fr} }
+  .card{background:linear-gradient(180deg,#0d1a3a,#0a1531); border:1px solid var(--line); border-radius:var(--radius); box-shadow:var(--shadow)}
+  .toc{padding:16px; position:sticky; top:84px; align-self:start}
+  .toc h4{margin:0 0 8px; font:800 14px/1.2 Inter}
+  .toc a{display:block; padding:8px 10px; border-radius:10px; color:var(--muted)}
+  .toc a:hover{background:#0a1d44; color:#e7f2ff}
+  main.card{padding:22px}
+  h1{margin:.2em 0 .4em; font:900 clamp(26px,4vw,38px)/1.15 Inter}
+  h2{margin:1.4em 0 .4em; font:800 20px/1.2 Inter}
+  h3{margin:1.2em 0 .3em; font:700 16px/1.2 Inter; color:#cfe2ff}
+  .muted{color:var(--muted)}
+  .kv{display:flex; flex-wrap:wrap; gap:10px}
+  .kv .pill{background:#0a1d44; border:1px solid var(--line); border-radius:12px; padding:8px 10px; font-size:14px}
+  table{width:100%; border-collapse:separate; border-spacing:0; margin:.6em 0 1.2em}
+  th, td{padding:10px 12px; border-bottom:1px solid var(--line)}
+  th{background:#0c1938; text-align:left}
+  code{background:#09142e; border:1px solid var(--line); padding:2px 6px; border-radius:6px}
+  .note{border-left:3px solid #3f6cff; padding:10px 12px; background:#0a1d44; color:#e6f2ff; border-radius:10px}
+  .ok{color:var(--ok)} .warn{color:var(--warn)} .bad{color:var(--bad)}
+  .foot{margin-top:16px; color:#9fb3c8; font-size:13px}
+  .divider{height:1px; background:var(--line); margin:14px 0}
+</style>
+</head>
+<body>
+<header>
+  <nav class="nav">
+    <div class="brand">
+      <div class="logo" aria-hidden="true">
+        <!-- refined diamond glyph -->
+        <svg viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M3 9l9-6 9 6-9 12-9-12zM12 3v18M3 9h18M7 9l5 12m5-12l-5 12"/>
+        </svg>
+      </div>
+      <div>DIA-10</div>
+    </div>
+    <div class="spacer"></div>
+    <div class="lang">
+      <button class="langbtn active" data-lang="en" type="button">EN</button>
+      <button class="langbtn" data-lang="de" type="button">DE</button>
+      <button class="langbtn" data-lang="ro" type="button">RO</button>
+    </div>
+  </nav>
+</header>
+
+<div class="wrap">
+  <!-- TOC -->
+  <aside class="card toc" id="toc">
+    <h4>Sections</h4>
+    <div id="tocLinks"></div>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="card">
+    <div id="content-en" class="langblock">
+      <h1>Privacy Policy</h1>
+      <div class="muted">Last updated: <span class="uDate">28 Aug 2025</span></div>
+
+      <p>MAGO SERVICE TRADE SRL (“<b>we</b>”, “<b>us</b>”, “<b>DIA-10</b>”) is committed to protecting your privacy. This Policy explains how we collect, use and disclose personal data when you use <code>https://99-i.com/</code> and <code>https://99-i.com/dia10/</code> (the “<b>Service</b>”).</p>
+
+      <div class="note">Key idea: we run a lightweight website and a self-service crowdfunding page that generates a certificate PDF locally in your browser. We only process personal data that you provide to us (e.g., email when you contact us or send us your certificate).</div>
+
+      <h2 id="controller">1) Controller & Contact</h2>
+      <p><b>MAGO SERVICE TRADE SRL</b><br>
+      Aleea Textilistilor Nr. 1 – BL. MY1, Sc. 1, Ap. 16, Sector 3, 032801 Bucharest, Romania<br>
+      Trade Register: J40/5941/2015 · Tax No.: CUI–34523632<br>
+      Phone: +40 (0)752-30 77 11 · Email: <a href="mailto:mgoffin@web.de">mgoffin@web.de</a></p>
+
+      <h2 id="scope">2) Scope</h2>
+      <p>This Policy covers our websites and DIA-10 crowdfunding pages, including the verify page. It does not cover third-party sites we link to.</p>
+
+      <h2 id="data">3) Data we collect</h2>
+      <ul>
+        <li><b>Contact data</b> you send to us (name, email, phone).</li>
+        <li><b>Subscription data</b> entered on the crowdfunding page (name, email, amount, optional wallet). This is used to render a certificate PDF locally. We only receive it if you email it to us or otherwise send it.</li>
+        <li><b>Payment metadata</b> from bank transfers (reference, amount) via our bank when you pay.</li>
+        <li><b>Technical data</b>: anonymized analytics <i>only with your consent</i> (see Cookies & Analytics).</li>
+        <li><b>Blockchain</b>: if you provide an EVM address, remember that on-chain activity is public and immutable.</li>
+      </ul>
+
+      <h2 id="purposes">4) Purposes & Legal bases (GDPR Art. 6)</h2>
+      <table>
+        <thead><tr><th>Purpose</th><th>Legal basis</th></tr></thead>
+        <tbody>
+          <tr><td>Respond to inquiries and manage subscriptions/certificates.</td><td>Art. 6(1)(b) contract; Art. 6(1)(f) legitimate interest for pre-contract steps.</td></tr>
+          <tr><td>Process payments and investor records.</td><td>Art. 6(1)(b) contract; Art. 6(1)(c) legal obligations (e.g., accounting/KYC thresholds).</td></tr>
+          <tr><td>Optional analytics to improve the site.</td><td>Art. 6(1)(a) consent via cookie banner.</td></tr>
+          <tr><td>Compliance, fraud prevention, security.</td><td>Art. 6(1)(c) legal obligations; Art. 6(1)(f) legitimate interest.</td></tr>
+        </tbody>
+      </table>
+
+      <h2 id="cookies">5) Cookies & Analytics</h2>
+      <p>We use necessary cookies for basic functionality. Analytics/marketing cookies are <b>off by default</b> and only loaded if you consent in the cookie banner. You can change your choice anytime via “Cookie settings”.</p>
+
+      <h2 id="sharing">6) Recipients & Transfers</h2>
+      <p>We may share data with processors (e.g., hosting, email, analytics) under data-processing agreements. Some providers may be outside the EEA; in that case we use appropriate safeguards (e.g., EU Standard Contractual Clauses).</p>
+
+      <h2 id="retention">7) Retention</h2>
+      <ul>
+        <li>Contact emails: up to 24 months after last interaction.</li>
+        <li>Investor/payment records: up to 10 years (statutory obligations).</li>
+        <li>Analytics data: per provider defaults and only with consent.</li>
+      </ul>
+
+      <h2 id="security">8) Security</h2>
+      <p>We apply technical and organizational measures (encryption in transit, access control). No method is 100% secure; we continuously improve safeguards.</p>
+
+      <h2 id="rights">9) Your rights (GDPR)</h2>
+      <p>You have the right to access, rectification, erasure, restriction, portability, and to object, as well as to withdraw consent at any time (without affecting prior processing). You may lodge a complaint with the Romanian authority (ANSPDCP). Contact us at <a href="mailto:mgoffin@web.de">mgoffin@web.de</a>.</p>
+
+      <h2 id="children">10) Children</h2>
+      <p>Our Service is not directed to children under 13, and we do not knowingly collect their data.</p>
+
+      <h2 id="changes">11) Changes</h2>
+      <p>We may update this Policy; we will post changes on this page and update the date.</p>
+
+      <div class="divider"></div>
+      <p class="foot">Controller: MAGO SERVICE TRADE SRL · Websites: 99-i.com / 99-i.com/dia10 · Email: mgoffin@web.de</p>
+    </div>
+
+    <!-- GERMAN -->
+    <div id="content-de" class="langblock" style="display:none">
+      <h1>Datenschutzerklärung</h1>
+      <div class="muted">Letzte Aktualisierung: <span class="uDate">28.08.2025</span></div>
+
+      <p>MAGO SERVICE TRADE SRL („<b>wir</b>“, „<b>uns</b>“, „<b>DIA-10</b>“) nimmt den Schutz Ihrer Daten ernst. Diese Erklärung erläutert, wie wir personenbezogene Daten verarbeiten, wenn Sie <code>https://99-i.com/</code> und <code>https://99-i.com/dia10/</code> (der „<b>Service</b>“) nutzen.</p>
+
+      <div class="note">Wichtig: Das Crowdfunding-Formular erzeugt Ihr Zertifikat-PDF lokal im Browser. Wir erhalten Ihre Daten nur, wenn Sie uns das PDF per E-Mail zusenden oder anderweitig übermitteln.</div>
+
+      <h2 id="de-controller">1) Verantwortlicher & Kontakt</h2>
+      <p><b>MAGO SERVICE TRADE SRL</b><br>
+      Aleea Textilistilor Nr. 1 – BL. MY1, Sc. 1, Ap. 16, Sector 3, 032801 Bukarest, Rumänien<br>
+      Handelsregister: J40/5941/2015 · Steuernr.: CUI–34523632<br>
+      Telefon: +40 (0)752-30 77 11 · E-Mail: <a href="mailto:mgoffin@web.de">mgoffin@web.de</a></p>
+
+      <h2 id="de-scope">2) Geltungsbereich</h2>
+      <p>Gilt für unsere Websites und die DIA-10-Crowdfunding-Seiten inkl. Verify-Seite. Externe verlinkte Seiten sind nicht umfasst.</p>
+
+      <h2 id="de-data">3) Verarbeitete Daten</h2>
+      <ul>
+        <li><b>Kontaktdaten</b> (Name, E-Mail, Telefon), die Sie uns senden.</li>
+        <li><b>Zeichnungsdaten</b> (Name, E-Mail, Betrag, optionale Wallet) zur lokalen Erstellung des Zertifikats. Erhalt nur bei aktiver Übersendung an uns.</li>
+        <li><b>Zahlungsmetadaten</b> über unsere Bank (Referenz, Betrag) bei Überweisungen.</li>
+        <li><b>Technische Daten</b>: anonymisierte Analytics <i>nur mit Einwilligung</i>.</li>
+        <li><b>Blockchain</b>: On-chain-Aktivität ist öffentlich/unveränderlich.</li>
+      </ul>
+
+      <h2 id="de-purposes">4) Zwecke & Rechtsgrundlagen (DSGVO Art. 6)</h2>
+      <table>
+        <thead><tr><th>Zweck</th><th>Rechtsgrundlage</th></tr></thead>
+        <tbody>
+          <tr><td>Anfragen beantworten, Zertifikate/Subscriptions verwalten.</td><td>Art. 6(1)(b) Vertrag; Art. 6(1)(f) berechtigtes Interesse (vorvertraglich).</td></tr>
+          <tr><td>Zahlungsabwicklung, Investoren-/Buchhaltungs-Pflichten.</td><td>Art. 6(1)(b); Art. 6(1)(c) rechtliche Verpflichtungen (z. B. KYC-Schwellen).</td></tr>
+          <tr><td>Optionale Web-Analyse zur Seitenverbesserung.</td><td>Art. 6(1)(a) Einwilligung (Cookie-Banner).</td></tr>
+          <tr><td>Compliance, Betrugsprävention, Sicherheit.</td><td>Art. 6(1)(c) + Art. 6(1)(f).</td></tr>
+        </tbody>
+      </table>
+
+      <h2 id="de-cookies">5) Cookies & Analyse</h2>
+      <p>Notwendige Cookies sind aktiv. Analyse/Marketing werden nur mit Ihrer Einwilligung geladen. Anpassung jederzeit über „Cookie-Einstellungen“.</p>
+
+      <h2 id="de-sharing">6) Empfänger & Übermittlungen</h2>
+      <p>Einsatz von Auftragsverarbeitern (Hosting, E-Mail, Analytics) mit Verträgen zur Auftragsverarbeitung. Bei Anbietern außerhalb des EWR nutzen wir geeignete Garantien (EU-Standardvertragsklauseln).</p>
+
+      <h2 id="de-retention">7) Speicherfristen</h2>
+      <ul>
+        <li>Kontakt-E-Mails: bis zu 24 Monate nach letztem Kontakt.</li>
+        <li>Investoren-/Zahlungsunterlagen: bis zu 10 Jahre (gesetzlich).</li>
+        <li>Analytics: je Anbieter-Standard und nur mit Einwilligung.</li>
+      </ul>
+
+      <h2 id="de-security">8) Sicherheit</h2>
+      <p>Technische und organisatorische Maßnahmen (u. a. Verschlüsselung, Zugriffskontrollen). 100%ige Sicherheit gibt es nicht; wir verbessern laufend.</p>
+
+      <h2 id="de-rights">9) Ihre Rechte</h2>
+      <p>Auskunft, Berichtigung, Löschung, Einschränkung, Datenübertragbarkeit, Widerspruch sowie Widerruf einer Einwilligung. Beschwerde bei der rumänischen Aufsichtsbehörde (ANSPDCP) möglich. Kontakt: <a href="mailto:mgoffin@web.de">mgoffin@web.de</a>.</p>
+
+      <h2 id="de-children">10) Kinder</h2>
+      <p>Kein Angebot an Kinder unter 13 Jahren; keine wissentlich erhobenen Daten.</p>
+
+      <h2 id="de-changes">11) Änderungen</h2>
+      <p>Änderungen werden hier veröffentlicht; das Datum wird aktualisiert.</p>
+
+      <div class="divider"></div>
+      <p class="foot">Verantwortlicher: MAGO SERVICE TRADE SRL · Websites: 99-i.com / 99-i.com/dia10 · E-Mail: mgoffin@web.de</p>
+    </div>
+
+    <!-- ROMANIAN -->
+    <div id="content-ro" class="langblock" style="display:none">
+      <h1>Politica de Confidențialitate</h1>
+      <div class="muted">Ultima actualizare: <span class="uDate">28 aug. 2025</span></div>
+
+      <p>MAGO SERVICE TRADE SRL („<b>noi</b>”, „<b>DIA-10</b>”) protejează confidențialitatea datelor tale. Această politică explică modul în care prelucrăm datele personale când folosești <code>https://99-i.com/</code> și <code>https://99-i.com/dia10/</code> („<b>Serviciul</b>”).</p>
+
+      <div class="note">Important: Pagina de crowdfunding generează PDF-ul certificatului local, în browser. Primim datele tale doar dacă ni le trimiți (ex. prin email).</div>
+
+      <h2 id="ro-controller">1) Operator & Contact</h2>
+      <p><b>MAGO SERVICE TRADE SRL</b><br>
+      Aleea Textilistilor Nr. 1 – BL. MY1, Sc. 1, Ap. 16, Sector 3, 032801 București, România<br>
+      J40/5941/2015 · CUI–34523632 · Tel.: +40 (0)752-30 77 11 · Email: <a href="mailto:mgoffin@web.de">mgoffin@web.de</a></p>
+
+      <h2 id="ro-scope">2) Domeniu de aplicare</h2>
+      <p>Se aplică site-urilor noastre și paginilor de crowdfunding DIA-10, inclusiv pagina de verificare. Nu se aplică site-urilor terțe.</p>
+
+      <h2 id="ro-data">3) Date colectate</h2>
+      <ul>
+        <li><b>Date de contact</b> (nume, email, telefon) trimise de tine.</li>
+        <li><b>Date de subscriere</b> (nume, email, sumă, portofel opțional) pentru generarea locală a certificatului.</li>
+        <li><b>Metadate de plată</b> prin banca noastră (referință, sumă) când plătești.</li>
+        <li><b>Date tehnice</b>: analytics anonim <i>doar cu consimțământ</i>.</li>
+        <li><b>Blockchain</b>: activitatea on-chain este publică și imuabilă.</li>
+      </ul>
+
+      <h2 id="ro-purposes">4) Scopuri & temeiuri (GDPR art. 6)</h2>
+      <table>
+        <thead><tr><th>Scop</th><th>Temei legal</th></tr></thead>
+        <tbody>
+          <tr><td>Răspuns la solicitări, gestionare subscrieri/certificate.</td><td>Art. 6(1)(b) contract; Art. 6(1)(f) interes legitim.</td></tr>
+          <tr><td>Plăți și obligații contabile/legale.</td><td>Art. 6(1)(b) și Art. 6(1)(c).</td></tr>
+          <tr><td>Analytics opțional.</td><td>Art. 6(1)(a) consimțământ (banner cookie).</td></tr>
+          <tr><td>Conformitate și securitate.</td><td>Art. 6(1)(c)/(f).</td></tr>
+        </tbody>
+      </table>
+
+      <h2 id="ro-cookies">5) Cookie-uri & Analytics</h2>
+      <p>Cookie-urile necesare sunt active. Analytics/marketing se încarcă numai cu consimțământ și pot fi schimbate oricând (“Cookie settings”).</p>
+
+      <h2 id="ro-sharing">6) Destinatari & transferuri</h2>
+      <p>Furnizori împuterniciți (hosting, email, analytics) cu contracte; transferuri în afara SEE cu clauze contractuale standard.</p>
+
+      <h2 id="ro-retention">7) Păstrarea datelor</h2>
+      <ul>
+        <li>Emailuri de contact: până la 24 luni.</li>
+        <li>Înregistrări investitori/plăți: până la 10 ani (obligații legale).</li>
+        <li>Analytics: conform setărilor furnizorilor, doar cu consimțământ.</li>
+      </ul>
+
+      <h2 id="ro-security">8) Securitate</h2>
+      <p>Măsuri tehnice și organizatorice; îmbunătățim continuu nivelul de securitate.</p>
+
+      <h2 id="ro-rights">9) Drepturile tale</h2>
+      <p>Acces, rectificare, ștergere, restricționare, portabilitate, opoziție și retragerea consimțământului. Te poți adresa ANSPDCP. Contact: <a href="mailto:mgoffin@web.de">mgoffin@web.de</a>.</p>
+
+      <h2 id="ro-children">10) Copii</h2>
+      <p>Serviciul nu este destinat copiilor sub 13 ani.</p>
+
+      <h2 id="ro-changes">11) Modificări</h2>
+      <p>Vom publica modificările pe această pagină și vom actualiza data.</p>
+
+      <div class="divider"></div>
+      <p class="foot">Operator: MAGO SERVICE TRADE SRL · Website-uri: 99-i.com / 99-i.com/dia10 · Email: mgoffin@web.de</p>
+    </div>
+  </main>
+</div>
+
+<script>
+(function(){
+  // language switching
+  const btns=[...document.querySelectorAll('.langbtn')];
+  const blocks=[...document.querySelectorAll('.langblock')];
+  function show(lang){
+    document.documentElement.lang=lang;
+    btns.forEach(b=>b.classList.toggle('active', b.dataset.lang===lang));
+    blocks.forEach(b=> b.style.display = b.id.endsWith(lang)?'block':'none');
+    buildToc(); // rebuild toc for visible block
+    localStorage.setItem('dia10_priv_lang', lang);
+  }
+  btns.forEach(b=> b.addEventListener('click', ()=> show(b.dataset.lang)));
+  show(localStorage.getItem('dia10_priv_lang') || (document.documentElement.lang||'en').slice(0,2));
+
+  // simple TOC from h2
+  function buildToc(){
+    const wrap=document.querySelector('main');
+    const vis = [...wrap.querySelectorAll('.langblock')].find(d=>d.style.display!=='none');
+    const links=document.getElementById('tocLinks'); links.innerHTML='';
+    [...vis.querySelectorAll('h2')].forEach(h=>{
+      const id = h.id || h.textContent.trim().toLowerCase().replace(/[^a-z0-9]+/g,'-');
+      h.id = id;
+      const a=document.createElement('a'); a.href='#'+id; a.textContent=h.textContent;
+      links.appendChild(a);
+    });
+  }
+  buildToc();
+})();
+</script>
+</body>
+</html>

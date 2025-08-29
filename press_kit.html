@@ -1,0 +1,440 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>DIA-10 | Press Kit</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet">
+<meta name="description" content="Official DIA-10 press kit: logos, screenshots, PDFs (KIIS, Terms EN/DE/RO), boilerplate & media contact.">
+<meta property="og:title" content="DIA-10 | Press Kit">
+<meta property="og:description" content="Official logos, screenshots, PDFs, boilerplate & media contact.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="/assets/brand/og-press.jpg">
+<meta name="author" content="Markus Goffin">
+<meta name="last-modified" content="2025-08-26">
+<link rel="icon" type="image/x-icon" href="https://99-i.com/dia10/images/99i_favicon_16x16.ico" sizes="16x16">
+<link rel="icon" type="image/x-icon" href="https://99-i.com/dia10/images/99i_favicon_32x32.ico" sizes="32x32">
+<link rel="icon" type="image/x-icon" href="https://99-i.com/dia10/images/99i_favicon_48x48.ico" sizes="48x48">
+<meta name="theme-color" content="#0a1430">
+<style>
+  :root{
+    --bg:#0a1430; --panel:#0d1a3a; --ink:#f3f7ff; --muted:#b9c7da;
+    --blue:#1b6fff; --cyan:#74c7ff; --line:#1c2b55;
+    --ok:#11d09a; --warn:#ffcf4a; --bad:#ff6b7a;
+    --radius:16px; --shadow:0 10px 28px rgba(0,0,0,.35);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:
+      radial-gradient(900px 600px at 120% -10%, rgba(116,199,255,.10), transparent 60%),
+      radial-gradient(800px 500px at -20% 10%, rgba(27,111,255,.10), transparent 55%),
+      var(--bg);
+    color:var(--ink); font:400 16px/1.55 Inter,system-ui,sans-serif;}
+  a{color:var(--cyan); text-decoration:none}
+  a:hover{color:#d7eeff}
+  header{position:sticky; top:0; z-index:10; backdrop-filter:blur(10px);
+    background:linear-gradient(180deg,rgba(10,20,48,.85),rgba(10,20,48,.55)); border-bottom:1px solid var(--line);}
+  .nav{max-width:1200px; margin:auto; padding:12px 18px; display:flex; align-items:center; gap:12px}
+  .brand{display:flex; align-items:center; gap:12px; font-weight:900; letter-spacing:.3px}
+  .logo{width:40px; height:40px; border-radius:10px; display:grid; place-items:center;
+    background:linear-gradient(135deg,#0a1d44,#1b6fff 70%,#74c7ff); box-shadow:inset 0 0 0 2px rgba(255,255,255,.06), var(--shadow)}
+  .logo svg{width:26px; height:26px; filter:drop-shadow(0 1px 2px rgba(0,0,0,.4))}
+  .spacer{flex:1}
+  .langs{display:flex; gap:8px}
+  .langs button{background:#0a1d44; color:var(--ink); border:1px solid rgba(255,255,255,.12); padding:8px 12px; border-radius:10px; font-weight:700; cursor:pointer}
+  .langs button.active{border-color:#74c7ff; box-shadow:0 0 0 1px rgba(116,199,255,.4) inset}
+  .wrap{max-width:1200px; margin:24px auto; padding:0 18px; display:grid; gap:18px}
+  .hero{background:linear-gradient(180deg,#0d1a3a,#0b1732); border:1px solid var(--line); border-radius:18px; padding:18px 18px}
+  h1{margin:.2em 0; font-size:clamp(28px,4vw,42px)}
+  .muted{color:var(--muted)}
+  .row{display:flex; flex-wrap:wrap; gap:12px; align-items:center}
+  .btn{display:inline-flex; align-items:center; gap:8px; padding:10px 14px; border:1px solid #25407a; border-radius:12px; background:#0e214a; color:var(--ink); cursor:pointer}
+  .btn.cta{background:linear-gradient(90deg,#1b6fff,#74c7ff); border:none; color:#07121f; font-weight:800}
+  .grid{display:grid; gap:14px; grid-template-columns:repeat(12,1fr)}
+  .col6{grid-column:span 12} @media(min-width:900px){.col6{grid-column:span 6}}
+  .col4{grid-column:span 12} @media(min-width:900px){.col4{grid-column:span 4}}
+  .card{background:linear-gradient(180deg,#0d1a3a,#0a1734); border:1px solid var(--line); border-radius:16px; padding:16px; box-shadow:var(--shadow)}
+  .card h3{margin:0 0 8px 0}
+  .asset{background:#0b1428; border:1px solid #203259; border-radius:12px; padding:12px; display:flex; flex-direction:column; gap:10px}
+  .preview{display:grid; place-items:center; aspect-ratio:16/10; background:#0b1428; border:1px dashed #223a6d; border-radius:12px; overflow:hidden}
+  .preview.light{background:#f7fbff}
+  .dl{display:flex; flex-wrap:wrap; gap:8px}
+
+  /* verlässliche Bildgröße */
+  .asset .preview img{
+    display:block; width:100%; height:100%;
+    object-fit:contain;
+  }
+
+  /* Hash-Chip: ellipsis + optional wrap */
+  .pill{
+    display:flex; align-items:center; gap:8px;
+    padding:8px 12px; border-radius:12px;
+    border:1px solid #2a3b5f; background:#0e1a33; font-size:13px;
+  }
+  .asset .pill{width:100%}
+  .pill code{
+    flex:1; min-width:0;
+    overflow:hidden; text-overflow:ellipsis; white-space:nowrap;
+    font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace;
+    letter-spacing:.2px;
+  }
+  .pill code.wrap{white-space:normal; word-break:break-all}
+
+  .ok{color:var(--ok)} .warn{color:var(--warn)} .bad{color:var(--bad)}
+  .k{font-size:12px; color:var(--muted)}
+  .list{margin:8px 0 0 0; padding-left:18px}
+  .list li{margin:4px 0}
+  footer{margin:18px 0 28px; text-align:center; color:#8ea2c6; font-size:14px}
+  .copy{cursor:pointer; display:inline-flex; align-items:center; gap:6px}
+</style>
+</head>
+<body>
+<header>
+  <div class="nav">
+    <div class="brand">
+      <div class="logo" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M3 9l9-6 9 6-9 12-9-12zM12 3v18M3 9h18M7 9l5 12m5-12l-5 12"/>
+        </svg>
+      </div>
+      <div>DIA-10</div>
+    </div>
+    <div class="spacer"></div>
+    <div class="langs">
+      <button class="langbtn active" data-lang="en">EN</button>
+      <button class="langbtn" data-lang="de">DE</button>
+      <button class="langbtn" data-lang="ro">RO</button>
+    </div>
+  </div>
+</header>
+
+<section class="wrap">
+
+  <!-- Hero -->
+  <div class="hero">
+    <h1 data-i18n="h_title">Press Kit</h1>
+    <div class="muted" data-i18n="h_sub">Official logos, screenshots, PDFs (KIIS, Terms), boilerplate & media contact.</div>
+    <div class="row" style="margin-top:10px">
+      <a id="zipAll" class="btn cta" href="zip/DIA10-CPC-terms-high-contrast-v2-RO.zip" download data-i18n="btn_zip">Download all (ZIP)</a>
+      <a class="btn" href="https://99-i.com/dia10/" target="_blank" data-i18n="btn_site">Visit website</a>
+    </div>
+  </div>
+
+  <div class="grid">
+    <!-- Brand assets -->
+    <div class="card col6">
+      <h3 data-i18n="sec_brand">Brand assets (logos)</h3>
+      <div class="k" data-i18n="brand_note">Use for editorial coverage. Please don’t alter colors or proportions.</div>
+      <div class="grid" style="margin-top:10px">
+        <!-- Dark logo -->
+        <div class="col6 asset">
+          <div class="preview">
+            <img src="images/dia10.svg" alt="DIA-10 logo — light on dark" loading="lazy" decoding="async">
+          </div>
+          <div class="dl">
+            <a class="btn" href="images/dia10.svg" download>SVG</a>
+            <a class="btn" href="images/dia10.png" download>PNG</a>
+          </div>
+          <div class="k">Dark background</div>
+        </div>
+        <!-- Light logo -->
+        <div class="col6 asset">
+          <div class="preview light">
+            <img src="images/dia10-qr-code.svg" alt="DIA-10 QR-Code" loading="lazy" decoding="async">
+          </div>
+          <div class="dl">
+            <a class="btn" href="images/dia10-qr-code.svg" download>SVG</a>
+            <a class="btn" href="images/dia10-qr-code.png" download>PNG</a>
+          </div>
+          <div class="k">QR-Code</div>
+        </div>
+        <!-- Mark only -->
+        <div class="col6 asset">
+          <div class="preview">
+            <img src="images/INVESTOR_CERTIFICATE-DIA-10-Participation.png" alt="Investor Certificate" loading="lazy" decoding="async">
+          </div>
+          <div class="dl">
+            <a class="btn" href="images/INVESTOR_CERTIFICATE-DIA-10-Participation.png" download>PNG</a>
+          </div>
+          <div class="k">Investor Certificate</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Documents -->
+    <div class="card col6">
+      <h3 data-i18n="sec_docs">Documents (PDF)</h3>
+      <div class="grid" style="margin-top:10px">
+        <!-- KIIS -->
+        <div class="col6 asset">
+          <div class="row" style="justify-content:space-between">
+            <div><b>KIIS</b> · EN</div>
+            <a class="btn" href="pdf/DIA10_KIIS_EN.pdf" download>PDF</a>
+          </div>
+          <div class="k">Key Investment Information Sheet</div>
+        </div>
+        <div class="col6 asset">
+          <div class="row" style="justify-content:space-between">
+            <div><b>KIIS</b> · DE</div>
+            <a class="btn" href="pdf/DIA10_KIIS_DE.pdf" download>PDF</a>
+          </div>
+          <div class="k">Wesentliche Anlegerinformationen</div>
+        </div>
+        <div class="col6 asset">
+          <div class="row" style="justify-content:space-between">
+            <div><b>KIIS</b> · RO</div>
+            <a class="btn" href="pdf/DIA10_KIIS_RO.pdf" download>PDF</a>
+          </div>
+          <div class="k">Document cu Informații Cheie pentru Investitori</div>
+        </div>
+
+        <!-- Terms -->
+        <div class="col6 asset" id="terms_en">
+          <div class="row" style="justify-content:space-between">
+            <div><b>Offering Terms</b> · EN</div>
+            <a class="btn" href="crowdfunding/DIA10-CPC-terms-high-contrast-v2-EN.pdf" download>PDF</a>
+          </div>
+          <div class="pill"><span data-i18n="hash">SHA-256</span>:
+            <code id="h_en" style="user-select:all"></code>
+            <span class="ok" id="ok_en">✓</span>
+            <span class="copy" data-copy="#h_en" title="Copy hash">📋</span>
+          </div>
+        </div>
+
+        <div class="col6 asset" id="terms_de">
+          <div class="row" style="justify-content:space-between">
+            <div><b>Angebotsbedingungen</b> · DE</div>
+            <a class="btn" href="crowdfunding/DIA10-CPC-terms-high-contrast-v2-DE.pdf" download>PDF</a>
+          </div>
+          <div class="pill"><span data-i18n="hash">SHA-256</span>:
+            <code id="h_de" style="user-select:all"></code>
+            <span class="ok" id="ok_de">✓</span>
+            <span class="copy" data-copy="#h_de" title="Copy hash">📋</span>
+          </div>
+        </div>
+
+        <div class="col6 asset" id="terms_ro">
+          <div class="row" style="justify-content:space-between">
+            <div><b>Termenii Ofertei</b> · RO</div>
+            <a class="btn" href="crowdfunding/DIA10-CPC-terms-high-contrast-v2-RO.pdf" download>PDF</a>
+          </div>
+          <div class="pill"><span data-i18n="hash">SHA-256</span>:
+            <code id="h_ro" style="user-select:all"></code>
+            <span class="ok" id="ok_ro">✓</span>
+            <span class="copy" data-copy="#h_ro" title="Copy hash">📋</span>
+          </div>
+        </div>
+
+<!-- Whitepaper -->
+<div class="col6 asset" id="whitepaper">
+  <div class="row" style="justify-content:space-between">
+    <div><b>Whitepaper</b></div>
+    <!-- WICHTIG: normales Minus '-' im Dateinamen -->
+    <a class="btn" href="pdf/DIA-10_Whitepaper.pdf" download>PDF</a>
+  </div>
+  <div class="pill">
+    <span>SHA-256</span>:
+    <code id="h_wp" style="user-select:all"></code>
+    <span class="copy" data-copy="#h_wp" title="Copy hash">📋</span>
+    <span id="ok_wp" class="ok" style="margin-left:6px"></span>
+  </div>
+  <div class="k">Overview & token mechanics</div>
+</div>
+
+
+      </div>
+    </div>
+
+    <!-- Screenshots -->
+    <div class="col6 asset">
+      <h3 data-i18n="sec_shots">Screenshots</h3>
+      <div class="grid" style="margin-top:10px">
+        <div class="col6 asset shot" id="shot_verify">
+          <div class="preview">
+            <img alt="Certificate & verify page" loading="lazy" decoding="async">
+          </div>
+          <div class="dl"><a class="btn" href="images/certificate-verify.png" download>PNG</a></div>
+        </div>
+        <div class="col6 asset shot" id="shot_academy">
+          <div class="preview">
+            <img alt="DIA-10 Roadmap" loading="lazy" decoding="async">
+          </div>
+          <div class="dl"><a class="btn" href="images/DIA10_roadmap_2025.png" download>PNG</a></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Boilerplate & Contact -->
+    <div class="card col6">
+      <h3 data-i18n="sec_contact">Boilerplate & media contact</h3>
+      <div id="boiler" class="muted" style="margin-bottom:10px">
+        MAGO SERVICE TRADE SRL is based in Bucharest (J40/5941/2015, CUI–34523632) and develops DIA-10, a transparency-first community initiative combining verifiable crowdfunding certificates with an education-first Academy.
+      </div>
+      <div class="asset">
+        <div><b>Media contact</b></div>
+        <div>Markus Goffin · MAGO SERVICE TRADE SRL</div>
+        <div>Aleea Textilistilor Nr.1 – BL. MY1, Sc.1, App. 16, Sectorul 3, 032801 Bucharest, Romania</div>
+        <div>Phone: +40 752 30 77 11 · Email: <a href="mailto:mgoffin@web.de">mgoffin@web.de</a></div>
+        <div class="k" style="margin-top:6px">Press use permitted. Please keep logo colors and clearspace intact.</div>
+      </div>
+    </div>
+
+    <!-- Usage Guidelines -->
+    <div class="card col6">
+      <h3 data-i18n="sec_usage">Logo usage</h3>
+      <ul class="list">
+        <li data-i18n="u1">Don’t alter colors, stretch, skew, add outlines or shadows.</li>
+        <li data-i18n="u2">Clear space ≥ diamond height around the mark.</li>
+        <li data-i18n="u3">Prefer SVG on web; PNG ≥ 1024 px for print drafts.</li>
+        <li data-i18n="u4">Dark logo on #0a1430; light logo on white/light grey.</li>
+      </ul>
+    </div>
+  </div>
+
+  <footer>© <span id="y"></span> DIA-10 / MAGO SERVICE TRADE SRL</footer>
+</section>
+
+<script>
+/* =================== CONFIG =================== */
+const TERMS_HASH = {
+  en:"19137cffaa9afaa5dab43ef075260adb7b75a66713ca291211ae46cd52018259",
+  de:"bebf4bdd4e99a3110bbbce64dd791d700c9106b308a129b731b136966751aeb9",
+  ro:"8846454b0df02b0e73bf29856a31ee5293963451350830f5b2896be3483943d6",
+  whitepaper:"7d0ff8a66ae14d0f0e3056d90361ca1799d9317d542a702deffdb7a53655c28b"
+};
+
+/* =================== I18N =================== */
+const I18N = {
+  en:{h_title:"Press Kit", h_sub:"Official logos, screenshots, PDFs (KIIS, Terms), boilerplate & media contact.",
+      btn_zip:"Download all (ZIP)", btn_site:"Visit website",
+      sec_brand:"Brand assets (logos)", brand_note:"Use for editorial coverage. Please don’t alter colors or proportions.",
+      sec_docs:"Documents (PDF)", sec_shots:"Screenshots", sec_contact:"Boilerplate & media contact", sec_usage:"Logo usage",
+      hash:"SHA-256",
+      u1:"Don’t alter colors, stretch, skew, add outlines or shadows.",
+      u2:"Clear space ≥ diamond height around the mark.",
+      u3:"Prefer SVG on web; PNG ≥ 1024 px for print drafts.",
+      u4:"Dark logo on #0a1430; light logo on white/light grey."},
+  de:{h_title:"Presse-Kit", h_sub:"Offizielle Logos, Screenshots, PDFs (KIIS, Bedingungen), Boilerplate & Pressekontakt.",
+      btn_zip:"Alles herunterladen (ZIP)", btn_site:"Website öffnen",
+      sec_brand:"Brand-Assets (Logos)", brand_note:"Nur zur redaktionellen Nutzung. Bitte Farben/Proportionen nicht verändern.",
+      sec_docs:"Dokumente (PDF)", sec_shots:"Screenshots", sec_contact:"Boilerplate & Pressekontakt", sec_usage:"Logo-Richtlinien",
+      hash:"SHA-256",
+      u1:"Keine Farbänderungen, Verzerrungen, Outlines oder Schatten.",
+      u2:"Schutzzone ≥ Diamant-Höhe rund um die Marke.",
+      u3:"Im Web SVG bevorzugen; PNG ≥ 1024 px für Druck-Entwürfe.",
+      u4:"Helles Logo auf weiß/hellgrau, dunkles Logo auf #0a1430."},
+  ro:{h_title:"Press Kit", h_sub:"Logo-uri oficiale, capturi, PDF-uri (KIIS, Termeni), boilerplate & contact media.",
+      btn_zip:"Descarcă tot (ZIP)", btn_site:"Deschide site-ul",
+      sec_brand:"Brand assets (logo-uri)", brand_note:"Utilizare editorială. Vă rugăm să nu modificați culorile sau proporțiile.",
+      sec_docs:"Documente (PDF)", sec_shots:"Capturi ecran", sec_contact:"Boilerplate & contact media", sec_usage:"Reguli de utilizare logo",
+      hash:"SHA-256",
+      u1:"Fără modificări de culoare, distorsiuni, contururi sau umbre.",
+      u2:"Spațiu liber ≥ înălțimea diamantului în jurul mărcii.",
+      u3:"Preferă SVG pe web; PNG ≥ 1024 px pentru machete print.",
+      u4:"Logo întunecat pe #0a1430; logo deschis pe alb/gri deschis."}
+};
+let LANG='en';
+function applyLang(l){
+  LANG = (['en','de','ro'].includes(l)?l:'en');
+  document.documentElement.lang = LANG;
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const k = el.getAttribute('data-i18n');
+    if(I18N[LANG][k]) el.textContent = I18N[LANG][k];
+  });
+  document.querySelectorAll('.langbtn').forEach(b=> b.classList.toggle('active', b.dataset.lang===LANG));
+}
+document.querySelectorAll('.langbtn').forEach(b=> b.addEventListener('click', ()=> applyLang(b.dataset.lang)));
+applyLang('en');
+
+/* =================== Hash-Chips + Copy =================== */
+document.getElementById('h_en').textContent = TERMS_HASH.en;
+document.getElementById('h_de').textContent = TERMS_HASH.de;
+document.getElementById('h_ro').textContent = TERMS_HASH.ro;
+
+document.querySelectorAll('.copy').forEach(el=>{
+  el.addEventListener('click', async ()=>{
+    const target = document.querySelector(el.dataset.copy);
+    if(!target) return;
+    try{ await navigator.clipboard.writeText(target.textContent.trim()); el.textContent='✓'; setTimeout(()=>el.textContent='📋',900); }
+    catch{ el.textContent='⛔'; setTimeout(()=>el.textContent='📋',900); }
+  });
+});
+document.querySelectorAll('.pill code').forEach(c=>{
+  c.title = c.textContent.trim();
+  c.addEventListener('click', ()=> c.classList.toggle('wrap'));
+});
+
+/* =================== Screenshot-Previews =================== */
+/* Zeigt IMMER denselben Pfad wie der Download-Button; mit Fallback-Placeholder */
+const PLACEHOLDER = 'data:image/svg+xml;utf8,'+encodeURIComponent(
+  `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="750">
+     <defs><linearGradient id="g" x1="0" x2="1"><stop offset="0" stop-color="#0b1428"/><stop offset="1" stop-color="#0f1e40"/></linearGradient></defs>
+     <rect width="100%" height="100%" fill="url(#g)"/>
+     <g fill="#9fb3d3" font-family="Inter,Arial" font-size="28">
+       <text x="50%" y="48%" dominant-baseline="middle" text-anchor="middle">Preview not available</text>
+       <text x="50%" y="58%" dominant-baseline="middle" text-anchor="middle">Use the Download button</text>
+     </g>
+   </svg>`
+);
+function hookShot(asset){
+  const img = asset.querySelector('.preview img');
+  const a   = asset.querySelector('.dl a');
+  if(!img || !a) return;
+  const url = a.getAttribute('href');
+  img.src = url;
+  img.addEventListener('error', ()=>{ img.src = PLACEHOLDER; }, {once:true});
+}
+document.querySelectorAll('.asset.shot').forEach(hookShot);
+
+/* =================== Whitepaper-Verify =================== */
+function normalizeHyphens(s){ return s.replace(/[\u2010-\u2015]/g,'-'); }
+async function sha256HexFromUrl(url){
+  const res = await fetch(url, {cache:'no-store'});
+  if(!res.ok) throw new Error('HTTP '+res.status);
+  const buf = await res.arrayBuffer();
+  const dig = await crypto.subtle.digest('SHA-256', buf);
+  return Array.from(new Uint8Array(dig)).map(b=>b.toString(16).padStart(2,'0')).join('');
+}
+(async function wireWhitepaper(){
+  const link = document.querySelector('#whitepaper a.btn');
+  const code = document.getElementById('h_wp');
+  const mark = document.getElementById('ok_wp');
+  if(!link || !code || !mark) return;
+
+  const rawHref = normalizeHyphens(link.getAttribute('href') || '');
+  link.setAttribute('href', rawHref);
+  const verifyUrl = rawHref + (rawHref.includes('?') ? '&' : '?') + 'v=' + Date.now();
+
+  if(!window.crypto || !window.crypto.subtle){
+    code.textContent = TERMS_HASH.whitepaper;
+    code.title = 'WebCrypto not available';
+    mark.textContent = '⚠'; mark.className='warn'; mark.title='Live verification not supported';
+    return;
+  }
+  try{
+    const live = await sha256HexFromUrl(verifyUrl);
+    const expected = (TERMS_HASH.whitepaper||'').toLowerCase();
+    code.textContent = expected || live;
+    code.title = live;
+    const ok = expected ? (live.toLowerCase()===expected) : true;
+    mark.textContent = ok ? '✓' : '✕';
+    mark.className   = ok ? 'ok' : 'bad';
+    mark.title       = ok ? 'Verified' : `Hash mismatch\nExpected: ${expected}\nGot: ${live}`;
+  }catch(e){
+    code.textContent = '';
+    mark.textContent = '⚠';
+    mark.className   = 'warn';
+    mark.title       = 'Could not verify (fetch failed)';
+  }
+})();
+
+/* =================== Footer Year =================== */
+document.getElementById('y').textContent = new Date().getFullYear();
+</script>
+
+
+
+</body>
+</html>
