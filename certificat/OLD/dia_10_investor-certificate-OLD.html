@@ -1,0 +1,118 @@
+<!-- Hello, my name is Markus Goffin 
+🇩🇪 Deutsch
+
+Ideen- und Konzeptinhaber von DIA-10
+Markus Goffin ist der alleinige Urheber und Inhaber der ursprünglichen Idee, des Namens, des Konzepts sowie der Markenidentität von DIA-10 – einer diamant­inspirierten Kryptowährung. Die Entwicklung, Gestaltung und strategische Ausrichtung des Projekts basieren ausschließlich auf seiner kreativen und unternehmerischen Arbeit.
+
+🇬🇧 English
+
+Creator and Concept Owner of DIA-10
+Markus Goffin is the sole originator and owner of the idea, name, concept, and brand identity of DIA-10 — a diamond-inspired cryptocurrency. The project’s development, design, and strategic direction are entirely based on his creative vision and entrepreneurial expertise.
+
+🇷🇴 Română
+
+Autor și deținător al conceptului DIA-10
+Markus Goffin este inițiatorul și proprietarul exclusiv al ideii, numelui, conceptului și identității de brand DIA-10 — o criptomonedă inspirată de diamante. Dezvoltarea, designul și direcția strategică a proiectului se bazează în întregime pe viziunea sa creativă și expertiza sa antreprenorială.
+--> 
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>DIA‑10 Investoren-Zertifikat</title>
+<meta charset="by Markus Goffin, 01.08.2025"> 
+<meta charset="last update Markus Goffin, 09.08.2025">
+<meta name="description" content="99i Investment Company offers smart investment solutions to help you secure your financial future. Learn more about our services and investment strategies.">
+<link rel="icon" type="image/x-icon" href="../images/99i_favicon_16x16.ico" sizes="16x16">
+<link rel="icon" type="image/x-icon" href="../images/99i_favicon_32x32.ico" sizes="32x32">
+<link rel="icon" type="image/x-icon" href="../images/99i_favicon_48x48.ico" sizes="48x48">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<style>
+  body { font-family: 'Georgia', serif; background-color: #f4f4f4; text-align: center; padding: 20px; color: #0A1E3F; }
+  .certificate { background: white; padding: 40px; width: 800px; margin: auto; border: 8px double silver; box-shadow: 0 0 15px rgba(0,0,0,0.2); }
+  .logo { height: 80px; margin-bottom: 20px; }
+  h1 { font-size: 28px; margin-bottom: 5px; }
+  h2 { font-size: 20px; margin-top: 5px; color: #555; }
+  .number { font-weight: bold; font-size: 16px; margin: 10px 0; color: #C0C0C0; }
+  .details { text-align: left; margin-top: 20px; line-height: 1.5; }
+  .input-section { margin: 20px 0; }
+  input { padding: 8px; font-size: 16px; width: 250px; text-align: center; }
+  button { background-color: #0A1E3F; color: white; border: none; padding: 10px 20px; font-size: 16px; margin-top: 10px; cursor: pointer; }
+  button:hover { background-color: #08213a; }
+    .cta{display:flex; gap:14px; justify-content:center; flex-wrap:wrap}
+  .btn{
+    background:#121722; color:#eaf6ff; border:1px solid rgba(255,255,255,.08);
+    padding:14px 18px; border-radius:14px; font-weight:800; letter-spacing:.3px;
+  }
+</style>
+</head>
+<body>
+
+<div class="certificate" id="certificateContent">
+  <img src="../images/dia_10.png" alt="DIA‑10 Logo" class="logo">
+  <h1>INVESTOREN-ZERTIFIKAT</h1>
+  <h2>DIA‑10 Beteiligung</h2>
+  <div class="number">Zertifikats-Nr.: <span id="certNumber"></span></div>
+  <p>Dies bestätigt den Erwerb von DIA‑10 Anteilen.</p>
+  <p>This confirms the acquisition of DIA-10 shares.</p>
+
+  <div class="input-section">
+    <label>Ihr Name:</label>
+    <input type="text" id="investorName" placeholder="Max Mustermann"><br><br>
+    <label>Betrag (€):</label>
+    <input type="number" id="amount" value="100" min="1" oninput="calcShares()"><br>
+    <small>(Preis pro Anteil: 10 €)</small>
+    <p>Anteile: <span id="shares">100</span></p>
+  </div>
+
+  <div class="details">
+    <strong>Aussteller:</strong> Markus Goffin – MAGO SERVICE TRADE SRL<br>
+    Aleea Textilistilor Nr. 1 – BL. MY1, Sc. 1, App. 16, Sectorul 3<br>
+    032801 Bucureşti / Bukarest, Romania<br>
+    Handelsregister Nr.: J40/5941/2015 | Steuernummer: CUI–34523632<br><br>
+    <strong>Kontakt:</strong> Tel: +40-(0)752‑30 77 11 | E‑Mail: mgoffin@web.de<br>
+    WEB: https://99-i.com/<br><br>
+    <strong>Bankverbindung:</strong><br>
+    BRD – Bukarest<br>
+    IBAN: RO34BRDE426SV66680914260<br>
+    BIC: BRDEROBU<br><br>
+    <center><em>Das Zertifikat ist einzigartig, es wird gültig nach Zahlungseingang. Bitte unbeding per E-Mal zussenden und aufbewaren. Bitte die Zertifikat-Nummer als Verwendungszweck angeben.</em>
+  </div>
+</div>
+
+<button onClick="generateAndSend()">📄 Zertifikat erstellen & senden</button><br><br><br>
+<a href="../index.html" class="btn">Home</a>
+<script>
+  document.getElementById("certNumber").textContent = Date.now();
+
+  function calcShares() {
+    let amount = parseFloat(document.getElementById("amount").value) || 0;
+    let shares = amount / 10;
+    document.getElementById("shares").textContent = shares.toFixed(2);
+  }
+
+  async function generateAndSend() {
+    const name = document.getElementById("investorName").value.trim();
+    if (!name) { alert("Bitte Name eingeben!"); return; }
+
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF("p", "pt", "a4");
+    await doc.html(document.getElementById("certificateContent"), { x:20, y:20 });
+    const pdfBlob = doc.output("blob");
+    const formData = new FormData();
+    formData.append("file", pdfBlob, "DIA10-Zertifikat.pdf");
+    formData.append("name", name);
+    formData.append("amount", document.getElementById("amount").value);
+    formData.append("certNumber", document.getElementById("certNumber").textContent);
+
+    fetch("sendCert.php", { method: "POST", body: formData })
+      .then(res => res.text())
+      .then(msg => alert(msg))
+      .catch(err => alert("Fehler beim Senden: " + err));
+  }
+
+  calcShares();
+</script>
+
+</body>
+</html>
+

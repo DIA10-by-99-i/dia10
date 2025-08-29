@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>DIA-10 | Crowdfunding (CPC)</title>
+<!-- Canonical & Hreflang (empfohlen: je Sprache eigene URL, z.B. /en/ /de/ /ro/) -->
+<link rel="canonical" href="https://99-i.com/dia10/">
+<link rel="alternate" hreflang="en" href="https://99-i.com/dia10/">
+<link rel="alternate" hreflang="de" href="https://99-i.com/dia10/">
+<link rel="alternate" hreflang="ro" href="https://99-i.com/dia10/">
+<link rel="alternate" hreflang="x-default" href="https://99-i.com/dia10/">
+
+<meta name="description" content="DIA-10 is a diamond-inspired digital asset designed for resilience and clarity. Learn about tokenomics, certificates and partners.">
+
+<!-- Open Graph / Twitter -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="DIA-10">
+<meta property="og:title" content="DIA-10 – Diamond-anchored digital value">
+<meta property="og:description" content="Diamond-inspired digital asset, transparent tokenomics and partner network.">
+<meta property="og:url" content="https://99-i.com/dia10/">
+<meta property="og:image" content="https://99-i.com/dia10/images/dia10.svg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@99iDia10">
+<meta name="theme-color" content="#0a0c10">
+
+<!-- Google Fonts: schneller laden -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700;800;900&display=swap" rel="stylesheet">
+<meta name="author" content="Markus Goffin">
+<meta name="last-modified" content="2025-08-24">
+<link rel="icon" type="image/x-icon" href="../images/99i_favicon_16x16.ico" sizes="16x16">
+<link rel="icon" type="image/x-icon" href="../images/99i_favicon_32x32.ico" sizes="32x32">
+<link rel="icon" type="image/x-icon" href="../images/99i_favicon_48x48.ico" sizes="48x48">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/ethers@6.12.1/dist/ethers.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<style>
+  :root{--bg:#0a0f18;--panel:#0f1624;--ink:#e6f2ff;--muted:#9fb3c8;--acc:#58a6ff;--ok:#14d19a;--warn:#ffce3a;--err:#ff6b6b;--line:#1e2a45;--input:#0c1526;--input-line:#27406c;--input-focus:#6aa8ff;--pill:#0e1a33;--pill-line:#27406c}
+  *{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.5 Inter,system-ui,sans-serif}
+  a{color:var(--acc);text-decoration:none}
+  header{position:sticky;top:0;z-index:10;background:linear-gradient(180deg,rgba(10,15,24,.85),rgba(10,15,24,.6));border-bottom:1px solid #1d2b45;backdrop-filter:blur(10px)}
+  .nav{max-width:1200px;margin:auto;padding:14px 18px;display:flex;align-items:center;gap:12px}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:900}
+  .logo{width:36px;height:36px;border-radius:8px;background:linear-gradient(135deg,#2a6cff,#7fb3ff);box-shadow:0 0 18px rgba(127,179,255,.35)}
+  .spacer{flex:1}
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border:1px solid #2a3b5f;border-radius:10px;background:#0e1a33;color:var(--ink);cursor:pointer}
+  .cta{background:linear-gradient(90deg,#2a6cff,#6aa8ff);border:none;color:#07101a;font-weight:800}
+  .wrap{max-width:1200px;margin:22px auto;padding:0 18px;display:grid;gap:18px}
+  .card{background:linear-gradient(180deg,#0f1624,#0c1320);border:1px solid var(--line);border-radius:14px;padding:18px;box-shadow:0 6px 30px rgba(0,0,0,.25)}
+  .grid{display:grid;gap:18px;grid-template-columns:repeat(12,1fr)}
+  .col6{grid-column:span 12} @media(min-width:900px){.col6{grid-column:span 6}}
+  .wide{grid-column:1/-1}
+  .h1{font-size:clamp(26px,4vw,42px);margin:.2em 0}
+  .muted{color:var(--muted)}
+  .row{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+
+  /* KPI tiles */
+  .kpi{display:flex;gap:12px;flex-wrap:wrap}
+  .b{min-width:160px;background:#101b31;border:1px solid #223456;border-radius:10px;padding:10px}
+  .lab{font-size:12px;color:#a7bde0}
+  .val{font-weight:900}
+  .bar{height:10px;background:#0e1a33;border:1px solid #203259;border-radius:999px;overflow:hidden}
+  .fill{height:100%;background:linear-gradient(90deg,#2a6cff,#6aa8ff)}
+  .chip{display:inline-flex;align-items:center;gap:6px;padding:6px 10px;border:1px solid var(--pill-line);border-radius:999px;background:var(--pill);font-size:13px}
+
+  /* Inputs */
+  .field{display:flex;flex-direction:column;gap:8px;flex:1;min-width:240px}
+  .field label{font-size:14px;color:#bcd1ff}
+  .input{width:100%;padding:14px 16px;border:1px solid var(--input-line);border-radius:10px;background:var(--input);color:var(--ink);outline:none;font-size:16px}
+  .input:focus{border-color:var(--input-focus);box-shadow:0 0 0 2px #6aa8ff30}
+  .input.err{border-color:#ff6b6b;box-shadow:0 0 0 2px #ff6b6b33}
+  .errtxt{color:var(--err);font-size:12px;min-height:1em}
+
+  /* Accept pill */
+  .acceptbox{display:flex;align-items:center;gap:14px;background:#0d172c;border:1px solid #1f2e4c;border-radius:26px;padding:16px 18px;flex-wrap:wrap}
+  .acceptbox .bigcheck{width:20px;height:20px}
+
+  /* Certificate preview + badge */
+  #certPreview{background:#fff;color:#0a1e3f;border:8px double #c0c0c0;border-radius:4px;padding:24px;position:relative}
+  .badge{position:absolute;right:16px;top:16px;display:inline-flex;align-items:center;gap:6px;font-weight:800;font-size:12px;padding:4px 10px;border-radius:999px;border:1px solid}
+  .badge.ok{background:#0f2a1f;border-color:#168f63;color:#14d19a}
+  .badge.warn{background:#2a260f;border-color:#b99228;color:#ffce3a}
+  .badge.err{background:#2a1414;border-color:#b04a4a;color:#ff6b6b}
+
+  /* Language switch */
+  .langs{display:flex;gap:8px}
+  .langbtn{background:#0e1a33;border:1px solid #2a3b5f;color:#e6f2ff;padding:8px 10px;border-radius:8px;cursor:pointer}
+  .langbtn.active{border-color:#79b3ff;box-shadow:0 0 0 1px #79b3ff55 inset}
+
+  /* FAQ */
+  .faq-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:10px}
+  .tabs{display:flex;gap:8px;flex-wrap:wrap}
+  .tab{padding:6px 10px;border:1px solid #27406c;border-radius:999px;background:#0e1a33;color:#cfe2ff;cursor:pointer;font-size:13px}
+  .tab.active{background:#1a2b52;border-color:#3b5aa3;color:#fff}
+  .faq-lang{display:none}
+  .faq-lang.active{display:block}
+  details{background:#0e1a33;border:1px solid #27406c;border-radius:10px;padding:10px;margin:8px 0}
+  summary{cursor:pointer;font-weight:800}
+  details p{margin:8px 0 0;color:#a7bde0}
+</style>
+</head>
+<body>
+<header>
+  <nav class="nav">
+    <div class="brand"><div class="logo"></div><span>DIA-10</span></div>
+    <div class="spacer"></div>
+    <a href="../index.html" class="btn" data-i18n="nav_home">Home</a>
+    <a href="../knowledge_database/glossary.html" class="btn" data-i18n="nav_know">Knowledge</a>
+    <a href="../whitepaper.html" class="btn" data-i18n="nav_wp">Whitepaper</a>
+    <a href="verify.html" class="btn" data-i18n="nav_verify">Verify</a>
+    <div class="langs">
+      <button class="langbtn" data-lang="de">DE</button>
+      <button class="langbtn active" data-lang="en">EN</button>
+      <button class="langbtn" data-lang="ro">RO</button>
+    </div>
+    <button id="btnWallet" class="btn cta" data-i18n="btn_wallet">Connect wallet</button>
+  </nav>
+</header>
+
+<section class="wrap">
+  <!-- Hero -->
+  <div class="card wide" style="text-align:center">
+    <h1 class="h1" data-i18n="hero_title">Crowdfunding · DIA-10 Convertible Participation Certificates (CPC)</h1>
+    <div class="muted" data-i18n="hero_sub">Pitch in. Level up. <b>#DIA10</b> · Subscribe, get a certificate (with QR verify), convert to DIA-10 at token launch.</div>
+  </div>
+
+  <!-- Parameters -->
+  <div class="card col6">
+    <h3 data-i18n="param_title">Overview (Parameters)</h3>
+    <div class="kpi">
+      <div class="b"><div class="lab">P₀ (EUR)</div><div class="val" id="p0">—</div></div>
+      <div class="b"><div class="lab" data-i18n="lab_discount">Discount</div><div class="val" id="disc">—</div></div>
+      <div class="b"><div class="lab" data-i18n="lab_floorcap">Floor / Cap</div><div class="val" id="floorcap">—</div></div>
+      <div class="b"><div class="lab">Pₙ (<span data-i18n="lab_effective">effective</span>)</div><div class="val" id="pn">—</div></div>
+      <div class="b"><div class="lab" data-i18n="lab_minmax">Min / Max ticket</div><div class="val" id="minmax">—</div></div>
+    </div>
+    <div class="row" style="margin-top:12px">
+      <div style="flex:1">
+        <div class="lab" data-i18n="lab_soft_hard">Soft cap / Hard cap</div>
+        <div class="bar"><div id="barFill" class="fill" style="width:0%"></div></div>
+        <div class="row" style="justify-content:space-between;margin-top:6px">
+          <div class="note"><span data-i18n="lab_soft">Soft</span>: <span id="soft">—</span></div>
+          <div class="note"><span data-i18n="lab_raised">Raised</span>: <span id="raised">—</span></div>
+          <div class="note"><span data-i18n="lab_hard">Hard</span>: <span id="hard">—</span></div>
+        </div>
+      </div>
+      <button id="simulateAdd" class="btn" data-i18n="btn_sim">Simulate +1,000 €</button>
+    </div>
+  </div>
+
+  <!-- Subscribe -->
+  <div class="card col6">
+    <h3 data-i18n="sub_title">Subscribe</h3>
+    <div class="row">
+      <div class="field"><label for="f_name" data-i18n="f_name_lab">Your name</label><input id="f_name" class="input" placeholder="First Last" autocomplete="name"><div id="err_name" class="errtxt"></div></div>
+      <div class="field"><label for="f_mail" data-i18n="f_mail_lab">Email</label><input id="f_mail" class="input" placeholder="name@example.com" autocomplete="email" inputmode="email"><div id="err_mail" class="errtxt"></div></div>
+    </div>
+    <div class="row">
+      <div class="field"><label for="f_amt" data-i18n="f_amt_lab">Amount in EUR</label><input id="f_amt" class="input" type="number" min="1" step="1" value="1000" inputmode="numeric"><div id="err_amt" class="errtxt"></div></div>
+      <div class="field"><label for="f_wallet" data-i18n="f_wallet_lab">EVM wallet (optional)</label><input id="f_wallet" class="input" placeholder="0x…" autocomplete="off" spellcheck="false"><div id="err_wallet" class="errtxt"></div></div>
+    </div>
+
+    <div class="kpi" style="margin-top:10px">
+      <div class="b"><div class="lab" data-i18n="kpi_shares">Shares (= EUR / Pₙ)</div><div class="val" id="v_shares">—</div></div>
+      <div class="b"><div class="lab" data-i18n="kpi_tokens">Planned tokens (≈)</div><div class="val" id="v_tokens">—</div></div>
+      <div class="b"><div class="lab" data-i18n="kpi_certno">Certificate No.</div><div class="val" id="v_cert">—</div></div>
+    </div>
+
+    <!-- Accept terms -->
+    <div class="acceptbox" style="margin-top:10px">
+      <input id="f_terms" type="checkbox" class="bigcheck">
+      <div><span data-i18n="terms_accept">I accept the</span> <a id="termsLink" href="#" target="_blank" download data-i18n="terms_pdf">Offering Terms (PDF)</a></div>
+      <span class="chip"><span data-i18n="terms_hash">Hash</span>: <code id="termsHash">—</code> <span id="termsOk"></span></span>
+    </div>
+
+    <div class="row" style="margin-top:12px">
+      <button id="btnCalc" class="btn" data-i18n="btn_calc">Calculate</button>
+      <button id="btnCert" class="btn cta" data-i18n="btn_pdf">📄 Certificate (PDF)</button>
+      <button id="btnSign" class="btn" data-i18n="btn_sign">Sign with wallet</button>
+      <button id="btnEmail" class="btn" title="Send to email" data-i18n="btn_email">✉️ Send via email</button>
+      <span id="msg" class="note"></span>
+    </div>
+  </div>
+
+  <!-- Payment -->
+  <div class="card col6">
+    <h3 data-i18n="pay_title">Payment</h3>
+    <div class="row">
+      <div class="b" style="flex:1"><div class="lab" data-i18n="lab_beneficiary">Beneficiary</div><div class="val" id="iban_name">—</div></div>
+      <div class="b" style="flex:1"><div class="lab">IBAN</div><div class="val" id="iban">—</div></div>
+      <div class="b" style="flex:1"><div class="lab">BIC</div><div class="val" id="bic">—</div></div>
+    </div>
+    <div class="row" style="margin-top:10px">
+      <div class="chip"><span data-i18n="lab_ref">Payment reference</span>: <b id="ref">—</b></div>
+      <button id="copyRef" class="btn" data-i18n="btn_copy">Copy</button>
+      <a id="openVerify" class="btn" href="https://99-i.com/dia10/crowdfunding/verify.html" target="_blank" data-i18n="btn_verify_open">Open verify page</a>
+    </div>
+    <div class="note" style="margin-top:8px" data-i18n="pay_note">
+      Certificate is “confirmed” after payment. If soft cap is not met by the deadline, refunds are processed (minus non-avoidable fees).
+    </div>
+  </div>
+
+  <!-- Certificate preview -->
+  <div class="card col6">
+    <h3 data-i18n="cert_prev_title">Certificate preview</h3>
+    <div id="certPreview">
+      <div id="checkBadge" class="badge warn">QR/Link: …</div>
+      <div style="text-align:center">
+        <div style="font-size:24px;font-weight:800" data-i18n="cert_h1">INVESTOR CERTIFICATE</div>
+        <div style="font-size:18px;font-weight:700;margin-top:2px" data-i18n="cert_h2">DIA-10 Participation</div>
+        <div style="margin-top:6px;color:#6b7892">
+          <span data-i18n="cert_no">Certificate No.</span>: <span id="pr_cert">—</span> ·
+          <span data-i18n="cert_date">Date</span>: <span id="pr_date">—</span>
+        </div>
+      </div>
+      <div style="margin-top:10px;text-align:center;color:#445" data-i18n="cert_line">This confirms the acquisition of DIA-10 shares.</div>
+      <div style="margin-top:12px">
+        <div><b data-i18n="cert_yourname">Your name</b>: <span id="pr_name">—</span></div>
+        <div><b data-i18n="cert_amount">Amount (€)</b>: <span id="pr_amt">—</span> ·
+          <span style="color:#667"><span data-i18n="cert_price">Price per share</span>: <span id="pr_pn">—</span> €</span>
+        </div>
+        <div><b data-i18n="cert_shares">Shares</b>: <span id="pr_sh">—</span></div>
+      </div>
+      <div class="row" style="justify-content:space-between;margin-top:12px">
+        <div style="color:#667" data-i18n="cert_footer_left">Issued in Bucharest · valid after payment receipt.</div>
+        <div style="text-align:right"><div style="font-weight:700">Markus Goffin</div><div style="color:#667;font-size:13px" data-i18n="cert_footer_role">Founder · DIA-10</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <div class="card col6" id="faqCard">
+    <div class="faq-head">
+      <h3 style="margin:0" data-i18n="faq_title">FAQ (Short)</h3>
+      <div class="tabs">
+        <button class="tab" data-lang="de">DE</button>
+        <button class="tab active" data-lang="en">EN</button>
+        <button class="tab" data-lang="ro">RO</button>
+      </div>
+    </div>
+
+    <div class="faq-lang lang-de">
+      <details open><summary>1) Was passiert, wenn die Soft-Cap nicht erreicht wird?</summary><p>Die Runde wird verlängert oder beendet. Bei Abbruch erfolgt eine Erstattung abzüglich zwingender Bankgebühren.</p></details>
+      <details><summary>2) Wann erhalte ich Tokens?</summary><p>Nach Zahlungseingang erhältst du das Zertifikat. Die on-chain Zuteilung erfolgt in Batches (typisch wöchentlich), danach Wallet-Import.</p></details>
+      <details><summary>3) Welche Jurisdiktionen sind ausgeschlossen?</summary><p>Sanktionierte Länder, US-Personen (vorerst) sowie Regionen, in denen das Angebot untersagt ist.</p></details>
+      <details><summary>4) Welche KYC-Schwellen gelten?</summary><p>≥ 15.000 € (12 Monate aggregiert) erfordern KYC/KYB. Zusätzliche Nachweise (Source of Funds) sind möglich.</p></details>
+      <details><summary>5) Welche Zahlungsarten werden akzeptiert?</summary><p>Banküberweisung (SEPA/SWIFT). Krypto (USDC) im Pilot — bitte vorher per E-Mail abstimmen.</p></details>
+    </div>
+
+    <div class="faq-lang lang-en active">
+      <details open><summary>1) What if the soft cap is not reached?</summary><p>The round may be extended or closed. If closed, refunds are issued minus mandatory bank fees.</p></details>
+      <details><summary>2) When will I receive tokens?</summary><p>You’ll get the certificate once payment is received. On-chain allocation happens in batches (typically weekly), then wallet import.</p></details>
+      <details><summary>3) Which jurisdictions are excluded?</summary><p>Sanctioned countries, US persons (for now), and regions where the offer is prohibited.</p></details>
+      <details><summary>4) What KYC thresholds apply?</summary><p>≥ €15,000 (aggregated over 12 months) requires KYC/KYB. Additional proof (source of funds) may be requested.</p></details>
+      <details><summary>5) Which payment methods are accepted?</summary><p>Bank transfer (SEPA/SWIFT). Crypto (USDC) in pilot — please pre-arrange via email.</p></details>
+    </div>
+
+    <div class="faq-lang lang-ro">
+      <details open><summary>1) Ce se întâmplă dacă nu atingem soft-cap-ul?</summary><p>Runda poate fi prelungită sau închisă. Dacă se închide, rambursăm sumele minus comisioanele bancare obligatorii.</p></details>
+      <details><summary>2) Când primesc tokenurile?</summary><p>Primești certificatul după încasare. Alocarea on-chain se face în loturi (de regulă săptămânal), apoi import în portofel.</p></details>
+      <details><summary>3) Ce jurisdicții sunt excluse?</summary><p>Țări sancționate, persoane din SUA (deocamdată) și regiuni unde oferta este interzisă.</p></details>
+      <details><summary>4) Ce praguri KYC se aplică?</summary><p>≥ 15.000 € (agregat pe 12 luni) necesită KYC/KYB. Pot fi solicitate dovezi suplimentare (origine fonduri).</p></details>
+      <details><summary>5) Ce metode de plată sunt acceptate?</summary><p>Transfer bancar (SEPA/SWIFT). Cripto (USDC) în pilot — vă rugăm confirmați în prealabil pe e-mail.</p></details>
+    </div>
+  </div>
+</section>
+
+<script>
+/* ===== Config ===== */
+const CFG = {
+  P0: 0.10, discount: 0.20, floor: 0.05, cap: 0.15,
+  soft: 50000, hard: 250000, min: 100, max: 10000,
+
+  iban_name: 'MAGO SERVICE TRADE SRL',
+  iban: 'RO34BRDE426SV66680914260',
+  bic: 'BRDEROBU',
+
+  // absolute verify URL incl. trailing '#'
+  verifyUrlBase: 'https://99-i.com/dia10/crowdfunding/verify.html#',
+
+  // PDFs je Sprache; SHA-256 später eintragbar (64-stellig). Leer lassen, wenn noch nicht final.
+  terms: {
+    en: { url: 'DIA10-CPC-terms-high-contrast-v2-EN.pdf', sha256: '19137cffaa9afaa5dab43ef075260adb7b75a66713ca291211ae46cd52018259' },
+    de: { url: 'DIA10-CPC-terms-high-contrast-v2-DE.pdf', sha256: 'bebf4bdd4e99a3110bbbce64dd791d700c9106b308a129b731b136966751aeb9' },
+    ro: { url: 'DIA10-CPC-terms-high-contrast-v2-RO.pdf', sha256: '8846454b0df02b0e73bf29856a31ee5293963451350830f5b2896be3483943d6' }
+  }
+};
+
+const S = id=>document.getElementById(id);
+const LOCALE = {en:'en-GB', de:'de-DE', ro:'ro-RO'};
+
+const I18N = {
+  en:{nav_home:"Home",nav_know:"Knowledge",nav_wp:"Whitepaper",nav_verify:"Verify",btn_wallet:"Connect wallet",
+      hero_title:"Crowdfunding · DIA-10 Convertible Participation Certificates (CPC)",
+      hero_sub:"Pitch in. Level up. #DIA10 · Subscribe, get a certificate (with QR verify), convert to DIA-10 at token launch.",
+      param_title:"Overview (Parameters)",lab_discount:"Discount",lab_floorcap:"Floor / Cap",lab_effective:"effective",lab_minmax:"Min / Max ticket",lab_soft_hard:"Soft cap / Hard cap",lab_soft:"Soft",lab_raised:"Raised",lab_hard:"Hard",btn_sim:"Simulate +1,000 €",
+      sub_title:"Subscribe",f_name_lab:"Your name",f_mail_lab:"Email",f_amt_lab:"Amount in EUR",f_wallet_lab:"EVM wallet (optional)",
+      kpi_shares:"Shares (= EUR / Pₙ)",kpi_tokens:"Planned tokens (≈)",kpi_certno:"Certificate No.",
+      terms_accept:"I accept the",terms_pdf:"Offering Terms (PDF)",terms_hash:"Hash",
+      btn_calc:"Calculate",btn_pdf:"📄 Certificate (PDF)", btn_sign:"Sign with wallet", btn_email:"✉️ Send via email",
+      pay_title:"Payment",lab_beneficiary:"Beneficiary",lab_ref:"Payment reference",btn_copy:"Copy",btn_verify_open:"Open verify page",
+      pay_note:"Certificate is “confirmed” after payment. If soft cap is not met by the deadline, refunds are processed (minus non-avoidable fees).",
+      cert_prev_title:"Certificate preview",cert_h1:"INVESTOR CERTIFICATE",cert_h2:"DIA-10 Participation",cert_no:"Certificate No.",cert_date:"Date",
+      cert_line:"This confirms the acquisition of DIA-10 shares.",cert_yourname:"Your name",cert_amount:"Amount (€)",cert_price:"Price per share",cert_shares:"Shares",
+      cert_footer_left:"Issued in Bucharest · valid after payment receipt.",cert_footer_role:"Founder · DIA-10",
+      msg_need:"Please fill in name & email.",msg_mail:"Enter a valid email.",msg_amt2:"Value must be within {MIN}–{MAX}.",
+      badge_wait:"QR/Link: pending", badge_ok:"QR ok • Link ok", badge_link:"Link ok • QR n/a", badge_fail:"QR/Link: n/a",
+      faq_title:"FAQ (Short)"},
+  de:{nav_home:"Home",nav_know:"Wissen",nav_wp:"Whitepaper",nav_verify:"Verify",btn_wallet:"Wallet verbinden",
+      hero_title:"Crowdfunding · DIA-10 Convertible Participation Certificates (CPC)",
+      hero_sub:"Pitch in. Level up. #DIA10 · Zeichne einen Beitrag, erhalte ein Zertifikat (mit QR-Verify) und werde beim Token-Launch in DIA-10 konvertiert.",
+      param_title:"Kurzüberblick (Parameter)",lab_discount:"Rabatt",lab_floorcap:"Floor / Cap",lab_effective:"effektiv",lab_minmax:"Min / Max Ticket",lab_soft_hard:"Soft-Cap / Hard-Cap",lab_soft:"Soft",lab_raised:"Raised",lab_hard:"Hard",btn_sim:"+1.000 € simulieren",
+      sub_title:"Zeichnen",f_name_lab:"Ihr Name",f_mail_lab:"E-Mail",f_amt_lab:"Betrag in EUR",f_wallet_lab:"EVM-Wallet (optional)",
+      kpi_shares:"Anteile (= EUR / Pₙ)",kpi_tokens:"Geplante Token (≈)",kpi_certno:"Zertifikats-Nr.",
+      terms_accept:"Ich akzeptiere die",terms_pdf:"Angebotsbedingungen (PDF)",terms_hash:"Hash",
+      btn_calc:"Berechnen",btn_pdf:"📄 Zertifikat (PDF)", btn_sign:"Mit Wallet signieren", btn_email:"✉️ Per E-Mail senden",
+      pay_title:"Zahlung",lab_beneficiary:"Begünstigter",lab_ref:"Verwendungszweck",btn_copy:"Kopieren",btn_verify_open:"Verify-Seite öffnen",
+      pay_note:"Das Zertifikat wird nach Zahlungseingang bestätigt. Bei Nichterreichen der Soft-Cap bis zum Stichtag erfolgt Erstattung (abzgl. unvermeidbarer Gebühren).",
+      cert_prev_title:"Vorschau Zertifikat",cert_h1:"INVESTOREN-ZERTIFIKAT",cert_h2:"DIA-10 Beteiligung",cert_no:"Zertifikats-Nr.",cert_date:"Datum",
+      cert_line:"Dies bestätigt den Erwerb von DIA-10 Anteilen.",cert_yourname:"Ihr Name",cert_amount:"Betrag (€)",cert_price:"Preis pro Anteil",cert_shares:"Anteile",
+      cert_footer_left:"Ausgestellt in Bukarest · gültig nach Zahlungseingang.",cert_footer_role:"Founder · DIA-10",
+      msg_need:"Bitte Name & E-Mail ausfüllen.",msg_mail:"Bitte gültige E-Mail eingeben.",msg_amt2:"Wert muss zwischen {MIN}–{MAX} liegen.",
+      badge_wait:"QR/Link: ausstehend", badge_ok:"QR ok • Link ok", badge_link:"Link ok • QR n/v", badge_fail:"QR/Link: n/v",
+      faq_title:"FAQ (Kurz)"},
+  ro:{nav_home:"Home",nav_know:"Knowledge",nav_wp:"Whitepaper",nav_verify:"Verifică",btn_wallet:"Conectează wallet",
+      hero_title:"Crowdfunding · DIA-10 Certificate de Participație Convertibile (CPC)",
+      hero_sub:"#DIA10 · Contribuie, primești un certificat (cu verificare QR) și convertești în DIA-10 la lansare.",
+      param_title:"Prezentare (Parametri)",lab_discount:"Discount",lab_floorcap:"Floor / Cap",lab_effective:"efectiv",lab_minmax:"Bilet Min / Max",lab_soft_hard:"Soft-cap / Hard-cap",lab_soft:"Soft",lab_raised:"Strâns",lab_hard:"Hard",btn_sim:"Simulează +1.000 €",
+      sub_title:"Subscrie",f_name_lab:"Numele tău",f_mail_lab:"Email",f_amt_lab:"Sumă în EUR",f_wallet_lab:"Wallet EVM (opțional)",
+      kpi_shares:"Părți (= EUR / Pₙ)",kpi_tokens:"Tokenuri planificate (≈)",kpi_certno:"Nr. certificat",
+      terms_accept:"Accept",terms_pdf:"Termenii ofertei (PDF)",terms_hash:"Hash",
+      btn_calc:"Calculează",btn_pdf:"📄 Certificat (PDF)", btn_sign:"Semnează cu wallet", btn_email:"✉️ Trimite pe email",
+      pay_title:"Plată",lab_beneficiary:"Beneficiar",lab_ref:"Referință plată",btn_copy:"Copiază",btn_verify_open:"Deschide pagina de verificare",
+      pay_note:"Certificatul devine „confirmat” după plată. Dacă soft-cap nu este atins la termen, rambursăm (minus taxele inevitabile).",
+      cert_prev_title:"Previzualizare certificat",cert_h1:"CERTIFICAT INVESTITOR",cert_h2:"Participație DIA-10",cert_no:"Nr. certificat",cert_date:"Data",
+      cert_line:"Confirmă achiziția de părți DIA-10.",cert_yourname:"Numele tău",cert_amount:"Sumă (€)",cert_price:"Preț/p parte",cert_shares:"Părți",
+      cert_footer_left:"Emis la București · valabil după încasare.",cert_footer_role:"Fondator · DIA-10",
+      msg_need:"Completează nume și email.",msg_mail:"Email invalid.",msg_amt2:"Valoarea trebuie între {MIN}–{MAX}.",
+      badge_wait:"QR/Link: în așteptare", badge_ok:"QR ok • Link ok", badge_link:"Link ok • QR n/a", badge_fail:"QR/Link: n/a",
+      faq_title:"FAQ (Scurt)"}
+};
+let currentLang = 'en';
+
+/* ===== helpers ===== */
+function euros(n){ return Number(n||0).toLocaleString(LOCALE[currentLang],{style:'currency',currency:'EUR'}); }
+function b64url(s){ return btoa(unescape(encodeURIComponent(s))).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,''); }
+function clamp(x,a,b){ return Math.max(a, Math.min(b, x)); }
+async function sha256HexFromUrl(url){ const r=await fetch(url,{cache:'no-store'}); const b=await r.arrayBuffer(); const d=await crypto.subtle.digest('SHA-256',b); return Array.from(new Uint8Array(d)).map(x=>x.toString(16).padStart(2,'0')).join(''); }
+function buildVerifyUrl(hash){ let base=(CFG.verifyUrlBase||'').trim(); if(!base.includes('#')) base+='#'; return base+hash; }
+function saveForm(){ localStorage.setItem('dia10_cf', JSON.stringify({name:S('f_name').value,mail:S('f_mail').value,amt:S('f_amt').value,wa:S('f_wallet').value})); }
+function loadForm(){ try{const j=JSON.parse(localStorage.getItem('dia10_cf')||'{}'); if(j.name)S('f_name').value=j.name; if(j.mail)S('f_mail').value=j.mail; if(j.amt)S('f_amt').value=j.amt; if(j.wa)S('f_wallet').value=j.wa;}catch{} }
+
+/* ===== i18n apply ===== */
+function applyI18n(lang){
+  currentLang=(['en','de','ro'].includes(lang)?lang:'en'); document.documentElement.lang=currentLang;
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const k=el.getAttribute('data-i18n');
+    if(I18N[currentLang][k]!=null) el.textContent=I18N[currentLang][k];
+  });
+  document.querySelectorAll('.langbtn').forEach(b=>b.classList.toggle('active', b.dataset.lang===currentLang));
+  updateTermsLinkAndHash(); renderParams(); if(window._lastCalc) updatePreview(window._lastCalc);
+}
+// Fallbacks, falls eine Übersetzung fehlt
+S('btnCert').textContent = I18N[currentLang]?.btn_pdf || '📄 Certificate (PDF)';
+if (S('btnEmail')) {
+  S('btnEmail').textContent = (currentLang==='de' ? '✉️ Per E-Mail'
+                         : currentLang==='ro' ? '✉️ Email'
+                         : '✉️ Email');
+}
+document.querySelectorAll('.langbtn').forEach(b=> b.addEventListener('click', ()=> applyI18n(b.dataset.lang)));
+
+/* ===== parameters ===== */
+const Pn = clamp(CFG.P0*(1-CFG.discount), CFG.floor, CFG.cap);
+let raised = Number(localStorage.getItem('dia10_raised')||'0');
+function renderParams(){
+  S('p0').textContent     = CFG.P0.toLocaleString(LOCALE[currentLang],{minimumFractionDigits:2,maximumFractionDigits:2})+' €';
+  S('disc').textContent   = (CFG.discount*100).toFixed(0)+' %';
+  S('floorcap').textContent = CFG.floor.toFixed(2)+' € / '+CFG.cap.toFixed(2)+' €';
+  S('pn').textContent     = Pn.toFixed(2)+' €';
+  S('minmax').textContent = CFG.min+' € / '+CFG.max+' €';
+  S('soft').textContent   = euros(CFG.soft); S('hard').textContent = euros(CFG.hard); S('raised').textContent = euros(raised);
+  S('barFill').style.width = Math.min(100,(raised/CFG.hard)*100).toFixed(1)+'%';
+  S('iban_name').textContent=CFG.iban_name; S('iban').textContent=CFG.iban; S('bic').textContent=CFG.bic;
+}
+document.getElementById('simulateAdd').onclick=()=>{ raised+=1000; localStorage.setItem('dia10_raised',String(raised)); renderParams(); };
+
+/* ===== terms link + hash (UI only) ===== */
+async function updateTermsLinkAndHash(){
+  const t = CFG.terms[currentLang] || CFG.terms.en;
+  S('termsLink').href = t.url;
+  S('termsLink').setAttribute('download', (t.url||'').split('/').pop()||'terms.pdf');
+  const h = (t.sha256 && t.sha256.length===64) ? t.sha256 : '';
+  S('termsHash').textContent = h ? (h.slice(0,8)+'…'+h.slice(-6)) : '—';
+  S('termsOk').innerHTML = h ? ' <span class="ok">ok</span>' : ' <span class="warn">n/a</span>';
+}
+
+/* ===== validation ===== */
+const reMail=/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
+function validate(){
+  const nameOk=S('f_name').value.trim().length>=2;
+  const mailOk=reMail.test(S('f_mail').value.trim());
+  const amt=Number(S('f_amt').value||0);
+  const amtOk=amt>=CFG.min&&amt<=CFG.max;
+  S('err_mail').textContent = mailOk?'':I18N[currentLang].msg_mail;
+  S('err_amt').textContent  = amtOk?'':I18N[currentLang].msg_amt2.replace('{MIN}',CFG.min).replace('{MAX}',CFG.max);
+  S('f_name').classList.toggle('err',!nameOk);
+  S('f_mail').classList.toggle('err',!mailOk);
+  S('f_amt').classList.toggle('err',!amtOk);
+  return nameOk&&mailOk&&amtOk;
+}
+['f_name','f_mail','f_amt','f_wallet'].forEach(id=>{
+  const el=S(id);
+  el.addEventListener('input',()=>{S('msg').textContent=''; if(id!=='f_wallet') validate();});
+  el.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault(); calc();}});
+});
+
+/* ===== preview ===== */
+function updatePreview(c){
+  const fmt=new Intl.DateTimeFormat(LOCALE[currentLang]);
+  S('pr_name').textContent=c.name;
+  S('pr_amt').textContent=Number(c.amt).toLocaleString(LOCALE[currentLang]);
+  S('pr_pn').textContent=Pn.toFixed(2);
+  S('pr_sh').textContent=c.shares.toLocaleString(LOCALE[currentLang],{maximumFractionDigits:4});
+  S('pr_cert').textContent=c.payload.cert;
+  S('pr_date').textContent=fmt.format(new Date());
+  S('ref').textContent=c.payload.cert;
+  S('openVerify').href=c.verifyUrl;
+
+  const badge=S('checkBadge');
+  const validLink=/^https?:\/\//i.test(c.verifyUrl);
+  badge.className = validLink ? 'badge ok' : 'badge err';
+  badge.textContent = validLink ? I18N[currentLang].badge_ok : I18N[currentLang].badge_fail;
+}
+
+/* ===== calc + payload (includes termsUrl!) ===== */
+function calc(){
+  if(!validate()){ S('msg').textContent=I18N[currentLang].msg_need; return null; }
+
+  const name=S('f_name').value.trim();
+  const mail=S('f_mail').value.trim();
+  const amt=Number(S('f_amt').value||0);
+  const shares=amt/Pn;
+  const certNo=Date.now();
+
+  S('v_shares').textContent=shares.toLocaleString(LOCALE[currentLang],{maximumFractionDigits:4});
+  S('v_tokens').textContent=shares.toLocaleString(LOCALE[currentLang],{maximumFractionDigits:4});
+  S('v_cert').textContent='DIA10-'+certNo;
+
+  const t=CFG.terms[currentLang]||CFG.terms.en;
+
+  // >>> payload enthält jetzt termsUrl + optional termsHash (null, wenn nicht gesetzt) <<<
+  const payload={
+    cert:'DIA10-'+certNo,
+    amt:Number(amt.toFixed(2)),
+    shares:Number(shares.toFixed(4)),
+    inv:name,
+    wa:(S('f_wallet').value||'').trim(),
+    ts:Date.now(),
+    termsLang: currentLang,
+    termsUrl: t.url,
+    termsHash: (t.sha256 && t.sha256.length===64) ? t.sha256 : null,
+    status:'pledged'
+  };
+
+  const hash=b64url(JSON.stringify(payload));
+  const verifyUrl=buildVerifyUrl(hash);
+
+  const res={name,mail,amt,shares,payload,verifyHash:hash,verifyUrl};
+  window._lastCalc=res; updatePreview(res); S('msg').textContent='';
+  saveForm(); return res;
+}
+S('btnCalc').onclick=()=>calc();
+
+/* ===== PDF ===== */
+async function makePdf(c){
+  const node=S('certPreview');
+  const canvas=await html2canvas(node,{scale:2,background:'#fff',useCORS:true});
+  const img=canvas.toDataURL('image/png');
+
+  const { jsPDF }=window.jspdf;
+  const doc=new jsPDF({orientation:'landscape',unit:'pt',format:'a4'});
+  const W=doc.internal.pageSize.getWidth(), H=doc.internal.pageSize.getHeight(), m=18;
+  const r=canvas.width/canvas.height;
+  let w=W-2*m,h=w/r; if(h>H-2*m){h=H-2*m; w=h*r;}
+  const x=(W-w)/2,y=(H-h)/2;
+
+  doc.addImage(img,'PNG',x,y,w,h,'','FAST');
+
+  // QR
+  const verifyUrl=c.verifyUrl;
+  const tmp=document.createElement('div'); tmp.style.position='fixed'; tmp.style.left='-9999px'; document.body.appendChild(tmp);
+  new QRCode(tmp,{text:verifyUrl,width:120,height:120,correctLevel:QRCode.CorrectLevel.M});
+  const qrC=tmp.querySelector('canvas'); const qrUrl=qrC?qrC.toDataURL('image/png'):null; document.body.removeChild(tmp);
+
+  const s=86, inset=16, qx=x+w-s-inset, qy=y+inset;
+  if(qrUrl){ doc.addImage(qrUrl,'PNG',qx,qy,s,s); doc.link(qx,qy,s,s,{url:verifyUrl}); }
+  doc.setFontSize(10); doc.setTextColor(120,140,165); doc.text((I18N[currentLang].nav_verify||'Verify')+':', qx, qy+s+14);
+  doc.setTextColor(70,140,255); doc.textWithLink('verify page', qx+44, qy+s+14, {url:verifyUrl});
+
+  doc.save(`DIA10-Certificate-${c.payload.cert}.pdf`);
+}
+S('btnCert').onclick=async()=>{
+  const r=calc(); if(!r) return;
+  if(!S('f_terms').checked){
+    S('msg').textContent=(currentLang==='de'?'Bitte Bedingungen akzeptieren.':(currentLang==='ro'?'Acceptă termenii.':'Please accept the terms.'));
+    return;
+  }
+  await makePdf(r);
+};
+
+/* ===== email share ===== */
+S('btnEmail').onclick=async()=>{
+  const r=calc(); if(!r) return;
+  // PDF render
+  const node=S('certPreview'); const canvas=await html2canvas(node,{scale:2,background:'#fff'});
+  const { jsPDF }=window.jspdf; const doc=new jsPDF({orientation:'landscape',unit:'pt',format:'a4'});
+  const W=doc.internal.pageSize.getWidth(),H=doc.internal.pageSize.getHeight(),m=18;
+  const ratio=canvas.width/canvas.height; let w=W-2*m,h=w/ratio; if(h>H-2*m){h=H-2*m;w=h*ratio;}
+  const x=(W-w)/2,y=(H-h)/2; doc.addImage(canvas.toDataURL('image/png'),'PNG',x,y,w,h);
+  const blob = doc.output('blob'); const file = new File([blob], `DIA10-Certificate-${r.payload.cert}.pdf`, {type:'application/pdf'});
+
+  if(navigator.share && navigator.canShare && navigator.canShare({files:[file]})){
+    await navigator.share({title:'DIA-10 Certificate', text:'Please keep this certificate for your records.', files:[file]});
+  }else{
+    const href=URL.createObjectURL(blob); const a=document.createElement('a'); a.href=href; a.download=file.name; a.click();
+    const subject=encodeURIComponent(`DIA-10 Certificate ${r.payload.cert}`);
+    const body=encodeURIComponent(`Dear DIA-10,\n\nPlease find attached my certificate ${r.payload.cert}.\n\n(If not attached automatically, please attach the downloaded PDF.)\n\nRegards,\n${r.name}`);
+    location.href=`mailto:mgoffin@web.de?subject=${subject}&body=${body}`;
+  }
+};
+
+/* ===== copy + wallet ===== */
+document.getElementById('copyRef').onclick=async()=>{ try{ await navigator.clipboard.writeText(S('ref').textContent); S('msg').textContent=(currentLang==='de'?'Verwendungszweck kopiert.':(currentLang==='ro'?'Referință copiată.':'Reference copied.')); }catch{ S('msg').textContent='Copy failed.'; } };
+document.getElementById('btnWallet').onclick=async()=>{
+  try{
+    if(!window.ethereum){ alert(currentLang==='de'?'MetaMask nicht gefunden.':(currentLang==='ro'?'MetaMask lipsește.':'MetaMask not found.')); return; }
+    const bp=new ethers.BrowserProvider(window.ethereum); await bp.send('eth_requestAccounts',[]); const si=await bp.getSigner(); S('f_wallet').value=await si.getAddress(); saveForm();
+  }catch(e){ alert('Wallet connection failed.'); }
+};
+
+/* ===== FAQ tabs ===== */
+(function faqI18n(){
+  const langBtns = document.querySelectorAll('#faqCard .tab');
+  const blocks = {
+    de: document.querySelector('#faqCard .lang-de'),
+    en: document.querySelector('#faqCard .lang-en'),
+    ro: document.querySelector('#faqCard .lang-ro')
+  };
+  function show(l){ /* ...wie gehabt... */ }
+  show(localStorage.getItem('dia10_cf_faq_lang') || 'en');
+  langBtns.forEach(b=> b.addEventListener('click', ()=> show(b.dataset.lang)));
+})();
+
+
+/* ===== init ===== */
+(function init(){
+  applyI18n('en');
+  renderParams();
+  loadForm();
+  S('pr_date').textContent=new Intl.DateTimeFormat(LOCALE[currentLang]).format(new Date());
+  S('checkBadge').textContent=I18N[currentLang].badge_wait;
+})();
+</script>
+</body>
+</html>

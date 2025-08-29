@@ -1,0 +1,962 @@
+<!-- Hello, my name is Markus Goffin 
+🇩🇪 Deutsch
+
+Ideen- und Konzeptinhaber von DIA-10
+Markus Goffin ist der alleinige Urheber und Inhaber der ursprünglichen Idee, des Namens, des Konzepts sowie der Markenidentität von DIA-10 – einer diamant­inspirierten Kryptowährung. Die Entwicklung, Gestaltung und strategische Ausrichtung des Projekts basieren ausschließlich auf seiner kreativen und unternehmerischen Arbeit.
+
+🇬🇧 English
+
+Creator and Concept Owner of DIA-10
+Markus Goffin is the sole originator and owner of the idea, name, concept, and brand identity of DIA-10 — a diamond-inspired cryptocurrency. The project’s development, design, and strategic direction are entirely based on his creative vision and entrepreneurial expertise.
+
+🇷🇴 Română
+
+Autor și deținător al conceptului DIA-10
+Markus Goffin este inițiatorul și proprietarul exclusiv al ideii, numelui, conceptului și identității de brand DIA-10 — o criptomonedă inspirată de diamante. Dezvoltarea, designul și direcția strategică a proiectului se bazează în întregime pe viziunea sa creativă și expertiza sa antreprenorială.
+--> 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>DIA-10 | Knowledge Base (EN/DE/RO)</title>
+<!-- Canonical & Hreflang (empfohlen: je Sprache eigene URL, z.B. /en/ /de/ /ro/) -->
+<link rel="canonical" href="https://99-i.com/dia10/">
+<link rel="alternate" hreflang="en" href="https://99-i.com/dia10/">
+<link rel="alternate" hreflang="de" href="https://99-i.com/dia10/">
+<link rel="alternate" hreflang="ro" href="https://99-i.com/dia10/">
+<link rel="alternate" hreflang="x-default" href="https://99-i.com/dia10/">
+
+<!-- Meta -->
+<meta name="description" content="DIA-10 is a diamond-inspired digital asset designed for resilience and clarity. Learn about tokenomics, certificates and partners.">
+
+<!-- Open Graph / Twitter -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="DIA-10">
+<meta property="og:title" content="DIA-10 – Diamond-anchored digital value">
+<meta property="og:description" content="Diamond-inspired digital asset, transparent tokenomics and partner network.">
+<meta property="og:url" content="https://99-i.com/dia10/">
+<meta property="og:image" content="https://99-i.com/dia10/images/dia10.svg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@99iDia10">
+<meta name="theme-color" content="#0a0c10">
+
+<!-- Google Fonts: schneller laden -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700;800;900&display=swap" rel="stylesheet">
+<meta name="author" content="Markus Goffin">
+<meta name="last-modified" content="2025-08-17">
+<link rel="icon" type="image/x-icon" href="../images/99i_favicon_16x16.ico" sizes="16x16">
+<link rel="icon" type="image/x-icon" href="../images/99i_favicon_32x32.ico" sizes="32x32">
+<link rel="icon" type="image/x-icon" href="../images/99i_favicon_48x48.ico" sizes="48x48">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0a0c10; --panel:#0f1218; --ink:#eaf6ff; --muted:#9fb3c8;
+    --accent:#49b3ff; --brand:#1b6fff; --radius:16px;
+    --shadow:0 10px 30px rgba(0,0,0,.35); --chip:#121a27;
+  }
+  *{box-sizing:border-box} html,body{height:100%}
+  body{margin:0; background:var(--bg); color:var(--ink);
+       font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;}
+  a{color:var(--accent); text-decoration:none} a:hover{color:#bfe6ff}
+
+  /* Nav */
+  .nav{position:sticky; top:0; z-index:50; height:72px; display:flex; align-items:center; justify-content:space-between;
+       padding:0 20px; backdrop-filter: blur(8px);
+       background:linear-gradient(to bottom, rgba(10,12,16,.85), rgba(10,12,16,.35) 70%, transparent);
+       border-bottom:1px solid rgba(255,255,255,.06);}
+  .brand{display:flex; align-items:center; gap:12px; font-weight:900; letter-spacing:.3px}
+  .brand-logo{width:40px; aspect-ratio:1; border-radius:12px;
+       background: conic-gradient(from 210deg, #0a84ff, #49b3ff, #7dd3fc, #0a84ff);
+       box-shadow: inset 0 0 0 2px rgba(255,255,255,.06), var(--shadow);
+       position:relative; overflow:hidden;}
+  .brand-logo::after{content:""; position:absolute; inset:22% 20% 35% 20%;
+       background: linear-gradient(145deg,#e9f3ff,#9cc9ff);
+       clip-path: polygon(50% 0%, 100% 45%, 80% 100%, 20% 100%, 0% 45%); opacity:.95;}
+  .nav-actions{display:flex; gap:12px; align-items:center}
+  .lang{display:flex; gap:8px}
+  .lang button{background:#101521; color:var(--ink); border:1px solid rgba(255,255,255,.08);
+       padding:8px 12px; border-radius:10px; font-weight:700; cursor:pointer;}
+  .lang button.active{border-color:var(--accent); color:#dff4ff}
+  
+    .login-btn{
+    background:linear-gradient(135deg, var(--brand), #0a84ff);
+    color:white; padding:10px 16px; border:none; border-radius:12px; font-weight:800; cursor:pointer;
+    box-shadow:0 10px 20px rgba(27,111,255,.3);
+  }
+
+  /* Hero video */
+  .hero{display:grid; place-items:center; padding:26px 20px 10px;}
+  .hero-inner{width:min(1200px,100%);}
+  .video-wrap{position:relative; border-radius:16px; overflow:hidden;
+       border:1px solid rgba(255,255,255,.07); box-shadow:var(--shadow); background:#0b0f15;}
+  .video-wrap video{width:100%; height:auto; display:block}
+  .hero-title{margin:14px 6px 0; font-size:clamp(28px,4.6vw,44px); font-weight:900;
+       background:linear-gradient(180deg,#ffffff, #bfe6ff 60%, #7dd3fc);
+       -webkit-background-clip:text; background-clip:text; color:transparent;}
+  .hero-sub{margin:6px 6px 0; color:var(--muted)}
+
+  /* Search & chips */
+  .kb-wrap{display:flex; justify-content:center; padding:24px 20px 70px}
+  .kb{width:min(1200px,100%); display:grid; gap:16px}
+  .searchbar{display:flex; gap:12px; align-items:center; background:var(--panel);
+       border:1px solid rgba(255,255,255,.07); border-radius:14px; padding:10px 12px;}
+  .searchbar input{flex:1; background:transparent; border:none; outline:none; color:var(--ink);
+       font-size:16px; padding:8px 4px;}
+  .chips{display:flex; gap:8px; flex-wrap:wrap}
+  .chip{background:var(--chip); color:#d6ebff; border:1px solid rgba(255,255,255,.08);
+       padding:8px 12px; border-radius:999px; cursor:pointer; font-weight:700; font-size:.9rem;}
+  .chip.active{border-color:var(--accent); color:#fff; box-shadow:0 6px 18px rgba(73,179,255,.18)}
+
+  /* Grid */
+  .grid{display:grid; gap:16px; grid-template-columns:repeat(3,1fr)}
+  @media (max-width:1020px){ .grid{grid-template-columns:repeat(2,1fr)} }
+  @media (max-width:680px){ .grid{grid-template-columns:1fr} }
+  .card{background:linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,0));
+       border:1px solid rgba(255,255,255,.07); border-radius:16px; padding:18px; box-shadow:var(--shadow)}
+  .term{font-weight:900; margin:0 0 6px; font-size:18px}
+  .desc{color:var(--muted); line-height:1.6; margin:0}
+  .tag{display:inline-block; margin-top:10px; font-size:.75rem; background:#122032; color:#bfe6ff;
+       border:1px solid rgba(98,184,255,.25); padding:6px 10px; border-radius:999px}
+
+  /* Legal */
+  footer{padding:40px 20px; text-align:center; color:#7e93a8}
+  .foot-links{margin:10px 0; display:flex; gap:14px; justify-content:center; flex-wrap:wrap}
+  .tiny{font-size:.85rem; color:#7e93a8; margin-top:8px}
+  section.legal-section{padding:60px 20px; display:flex; justify-content:center}
+  .legal{width:min(1000px,100%); background:linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,0));
+    border:1px solid rgba(255,255,255,.07); border-radius:16px; padding:26px; box-shadow:var(--shadow)}
+  .legal h3{margin:0 0 8px; font-size:28px; font-weight:900}
+  .legal h4{margin:18px 0 6px; font-size:18px}
+  .legal p,.legal li{color:#9fb3c8}
+  .lang-block{display:none}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="brand">
+    <div class="brand-logo" aria-hidden="true"></div>
+    <div>DIA-10</div>
+  </div>
+    <div class="login-btn">
+    <a href="../index.html" id="openLogin">HOME</a>
+    </div></div>
+  <div class="nav-actions">
+    <div class="lang">
+      <button class="langbtn" data-lang="de">DE</button>
+      <button class="langbtn active" data-lang="en">EN</button>
+      <button class="langbtn" data-lang="ro">RO</button>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO (Video) -->
+<header class="hero">
+  <div class="hero-inner">
+    <div class="video-wrap">
+      <video autoplay muted loop playsinline poster="dia10.svg">
+        <source src="DIA10_Diamond_anchored_digital_value.mp4" type="video/mp4">
+      </video>
+        <div class="overlay"></div>
+ <center> <div class="tagline" id="heroTag">DIA10 • The Hardest Currency on Earth</div></center>
+    </div>
+    <h1 class="hero-title" data-i18n="kb_title">DIA-10 Knowledge Base</h1>
+    <p class="hero-sub" data-i18n="kb_sub">Short, friendly definitions for crypto & payments — in English, Deutsch, Română.</p>
+  </div>
+</header>
+
+<!-- KB -->
+<div class="kb-wrap">
+  <div class="kb">
+    <div class="searchbar">
+      <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path fill="#9fb3c8" d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0016 9.5 6.5 6.5 0 109.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79L20 21.49 21.49 20 15.5 14zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+      <input id="q" type="search" placeholder="Search terms…" aria-label="Search">
+    </div>
+
+    <div class="chips" id="chips"></div>
+    <div class="grid" id="grid"></div>
+  </div>
+</div>
+
+<!-- LEGAL MIN -->
+<section id="imprint" class="legal-section">
+  <div class="legal">
+    <h3 data-i18n="imprint_title">Impressum / Legal Notice</h3>
+
+    <div class="lang-block lang-de">
+      <h4>Angaben nach § 5 TMG</h4>
+      <p><b>Anbieter:</b> MAGO SERVICE TRADE SRL · 032801 București, Rumänien · J40/5941/2015 · CUI: 34523632</p>
+      <p><b>Kontakt:</b> +40 (0) 752 30 77 11 · <a href="mailto:mgoffin@web.de">mgoffin@web.de</a></p>
+      <p class="tiny">Stand: <span id="legalDateDE"></span></p>
+    </div>
+
+    <div class="lang-block lang-en">
+      <h4>Provider</h4>
+      <p><b>Operator:</b> MAGO SERVICE TRADE SRL · 032801 Bucharest, Romania · J40/5941/2015 · VAT/CUI: 34523632</p>
+      <p><b>Contact:</b> +40 (0) 752 30 77 11 · <a href="mailto:mgoffin@web.de">mgoffin@web.de</a></p>
+      <p class="tiny">Last updated: <span id="legalDateEN"></span></p>
+    </div>
+
+    <div class="lang-block lang-ro">
+      <h4>Date de identificare</h4>
+      <p><b>Operator:</b> MAGO SERVICE TRADE SRL · 032801 București, România · J40/5941/2015 · CUI: 34523632</p>
+      <p><b>Contact:</b> +40 (0) 752 30 77 11 · <a href="mailto:mgoffin@web.de">mgoffin@web.de</a></p>
+      <p class="tiny">Ultima actualizare: <span id="legalDateRO"></span></p>
+    </div>
+  </div>
+</section>
+
+<section id="privacy" class="legal-section">
+  <div class="legal">
+    <h3 data-i18n="privacy_title">Datenschutz / Privacy</h3>
+    <div class="lang-block lang-de">
+      <p>Kurzfassung: Wir verwenden Inhalte nur für Betrieb & Kommunikation. Rechte: Auskunft, Berichtigung, Löschung, Widerspruch. Kontakt: <a href="mailto:mgoffin@web.de">mgoffin@web.de</a></p>
+    </div>
+    <div class="lang-block lang-en">
+      <p>Short version: We use data to operate this site & communicate. Your rights: access, rectification, erasure, objection. Contact: <a href="mailto:mgoffin@web.de">mgoffin@web.de</a></p>
+    </div>
+    <div class="lang-block lang-ro">
+      <p>Pe scurt: Folosim date pentru funcționarea site-ului & comunicare. Drepturile tale: acces, rectificare, ștergere, opoziție. Contact: <a href="mailto:mgoffin@web.de">mgoffin@web.de</a></p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  © <span id="year"></span> DIA-10. <span data-i18n="footer_note">Educational content. Not financial advice.</span>
+  <div class="foot-links">
+    <a href="#imprint" data-i18n="f_imprint">Imprint</a>
+    <a href="#privacy" data-i18n="f_privacy">Privacy</a>
+  </div>
+</footer>
+
+<script>
+/* ========= i18n ========= */
+const i18n = {
+  en:{ kb_title:"DIA-10 Knowledge Base",
+       kb_sub:"Short, friendly definitions for crypto & payments — in English, Deutsch, Română.",
+       search_ph:"Search terms…",
+       chips_all:"All", chips_basics:"Basics", chips_payments:"Payments", chips_network:"Networks",
+       chips_security:"Security", chips_defi:"DeFi", chips_rwa:"RWA", chips_ops:"Ops",
+       chips_legal:"Legal", chips_dev:"Dev",
+       imprint_title:"Impressum / Legal Notice", privacy_title:"Privacy",
+       f_imprint:"Imprint", f_privacy:"Privacy",
+       footer_note:"Educational content. Not financial advice."
+  },
+  de:{ kb_title:"DIA-10 Wissensdatenbank",
+       kb_sub:"Kurze, einfache Erklärungen zu Krypto & Payments — auf Deutsch, Englisch, Rumänisch.",
+       search_ph:"Begriff suchen…",
+       chips_all:"Alle", chips_basics:"Grundlagen", chips_payments:"Zahlungen", chips_network:"Netzwerke",
+       chips_security:"Sicherheit", chips_defi:"DeFi", chips_rwa:"RWA", chips_ops:"Betrieb",
+       chips_legal:"Recht", chips_dev:"Tech/Dev",
+       imprint_title:"Impressum / Rechtliches", privacy_title:"Datenschutz",
+       f_imprint:"Impressum", f_privacy:"Datenschutz",
+       footer_note:"Nur zu Bildungszwecken. Keine Finanzberatung."
+  },
+  ro:{ kb_title:"DIA-10 Bază de cunoștințe",
+       kb_sub:"Definiții scurte și prietenoase despre cripto & plăți — în Română, Germană, Engleză.",
+       search_ph:"Caută termeni…",
+       chips_all:"Toate", chips_basics:"Noțiuni", chips_payments:"Plăți", chips_network:"Rețele",
+       chips_security:"Securitate", chips_defi:"DeFi", chips_rwa:"RWA", chips_ops:"Operațiuni",
+       chips_legal:"Legal", chips_dev:"Dev",
+       imprint_title:"Informații legale", privacy_title:"Confidențialitate",
+       f_imprint:"Imprint", f_privacy:"Confidențialitate",
+       footer_note:"Conținut educațional. Nu este sfat financiar."
+  }
+};
+
+let currentLang = (localStorage.getItem('dia10_lang') || document.documentElement.lang || 'en').slice(0,2);
+function t(key){ const pack=i18n[currentLang]||i18n.en; return pack[key] ?? (i18n.en[key] ?? key); }
+
+function updateLangBlocks(){
+  document.querySelectorAll('.lang-block').forEach(el=>{
+    el.style.display = el.classList.contains('lang-'+currentLang) ? 'block' : 'none';
+  });
+}
+function setLegalDates(){
+  const loc = currentLang==='de' ? 'de-DE' : currentLang==='ro' ? 'ro-RO' : 'en-GB';
+  const today = new Date().toLocaleDateString(loc);
+  ['legalDateDE','legalDateEN','legalDateRO'].forEach(id=>{
+    const n=document.getElementById(id); if(n) n.textContent=today;
+  });
+}
+function applyLang(lang){
+  currentLang = lang; localStorage.setItem('dia10_lang', lang);
+  document.documentElement.setAttribute('lang', lang); window.currentLang = lang;
+
+  // i18n texts
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const key = el.getAttribute('data-i18n'); el.textContent = t(key);
+  });
+  const qEl = document.getElementById('q'); if(qEl) qEl.placeholder = t('search_ph');
+
+  // active state
+  document.querySelectorAll('.langbtn').forEach(b=>{
+    const on = b.dataset.lang === lang; b.classList.toggle('active', on); b.setAttribute('aria-pressed', on);
+  });
+
+  updateLangBlocks();
+  setLegalDates();
+
+  // Chips neu bauen beim Sprachwechsel
+  if (typeof makeChips === 'function') makeChips();
+
+  // Re-render
+  if (typeof render === 'function') render();
+}
+
+/* ========= KB data ========= */
+/* Categories: basics, payments, network, security, defi, rwa, ops, legal, dev */
+const KB = [
+  /* --- Core money/crypto --- */
+  {id:'money', terms:{en:'Money',de:'Geld',ro:'Bani'},
+    desc:{en:'Tool to store/exchange value — evolved from shells → paper → digital.',
+          de:'Werkzeug zum Speichern/Tauschen von Wert — Muscheln → Papier → digital.',
+          ro:'Instrument de stocare/schimb al valorii — scoici → hârtie → digital.'},
+    cats:['basics']},
+
+  {id:'crypto', terms:{en:'Crypto',de:'Krypto',ro:'Cripto'},
+    desc:{en:'Internet-native money/assets. No single company controls the ledger.',
+          de:'Internet-basiertes Geld/Vermögen. Kein Unternehmen kontrolliert das Kassenbuch.',
+          ro:'Bani/active native Internetului. Nicio companie nu controlează registrul.'},
+    cats:['basics'], aliases:['Krypto']},
+
+  {id:'blockchain', terms:{en:'Blockchain',de:'Blockchain',ro:'Blockchain'},
+    desc:{en:'Shared notebook: blocks chained in order; everyone can verify.',
+          de:'Geteiltes Notizbuch: Blöcke verkettet; alle können prüfen.',
+          ro:'Caiet partajat: blocuri înlănţuite; toţi pot verifica.'},
+    cats:['basics','dev']},
+
+  {id:'token', terms:{en:'Token',de:'Token',ro:'Token'},
+    desc:{en:'Programmable digital unit on a blockchain.',
+          de:'Programmierbare digitale Einheit auf einer Blockchain.',
+          ro:'Unitate digitală programabilă pe blockchain.'},
+    cats:['basics','dev'], aliases:['Tokenised','Tokenized']},
+
+  {id:'coin', terms:{en:'Coin',de:'Coin',ro:'Monedă (coin)'},
+    desc:{en:'Native asset of a network (e.g., ETH on Ethereum).',
+          de:'Netzwerk-eigener Vermögenswert (z. B. ETH auf Ethereum).',
+          ro:'Activ nativ al reţelei (ex. ETH pe Ethereum).'},
+    cats:['basics','network']},
+
+  {id:'stablecoin', terms:{en:'Stablecoin',de:'Stablecoin',ro:'Stablecoin'},
+    desc:{en:'Token designed to track a stable value (e.g., USD).',
+          de:'Token mit stabilem Zielwert (z. B. USD).',
+          ro:'Token conceput pentru valoare stabilă (ex. USD).'},
+    cats:['payments','basics'], aliases:['Stablecoins']},
+
+  {id:'usdc', terms:{en:'USDC',de:'USDC',ro:'USDC'},
+    desc:{en:'Popular USD-pegged stablecoin by Circle.',
+          de:'Beliebter USD-gebundener Stablecoin von Circle.',
+          ro:'Stablecoin popular legat de USD emis de Circle.'},
+    cats:['payments']},
+
+  {id:'usdc_on', terms:{en:'USDC On-Ramp',de:'USDC On-Ramp',ro:'USDC On-Ramp'},
+    desc:{en:'Buy USDC with card/bank to enter crypto.',
+          de:'USDC per Karte/Überweisung kaufen, um in Krypto einzusteigen.',
+          ro:'Cumpără USDC cu card/transfer pentru a intra în cripto.'},
+    cats:['payments','ops'], aliases:['USDC On']},
+
+  {id:'on_off_ramp', terms:{en:'On/Off-Ramp',de:'On/Off-Ramp',ro:'On/Off-Ramp'},
+    desc:{en:'Convert fiat ↔ crypto via partners (cards, wires).',
+          de:'Fiat ↔ Krypto per Partner (Karten, Überweisung).',
+          ro:'Conversie fiat ↔ cripto prin parteneri (carduri, transferuri).'},
+    cats:['payments','ops'], aliases:['Off-Ramp','On-Ramp']},
+
+  {id:'wallet', terms:{en:'Wallet',de:'Wallet',ro:'Portofel'},
+    desc:{en:'Your digital pocket. Address ≈ IBAN; private key ≈ house key.',
+          de:'Deine digitale Tasche. Adresse ≈ IBAN; privater Schlüssel ≈ Haustürschlüssel.',
+          ro:'Buzunar digital. Adresă ≈ IBAN; cheia privată ≈ cheia casei.'},
+    cats:['basics','security']},
+
+  {id:'seed', terms:{en:'Seed Phrase',de:'Seed-Phrase',ro:'Fraza seed'},
+    desc:{en:'12–24 words to recover your wallet — keep offline, never share.',
+          de:'12–24 Wörter zur Wiederherstellung — offline aufbewahren, nie teilen.',
+          ro:'12–24 cuvinte pentru recuperare — păstrează offline, nu o împărtăși.'},
+    cats:['security']},
+
+  {id:'hardware_wallets', terms:{en:'Hardware Wallets',de:'Hardware-Wallets',ro:'Portofele hardware'},
+    desc:{en:'Devices that keep keys offline for strong protection.',
+          de:'Geräte, die Schlüssel offline halten — starker Schutz.',
+          ro:'Dispozitive ce păstrează cheile offline — protecţie ridicată.'},
+    cats:['security']},
+
+  /* --- Networks / on-chain --- */
+  {id:'ethereum', terms:{en:'Ethereum',de:'Ethereum',ro:'Ethereum'},
+    desc:{en:'Smart-contract network used by DIA-10.',
+          de:'Smart-Contract-Netzwerk, genutzt von DIA-10.',
+          ro:'Reţea de smart-contract folosită de DIA-10.'},
+    cats:['network'], aliases:['Ethereum Mainnet','Mainnet']},
+
+  {id:'mainnet', terms:{en:'Mainnet',de:'Mainnet',ro:'Mainnet'},
+    desc:{en:'Live production network where real value moves.',
+          de:'Live-Netzwerk, auf dem echter Wert fließt.',
+          ro:'Rețeaua de producție unde se mișcă valoare reală.'},
+    cats:['network']},
+
+  {id:'sepolia', terms:{en:'Sepolia (Testnet)',de:'Sepolia (Testnetz)',ro:'Sepolia (Testnet)'},
+    desc:{en:'Ethereum test network for demos and development.',
+          de:'Ethereum-Testnetz für Demos & Entwicklung.',
+          ro:'Reţea de test Ethereum pentru demo & dezvoltare.'},
+    cats:['network','dev']},
+
+  {id:'polygon', terms:{en:'Polygon',de:'Polygon',ro:'Polygon'},
+    desc:{en:'Ethereum-compatible network with low fees and fast confirmations.',
+          de:'Ethereum-kompatible Kette mit geringen Gebühren & schnellen Bestätigungen.',
+          ro:'Rețea compatibilă Ethereum cu taxe mici și confirmări rapide.'},
+    cats:['network']},
+
+  {id:'onchain', terms:{en:'On-chain',de:'On-Chain',ro:'On-chain'},
+    desc:{en:'Actions recorded on the blockchain (public & auditable).',
+          de:'Aktionen, die auf der Blockchain gespeichert sind (öffentlich & prüfbar).',
+          ro:'Acţiuni înregistrate pe blockchain (publice & auditabile).'},
+    cats:['network','ops'], aliases:['On-chain','On-Chain']},
+
+  {id:'gas', terms:{en:'Gas Fee',de:'Gas-Gebühr',ro:'Taxă gas'},
+    desc:{en:'Small fee to run transactions/contracts on a network.',
+          de:'Kleine Gebühr für Transaktionen/Contracts im Netzwerk.',
+          ro:'Taxă mică pentru tranzacţii/contracte pe reţea.'},
+    cats:['network','payments','dev']},
+
+  {id:'confirmations', terms:{en:'Confirmations',de:'Bestätigungen',ro:'Confirmări'},
+    desc:{en:'Blocks added after your transaction — more = safer.',
+          de:'Blöcke nach deiner Transaktion — mehr = sicherer.',
+          ro:'Blocuri adăugate după tranzacţia ta — mai multe = mai sigur.'},
+    cats:['network','payments']},
+
+  {id:'explorer', terms:{en:'Block Explorer',de:'Block-Explorer',ro:'Block Explorer'},
+    desc:{en:'Website to view on-chain data (e.g., Etherscan).',
+          de:'Website für On-Chain-Daten (z. B. Etherscan).',
+          ro:'Site pentru date on-chain (ex. Etherscan).'},
+    cats:['network','dev'], aliases:['Paket-Tracking','Package Tracking']},
+
+  /* --- Transactions / payments --- */
+  {id:'transaction', terms:{en:'Transaction',de:'Transaction',ro:'Tranzacție'},
+    desc:{en:'Signed message moving tokens between addresses.',
+          de:'Signierte Nachricht, die Token zwischen Adressen bewegt.',
+          ro:'Mesaj semnat care mută tokenuri între adrese.'},
+    cats:['payments','basics'], aliases:['Transaktion']},
+
+  {id:'decimals', terms:{en:'Decimals',de:'Dezimalstellen',ro:'Zecimale'},
+    desc:{en:'Number of fractional digits a token supports (e.g., 18).',
+          de:'Anzahl der Nachkommastellen eines Tokens (z. B. 18).',
+          ro:'Număr de zecimale acceptat de token (ex. 18).'},
+    cats:['basics','dev']},
+
+  {id:'receive', terms:{en:'Receive',de:'Empfangen',ro:'Primește'},
+    desc:{en:'Share your address/QR to get tokens.',
+          de:'Teile deine Adresse/QR, um Token zu erhalten.',
+          ro:'Partajează adresa/QR pentru a primi tokenuri.'},
+    cats:['payments']},
+
+
+  {id:'send', terms:{en:'Send',de:'Senden',ro:'Trimite'},
+    desc:{en:'Create a transaction to transfer tokens to another address.',
+          de:'Erstelle eine Transaktion, um Token zu senden.',
+          ro:'Creează o tranzacție pentru a trimite tokenuri.'},
+    cats:['payments']},
+
+  {id:'t0', terms:{en:'T+0 Settlement',de:'T+0 Abwicklung',ro:'Decontare T+0'},
+    desc:{en:'Funds settle the same day (often near instant on-chain).',
+          de:'Abwicklung am selben Tag (on-chain oft fast sofort).',
+          ro:'Decontare în aceeași zi (adesea aproape instant on-chain).'},
+    cats:['payments'], aliases:['Settlement','Abwicklung']},
+
+  {id:'autoswap', terms:{en:'Auto-Swap',de:'Auto-Swap',ro:'Auto-Swap'},
+    desc:{en:'Automatic conversion between assets at payment time.',
+          de:'Automatische Umwandlung zwischen Assets beim Bezahlen.',
+          ro:'Conversie automată între active la plată.'},
+    cats:['payments','defi']},
+
+  {id:'chargeback', terms:{en:'Chargeback',de:'Chargeback',ro:'Chargeback'},
+    desc:{en:'Card reversal by banks; on-chain transfers are final (no chargebacks).',
+          de:'Rückbelastung bei Karten; on-chain final — keine Chargebacks.',
+          ro:'Returnare plăți pe card; on-chain final — fără chargeback.'},
+    cats:['payments','legal']},
+
+  {id:'fees', terms:{en:'Fees',de:'Gebühren',ro:'Comisioane'},
+    desc:{en:'Costs like gas, processor, or spread for swaps.',
+          de:'Kosten wie Gas, Zahlungsabwickler oder Swap-Spread.',
+          ro:'Costuri precum gas, procesator sau spread la swap.'},
+    cats:['payments','ops']},
+
+  {id:'payout_schedule', terms:{en:'Payout Schedule',de:'Auszahlungsplan',ro:'Program de plăți'},
+    desc:{en:'When merchants or partners receive cleared funds.',
+          de:'Wann Händler/Partner freigegebenes Geld erhalten.',
+          ro:'Când comercianții/partenerii primesc fondurile.'},
+    cats:['ops','payments']},
+
+  {id:'fx', terms:{en:'FX / Foreign Exchange',de:'FX / Devisen',ro:'FX / Schimb valutar'},
+    desc:{en:'Currency conversion between fiat or tokens.',
+          de:'Währungsumtausch zwischen Fiat oder Token.',
+          ro:'Conversie valutară între fiat sau tokenuri.'},
+    cats:['payments','ops'], aliases:['FX friction']},
+
+  {id:'micropayments', terms:{en:'Micropayments',de:'Mikrozahlungen',ro:'Micro-plăți'},
+    desc:{en:'Very small payments enabled by low fees & automation.',
+          de:'Sehr kleine Zahlungen dank niedriger Gebühren & Automatisierung.',
+          ro:'Plăți foarte mici datorită taxelor reduse & automatizării.'},
+    cats:['payments','defi']},
+
+  /* --- Compliance / legal --- */
+  {id:'kyc', terms:{en:'KYC',de:'KYC',ro:'KYC'},
+    desc:{en:'Know-Your-Customer identity checks.',
+          de:'Identitätsprüfung nach KYC.',
+          ro:'Verificări de identitate KYC.'},
+    cats:['legal','ops'], aliases:['KYC’d']},
+
+  {id:'aml', terms:{en:'AML',de:'AML',ro:'AML'},
+    desc:{en:'Anti-Money-Laundering controls.',
+          de:'Kontrollen gegen Geldwäsche.',
+          ro:'Măsuri anti-spălare de bani.'},
+    cats:['legal','ops']},
+
+  {id:'travel_rule', terms:{en:'Travel Rule',de:'Travel Rule',ro:'Travel Rule'},
+    desc:{en:'Sender/receiver info may accompany transfers between providers.',
+          de:'Absender/Empfänger-Infos begleiten Transfers zwischen Anbietern.',
+          ro:'Date despre expeditor/destinatar pot însoți transferurile.'},
+    cats:['legal','ops']},
+
+  {id:'sumsub', terms:{en:'Sumsub (KYC provider)',de:'Sumsub (KYC-Dienst)',ro:'Sumsub (serviciu KYC)'},
+    desc:{en:'Vendor for identity/compliance checks (example).',
+          de:'Anbieter für Identitäts-/Compliance-Prüfungen (Beispiel).',
+          ro:'Furnizor pentru verificări de identitate/compliance (exemplu).'},
+    cats:['legal','ops']},
+
+  {id:'gss', terms:{en:'GSS (Sanctions Screening)',de:'GSS (Sanktions-Screening)',ro:'GSS (screening sancțiuni)'},
+    desc:{en:'Automated checks against global sanctions/PEP lists.',
+          de:'Automatisierte Prüfungen gegen Sanktions-/PEP-Listen.',
+          ro:'Verificări automate pe liste de sancțiuni/PEP.'},
+    cats:['legal','ops']},
+
+  {id:'law', terms:{en:'Law',de:'Recht',ro:'Lege'},
+    desc:{en:'Rules that govern usage, custody, reporting & consumer protection.',
+          de:'Regeln zu Nutzung, Verwahrung, Meldung & Verbraucherschutz.',
+          ro:'Reguli privind utilizarea, custodia, raportarea & protecția consumatorului.'},
+    cats:['legal']},
+
+  {id:'taxes', terms:{en:'Taxes',de:'Steuern',ro:'Impozite'},
+    desc:{en:'Obligations to report/settle gains per local law.',
+          de:'Pflichten, Gewinne nach lokalem Recht zu melden/versteuern.',
+          ro:'Obligații de raportare/impozitare a câștigurilor.'},
+    cats:['legal','ops']},
+
+  {id:'nda', terms:{en:'NDA (Non-Disclosure Agreement)',de:'NDA (Geheimhaltungsvereinbarung)',ro:'NDA (Acord de confidențialitate)'},
+    desc:{en:'Contract to protect shared confidential info.',
+          de:'Vertrag zum Schutz vertraulicher Infos.',
+          ro:'Contract care protejează informațiile confidențiale.'},
+    cats:['legal']},
+
+  {id:'mou', terms:{en:'MoU (Memorandum of Understanding)',de:'MoU (Absichtserklärung)',ro:'MoU (Memorandum de Înțelegere)'},
+    desc:{en:'Non-binding outline of a collaboration/pilot.',
+          de:'Unverbindliche Skizze einer Zusammenarbeit/Pilotierung.',
+          ro:'Contur neobligatoriu al unei colaborări/pilot.'},
+    cats:['legal','ops']},
+
+  /* --- Ops / business --- */
+  {id:'kpi', terms:{en:'KPI',de:'KPI',ro:'KPI'},
+    desc:{en:'Key performance indicator used to track success.',
+          de:'Kennzahl zur Erfolgsmessung.',
+          ro:'Indicator cheie de performanță.'},
+    cats:['ops']},
+
+  {id:'treasury', terms:{en:'Treasury',de:'Treasury / Kasse',ro:'Trezorerie'},
+    desc:{en:'Funds and risk management for a project/company.',
+          de:'Mittel- und Risikosteuerung eines Projekts/Unternehmens.',
+          ro:'Gestionarea fondurilor și riscului pentru proiect/firmă.'},
+    cats:['ops']},
+
+  {id:'reconciliation', terms:{en:'Reconciliation',de:'Abstimmung (Reconciliation)',ro:'Reconciliere'},
+    desc:{en:'Matching on-chain and off-chain records to the cent.',
+          de:'On-Chain- und Off-Chain-Daten bis auf den Cent abgleichen.',
+          ro:'Potrivire exactă între date on-chain și off-chain.'},
+    cats:['ops','legal']},
+
+  {id:'auditability', terms:{en:'Auditability',de:'Auditierbarkeit',ro:'Auditabilitate'},
+    desc:{en:'Ability to prove data/flows to auditors/regulators.',
+          de:'Fähigkeit, Daten/Flüsse gegenüber Prüfern nachzuweisen.',
+          ro:'Capacitatea de a dovedi date/fluxuri auditorilor.'},
+    cats:['ops','legal']},
+
+  {id:'tenders', terms:{en:'Tenders',de:'Ausschreibungen',ro:'Licitatii'},
+    desc:{en:'Formal procurement requests from institutions.',
+          de:'Formale Beschaffungsanfragen von Institutionen.',
+          ro:'Cereri formale de achiziție ale instituțiilor.'},
+    cats:['ops']},
+
+  {id:'rough_sales', terms:{en:'Rough-Sales',de:'Rough-Sales',ro:'Rough-Sales'},
+    desc:{en:'Sales of uncut/wholesale items; here as pipeline term.',
+          de:'Verkäufe von Roh-/Großhandelsware; hier als Pipeline-Begriff.',
+          ro:'Vânzări de brut/en-gross; termen de pipeline.'},
+    cats:['ops'], aliases:['Rough sales']},
+
+  {id:'cohort', terms:{en:'Cohort',de:'Kohorte',ro:'Cohortă'},
+    desc:{en:'Grouped users/orders analyzed together.',
+          de:'Gebündelte Nutzer/Bestellungen zur Analyse.',
+          ro:'Grup de utilizatori/comenzi analizat împreună.'},
+    cats:['ops']},
+
+  {id:'streamlined', terms:{en:'Streamlined',de:'Verschlankt',ro:'Simplificat'},
+    desc:{en:'Reduced steps/latency for faster operations.',
+          de:'Weniger Schritte/Latenz für schnellere Abläufe.',
+          ro:'Mai puţini paşi/latenţă pentru operaţiuni rapide.'},
+    cats:['ops']},
+
+  {id:'cross_border', terms:{en:'Cross-border flows',de:'Grenzüber­schreitende Zahlungen',ro:'Fluxuri transfrontaliere'},
+    desc:{en:'Payments/remittances across countries and currencies.',
+          de:'Zahlungen/Remittances über Länder & Währungen.',
+          ro:'Plăţi/trimiteri peste graniţe şi valute.'},
+    cats:['payments','ops']},
+
+  {id:'role_perms', terms:{en:'Role-based permissions',de:'Rollenbasierte Rechte',ro:'Permisiuni pe roluri'},
+    desc:{en:'Access scoped by user roles (admin, finance, viewer).',
+          de:'Zugriff je nach Rolle (Admin, Finance, Viewer).',
+          ro:'Acces în funcţie de rol (admin, finance, viewer).'},
+    cats:['ops','security']},
+
+  {id:'sandbox', terms:{en:'Sandbox',de:'Sandbox',ro:'Sandbox'},
+    desc:{en:'Safe test environment with dummy funds.',
+          de:'Sichere Testumgebung mit Testmitteln.',
+          ro:'Mediu de test sigur cu fonduri false.'},
+    cats:['dev','ops']},
+
+  {id:'ops_delta', terms:{en:'Ops cost delta',de:'Ops-Kosten-Delta',ro:'Delta cost operaţional'},
+    desc:{en:'Difference between old vs. new operating costs.',
+          de:'Differenz zwischen alten und neuen Betriebskosten.',
+          ro:'Diferenţa între costurile vechi şi noi.'},
+    cats:['ops']},
+
+  {id:'value_props', terms:{en:'Value-Props',de:'Value-Props',ro:'Value-Props'},
+    desc:{en:'Concise list of customer benefits.',
+          de:'Knappe Liste der Kundenvorteile.',
+          ro:'Listă concisă de beneficii pentru client.'},
+    cats:['ops','basics']},
+
+  {id:'bullet_punches', terms:{en:'Bullet-Punches',de:'Bullet-Punches',ro:'Bullet-Punches'},
+    desc:{en:'Punchy bullet points for a slide/one-pager.',
+          de:'Knackige Stichpunkte für Slide/One-Pager.',
+          ro:'Puncte scurte, puternice pentru slide/one-pager.'},
+    cats:['ops']},
+
+  /* --- Dev / dApp interactions --- */
+  {id:'api', terms:{en:'API',de:'API',ro:'API'},
+    desc:{en:'Interface for software to talk to services or nodes.',
+          de:'Schnittstelle, über die Software Dienste/Knoten anspricht.',
+          ro:'Interfaţă prin care software-ul comunică cu servicii/noduri.'},
+    cats:['dev']},
+
+  {id:'smart_contracts', terms:{en:'Smart Contracts',de:'Smart Contracts',ro:'Contracte inteligente'},
+    desc:{en:'Programs on the blockchain that run exactly as written.',
+          de:'Programme auf der Blockchain, die genau wie geschrieben laufen.',
+          ro:'Programe pe blockchain care rulează exact cum sunt scrise.'},
+    cats:['dev','basics']},
+
+  {id:'vending_machine', terms:{en:'Vending-Machine Analogy',de:'Getränkeautomat-Analogie',ro:'Analogia automatului'},
+    desc:{en:'Put in input, get deterministic output — like a smart contract.',
+          de:'Input rein, deterministischer Output — wie ein Smart Contract.',
+          ro:'Introduci input, obţii output determinist — ca un smart contract.'},
+    cats:['dev','basics']},
+
+  {id:'dapp', terms:{en:'dApp',de:'dApp',ro:'dApp'},
+    desc:{en:'Decentralized app that uses smart contracts.',
+          de:'Dezentrale App, die Smart Contracts nutzt.',
+          ro:'Aplicaţie descentralizată ce foloseşte smart contracts.'},
+    cats:['dev']},
+
+  {id:'approvals', terms:{en:'Approvals',de:'Approvals',ro:'Aprobări'},
+    desc:{en:'Permissions a token holder gives to a contract/wallet.',
+          de:'Berechtigungen, die ein Tokenhalter einem Contract/Wallet gibt.',
+          ro:'Permisiuni oferite deţinătorului unui contract/portofel.'},
+    cats:['dev','security']},
+
+  {id:'revoke', terms:{en:'Revoke',de:'Widerrufen',ro:'Revocă'},
+    desc:{en:'Remove a previous token approval to reduce risk.',
+          de:'Frühere Token-Freigabe entfernen, um Risiko zu senken.',
+          ro:'Elimină o aprobare anterioară pentru a reduce riscul.'},
+    cats:['dev','security']},
+
+  {id:'connect', terms:{en:'Connect (Wallet)',de:'Verbinden (Wallet)',ro:'Conectează (Wallet)'},
+    desc:{en:'Link your wallet to a dApp (read address, request signatures).',
+          de:'Wallet mit dApp verbinden (Adresse lesen, Signaturen anfragen).',
+          ro:'Conectează portofelul la dApp (citeşte adresă, cere semnături).'},
+    cats:['dev','security']},
+
+  {id:'backups', terms:{en:'Backups',de:'Backups',ro:'Back-up-uri'},
+    desc:{en:'Redundant copies of seeds/keys kept safely.',
+          de:'Redundante Kopien von Seeds/Schlüsseln sicher aufbewahren.',
+          ro:'Copii redundante ale seed/cheilor păstrate în siguranţă.'},
+    cats:['security']},
+
+  {id:'recovery', terms:{en:'Recovery',de:'Wiederherstellung',ro:'Recuperare'},
+    desc:{en:'Process of restoring access with seed or guardian.',
+          de:'Zugang mit Seed oder Guardian wiederherstellen.',
+          ro:'Refacerea accesului cu seed sau „guardian”.'},
+    cats:['security']},
+
+  {id:'social_recovery', terms:{en:'Social Recovery',de:'Soziale Wiederherstellung',ro:'Recuperare socială'},
+    desc:{en:'Trusted guardians help you regain wallet access.',
+          de:'Vertrauenspersonen helfen beim Wallet-Zugang.',
+          ro:'Persoane de încredere te ajută să recuperezi accesul.'},
+    cats:['security']},
+
+  {id:'multisig', terms:{en:'Multisig',de:'Multisig',ro:'Multisig'},
+    desc:{en:'Wallet needing multiple approvals to move funds.',
+          de:'Wallet, das mehrere Freigaben braucht.',
+          ro:'Portofel ce necesită mai multe aprobări.'},
+    cats:['security','ops']},
+
+  {id:'phishing', terms:{en:'Phishing',de:'Phishing',ro:'Phishing'},
+    desc:{en:'Tricks to steal keys/funds (fake sites, messages, airdrops).',
+          de:'Tricks zum Diebstahl (Fake-Sites, Nachrichten, Airdrops).',
+          ro:'Şiretlicuri pentru a fura chei/fonduri (site-uri, mesaje, airdropuri false).'},
+    cats:['security'], aliases:['Fake-AirDrops','Fake Airdrops','Fake-AirDrops.']},
+
+  {id:'red_flags', terms:{en:'Red Flags',de:'Warnzeichen',ro:'Semne de risc'},
+    desc:{en:'Too-good-to-be-true offers, pressure, seed requests, unknown links.',
+          de:'Zu-gut-um-wahr-zu-sein, Druck, Seed-Anfragen, unbekannte Links.',
+          ro:'Oferte prea bune, presiune, cereri de seed, linkuri necunoscute.'},
+    cats:['security']},
+
+  {id:'privacy', terms:{en:'Privacy',de:'Privatsphäre',ro:'Confidențialitate'},
+    desc:{en:'Control what you reveal; use fresh addresses, no seed sharing.',
+          de:'Steuere, was du preisgibst; neue Adressen, nie Seed teilen.',
+          ro:'Controlează ce dezvălui; adrese noi, niciodată seed.'},
+    cats:['security','legal']},
+
+  {id:'transparency', terms:{en:'Transparency',de:'Transparenz',ro:'Transparență'},
+    desc:{en:'On-chain data visible to all; proofs beat promises.',
+          de:'On-Chain-Daten sind sichtbar; Beweise statt Versprechen.',
+          ro:'Datele on-chain sunt vizibile; dovezile bat promisiunile.'},
+    cats:['basics','ops']},
+
+  {id:'pseudonyms', terms:{en:'Pseudonyms',de:'Pseudonyme',ro:'Pseudonime'},
+    desc:{en:'Addresses aren’t names; identity needs extra context.',
+          de:'Adressen sind keine Namen; Identität braucht Kontext.',
+          ro:'Adresele nu sunt nume; identitatea cere context suplimentar.'},
+    cats:['security','legal']},
+
+  /* --- DeFi / RWA --- */
+  {id:'defi', terms:{en:'DeFi',de:'DeFi',ro:'DeFi'},
+    desc:{en:'Open financial services built on smart contracts.',
+          de:'Offene Finanzdienste auf Smart Contracts.',
+          ro:'Servicii financiare deschise pe smart contracts.'},
+    cats:['defi','basics']},
+
+  {id:'staking', terms:{en:'Staking',de:'Staking',ro:'Staking'},
+    desc:{en:'Lock tokens to secure networks/earn rewards (varies).',
+          de:'Token sperren für Sicherheit/Rewards (variiert).',
+          ro:'Blochezi tokenuri pentru securitate/recompense (variază).'},
+    cats:['defi']},
+
+  {id:'liquidity_pools', terms:{en:'Liquidity Pools',de:'Liquiditätspools',ro:'Pooluri de lichiditate'},
+    desc:{en:'Shared funds enabling automated trading; LPs earn fees.',
+          de:'Gemeinschaftsfonds für automatisierten Handel; LPs verdienen Gebühren.',
+          ro:'Fonduri comune pentru tranzacţionare automată; LP-urile câştigă comisioane.'},
+    cats:['defi']},
+
+  {id:'bridges', terms:{en:'Bridges',de:'Bridges',ro:'Punti (Bridges)'},
+    desc:{en:'Move assets between blockchains — use carefully.',
+          de:'Assets zwischen Blockchains bewegen — vorsichtig nutzen.',
+          ro:'Mută active între blockchain-uri — foloseşte cu grijă.'},
+    cats:['network','defi']},
+
+  {id:'oracles', terms:{en:'Oracles',de:'Oracles',ro:'Oracole'},
+    desc:{en:'Bring off-chain data (prices, events) to smart contracts.',
+          de:'Holen Off-Chain-Daten (Preise, Events) in Smart Contracts.',
+          ro:'Aduc date off-chain (preţuri, evenimente) către contracte.'},
+    cats:['defi','dev']},
+
+  {id:'rwa', terms:{en:'RWA (Real-World Assets)',de:'RWA (Real-World Assets)',ro:'RWA (Active din lumea reală)'},
+    desc:{en:'Tokenising real assets (e.g., diamonds) on blockchains.',
+          de:'Reale Werte (z. B. Diamanten) als Token auf Blockchains.',
+          ro:'Tokenizarea activelor reale (ex. diamante) pe blockchain.'},
+    cats:['rwa','basics']},
+
+  /* --- Tokenomics / metrics --- */
+  {id:'supply', terms:{en:'Supply',de:'Supply',ro:'Supply'},
+    desc:{en:'How many tokens exist (circulating vs. max).',
+          de:'Wie viele Token existieren (zirkulierend vs. maximal).',
+          ro:'Câte tokenuri există (în circulaţie vs. maxim).'},
+    cats:['ops']},
+
+  {id:'allocation', terms:{en:'Allocation',de:'Allokation',ro:'Alocare'},
+    desc:{en:'How supply is split (reserve, team, community…).',
+          de:'Aufteilung der Supply (Reserve, Team, Community …).',
+          ro:'Împărţirea supply-ului (rezervă, echipă, comunitate…).'},
+    cats:['ops']},
+
+  {id:'reserve', terms:{en:'Reserve',de:'Reserve',ro:'Rezervă'},
+    desc:{en:'Tokens held for stability/partnerships/future plans.',
+          de:'Token für Stabilität/Partnerschaften/Zukunft.',
+          ro:'Tokenuri pentru stabilitate/parteneriate/planuri viitoare.'},
+    cats:['ops']},
+
+  {id:'partnerships', terms:{en:'Partnerships',de:'Partnerschaften',ro:'Parteneriate'},
+    desc:{en:'Allocated tokens/funds to key collaborators.',
+          de:'Zuteilung an wichtige Partner.',
+          ro:'Alocări către colaboratori cheie.'},
+    cats:['ops']},
+
+  {id:'community', terms:{en:'Community',de:'Community',ro:'Comunitate'},
+    desc:{en:'Users, builders, supporters around the project.',
+          de:'Nutzer, Builder, Supporter rund um das Projekt.',
+          ro:'Utilizatori, constructori, susținători ai proiectului.'},
+    cats:['ops']},
+
+  {id:'vesting', terms:{en:'Vesting',de:'Vesting',ro:'Vesting'},
+    desc:{en:'Tokens unlock over time to align incentives.',
+          de:'Token schalten zeitbasiert frei (Anreiz-Ausrichtung).',
+          ro:'Tokenurile se deblochează în timp pentru aliniere.'},
+    cats:['ops','legal']},
+
+  {id:'certificates', terms:{en:'Certificates',de:'Zertifikate',ro:'Certificate'},
+    desc:{en:'Numbered investor certificates linked to on-chain entries.',
+          de:'Nummerierte Investorenzertifikate mit On-Chain-Bezug.',
+          ro:'Certificate numerotate ale investitorilor legate on-chain.'},
+    cats:['ops','legal']},
+
+  {id:'live_metrics', terms:{en:'Live Metrics',de:'Live-Metriken',ro:'Metrice live'},
+    desc:{en:'Real-time supply, holders, transfers, explorer links.',
+          de:'Echtzeit-Supply, Holder, Transfers, Explorer-Links.',
+          ro:'Supply, deținători, transferuri în timp real, linkuri de explorer.'},
+    cats:['ops']},
+
+  {id:'roadmap', terms:{en:'Roadmap',de:'Roadmap',ro:'Foaie de parcurs'},
+    desc:{en:'Planned milestones for product, markets and compliance.',
+          de:'Geplante Meilensteine für Produkt, Märkte & Compliance.',
+          ro:'Etape planificate pentru produs, pieţe şi conformitate.'},
+    cats:['ops']},
+
+  {id:'scarcity', terms:{en:'Scarcity',de:'Knappheit',ro:'Raritate'},
+    desc:{en:'Limited supply can support value over time.',
+          de:'Begrenzte Menge kann Wert über Zeit stützen.',
+          ro:'Oferta limitată poate susţine valoarea în timp.'},
+    cats:['basics']},
+
+  /* --- Misc that you listed --- */
+  {id:'traceable', terms:{en:'Traceable',de:'Nachverfolgbar',ro:'Trasabil'},
+    desc:{en:'Movements can be followed on chain (pseudonymous).',
+          de:'Bewegungen sind on-chain verfolgbar (pseudonym).',
+          ro:'Mișcările pot fi urmărite on-chain (pseudonim).'},
+    cats:['security','ops'], aliases:['Trail']},
+
+  {id:'treasury_ops', terms:{en:'Reconciliation & Trail',de:'Abstimmung & Trail',ro:'Reconciliere & trail'},
+    desc:{en:'Clear audit trail from wallet to books.',
+          de:'Nachvollziehbare Spur vom Wallet bis in die Bücher.',
+          ro:'Urmă clară de audit de la portofel la contabilitate.'},
+    cats:['ops','legal']},
+
+  {id:'api_mou', terms:{en:'API & MoU Ready',de:'API & MoU-bereit',ro:'Gata de API & MoU'},
+    desc:{en:'Technical + commercial hooks to start a pilot fast.',
+          de:'Technische + kommerzielle Haken für schnellen Pilot.',
+          ro:'Elemente tehnice/comerciale pentru pilot rapid.'},
+    cats:['dev','ops']},
+
+  {id:'kpis', terms:{en:'KPIs & Reporting',de:'KPIs & Reporting',ro:'KPI & rapoarte'},
+    desc:{en:'Dashboards for growth, conversion and risk.',
+          de:'Dashboards für Wachstum, Conversion und Risiko.',
+          ro:'Dashboard-uri pentru creştere, conversie şi risc.'},
+    cats:['ops']},
+
+  {id:'po_c', terms:{en:'PoC (Proof of Concept)',de:'PoC (Machbarkeitsnachweis)',ro:'PoC (dovadă de concept)'},
+    desc:{en:'Small prototype to test assumptions quickly.',
+          de:'Kleiner Prototyp zum schnellen Test von Annahmen.',
+          ro:'Prototip mic pentru testare rapidă a ipotezelor.'},
+    cats:['dev','ops']},
+
+  {id:'kpis_ndas', terms:{en:'NDAs, KPIs, Settlement',de:'NDAs, KPIs, Settlement',ro:'NDA, KPI, decontare'},
+    desc:{en:'Business scaffolding to run pilots safely.',
+          de:'Geschäftsrahmen, um Pilots sicher zu fahren.',
+          ro:'Cadru de business pentru pilotare în siguranţă.'},
+    cats:['legal','ops']},
+
+  {id:'approvals_rev', terms:{en:'Approvals & Revoke',de:'Approvals & Revoke',ro:'Aprobări & Revocare'},
+    desc:{en:'Control spending permissions your wallet gave.',
+          de:'Kontrolliere Ausgaberechte, die dein Wallet gab.',
+          ro:'Controlează permisiunile de cheltuire oferite.'},
+    cats:['security','dev']},
+
+  {id:'custom_token', terms:{en:'Custom Token',de:'Eigenes Token',ro:'Token personalizat'},
+    desc:{en:'Project-specific token (brand, supply, utility).',
+          de:'Projekt-spezifisches Token (Brand, Supply, Utility).',
+          ro:'Token specific proiectului (brand, supply, utilitate).'},
+    cats:['dev','ops']},
+
+  {id:'privacy_transparency', terms:{en:'Privacy & Transparency',de:'Privatsphäre & Transparenz',ro:'Confidenţialitate & transparenţă'},
+    desc:{en:'Balance pseudonymous addresses with auditable flows.',
+          de:'Gleichgewicht aus Pseudonymität und prüfbaren Flüssen.',
+          ro:'Echilibru între adrese pseudonime şi fluxuri auditabile.'},
+    cats:['security','ops']}
+];
+
+/* ========= UI state & rendering ========= */
+const chips = [
+  {id:'all', labelKey:'chips_all'},{id:'basics',labelKey:'chips_basics'},
+  {id:'payments',labelKey:'chips_payments'},{id:'network',labelKey:'chips_network'},
+  {id:'security',labelKey:'chips_security'},{id:'defi',labelKey:'chips_defi'},
+  {id:'rwa',labelKey:'chips_rwa'},{id:'ops',labelKey:'chips_ops'},
+  {id:'legal',labelKey:'chips_legal'},{id:'dev',labelKey:'chips_dev'}
+];
+
+const grid = document.getElementById('grid');
+const qEl  = document.getElementById('q');
+const chipsEl = document.getElementById('chips');
+let activeChip = 'all'; let q = '';
+
+function makeChips(){
+  chipsEl.innerHTML = '';
+  for(const c of chips){
+    const b = document.createElement('button');
+    b.className = 'chip' + (c.id===activeChip ? ' active' : '');
+    b.textContent = t(c.labelKey);
+    b.dataset.chip = c.id;
+    b.addEventListener('click', ()=>{ activeChip = c.id;
+      chipsEl.querySelectorAll('.chip').forEach(el=>el.classList.toggle('active', el===b));
+      render();
+    });
+    chipsEl.appendChild(b);
+  }
+}
+qEl.addEventListener('input', ()=>{ q = (qEl.value||'').trim().toLowerCase(); render(); });
+
+function render(){
+  if(!grid) return;
+  const items = KB.filter(x=>{
+    const catOk = activeChip==='all' || (x.cats||[]).includes(activeChip);
+    if(!catOk) return false;
+    if(!q) return true;
+    const term    = (x.terms[currentLang] || x.terms.en || '').toLowerCase();
+    const desc    = (x.desc[currentLang]  || x.desc.en  || '').toLowerCase();
+    const aliases = (x.aliases||[]).join(' ').toLowerCase();
+    const allTerms = Object.values(x.terms||{}).join(' ').toLowerCase();
+    const allDescs = Object.values(x.desc||{}).join(' ').toLowerCase();
+    return term.includes(q) || desc.includes(q) || aliases.includes(q) ||
+           allTerms.includes(q) || allDescs.includes(q) || x.id.includes(q);
+  });
+
+  grid.innerHTML = '';
+  for(const it of items){
+    const card = document.createElement('div'); card.className='card';
+    const h = document.createElement('h3'); h.className='term'; h.textContent = it.terms[currentLang] || it.terms.en;
+    const p = document.createElement('p'); p.className='desc'; p.textContent = it.desc[currentLang] || it.desc.en;
+    const tag = document.createElement('div'); tag.className='tag'; tag.textContent = (it.cats||[]).join(' • ');
+    card.append(h,p,tag); grid.appendChild(card);
+  }
+}
+
+/* ========= Boot ========= */
+document.getElementById('year').textContent = new Date().getFullYear();
+window.addEventListener('DOMContentLoaded', () => {
+  if(!localStorage.getItem('dia10_lang')) currentLang = 'en'; // default EN
+  makeChips();
+  applyLang(currentLang);
+  render();
+});
+document.querySelectorAll('.langbtn').forEach(b=> b.addEventListener('click', ()=> applyLang(b.dataset.lang)));
+</script>
+</body>
+</html>

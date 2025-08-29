@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>DIA‑10 | Knowledge Base (EN/DE/RO)</title>
+<link rel="icon" type="image/x-icon" href="images/99i_favicon_32x32.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0a0c10;
+    --panel:#0f1218;
+    --ink:#eaf6ff;
+    --muted:#9fb3c8;
+    --accent:#49b3ff;
+    --brand:#1b6fff;
+    --radius:16px;
+    --shadow:0 10px 30px rgba(0,0,0,.35);
+    --chip:#121a27;
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  }
+  a{color:var(--accent); text-decoration:none}
+  a:hover{color:#bfe6ff}
+
+  /* Nav */
+  .nav{
+    position:sticky; top:0; z-index:50; height:72px;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:0 20px; backdrop-filter: blur(8px);
+    background:linear-gradient(to bottom, rgba(10,12,16,.85), rgba(10,12,16,.35) 70%, transparent);
+    border-bottom:1px solid rgba(255,255,255,.06);
+  }
+  .brand{display:flex; align-items:center; gap:12px; font-weight:900; letter-spacing:.3px}
+  .brand-logo{
+    width:40px; aspect-ratio:1; border-radius:12px;
+    background: conic-gradient(from 210deg, #0a84ff, #49b3ff, #7dd3fc, #0a84ff);
+    box-shadow: inset 0 0 0 2px rgba(255,255,255,.06), var(--shadow);
+    position:relative; overflow:hidden;
+  }
+  .brand-logo::after{
+    content:""; position:absolute; inset:22% 20% 35% 20%;
+    background: linear-gradient(145deg,#e9f3ff,#9cc9ff);
+    clip-path: polygon(50% 0%, 100% 45%, 80% 100%, 20% 100%, 0% 45%);
+    opacity:.95;
+  }
+  .nav-actions{display:flex; gap:12px; align-items:center}
+  .lang{display:flex; gap:8px}
+  .lang button{
+    background:#101521; color:var(--ink); border:1px solid rgba(255,255,255,.08);
+    padding:8px 12px; border-radius:10px; font-weight:700; cursor:pointer;
+  }
+  .lang button.active{border-color:var(--accent); color:#dff4ff}
+
+  /* Hero video */
+  .hero{
+    display:grid; place-items:center; padding:26px 20px 10px;
+  }
+  .hero-inner{width:min(1200px,100%);}
+  .video-wrap{
+    position:relative; border-radius:16px; overflow:hidden;
+    border:1px solid rgba(255,255,255,.07);
+    box-shadow:var(--shadow);
+    background:#0b0f15;
+  }
+  .video-wrap video{width:100%; height:auto; display:block}
+  .hero-title{
+    margin:14px 6px 0; font-size:clamp(28px,4.6vw,44px); font-weight:900;
+    background:linear-gradient(180deg,#ffffff, #bfe6ff 60%, #7dd3fc);
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+  }
+  .hero-sub{margin:6px 6px 0; color:var(--muted)}
+
+  /* Search & chips */
+  .kb-wrap{display:flex; justify-content:center; padding:24px 20px 70px}
+  .kb{width:min(1200px,100%); display:grid; gap:16px}
+  .searchbar{
+    display:flex; gap:12px; align-items:center; background:var(--panel);
+    border:1px solid rgba(255,255,255,.07); border-radius:14px; padding:10px 12px;
+  }
+  .searchbar input{
+    flex:1; background:transparent; border:none; outline:none; color:var(--ink);
+    font-size:16px; padding:8px 4px;
+  }
+  .chips{display:flex; gap:8px; flex-wrap:wrap}
+  .chip{
+    background:var(--chip); color:#d6ebff; border:1px solid rgba(255,255,255,.08);
+    padding:8px 12px; border-radius:999px; cursor:pointer; font-weight:700; font-size:.9rem;
+  }
+  .chip.active{border-color:var(--accent); color:#fff; box-shadow:0 6px 18px rgba(73,179,255,.18)}
+
+  /* Grid */
+  .grid{display:grid; gap:16px; grid-template-columns:repeat(3,1fr)}
+  @media (max-width:1020px){ .grid{grid-template-columns:repeat(2,1fr)} }
+  @media (max-width:680px){ .grid{grid-template-columns:1fr} }
+  .card{
+    background:linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,0));
+    border:1px solid rgba(255,255,255,.07); border-radius:16px; padding:18px; box-shadow:var(--shadow)
+  }
+  .term{font-weight:900; margin:0 0 6px; font-size:18px}
+  .desc{color:var(--muted); line-height:1.6; margin:0}
+  .tag{display:inline-block; margin-top:10px; font-size:.75rem; background:#122032; color:#bfe6ff; border:1px solid rgba(98,184,255,.25); padding:6px 10px; border-radius:999px}
+
+  /* Legal */
+  footer{padding:40px 20px; text-align:center; color:#7e93a8}
+  .foot-links{margin:10px 0; display:flex; gap:14px; justify-content:center; flex-wrap:wrap}
+  .tiny{font-size:.85rem; color:#7e93a8; margin-top:8px}
+
+  section.legal-section{padding:60px 20px; display:flex; justify-content:center}
+  .legal{width:min(1000px,100%); background:linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,0));
+    border:1px solid rgba(255,255,255,.07); border-radius:16px; padding:26px; box-shadow:var(--shadow)}
+  .legal h3{margin:0 0 8px; font-size:28px; font-weight:900}
+  .legal h4{margin:18px 0 6px; font-size:18px}
+  .legal p,.legal li{color:#9fb3c8}
+  .lang-block{display:none}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="brand">
+    <div class="brand-logo" aria-hidden="true"></div>
+    <div>DIA‑10</div>
+  </div>
+  <div class="nav-actions">
+    <div class="lang">
+      <button class="langbtn" data-lang="de">DE</button>
+      <button class="langbtn active" data-lang="en">EN</button>
+      <button class="langbtn" data-lang="ro">RO</button>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO (Video) -->
+<header class="hero">
+  <div class="hero-inner">
+    <div class="video-wrap">
+      <!-- Replace with your own video source -->
+      <video autoplay muted loop playsinline poster="media/poster.jpg">
+        <source src="DIA10-Diamond‑anchored-digital-value.mp4" type="video/mp4">
+      </video>
+    </div>
+    <h1 class="hero-title" data-i18n="kb_title">DIA‑10 Knowledge Base</h1>
+    <p class="hero-sub" data-i18n="kb_sub">Short, friendly definitions for crypto & payments — in English, Deutsch, Română.</p>
+  </div>
+</header>
+
+<!-- KB -->
+<div class="kb-wrap">
+  <div class="kb">
+    <div class="searchbar">
+      <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path fill="#9fb3c8" d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0016 9.5 6.5 6.5 0 109.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79L20 21.49 21.49 20 15.5 14zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+      <input id="q" type="search" placeholder="Search terms…" aria-label="Search">
+    </div>
+
+    <div class="chips" id="chips"></div>
+
+    <div class="grid" id="grid"></div>
+  </div>
+</div>
+
+<!-- LEGAL MIN -->
+<section id="imprint" class="legal-section">
+  <div class="legal">
+    <h3 data-i18n="imprint_title">Impressum / Legal Notice</h3>
+
+    <div class="lang-block lang-de">
+      <h4>Angaben nach § 5 TMG</h4>
+      <p><b>Anbieter:</b> MAGO SERVICE TRADE SRL · 032801 București, Rumänien · J40/5941/2015 · CUI: 34523632</p>
+      <p><b>Kontakt:</b> +40 (0) 752 30 77 11 · <a href="mailto:mgoffin@web.de">mgoffin@web.de</a></p>
+      <p class="tiny">Stand: <span id="legalDateDE"></span></p>
+    </div>
+
+    <div class="lang-block lang-en">
+      <h4>Provider</h4>
+      <p><b>Operator:</b> MAGO SERVICE TRADE SRL · 032801 Bucharest, Romania · J40/5941/2015 · VAT/CUI: 34523632</p>
+      <p><b>Contact:</b> +40 (0) 752 30 77 11 · <a href="mailto:mgoffin@web.de">mgoffin@web.de</a></p>
+      <p class="tiny">Last updated: <span id="legalDateEN"></span></p>
+    </div>
+
+    <div class="lang-block lang-ro">
+      <h4>Date de identificare</h4>
+      <p><b>Operator:</b> MAGO SERVICE TRADE SRL · 032801 București, România · J40/5941/2015 · CUI: 34523632</p>
+      <p><b>Contact:</b> +40 (0) 752 30 77 11 · <a href="mailto:mgoffin@web.de">mgoffin@web.de</a></p>
+      <p class="tiny">Ultima actualizare: <span id="legalDateRO"></span></p>
+    </div>
+  </div>
+</section>
+
+<section id="privacy" class="legal-section">
+  <div class="legal">
+    <h3 data-i18n="privacy_title">Datenschutz / Privacy</h3>
+    <div class="lang-block lang-de">
+      <p>Kurzfassung: Wir verwenden Inhalte nur für Betrieb & Kommunikation. Rechte: Auskunft, Berichtigung, Löschung, Widerspruch. Kontakt: <a href="mailto:mgoffin@web.de">mgoffin@web.de</a></p>
+    </div>
+    <div class="lang-block lang-en">
+      <p>Short version: We use data to operate this site & communicate. Your rights: access, rectification, erasure, objection. Contact: <a href="mailto:mgoffin@web.de">mgoffin@web.de</a></p>
+    </div>
+    <div class="lang-block lang-ro">
+      <p>Pe scurt: Folosim date pentru funcționarea site-ului & comunicare. Drepturile tale: acces, rectificare, ștergere, opoziție. Contact: <a href="mailto:mgoffin@web.de">mgoffin@web.de</a></p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  © <span id="year"></span> DIA‑10. <span data-i18n="footer_note">Educational content. Not financial advice.</span>
+  <div class="foot-links">
+    <a href="#imprint" data-i18n="f_imprint">Imprint</a>
+    <a href="#privacy" data-i18n="f_privacy">Privacy</a>
+  </div>
+</footer>
+
+<script>
+/* ========= i18n ========= */
+const i18n = {
+  en:{
+    kb_title:"DIA‑10 Knowledge Base",
+    kb_sub:"Short, friendly definitions for crypto & payments — in English, Deutsch, Română.",
+    search_ph:"Search terms…",
+    chips_all:"All",
+    chips_basics:"Basics",
+    chips_payments:"Payments",
+    chips_network:"Networks",
+    chips_security:"Security",
+    chips_defi:"DeFi",
+    chips_rwa:"RWA",
+    chips_ops:"Ops",
+    chips_legal:"Legal",
+    chips_dev:"Dev",
+    imprint_title:"Impressum / Legal Notice",
+    privacy_title:"Privacy",
+    f_imprint:"Imprint", f_privacy:"Privacy",
+    footer_note:"Educational content. Not financial advice."
+  },
+  de:{
+    kb_title:"DIA‑10 Wissensdatenbank",
+    kb_sub:"Kurze, einfache Erklärungen zu Krypto & Payments — auf Deutsch, Englisch, Rumänisch.",
+    search_ph:"Begriff suchen…",
+    chips_all:"Alle",
+    chips_basics:"Grundlagen",
+    chips_payments:"Zahlungen",
+    chips_network:"Netzwerke",
+    chips_security:"Sicherheit",
+    chips_defi:"DeFi",
+    chips_rwa:"RWA",
+    chips_ops:"Betrieb",
+    chips_legal:"Recht",
+    chips_dev:"Tech/Dev",
+    imprint_title:"Impressum / Rechtliches",
+    privacy_title:"Datenschutz",
+    f_imprint:"Impressum", f_privacy:"Datenschutz",
+    footer_note:"Nur zu Bildungszwecken. Keine Finanzberatung."
+  },
+  ro:{
+    kb_title:"DIA‑10 Bază de cunoștințe",
+    kb_sub:"Definiții scurte și prietenoase despre cripto & plăți — în Română, Germană, Engleză.",
+    search_ph:"Caută termeni…",
+    chips_all:"Toate",
+    chips_basics:"Noțiuni",
+    chips_payments:"Plăți",
+    chips_network:"Rețele",
+    chips_security:"Securitate",
+    chips_defi:"DeFi",
+    chips_rwa:"RWA",
+    chips_ops:"Operațiuni",
+    chips_legal:"Legal",
+    chips_dev:"Dev",
+    imprint_title:"Informații legale",
+    privacy_title:"Confidențialitate",
+    f_imprint:"Imprint", f_privacy:"Confidențialitate",
+    footer_note:"Conținut educațional. Nu este sfat financiar."
+  }
+};
+
+let currentLang = (localStorage.getItem('dia10_lang') || document.documentElement.lang || 'en').slice(0,2);
+
+function t(key){
+  const pack = i18n[currentLang] || i18n.en;
+  return (pack && pack[key]) || (i18n.en && i18n.en[key]) || key;
+}
+
+function updateLangBlocks(){
+  document.querySelectorAll('.lang-block').forEach(el=>{
+    el.style.display = el.classList.contains('lang-'+currentLang) ? 'block' : 'none';
+  });
+}
+
+function applyLang(lang){
+  currentLang = lang;
+  localStorage.setItem('dia10_lang', lang);
+  document.documentElement.setAttribute('lang', lang);
+  window.currentLang = lang;
+
+  // Update all i18n texts
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const key = el.getAttribute('data-i18n');
+    el.textContent = t(key);
+  });
+  // Placeholder for search
+  const qEl = document.getElementById('q');
+  if(qEl) qEl.placeholder = t('search_ph');
+
+  // Mark active buttons
+  document.querySelectorAll('.langbtn').forEach(b=>{
+    const on = b.dataset.lang === lang;
+    b.classList.toggle('active', on);
+    b.setAttribute('aria-pressed', on);
+  });
+
+  updateLangBlocks();
+
+  // Only render if it exists already
+  if (typeof render === 'function') render();
+}
+
+/* ========= KB data ========= */
+// Categories: basics, payments, network, security, defi, rwa, ops, legal, dev
+const KB = [
+  {
+    id:'money',
+    terms:{ en:'Money', de:'Geld', ro:'Bani' },
+    desc:{
+      en:'A tool to store and exchange value. It evolved from shells to paper to digital.',
+      de:'Ein Werkzeug, um Wert zu speichern und zu tauschen. Von Muscheln über Papier zu digital.',
+      ro:'Un instrument pentru a stoca și schimba valoare. De la scoici la hârtie la digital.'
+    },
+    cats:['basics']
+  },
+  {
+    id:'crypto',
+    terms:{ en:'Crypto', de:'Krypto', ro:'Cripto' },
+    desc:{
+      en:'Internet-native money and assets. No single company controls the ledger.',
+      de:'Internet‑basiertes Geld und Vermögenswerte. Kein einzelnes Unternehmen kontrolliert das Kassenbuch.',
+      ro:'Bani și active născute pe Internet. Nicio companie nu controlează registrul.'
+    },
+    cats:['basics']
+  },
+  {
+    id:'blockchain',
+    terms:{ en:'Blockchain', de:'Blockchain', ro:'Blockchain' },
+    desc:{
+      en:'A shared notebook: pages (blocks) chained in order; everyone can verify entries.',
+      de:'Ein gemeinsames Notizbuch: Seiten (Blöcke) sind verkettet; alle können Einträge prüfen.',
+      ro:'Un caiet partajat: pagini (blocuri) legate la rând; toți pot verifica înregistrările.'
+    },
+    cats:['basics','dev']
+  },
+  {
+    id:'wallet',
+    terms:{ en:'Wallet', de:'Wallet', ro:'Portofel' },
+    desc:{
+      en:'Your digital pocket. Address ≈ IBAN; private key ≈ house key.',
+      de:'Deine digitale Tasche. Adresse ≈ IBAN; privater Schlüssel ≈ Haustürschlüssel.',
+      ro:'Buzunarul tău digital. Adresă ≈ IBAN; cheia privată ≈ cheia casei.'
+    },
+    cats:['basics','security']
+  },
+  {
+    id:'public_private',
+    terms:{ en:'Public vs. Private', de:'Öffentlich vs. privat', ro:'Public vs. privat' },
+    desc:{
+      en:'Address can be shared; seed phrase must stay secret.',
+      de:'Adresse darf geteilt werden; Seed‑Phrase bleibt geheim.',
+      ro:'Adresa se poate partaja; fraza seed trebuie păstrată secretă.'
+    },
+    cats:['security','basics']
+  },
+  {
+    id:'transaction',
+    terms:{ en:'Transaction', de:'Transaktion', ro:'Tranzacție' },
+    desc:{
+      en:'A signed message moving tokens from one address to another. Needs network confirmations.',
+      de:'Eine signierte Nachricht, die Token von einer Adresse zur anderen bewegt. Benötigt Bestätigungen.',
+      ro:'Un mesaj semnat care mută tokenuri între adrese. Are nevoie de confirmări.'
+    },
+    cats:['basics','payments']
+  },
+  {
+    id:'gas',
+    terms:{ en:'Gas Fee', de:'Gas‑Gebühr', ro:'Taxă gas' },
+    desc:{
+      en:'Small fee paid to run transactions or smart contracts on a network.',
+      de:'Kleine Gebühr, um Transaktionen oder Smart Contracts im Netzwerk auszuführen.',
+      ro:'O taxă mică plătită pentru a rula tranzacții sau contracte inteligente pe rețea.'
+    },
+    cats:['network','payments','dev']
+  },
+  {
+    id:'decimals',
+    terms:{ en:'Decimals', de:'Dezimalstellen', ro:'Zecimale' },
+    desc:{
+      en:'How many fractional digits a token supports (e.g., 18 on Ethereum).',
+      de:'Wie viele Nachkommastellen ein Token hat (z. B. 18 auf Ethereum).',
+      ro:'Câte zecimale are un token (ex. 18 pe Ethereum).'
+    },
+    cats:['basics','dev']
+  },
+  {
+    id:'ethereum',
+    terms:{ en:'Ethereum (Mainnet)', de:'Ethereum (Mainnet)', ro:'Ethereum (Mainnet)' },
+    desc:{
+      en:'A popular smart‑contract network. DIA‑10 is mainnet‑ready (Sepolia used for demos).',
+      de:'Ein verbreitetes Smart‑Contract‑Netzwerk. DIA‑10 ist mainnet‑ready (Sepolia für Demos).',
+      ro:'O rețea populară de smart‑contract. DIA‑10 este gata de mainnet (Sepolia pentru demo).'
+    },
+    cats:['network']
+  },
+  {
+    id:'sepolia',
+    terms:{ en:'Sepolia (Testnet)', de:'Sepolia (Testnetz)', ro:'Sepolia (Testnet)' },
+    desc:{
+      en:'Ethereum test network used for safe demos and development.',
+      de:'Ethereum‑Testnetz für sichere Demos und Entwicklung.',
+      ro:'Rețea de test Ethereum pentru demo și dezvoltare.'
+    },
+    cats:['network','dev']
+  },
+  {
+    id:'polygon',
+    terms:{ en:'Polygon', de:'Polygon', ro:'Polygon' },
+    desc:{
+      en:'An Ethereum‑compatible network with low fees and fast confirmations.',
+      de:'Ethereum‑kompatibles Netzwerk mit niedrigen Gebühren und schnellen Bestätigungen.',
+      ro:'Rețea compatibilă Ethereum cu taxe mici și confirmări rapide.'
+    },
+    cats:['network']
+  },
+  {
+    id:'stablecoin',
+    terms:{ en:'Stablecoin', de:'Stablecoin', ro:'Stablecoin' },
+    desc:{
+      en:'A crypto token designed to track a stable value (e.g., USD).',
+      de:'Ein Krypto‑Token, der einen stabilen Wert abbildet (z. B. USD).',
+      ro:'Un token cripto conceput să urmărească o valoare stabilă (ex. USD).'
+    },
+    cats:['payments','basics']
+  },
+  {
+    id:'usdc',
+    terms:{ en:'USDC', de:'USDC', ro:'USDC' },
+    desc:{
+      en:'A widely used USD‑pegged stablecoin from Circle.',
+      de:'Ein verbreiteter USD‑gebundener Stablecoin von Circle.',
+      ro:'Un stablecoin popular, ancorat la USD, emis de Circle.'
+    },
+    cats:['payments']
+  },
+  {
+    id:'on_off_ramp',
+    terms:{ en:'On/Off‑Ramp', de:'On/Off‑Ramp', ro:'On/Off‑Ramp' },
+    desc:{
+      en:'Convert fiat ↔ crypto via bank cards, wires or payment partners.',
+      de:'Fiat ↔ Krypto umwandeln, z. B. per Karte, Überweisung oder Partner.',
+      ro:'Conversie fiat ↔ cripto prin carduri, transferuri sau parteneri.'
+    },
+    cats:['payments','ops']
+  },
+  {
+    id:'kyc',
+    terms:{ en:'KYC', de:'KYC', ro:'KYC' },
+    desc:{
+      en:'“Know Your Customer”: identity checks required by regulation.',
+      de:'„Know Your Customer“: Identitätsprüfung gemäß Regulierung.',
+      ro:'„Know Your Customer”: verificări de identitate cerute de reglementări.'
+    },
+    cats:['legal','ops']
+  },
+  {
+    id:'aml',
+    terms:{ en:'AML', de:'AML', ro:'AML' },
+    desc:{
+      en:'Anti‑Money‑Laundering controls to detect and prevent illicit flows.',
+      de:'Anti‑Geldwäsche‑Kontrollen zur Erkennung illegaler Geldflüsse.',
+      ro:'Măsuri anti‑spălare de bani pentru a preveni fluxuri ilicite.'
+    },
+    cats:['legal','ops']
+  },
+  {
+    id:'travel_rule',
+    terms:{ en:'Travel Rule', de:'Travel Rule', ro:'Travel Rule' },
+    desc:{
+      en:'Rule requiring certain sender/receiver info to travel with transfers.',
+      de:'Regel, nach der bestimmte Absender/Empfänger‑Infos Transaktionen begleiten.',
+      ro:'Regulă ce cere ca anumite date să însoțească transferurile.'
+    },
+    cats:['legal','ops']
+  },
+  {
+    id:'t0',
+    terms:{ en:'T+0 Settlement', de:'T+0 Abwicklung', ro:'Decontare T+0' },
+    desc:{
+      en:'Funds settle the same day (often near‑instant on‑chain).',
+      de:'Abwicklung am selben Tag (on‑chain oft nahezu sofort).',
+      ro:'Fondurile se decontează în aceeași zi (adesea aproape instant on‑chain).'
+    },
+    cats:['payments']
+  },
+  {
+    id:'autoswap',
+    terms:{ en:'Auto‑Swap', de:'Auto‑Swap', ro:'Auto‑Swap' },
+    desc:{
+      en:'Automatic conversion between assets, e.g., DIA‑10 ↔ USDC at payment time.',
+      de:'Automatische Umwandlung zwischen Assets, z. B. DIA‑10 ↔ USDC beim Bezahlen.',
+      ro:'Conversie automată între active, ex. DIA‑10 ↔ USDC la plată.'
+    },
+    cats:['payments','defi']
+  },
+  {
+    id:'rwa',
+    terms:{ en:'RWA (Real‑World Assets)', de:'RWA (Real‑World Assets)', ro:'RWA (Active din lumea reală)' },
+    desc:{
+      en:'Bringing real‑world value (e.g., diamonds) onto blockchains as tokens.',
+      de:'Reale Werte (z. B. Diamanten) als Token auf Blockchains abbilden.',
+      ro:'Aducerea valorilor reale (ex. diamante) pe blockchain ca tokenuri.'
+    },
+    cats:['rwa','basics']
+  },
+  {
+    id:'custody',
+    terms:{ en:'Custody', de:'Verwahrung', ro:'Custodie' },
+    desc:{
+      en:'How assets are held: self‑custody (you control keys) or third‑party custody.',
+      de:'Wie Assets gehalten werden: Self‑Custody (du hältst Schlüssel) oder Fremdverwahrung.',
+      ro:'Cum sunt păstrate activele: self‑custody (tu deții cheile) sau custodie terță.'
+    },
+    cats:['security','ops']
+  },
+  {
+    id:'multisig',
+    terms:{ en:'Multisig', de:'Multisig', ro:'Multisig' },
+    desc:{
+      en:'A wallet that needs multiple approvals to move funds (safer for teams).',
+      de:'Wallet, die mehrere Freigaben benötigt (sicherer für Teams).',
+      ro:'Portofel ce necesită mai multe aprobări pentru a muta fonduri.'
+    },
+    cats:['security','ops']
+  },
+  {
+    id:'seed',
+    terms:{ en:'Seed Phrase', de:'Seed‑Phrase', ro:'Fraza seed' },
+    desc:{
+      en:'12–24 words that can recover your wallet. Must be stored offline and never shared.',
+      de:'12–24 Wörter, mit denen du dein Wallet wiederherstellen kannst. Offline aufbewahren, nie teilen.',
+      ro:'12–24 cuvinte pentru a recupera portofelul. Păstrează offline, nu o împărtăși.'
+    },
+    cats:['security']
+  },
+  {
+    id:'phishing',
+    terms:{ en:'Phishing', de:'Phishing', ro:'Phishing' },
+    desc:{
+      en:'Tricks to steal keys or funds (fake sites, messages, airdrops). Always verify.',
+      de:'Tricks zum Diebstahl von Schlüsseln/Geld (Fake‑Sites, Nachrichten, Airdrops). Immer prüfen.',
+      ro:'Trucuri de a fura chei/fonduri (site‑uri, mesaje, airdrop‑uri false). Verifică mereu.'
+    },
+    cats:['security']
+  },
+  {
+    id:'explorer',
+    terms:{ en:'Block Explorer', de:'Block‑Explorer', ro:'Block Explorer' },
+    desc:{
+      en:'Website to view on‑chain data: transactions, tokens, addresses (e.g., Etherscan).',
+      de:'Website für On‑Chain‑Daten: Transaktionen, Token, Adressen (z. B. Etherscan).',
+      ro:'Site pentru date on‑chain: tranzacții, tokenuri, adrese (ex. Etherscan).'
+    },
+    cats:['network','dev']
+  },
+  {
+    id:'smart_contracts',
+    terms:{ en:'Smart Contracts', de:'Smart Contracts', ro:'Contracte inteligente' },
+    desc:{
+      en:'Programs on the blockchain that run exactly as written.',
+      de:'Programme auf der Blockchain, die genau wie geschrieben laufen.',
+      ro:'Programe pe blockchain care rulează exact cum sunt scrise.'
+    },
+    cats:['dev','basics']
+  },
+  {
+    id:'nft',
+    terms:{ en:'NFT', de:'NFT', ro:'NFT' },
+    desc:{
+      en:'A unique token proving ownership of a digital (or linked physical) item.',
+      de:'Ein eindeutiger Token, der Eigentum an einem digitalen (oder verknüpften physischen) Objekt belegt.',
+      ro:'Un token unic ce dovedește proprietatea unui obiect digital (sau fizic asociat).'
+    },
+    cats:['basics']
+  },
+  {
+    id:'staking',
+    terms:{ en:'Staking', de:'Staking', ro:'Staking' },
+    desc:{
+      en:'Locking tokens to secure networks or earn rewards (mechanics vary).',
+      de:'Token sperren, um Netzwerke zu sichern oder Rewards zu erhalten (Mechanik variiert).',
+      ro:'Blocarea tokenurilor pentru a securiza rețele sau a obține recompense.'
+    },
+    cats:['defi']
+  },
+  {
+    id:'liquidity_pools',
+    terms:{ en:'Liquidity Pools', de:'Liquiditätspools', ro:'Pooluri de lichiditate' },
+    desc:{
+      en:'Shared funds enabling automated trading (AMMs); providers earn fees.',
+      de:'Gemeinsame Fonds für automatisierten Handel (AMMs); Anbieter verdienen Gebühren.',
+      ro:'Fonduri comune pentru tranzacționare automată (AMM); furnizorii câștigă comisioane.'
+    },
+    cats:['defi']
+  },
+  {
+    id:'bridges',
+    terms:{ en:'Bridges', de:'Bridges', ro:'Punti (Bridges)' },
+    desc:{
+      en:'Move assets between blockchains (use carefully; risks vary).',
+      de:'Assets zwischen Blockchains bewegen (vorsichtig nutzen; Risiken variieren).',
+      ro:'Mută active între blockchain‑uri (folosește cu grijă; riscurile variază).'
+    },
+    cats:['network','defi']
+  }
+];
+
+/* ========= UI State ========= */
+const chips = [
+  {id:'all', labelKey:'chips_all'},
+  {id:'basics', labelKey:'chips_basics'},
+  {id:'payments', labelKey:'chips_payments'},
+  {id:'network', labelKey:'chips_network'},
+  {id:'security', labelKey:'chips_security'},
+  {id:'defi', labelKey:'chips_defi'},
+  {id:'rwa', labelKey:'chips_rwa'},
+  {id:'ops', labelKey:'chips_ops'},
+  {id:'legal', labelKey:'chips_legal'},
+  {id:'dev', labelKey:'chips_dev'}
+];
+
+const grid = document.getElementById('grid');
+const qEl  = document.getElementById('q');
+const chipsEl = document.getElementById('chips');
+
+let activeChip = 'all';
+let q = '';
+
+function makeChips(){
+  chipsEl.innerHTML = '';
+  for(const c of chips){
+    const b = document.createElement('button');
+    b.className = 'chip' + (c.id===activeChip ? ' active' : '');
+    b.textContent = t(c.labelKey);
+    b.dataset.chip = c.id;
+    b.addEventListener('click', ()=>{
+      activeChip = c.id;
+      document.querySelectorAll('.chip').forEach(el=>el.classList.toggle('active', el===b));
+      render();
+    });
+    chipsEl.appendChild(b);
+  }
+}
+
+qEl.addEventListener('input', ()=>{ q = (qEl.value||'').trim().toLowerCase(); render(); });
+
+function render(){
+  if(!grid) return;
+  const items = KB.filter(x=>{
+    const catOk = activeChip==='all' || (x.cats||[]).includes(activeChip);
+    if(!catOk) return false;
+    if(!q) return true;
+
+    const term    = (x.terms[currentLang] || x.terms.en || '').toLowerCase();
+    const desc    = (x.desc[currentLang]  || x.desc.en  || '').toLowerCase();
+    const aliases = (x.aliases || []).join(' ').toLowerCase();
+    // Cross-language search so "Transaktion" finds "Transaction" too
+    const allTerms = Object.values(x.terms||{}).join(' ').toLowerCase();
+    const allDescs = Object.values(x.desc||{}).join(' ').toLowerCase();
+
+    return term.includes(q) || desc.includes(q) || aliases.includes(q) || allTerms.includes(q) || allDescs.includes(q) || x.id.includes(q);
+  });
+
+  grid.innerHTML = '';
+  for(const it of items){
+    const card = document.createElement('div'); card.className='card';
+    const h = document.createElement('h3'); h.className='term'; h.textContent = it.terms[currentLang] || it.terms.en;
+    const p = document.createElement('p'); p.className='desc'; p.textContent = it.desc[currentLang] || it.desc.en;
+    const tag = document.createElement('div'); tag.className='tag'; tag.textContent = (it.cats||[]).join(' • ');
+    card.append(h,p,tag);
+    grid.appendChild(card);
+  }
+}
+
+/* ========= Boot ========= */
+document.getElementById('year').textContent = new Date().getFullYear();
+
+window.addEventListener('DOMContentLoaded', () => {
+  if(!localStorage.getItem('dia10_lang')) currentLang = 'en'; // default EN
+  // build chips after lang available
+  makeChips();
+  applyLang(currentLang);
+  // Dates per locale
+  const loc = currentLang==='de' ? 'de-DE' : currentLang==='ro' ? 'ro-RO' : 'en-GB';
+  const today = new Date().toLocaleDateString(loc);
+  ['legalDateDE','legalDateEN','legalDateRO'].forEach(id=>{ const n=document.getElementById(id); if(n) n.textContent=today; });
+
+  render();
+});
+
+// Language buttons
+document.querySelectorAll('.langbtn').forEach(b=> b.addEventListener('click', ()=> applyLang(b.dataset.lang)));
+</script>
+</body>
+</html>

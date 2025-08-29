@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DIA-10 • Knowledge Base (EN/DE/RO)</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0b0f15; --panel:#101722; --ink:#e8f3ff; --muted:#a0b4c9;
+    --line:rgba(255,255,255,.07); --accent:#6bc0ff; --brand:#1b6fff;
+    --chip:#0f1623; --chipLine:#1e2a39; --radius:16px;
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{margin:0;background:radial-gradient(1200px 720px at 80% -10%, rgba(73,179,255,.06), transparent 60%),var(--bg);color:var(--ink);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+
+  /* NAV */
+  .nav{position:sticky;top:0;z-index:50;height:70px;display:flex;align-items:center;justify-content:space-between;padding:0 18px;background:linear-gradient(to bottom, rgba(10,13,18,.9), rgba(10,13,18,.4) 70%, transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:900;letter-spacing:.4px}
+  .logo{width:38px;aspect-ratio:1;border-radius:12px;background:conic-gradient(from 210deg,#0a84ff,#49b3ff,#7dd3fc,#0a84ff);position:relative;box-shadow:inset 0 0 0 2px rgba(255,255,255,.06)}
+  .logo::after{content:"";position:absolute;inset:22% 22% 34%;background:linear-gradient(145deg,#e9f3ff,#9cc9ff);clip-path:polygon(50% 0%, 100% 45%, 80% 100%, 20% 100%, 0% 45%);opacity:.95}
+  .lang{display:flex;gap:8px}
+  .lang button{border:1px solid var(--line);background:#0f1522;color:var(--ink);padding:8px 12px;border-radius:10px;font-weight:700;cursor:pointer}
+  .lang button.active{border-color:var(--accent);color:#dff2ff}
+
+  /* HERO with video */
+  .hero{position:relative;min-height:56vh;display:grid;place-items:end;padding:0;overflow:hidden;border-bottom:1px solid var(--line)}
+  .hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:contrast(1.05) saturate(1.05) brightness(.9)}
+  .hero .overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,12,18,.55),rgba(8,12,18,.85) 70%,rgba(8,12,18,.95))}
+  .hero .tagline{position:relative;z-index:2;width:min(1200px,100%);padding:28px 20px;font-weight:800;letter-spacing:.25px;color:#cbe5ff}
+
+  /* SEARCH + CHIPS */
+  main{padding:28px 20px;display:flex;justify-content:center}
+  .wrap{width:min(1200px,100%);display:grid;gap:16px}
+  .searchRow{display:grid;gap:10px}
+  #search{width:100%;padding:16px 18px;border-radius:14px;border:1px solid var(--line);background:#0f1623;color:var(--ink);font-size:16px;outline:none}
+  #search:focus{border-color:#63b8ff;box-shadow:0 0 0 3px rgba(98,184,255,.18)}
+  .chips{display:flex;flex-wrap:wrap;gap:10px}
+  .chip{background:var(--chip);border:1px solid var(--chipLine);color:#cfe7ff;padding:10px 14px;border-radius:999px;font-weight:800;cursor:pointer}
+  .chip.active{border-color:#6bc0ff;box-shadow:0 0 0 3px rgba(98,184,255,.16)}
+  .meta{color:var(--muted);font-size:.95rem}
+
+  /* RESULTS */
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  @media (max-width:1100px){.grid{grid-template-columns:repeat(2,1fr)}}
+  @media (max-width:720px){.grid{grid-template-columns:1fr}}
+  .card{background:linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,0));border:1px solid var(--line);border-radius:var(--radius);padding:18px;display:grid;gap:8px}
+  .title{font-weight:900;letter-spacing:.25px}
+  .badges{display:flex;gap:8px;flex-wrap:wrap}
+  .badge{font-size:.78rem;background:#112238;border:1px solid #20324b;color:#c9e3ff;padding:4px 8px;border-radius:999px}
+  .desc{color:#a7bad1}
+  .muted{color:#8ca5c1;font-size:.92rem}
+
+  footer{padding:40px 20px;text-align:center;color:#7e93a8;border-top:1px solid var(--line)}
+  a{color:#8fd1ff;text-decoration:none}
+  a:hover{color:#c7e9ff}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="brand">
+    <div class="logo" aria-hidden="true"></div>
+
+    <div>DIA-10</div>
+  </div>
+  <div class="lang">
+    <button class="langbtn active" data-lang="en" aria-pressed="true">EN</button>
+    <button class="langbtn" data-lang="de" aria-pressed="false">DE</button>
+    <button class="langbtn" data-lang="ro" aria-pressed="false">RO</button>
+  </div>
+</nav>
+
+<!-- HERO with video -->
+<header class="hero">
+  <video autoplay muted loop playsinline poster="assets/header_poster.jpg">
+    <source src="DIA10-Diamond‑anchored-digital-value.webm" type="video/webm">
+    <source src="DIA10-Diamond‑anchored-digital-value.mp4" type="video/mp4">
+  </video>
+  <div class="overlay"></div>
+  <div class="tagline" id="heroTag">DIA-10 • The Hardest Currency on Earth</div>
+</header>
+
+<main>
+  <div class="wrap">
+    <div class="searchRow">
+      <input id="search" type="search" placeholder="Search terms… (e.g., Gas, Wallet, RWA)">
+      <div id="chips" class="chips"></div>
+      <div class="meta" id="resultMeta">—</div>
+    </div>
+
+    <div id="results" class="grid"></div>
+  </div>
+</main>
+
+<footer>
+  © <span id="year"></span> DIA-10 • Knowledge Base
+</footer>
+
+<script>
+/* ================== i18n ================== */
+const i18n = {
+  en:{
+    hero:"DIA-10 • The Hardest Currency on Earth",
+    search_ph:"Search terms… (e.g., Gas, Wallet, RWA)",
+    meta_results:(n)=> n===0?"No results":"Results: "+n,
+    cats:{ all:"All", basics:"Basics", payments:"Payments", networks:"Networks",
+           security:"Security", defi:"DeFi", rwa:"RWA", ops:"Operations",
+           legal:"Legal", tech:"Tech/Dev" },
+    badge:{ basics:"Basics", payments:"Payments", networks:"Networks", security:"Security", defi:"DeFi", rwa:"RWA", ops:"Ops", legal:"Legal", tech:"Tech" }
+  },
+  de:{
+    hero:"DIA-10 • Die härteste Währung der Erde",
+    search_ph:"Suche… (z. B. Gas, Wallet, RWA)",
+    meta_results:(n)=> n===0?"Keine Treffer":"Treffer: "+n,
+    cats:{ all:"Alle", basics:"Grundlagen", payments:"Zahlungen", networks:"Netzwerke",
+           security:"Sicherheit", defi:"DeFi", rwa:"RWA", ops:"Betrieb",
+           legal:"Recht", tech:"Tech/Dev" },
+    badge:{ basics:"Grundlagen", payments:"Zahlungen", networks:"Netzwerke", security:"Sicherheit", defi:"DeFi", rwa:"RWA", ops:"Betrieb", legal:"Recht", tech:"Tech" }
+  },
+  ro:{
+    hero:"DIA-10 • Cea mai dură monedă de pe Pământ",
+    search_ph:"Caută… (ex.: Gas, Wallet, RWA)",
+    meta_results:(n)=> n===0?"Niciun rezultat":"Rezultate: "+n,
+    cats:{ all:"Toate", basics:"Bază", payments:"Plăți", networks:"Rețele",
+           security:"Securitate", defi:"DeFi", rwa:"RWA", ops:"Operațiuni",
+           legal:"Legal", tech:"Tech/Dev" },
+    badge:{ basics:"Bază", payments:"Plăți", networks:"Rețele", security:"Securitate", defi:"DeFi", rwa:"RWA", ops:"Operațiuni", legal:"Legal", tech:"Tech" }
+  }
+};
+
+let currentLang = (localStorage.getItem('kb_lang') || 'en').slice(0,2);
+document.documentElement.setAttribute('lang', currentLang);
+
+/* ================== DATA ================== */
+/* Jede KB-Card: { id, cats:[keys], t:{en:{title,desc,aliases[]},de:{},ro:{} } } */
+const KB = [
+  // ===== Basics
+  KBi('money', ['basics'], {
+    en:["Money","A tool to store and exchange value. It started as shells or gold, then paper, now digital.","value,store of value"],
+    de:["Geld","Ein Werkzeug, um Wert zu speichern und zu tauschen – von Muscheln/Gold über Papier bis digital.","Wert,aufbewahren"],
+    ro:["Bani","Un instrument pentru stocarea și schimbul valorii: scoici/aur → hârtie → digital.","valoare"]
+  }),
+  KBi('crypto', ['basics'], {
+    en:["Crypto","“Internet money” secured by math and open networks. No single company controls it.","cryptocurrency"],
+    de:["Krypto","„Internet-Geld“, gesichert durch Mathematik und offene Netzwerke. Keine Firma kontrolliert alles.","Kryptowährung"],
+    ro:["Cripto","„Bani pe internet”, securizați de matematică și rețele deschise. Fără control unic.","criptomonedă"]
+  }),
+  KBi('blockchain', ['basics','tech'], {
+    en:["Blockchain","A shared notebook: every page (block) is linked. Everyone can verify; changing history is hard.","ledger"],
+    de:["Blockchain","Geteiltes Notizbuch: Seiten (Blöcke) sind verkettet. Alle prüfen mit; nachträgliches Ändern ist schwer.","Kassenbuch"],
+    ro:["Blockchain","Caiet partajat: fiecare pagină (bloc) e legată. Toți pot verifica; istoria nu se schimbă ușor.","registru"]
+  }),
+  KBi('wallet', ['basics','security'], {
+    en:["Wallet","Your digital pocket. Address = IBAN; private key/seed = house key. Keep the key safe.","address,private key,seed phrase"],
+    de:["Wallet","Deine digitale Tasche. Adresse = IBAN; privater Schlüssel/Seed = Hausschlüssel. Sicher verwahren.","Adresse,privater Schlüssel,Seed"],
+    ro:["Portofel","Buzunarul digital. Adresă = IBAN; cheie privată/seed = cheie de casă. Păstreaz-o în siguranță.","adresă,cheie privată"]
+  }),
+  KBi('transaction', ['basics','payments','tech'], {
+    en:["Transaction","A signed instruction that moves tokens from A to B on the network.","tx"],
+    de:["Transaktion","Signierte Anweisung, die Token im Netzwerk von A nach B bewegt.","tx"],
+    ro:["Tranzacție","Instrucțiune semnată care mută tokenuri de la A la B în rețea.","tx"]
+  }),
+  KBi('gas', ['basics','networks','tech'], {
+    en:["Gas","A small fee paid to miners/validators for processing your transaction.","fee"],
+    de:["Gas","Kleine Gebühr für Miner/Validatoren, damit sie deine Transaktion verarbeiten.","Gebühr"],
+    ro:["Gas","Taxă mică pentru mineri/validatori ca să proceseze tranzacția ta.","taxă"]
+  }),
+  KBi('confirmations', ['basics','tech'], {
+    en:["Confirmations","Blocks added after your transaction. More confirmations = harder to reverse.","finality"],
+    de:["Bestätigungen","Blöcke nach deiner Transaktion. Mehr Bestätigungen = schwerer zurückzudrehen.","Finalität"],
+    ro:["Confirmări","Blocuri adăugate după tranzacție. Mai multe confirmări = mai greu de inversat.","finalitate"]
+  }),
+  KBi('decimals', ['basics','tech'], {
+    en:["Decimals","Tokens can be split into tiny parts (e.g., 18 decimals on DIA-10).","precision"],
+    de:["Dezimalstellen","Token sind in sehr kleine Teile teilbar (z. B. 18 bei DIA-10).","Genauigkeit"],
+    ro:["Zecimale","Tokenurile se pot împărți în părți mici (ex.: 18 la DIA-10).","precizie"]
+  }),
+  KBi('token', ['basics','tech'], {
+    en:["Token","A digital unit on a blockchain (like a branded chip). Smart contracts define the rules.","fungible"],
+    de:["Token","Digitale Einheit auf einer Blockchain (wie ein Marken-Chip). Smart Contracts legen Regeln fest.","fungibel"],
+    ro:["Token","Unitate digitală pe blockchain (ca un jeton branduit). Regulile sunt în contracte inteligente.","fungibil"]
+  }),
+  KBi('stablecoin', ['basics','payments','defi'], {
+    en:["Stablecoin","A token designed to track a stable value (e.g., 1 USD). Good for payments and settlement.","usdc,usdt"],
+    de:["Stablecoin","Token mit stabiler Zielgröße (z. B. 1 USD). Praktisch für Zahlungen & Settlement.","USDC,USDT"],
+    ro:["Stablecoin","Token cu valoare stabilă (ex. 1 USD). Util pentru plăți și decontare.","USDC,USDT"]
+  }),
+  KBi('nft', ['basics','tech'], {
+    en:["NFT","A unique token proving ownership of a digital or real item.","non-fungible token"],
+    de:["NFT","Einzigartiger Token, der Eigentum an einem digitalen/realen Gut belegt.","nicht-fungibel"],
+    ro:["NFT","Token unic care dovedește proprietatea unui bun digital/real.","nefungibil"]
+  }),
+  KBi('explorer', ['basics','tech'], {
+    en:["Block Explorer","Website to look up addresses, tokens and transactions (e.g., Etherscan).","etherscan"],
+    de:["Block Explorer","Website zum Nachschlagen von Adressen, Token und Transaktionen (z. B. Etherscan).","Etherscan"],
+    ro:["Block Explorer","Site pentru a căuta adrese, tokenuri și tranzacții (ex.: Etherscan).","Etherscan"]
+  }),
+
+  // ===== Payments
+  KBi('payments', ['payments'], {
+    en:["Payments","Send/receive tokens like email—fast, 24/7, globally.","pay"],
+    de:["Zahlungen","Token senden/empfangen wie E-Mail – schnell, 24/7, weltweit.","bezahlen"],
+    ro:["Plăți","Trimite/primește tokenuri ca un e-mail—rapid, 24/7, global.","plată"]
+  }),
+  KBi('onramp', ['payments','legal'], {
+    en:["On/Off-Ramp","Convert fiat ↔ crypto via regulated providers (bank/SEPA/cards).","fiat gateway"],
+    de:["On/Off-Ramp","Fiat ↔ Krypto über regulierte Anbieter (Bank/SEPA/Karten) wechseln.","Fiat-Gateway"],
+    ro:["On/Off-Ramp","Conversie fiat ↔ cripto prin provideri reglementați (bancă/SEPA/card).","gateway"]
+  }),
+  KBi('tplus0', ['payments','ops'], {
+    en:["T+0 Settlement","Funds settle instantly (same-day). Less counterparty risk.","instant settlement"],
+    de:["T+0 Settlement","Gelder gleichen am selben Tag aus. Weniger Gegenparteirisiko.","sofortiges Settlement"],
+    ro:["T+0","Banii se decontează instant (în aceeași zi). Risc mai mic.","decontare instant"]
+  }),
+  KBi('autoswap', ['payments','defi','tech'], {
+    en:["Auto-Swap","Automatic conversion between tokens during a payment (e.g., DIA-10 → USDC).","router,amm"],
+    de:["Auto-Swap","Automatisches Umtauschen von Token während der Zahlung (z. B. DIA-10 → USDC).","Router,AMM"],
+    ro:["Auto-Swap","Conversie automată între tokenuri în timpul plății (ex. DIA-10 → USDC).","AMM"]
+  }),
+  KBi('chargeback', ['payments','legal'], {
+    en:["Chargeback","Card dispute that reverses a payment. On-chain transfers are final once confirmed.","dispute"],
+    de:["Chargeback","Kartenrückbuchung. On-Chain-Transfers sind nach Bestätigung endgültig.","Rückbuchung"],
+    ro:["Chargeback","Anulare plată pe card. Transferurile on-chain devin finale după confirmare.","dispută"]
+  }),
+
+  // ===== Networks
+  KBi('ethereum', ['networks','tech'], {
+    en:["Ethereum","Popular smart-contract network for apps and tokens (DIA-10 ready).","eth"],
+    de:["Ethereum","Beliebtes Smart-Contract-Netzwerk für Apps & Token (DIA-10 ready).","ETH"],
+    ro:["Ethereum","Rețea populară de contracte inteligente pentru aplicații și tokenuri.","ETH"]
+  }),
+  KBi('polygon', ['networks','tech'], {
+    en:["Polygon","Ethereum-compatible network with lower fees; good for payments & scale.","sidechain,l2"],
+    de:["Polygon","Ethereum-kompatible Chain mit geringeren Gebühren; gut für Zahlungen & Scale.","Sidechain,L2"],
+    ro:["Polygon","Rețea compatibilă Ethereum cu taxe mai mici; bună pentru plăți & scalare.","L2"]
+  }),
+  KBi('sepolia', ['networks','tech'], {
+    en:["Sepolia","Ethereum test network (for demos). Mainnet is for real value.","testnet"],
+    de:["Sepolia","Ethereum-Testnetz (für Demos). Mainnet ist für echten Wert.","Testnetz"],
+    ro:["Sepolia","Rețea de test Ethereum (demo). Mainnet este pentru valoare reală.","testnet"]
+  }),
+  KBi('bridges', ['networks','defi','security'], {
+    en:["Bridges","Move tokens across chains. Useful but adds risk—use trusted routes.","cross-chain"],
+    de:["Brücken","Tokens zwischen Chains bewegen. Nützlich, aber mit Risiko—nur vertrauenswürdige Wege nutzen.","Cross-Chain"],
+    ro:["Punte","Mută tokenuri între lanțuri. Util, dar cu risc—folosește rute de încredere.","cross-chain"]
+  }),
+  KBi('oracles', ['networks','tech'], {
+    en:["Oracles","Bring off-chain data (e.g., prices) onto the blockchain for smart contracts.","price feeds"],
+    de:["Oracles","Liefern Off-Chain-Daten (z. B. Preise) an Smart Contracts.","Preisfeeds"],
+    ro:["Oracle","Aduc date off-chain (ex. prețuri) pe blockchain pentru contracte inteligente.","feed-uri"]
+  }),
+
+  // ===== Security
+  KBi('backups', ['security'], {
+    en:["Backups","Write down your seed phrase on paper/metal. Keep offline and private.","seed"],
+    de:["Backups","Seed-Phrase aufschreiben (Papier/Metall). Offline und privat aufbewahren.","Seed"],
+    ro:["Back-up","Notează seed-ul pe hârtie/metal. Păstrează offline și privat.","seed"]
+  }),
+  KBi('socialrecovery', ['security'], {
+    en:["Social Recovery","Trusted friends/devices can help you recover access if you lose keys.","guardians"],
+    de:["Social Recovery","Vertrauenspersonen/Geräte helfen beim Wiederherstellen, falls Schlüssel weg sind.","Wächter"],
+    ro:["Recuperare socială","Prieteni/dispozitive de încredere te ajută să recuperezi accesul.","gardieni"]
+  }),
+  KBi('multisig', ['security','legal','ops'], {
+    en:["Multisig","Several keys must approve before funds move. Great for companies/treasury.","multi-signature"],
+    de:["Multisig","Mehrere Schlüssel müssen freigeben. Ideal für Firmen/Treasury.","Mehrfachsignatur"],
+    ro:["Multisig","Mai multe chei aprobă înainte de a muta fonduri. Excelent pt. companii.","semnături multiple"]
+  }),
+  KBi('phishing', ['security'], {
+    en:["Phishing","Fake sites/messages that try to steal your seed or sign bad transactions.","scam"],
+    de:["Phishing","Gefälschte Seiten/Nachrichten, um Seed zu stehlen oder schlechte Signaturen zu erzwingen.","Betrug"],
+    ro:["Phishing","Site-uri/mesaje false ce încearcă să fure seed-ul sau să semnezi tranzacții rele.","înșelătorie"]
+  }),
+  KBi('hardware', ['security'], {
+    en:["Hardware Wallet","Small device that stores keys offline. Sign safely even on a hacked PC.","ledger"],
+    de:["Hardware-Wallet","Kleines Gerät hält Schlüssel offline. Sicher signieren – selbst am kompromittierten PC.","Ledger"],
+    ro:["Portofel hardware","Dispozitiv mic cu chei offline. Semnezi în siguranță.","ledger"]
+  }),
+  KBi('privacy', ['security','legal'], {
+    en:["Privacy & Pseudonyms","Addresses are pseudonymous. Share only what you want; use fresh addresses.","pseudonymous"],
+    de:["Privatsphäre & Pseudonyme","Adressen sind pseudonym. Nur nötige Infos teilen; frische Adressen nutzen.","pseudonym"],
+    ro:["Confidențialitate","Adresele sunt pseudonime. Partajează minimul; folosește adrese noi.","pseudonim"]
+  }),
+
+  // ===== DeFi
+  KBi('defi', ['defi'], {
+    en:["DeFi","Open financial apps: swap, lend, earn—without a bank, via smart contracts.","dex"],
+    de:["DeFi","Offene Finanz-Apps: tauschen, verleihen, verdienen—ohne Bank, via Smart Contracts.","DEX"],
+    ro:["DeFi","Aplicații financiare deschise: swap, împrumut, randament—fără bancă.","DEX"]
+  }),
+  KBi('lp', ['defi'], {
+    en:["Liquidity Pools","Users deposit tokens so others can trade. Earn fees, accept price risk.","amm"],
+    de:["Liquidity Pools","Nutzer stellen Tokens bereit, damit andere handeln. Gebühren verdienen, Preisrisiko tragen.","AMM"],
+    ro:["Pooluri de lichiditate","Depui tokenuri ca alții să schimbe. Câștigi comisioane, riști prețul.","AMM"]
+  }),
+  KBi('staking', ['defi','networks'], {
+    en:["Staking","Lock tokens to help secure a network and earn rewards.","validators"],
+    de:["Staking","Tokens sperren, um das Netzwerk zu sichern und Rewards zu erhalten.","Validatoren"],
+    ro:["Staking","Blochezi tokenuri pentru securizarea rețelei și primești recompense.","validatori"]
+  }),
+
+  // ===== RWA / DIA-10 narrative
+  KBi('rwa', ['rwa'], {
+    en:["RWA","Real-World Assets on-chain (e.g., diamonds). Proofs & audits link to the token.","real world assets"],
+    de:["RWA","Reale Vermögenswerte on-chain (z. B. Diamanten). Nachweise/Audits verknüpft.","Real-World-Assets"],
+    ro:["RWA","Active din lumea reală pe chain (ex.: diamante). Dovada & audit legate de token.","active reale"]
+  }),
+  KBi('audit', ['rwa','ops'], {
+    en:["Auditability","Anyone can verify data on-chain; off-chain proofs link via certificates.","proof"],
+    de:["Prüfbarkeit","On-Chain für alle verifizierbar; Off-Chain-Nachweise per Zertifikate verknüpft.","Nachweis"],
+    ro:["Auditabilitate","Date verificabile on-chain; dovezi off-chain legate prin certificate.","dovadă"]
+  }),
+  KBi('cert', ['rwa','ops'], {
+    en:["Certificates","Numbered investor certificates map ownership & provenance for DIA-10.","proof of ownership"],
+    de:["Zertifikate","Nummerierte Investorenzertifikate verknüpfen Besitz & Herkunft für DIA-10.","Eigentumsnachweis"],
+    ro:["Certificate","Certificate numerotate pentru proprietate & proveniență la DIA-10.","proprietate"]
+  }),
+
+  // ===== Ops / Biz
+  KBi('api', ['ops','tech'], {
+    en:["API","A technical doorway so systems can talk to each other automatically.","interface"],
+    de:["API","Technische Schnittstelle, damit Systeme automatisch kommunizieren.","Schnittstelle"],
+    ro:["API","Punct tehnic prin care sistemele comunică automat.","interfață"]
+  }),
+  KBi('settlement', ['ops','payments'], {
+    en:["Settlement","Final money movement after a trade or payment.","clearing"],
+    de:["Settlement","Endgültiger Geldfluss nach Handel/Zahlung.","Clearing"],
+    ro:["Decontare","Mișcarea finală a banilor după o tranzacție/plată.","clearing"]
+  }),
+  KBi('recon', ['ops','tech'], {
+    en:["Reconciliation","Matching records so everything adds up (on-chain vs. accounting).","match"],
+    de:["Reconciliation","Abgleich von Datensätzen, damit Summen stimmen (On-Chain vs. Buchhaltung).","Abgleich"],
+    ro:["Reconciliere","Potrivirea înregistrărilor pentru a bate cu scriptele (on-chain vs. contabil).","potrivire"]
+  }),
+  KBi('roles', ['ops','security','tech'], {
+    en:["Role-based permissions","Different users have different rights (viewer, signer, admin).","rbac"],
+    de:["Rollenrechte","Unterschiedliche Rechte je Nutzer (Viewer, Signer, Admin).","RBAC"],
+    ro:["Drepturi pe roluri","Utilizatorii au drepturi diferite (vizualizare, semnare, admin).","RBAC"]
+  }),
+  KBi('fees', ['ops','payments'], {
+    en:["Fees","Costs from networks or providers. DIA-10 aims for transparent, low fees.","costs"],
+    de:["Gebühren","Kosten von Netzwerken oder Anbietern. DIA-10 zielt auf transparent & niedrig.","Kosten"],
+    ro:["Comisioane","Costuri ale rețelei sau furnizorilor. DIA-10 vizează transparență & cost mic.","costuri"]
+  }),
+  KBi('supply', ['ops','rwa'], {
+    en:["Supply & Allocation","DIA-10: max 1,000,000 (18 decimals). Reserve • Partnerships • Community • Team (vesting).","tokenomics"],
+    de:["Supply & Allocation","DIA-10: max. 1.000.000 (18 Dez.). Reserve • Partnerschaften • Community • Team (Vesting).","Tokenomics"],
+    ro:["Supply & Alocare","DIA-10: max 1.000.000 (18 zec.). Rezervă • Parteneriate • Comunitate • Echipă (vesting).","tokenomics"]
+  }),
+  KBi('mou', ['legal','ops'], {
+    en:["MoU","Memorandum of Understanding—lightweight agreement to run a pilot.","agreement"],
+    de:["MoU","Absichtserklärung—leichte Vereinbarung für einen Pilotbetrieb.","Vereinbarung"],
+    ro:["MoU","Memorandum de Înțelegere—acord lejer pentru pilot.","acord"]
+  }),
+  KBi('nda', ['legal','ops'], {
+    en:["NDA","Non-Disclosure Agreement—keeps shared info confidential.","confidentiality"],
+    de:["NDA","Geheimhaltungsvereinbarung—gemeinsam geteilte Infos bleiben vertraulich.","Vertraulichkeit"],
+    ro:["NDA","Acord de confidențialitate—păstrează informațiile partajate confidențiale.","confidențial"]
+  }),
+  KBi('kyc', ['legal','payments'], {
+    en:["KYC/AML","Know Your Customer & Anti-Money-Laundering checks for compliant on/off-ramps.","compliance"],
+    de:["KYC/AML","Kunden- & Geldwäsche-Prüfungen für konforme On/Off-Ramps.","Compliance"],
+    ro:["KYC/AML","Verificări de client și anti-spălare pentru on/off-ramp conforme.","conformitate"]
+  }),
+  KBi('travel', ['legal','payments'], {
+    en:["Travel Rule","Certain transfers must include sender/recipient info for compliance.","rule"],
+    de:["Travel Rule","Bestimmte Transfers brauchen Absender/Empfänger-Infos für Compliance.","Regel"],
+    ro:["Travel Rule","Unele transferuri trebuie să includă date minime despre părți.","regulă"]
+  })
+];
+
+/* Helper to build items */
+function KBi(id, cats, t){
+  return {
+    id, cats,
+    t:{
+      en:{ title:t.en[0], desc:t.en[1], aliases:(t.en[2]||"").split(',').map(s=>s.trim()).filter(Boolean) },
+      de:{ title:t.de[0], desc:t.de[1], aliases:(t.de[2]||"").split(',').map(s=>s.trim()).filter(Boolean) },
+      ro:{ title:t.ro[0], desc:t.ro[1], aliases:(t.ro[2]||"").split(',').map(s=>s.trim()).filter(Boolean) }
+    }
+  };
+}
+
+/* ================== UI state ================== */
+const CAT_ORDER = ['all','basics','payments','networks','security','defi','rwa','ops','legal','tech'];
+let currentCat = 'all';
+
+const $ = (sel)=>document.querySelector(sel);
+const els = {
+  search: $('#search'),
+  chips:  $('#chips'),
+  meta:   $('#resultMeta'),
+  grid:   $('#results'),
+  heroTag:$('#heroTag')
+};
+
+/* ================== Chips render + Lang ================== */
+function renderChips(){
+  const labels = (i18n[currentLang] && i18n[currentLang].cats) ? i18n[currentLang].cats : i18n.en.cats;
+  els.chips.innerHTML = '';
+  CAT_ORDER.forEach(key=>{
+    const btn = document.createElement('button');
+    btn.className = 'chip' + (key===currentCat?' active':'');
+    btn.dataset.cat = key;
+    btn.type = 'button';
+    btn.textContent = labels[key] || key;
+    btn.addEventListener('click', ()=>{
+      currentCat = key;
+      els.chips.querySelectorAll('.chip').forEach(c=> c.classList.toggle('active', c.dataset.cat===key));
+      renderResults();
+    });
+    els.chips.appendChild(btn);
+  });
+}
+
+function applyLang(lang){
+  currentLang = lang; localStorage.setItem('kb_lang', lang);
+  document.documentElement.setAttribute('lang', lang);
+  // hero + search placeholder
+  els.heroTag.textContent = i18n[lang].hero;
+  els.search.placeholder = i18n[lang].search_ph;
+  // re-render chips + results
+  renderChips(); renderResults();
+  // mark lang buttons
+  document.querySelectorAll('.langbtn').forEach(b=>{
+    const on = (b.dataset.lang===lang);
+    b.classList.toggle('active', on);
+    b.setAttribute('aria-pressed', on);
+  });
+}
+
+/* ================== Results ================== */
+function matchesQuery(item, q){
+  if(!q) return true;
+  const L = q.toLowerCase();
+  const t = item.t[currentLang];
+  return (
+    t.title.toLowerCase().includes(L) ||
+    t.desc.toLowerCase().includes(L) ||
+    (t.aliases||[]).some(a=>a.toLowerCase().includes(L))
+  );
+}
+function matchesCat(item){
+  if(currentCat==='all') return true;
+  return item.cats.includes(currentCat);
+}
+function renderResults(){
+  const q = (els.search.value||'').trim();
+  const items = KB.filter(i=>matchesCat(i) && matchesQuery(i,q))
+                  .sort((a,b)=> a.t[currentLang].title.localeCompare(b.t[currentLang].title));
+  els.grid.innerHTML = '';
+  const badgeText = i18n[currentLang].badge;
+  items.forEach(it=>{
+    const card = document.createElement('div'); card.className='card';
+    const h = document.createElement('div'); h.className='title'; h.textContent = it.t[currentLang].title;
+    const badges = document.createElement('div'); badges.className='badges';
+    it.cats.forEach(c=>{
+      const b = document.createElement('div'); b.className='badge'; b.textContent = badgeText[c] || c;
+      badges.appendChild(b);
+    });
+    const p = document.createElement('div'); p.className='desc'; p.textContent = it.t[currentLang].desc;
+    const al = it.t[currentLang].aliases;
+    const alias = document.createElement('div'); alias.className='muted';
+    alias.textContent = (al && al.length) ? "AKA: "+al.join(", ") : "";
+    card.append(h,badges,p,alias);
+    els.grid.appendChild(card);
+  });
+  els.meta.textContent = i18n[currentLang].meta_results(items.length);
+}
+
+/* ================== Events ================== */
+document.querySelectorAll('.langbtn').forEach(b=>{
+  b.addEventListener('click', ()=> applyLang(b.dataset.lang));
+});
+els.search.addEventListener('input', renderResults);
+
+/* ================== Boot ================== */
+document.getElementById('year').textContent = new Date().getFullYear();
+renderChips();
+applyLang(currentLang||'en');
+renderResults();
+</script>
+</body>
+</html>
+

@@ -1,0 +1,677 @@
+<!-- Hello, my name is Markus Goffin 
+🇩🇪 Deutsch
+
+Ideen- und Konzeptinhaber von DIA-10
+Markus Goffin ist der alleinige Urheber und Inhaber der ursprünglichen Idee, des Namens, des Konzepts sowie der Markenidentität von DIA-10 – einer diamant­inspirierten Kryptowährung. Die Entwicklung, Gestaltung und strategische Ausrichtung des Projekts basieren ausschließlich auf seiner kreativen und unternehmerischen Arbeit.
+
+🇬🇧 English
+
+Creator and Concept Owner of DIA-10
+Markus Goffin is the sole originator and owner of the idea, name, concept, and brand identity of DIA-10 — a diamond-inspired cryptocurrency. The project’s development, design, and strategic direction are entirely based on his creative vision and entrepreneurial expertise.
+
+🇷🇴 Română
+
+Autor și deținător al conceptului DIA-10
+Markus Goffin este inițiatorul și proprietarul exclusiv al ideii, numelui, conceptului și identității de brand DIA-10 — o criptomonedă inspirată de diamante. Dezvoltarea, designul și direcția strategică a proiectului se bazează în întregime pe viziunea sa creativă și expertiza sa antreprenorială.
+--> 
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<!-- Canonical & Hreflang (empfohlen: je Sprache eigene URL, z.B. /en/ /de/ /ro/) -->
+<link rel="canonical" href="https://99-i.com/dia10/">
+<link rel="alternate" hreflang="en" href="https://99-i.com/dia10/">
+<link rel="alternate" hreflang="de" href="https://99-i.com/dia10/">
+<link rel="alternate" hreflang="ro" href="https://99-i.com/dia10/">
+<link rel="alternate" hreflang="x-default" href="https://99-i.com/dia10/">
+<title>DIA-10 • Freund:in wirbt Freund:in</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet">
+<meta property="og:title" content="DIA-10 — Decentralized Intelligence Assets">
+<meta property="og:description" content="Mach mit bei DIA-10. CPC-Zeichnung mit QR-verifiziertem Zertifikat – Conversion beim Token-Launch.">
+<meta property="og:type" content="website">
+<meta name="author" content="Markus Goffin">
+<meta name="last-modified" content="2025-08-28">
+<link rel="icon" type="image/x-icon" href="https://99-i.com/dia10/images/99i_favicon_16x16.ico" sizes="16x16">
+<link rel="icon" type="image/x-icon" href="https://99-i.com/dia10/images/99i_favicon_32x32.ico" sizes="32x32">
+<link rel="icon" type="image/x-icon" href="https://99-i.com/dia10/images/99i_favicon_48x48.ico" sizes="48x48">
+<meta name="description" content="Empfiehl DIA-10: Kauft deine Empfehlung ein Zertifikat, erhältst du eines gratis. Fair. Transparent. Limit: 3 pro Person.">
+<!-- Canonical & hreflang -->
+<link rel="canonical" href="https://dia10.de/">
+<link rel="alternate" href="https://dia10.io/" hreflang="en">
+<link rel="alternate" href="https://dia10.de/" hreflang="de">
+<link rel="alternate" href="https://dia10.io/?lang=ro" hreflang="ro">
+<link rel="alternate" href="https://dia10.io/" hreflang="x-default">
+<meta name="theme-color" content="#0a1430">
+<style>
+:root{
+  --bg:#0a1430; --panel:#0d1a3a; --ink:#f3f7ff; --muted:#b9c7da;
+  --blue:#1b6fff; --cyan:#74c7ff; --line:#1c2b55;
+  --ok:#11d09a; --warn:#ffcf4a; --bad:#ff6b6a;
+  --radius:16px; --shadow:0 10px 28px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box}
+body{margin:0;background:
+  radial-gradient(900px 600px at 120% -10%, rgba(116,199,255,.10), transparent 60%),
+  radial-gradient(800px 500px at -20% 10%, rgba(27,111,255,.10), transparent 55%),
+  var(--bg);
+  color:var(--ink); font:400 16px/1.55 Inter,system-ui,sans-serif;
+}
+a{color:var(--cyan);text-decoration:none}
+a:hover{color:#d7eeff}
+header{position:sticky;top:0;z-index:10;backdrop-filter:blur(10px);
+  background:linear-gradient(180deg,rgba(10,20,48,.85),rgba(10,20,48,.55));border-bottom:1px solid var(--line)}
+.nav{max-width:1200px;margin:auto;padding:12px 18px;display:flex;align-items:center;gap:12px}
+.brand{display:flex;align-items:center;gap:12px;font-weight:900;letter-spacing:.3px}
+.logo{width:40px;height:40px;border-radius:10px;display:grid;place-items:center;
+  background:linear-gradient(135deg,#0a1d44,#1b6fff 70%,#74c7ff);
+  box-shadow:inset 0 0 0 2px rgba(255,255,255,.06), var(--shadow)}
+.logo svg{width:26px;height:26px;filter:drop-shadow(0 1px 2px rgba(0,0,0,.4))}
+.spacer{flex:1}
+.langs{display:flex;gap:8px}
+.langs button{background:#0a1d44;color:var(--ink);border:1px solid rgba(255,255,255,.12);
+  padding:8px 12px;border-radius:10px;font-weight:700;cursor:pointer}
+.langs button.active{border-color:#74c7ff;box-shadow:0 0 0 1px rgba(116,199,255,.4) inset}
+
+.wrap{max-width:1100px;margin:22px auto;padding:0 18px;display:grid;gap:18px}
+
+/* Hero mit animiertem Diamant */
+.hero{
+  position:relative; overflow:hidden;
+  background:linear-gradient(180deg,#0d1a3a,#0a1734); border:1px solid var(--line);
+  border-radius:18px; padding:20px;
+}
+.heroCanvas{position:absolute; inset:0; z-index:0; opacity:.35}
+.heroInner{position:relative; z-index:1}
+h1{margin:.2em 0; font-size:clamp(28px,4vw,42px)}
+.sub{color:var(--muted)}
+.row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border:1px solid #25407a;border-radius:12px;background:#0e214a;color:var(--ink);cursor:pointer}
+.btn.cta{background:linear-gradient(90deg,#1b6fff,#74c7ff); border:none; color:#07121f; font-weight:800}
+.pill{display:inline-flex;gap:8px;align-items:center;padding:6px 10px;border:1px solid #27406c;border-radius:999px;background:#0e1a33;color:#cfe2ff;font-size:13px}
+
+.grid{display:grid;gap:14px}
+@media(min-width:900px){ .cols-2{grid-template-columns:1fr 1fr} .cols-3{grid-template-columns:repeat(3,1fr)} }
+
+.card{background:linear-gradient(180deg,#0d1a3a,#0a1734);border:1px solid var(--line);border-radius:16px;padding:16px;box-shadow:var(--shadow)}
+.card h3{margin:.2em 0 .6em}
+.k{color:var(--muted);font-size:14px}
+.input{display:flex;gap:8px;flex-wrap:wrap}
+.input input{
+  flex:1 1 260px; padding:10px 12px; border-radius:12px; background:#0a1d44; color:var(--ink);
+  border:1px solid rgba(255,255,255,.12); outline:none;
+}
+.codebox{
+  background:#0b1428;border:1px dashed #223a6d;border-radius:12px;padding:10px;display:flex;gap:10px;align-items:center;flex-wrap:wrap
+}
+code.hash{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace}
+.share{display:flex;gap:8px;flex-wrap:wrap}
+
+.faq details{background:#0e1a33;border:1px solid #27406c;border-radius:12px;padding:10px;margin:8px 0}
+summary{cursor:pointer;font-weight:800}
+
+footer{margin:18px 0 28px;text-align:center;color:#8ea2c6;font-size:14px}
+
+/* Cookie Trigger & Banner (kurz) */
+.cc-trigger{position:fixed; right:16px; bottom:16px; z-index:9997; background:#0a1d44; color:var(--ink);
+  border:1px solid rgba(255,255,255,.12); padding:10px 12px; border-radius:12px; font:600 14px/1 Inter; display:flex; gap:8px; align-items:center; cursor:pointer;}
+.cc-overlay{position:fixed; inset:0; background:rgba(5,10,20,.55); backdrop-filter:blur(4px); display:none; z-index:9998}
+.cc-overlay.show{display:block}
+.cc-card{position:fixed; left:50%; transform:translateX(-50%); bottom:18px; width:min(900px,calc(100% - 24px));
+  background:linear-gradient(180deg,#0d1a3a,#0a1531); border:1px solid rgba(255,255,255,.12);
+  border-radius:16px; color:var(--ink); box-shadow:var(--shadow); padding:16px; z-index:9999}
+.cc-controls{display:flex; gap:10px; flex-wrap:wrap; margin-top:10px}
+.cc-btn{background:#0a1d44;color:var(--ink);border:1px solid rgba(255,255,255,.12);border-radius:10px;padding:10px 14px;font:700 14px/1 Inter;cursor:pointer}
+.cc-btn.primary{background:linear-gradient(90deg,#1b6fff,#74c7ff);border:none;color:#07101a}
+</style>
+</head>
+<body>
+<header>
+  <nav class="nav">
+    <div class="brand">
+      <div class="logo" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M3 9l9-6 9 6-9 12-9-12zM12 3v18M3 9h18M7 9l5 12m5-12l-5 12"/>
+        </svg>
+      </div>
+      <div>DIA-10</div>
+    </div>
+    <div class="spacer"></div>
+    <div class="langs">
+      <button class="lang active" data-lang="de">DE</button>
+      <button class="lang" data-lang="en">EN</button>
+      <button class="lang" data-lang="ro">RO</button>
+    </div>
+  </nav>
+</header>
+
+<section class="wrap">
+  <!-- Hero mit Canvas-Animation -->
+  <div class="hero">
+    <canvas class="heroCanvas" id="heroFx" aria-hidden="true"></canvas>
+    <div class="heroInner">
+      <div class="pill" id="refBanner" style="display:none"></div>
+      <h1 id="h_title">Freund:in wirbt Freund:in</h1>
+      <p class="sub" id="h_sub">Empfiehl DIA-10. Wenn deine Empfehlung ein Zertifikat kauft, schenken wir dir ein Zertifikat. Fair. Transparent. Limit: 3 pro Person.</p>
+      <div class="row" style="margin-top:10px">
+        <a class="btn cta" id="btnGetLink">Jetzt Einladungslink holen</a>
+        <a class="btn" href="https://99-i.com/dia10/" target="_blank" rel="noopener" id="btnVisit">Besuche Webseite</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid cols-2">
+    <!-- Link-Generator -->
+    <div class="card">
+      <h3 id="gen_title">Dein persönlicher Einladungslink</h3>
+      <p class="k" id="gen_desc">Ein Klick – wir erzeugen lokal einen Code, keine Daten werden übertragen.</p>
+
+      <div class="input" style="margin:10px 0">
+        <input id="nick" type="text" placeholder="Dein Name (optional)">
+        <button class="btn" id="btnGenerate">Link erzeugen</button>
+      </div>
+
+      <div class="codebox" id="box" style="display:none">
+        <code class="hash" id="code" style="user-select:all"></code>
+        <button class="btn" id="copy">Kopieren</button>
+        <button class="btn" id="mail">E-Mail</button>
+        <button class="btn" id="share">Teilen</button>
+        <div class="k" id="limitNote">Limit: bis zu 3 Gratis-Zertifikate pro Person.</div>
+      </div>
+
+      <div class="share" id="quickShare" style="display:none; margin-top:8px">
+        <a class="btn" id="whatsapp" target="_blank" rel="noopener">WhatsApp</a>
+        <a class="btn" id="telegram" target="_blank" rel="noopener">Telegram</a>
+        <a class="btn" id="xshare" target="_blank" rel="noopener">X</a>
+      </div>
+    </div>
+
+    <!-- Regeln -->
+    <div class="card">
+      <h3 id="how_title">So funktioniert’s</h3>
+      <ul class="k" style="margin:6px 0 0 18px">
+        <li id="rule_mech">A kauft ein Zertifikat → A empfiehlt B → kauft B ebenfalls, erhält A 1 Zertifikat gratis.</li>
+        <li id="rule_time">Frist: Kauf von B innerhalb 30 Tagen nach Klick/Codeeingabe.</li>
+        <li id="rule_limit">Limit: bis zu 3 Gratis-Zertifikate pro Person.</li>
+        <li id="rule_qual">Qualifikation: B ist Neukund:in (neue E-Mail/Wallet/IBAN). Gratis-Zertifikate nach Zahlungseingang.</li>
+        <li id="rule_abuse">Missbrauchsschutz: Kein Self-Referral, kein Stapeln, manuelle Prüfung vorbehalten.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <div class="card faq">
+    <h3>FAQ</h3>
+    <details open>
+      <summary id="q1">Wie funktioniert’s?</summary>
+      <div class="k" id="a1">Teile deinen persönlichen Link oder Code. Kauft deine Empfehlung innerhalb von 30 Tagen ein Zertifikat, bekommst du ein Gratis-Zertifikat.</div>
+    </details>
+    <details>
+      <summary id="q2">Welches Zertifikat ist gratis?</summary>
+      <div class="k" id="a2">Standard: gleiche Stufe wie beim Kauf der Empfehlung, bis zur maximal freigegebenen Stufe.</div>
+    </details>
+    <details>
+      <summary id="q3">Wann erhalte ich mein Zertifikat?</summary>
+      <div class="k" id="a3">Nach Zahlungseingang und Prüfung – wir informieren dich per E-Mail.</div>
+    </details>
+    <details>
+      <summary id="q4">Gibt es Beschränkungen?</summary>
+      <div class="k" id="a4">Ja: Keine Eigenwerbung, max. 3 Gratis-Zertifikate/Person, nur Neukund:innen, Missbrauch führt zum Ausschluss.</div>
+    </details>
+  </div>
+
+  <!-- Rechtliches -->
+  <div class="card">
+    <h3 id="legal_title">Rechtliches (kurz)</h3>
+    <div class="k" id="legal_text">
+      Kein Finanzrat. Teilnahme vorbehaltlich Prüfung. Änderungen/Beendigung der Aktion vorbehalten.
+      Datenschutz: Wir versenden keine Einladungen an Dritte ohne deren Einwilligung – du teilst deinen Link selbst.
+    </div>
+  </div>
+
+  <footer>© <span id="y"></span> DIA-10 / MAGO SERVICE TRADE SRL</footer>
+</section>
+
+
+
+<script>
+/* ========= CONFIG ========= */
+const TARGET_URL = 'https://99-i.com/dia10/'; // Zielseite für deinen Referral-Traffic
+const STORAGE_KEY_SELF = 'dia10_my_ref';      // eigener Referral-Code
+const STORAGE_KEY_CLICK = 'dia10_ref_click';  // gespeicherter Klick (30 Tage)
+
+/* ========= I18N ========= */
+const T = {
+  de:{
+    title:"Freund:in wirbt Freund:in",
+    sub:"Empfiehl DIA-10. Wenn deine Empfehlung ein Zertifikat kauft, schenken wir dir ein Zertifikat. Fair. Transparent. Limit: 3 pro Person.",
+    btnGet:"Jetzt Einladungslink holen",
+    btnVisit:"Besuche Webseite",
+    gen_title:"Dein persönlicher Einladungslink",
+    gen_desc:"Ein Klick – wir erzeugen lokal einen Code, keine Daten werden übertragen.",
+    limit:"Limit: bis zu 3 Gratis-Zertifikate pro Person.",
+    how_title:"So funktioniert’s",
+    mech:"A kauft ein Zertifikat → A empfiehlt B → kauft B ebenfalls, erhält A 1 Zertifikat gratis.",
+    time:"Frist: Kauf von B innerhalb 30 Tagen nach Klick/Codeeingabe.",
+    limit2:"Limit: bis zu 3 Gratis-Zertifikate pro Person.",
+    qual:"Qualifikation: B ist Neukund:in (neue E-Mail/Wallet/IBAN). Gratis-Zertifikate nach Zahlungseingang.",
+    abuse:"Missbrauchsschutz: Kein Self-Referral, kein Stapeln, manuelle Prüfung vorbehalten.",
+    faq1q:"Wie funktioniert’s?",
+    faq1a:"Teile deinen persönlichen Link oder Code. Kauft deine Empfehlung innerhalb von 30 Tagen ein Zertifikat, bekommst du ein Gratis-Zertifikat.",
+    faq2q:"Welches Zertifikat ist gratis?",
+    faq2a:"Standard: gleiche Stufe wie beim Kauf der Empfehlung, bis zur maximal freigegebenen Stufe.",
+    faq3q:"Wann erhalte ich mein Zertifikat?",
+    faq3a:"Nach Zahlungseingang und Prüfung – wir informieren dich per E-Mail.",
+    faq4q:"Gibt es Beschränkungen?",
+    faq4a:"Ja: Keine Eigenwerbung, max. 3 Gratis-Zertifikate/Person, nur Neukund:innen, Missbrauch führt zum Ausschluss.",
+    legal_t:"Rechtliches (kurz)",
+    legal:"Kein Finanzrat. Teilnahme vorbehaltlich Prüfung. Änderungen/Beendigung der Aktion vorbehalten. Datenschutz: Wir versenden keine Einladungen an Dritte ohne deren Einwilligung – du teilst deinen Link selbst.",
+    refSaved:(d)=>`Empfehlung gespeichert – ${d} Tage gültig`,
+    copy:"Kopieren", email:"E-Mail", share:"Teilen", wa:"WhatsApp", tg:"Telegram", x:"X"
+  },
+  en:{
+    title:"Invite & Earn",
+    sub:"Refer a friend to DIA-10. When your friend buys a certificate, you get one for free. Fair and transparent. Limit: 3 per person.",
+    btnGet:"Get my invite link",
+    btnVisit:"Visit website",
+    gen_title:"Your personal invite link",
+    gen_desc:"One click – we generate a code locally, no data is sent.",
+    limit:"Limit: up to 3 free certificates per person.",
+    how_title:"How it works",
+    mech:"A buys a certificate → A refers B → if B buys, A receives one certificate for free.",
+    time:"Deadline: B must buy within 30 days of click/code entry.",
+    limit2:"Limit: up to 3 free certificates per person.",
+    qual:"Eligibility: B is a new customer (new email/wallet/IBAN). Free certificates issued after payment.",
+    abuse:"Abuse protection: No self-referrals, no stacking with other codes, manual review applies.",
+    faq1q:"How does it work?",
+    faq1a:"Share your personal link or code. If your friend buys within 30 days, you receive a free certificate.",
+    faq2q:"Which certificate is free?",
+    faq2a:"Default: same tier as your friend’s purchase, up to the maximum allowed tier.",
+    faq3q:"When do I receive it?",
+    faq3a:"After payment and review — we’ll notify you by email.",
+    faq4q:"Any restrictions?",
+    faq4a:"Yes: No self-referrals, max 3 free certificates/person, new customers only; abuse leads to exclusion.",
+    legal_t:"Legal (short)",
+    legal:"No investment advice. Participation subject to review. We may change or end this promotion. Privacy: we do not send invitations on your behalf — you share your link yourself.",
+    refSaved:(d)=>`Referral saved — valid for ${d} days`,
+    copy:"Copy", email:"Email", share:"Share", wa:"WhatsApp", tg:"Telegram", x:"X"
+  },
+  ro:{
+    title:"Recomandă & Câștigă",
+    sub:"Recomandă un prieten la DIA-10. Dacă prietenul cumpără un certificat, primești unul gratuit. Corect și transparent. Limită: 3/persoană.",
+    btnGet:"Generează linkul meu",
+    btnVisit:"Vizitează site-ul",
+    gen_title:"Linkul tău personal",
+    gen_desc:"Un click – generăm local un cod, fără a trimite date.",
+    limit:"Limită: până la 3 certificate gratuite/persoană.",
+    how_title:"Cum funcționează",
+    mech:"A cumpără un certificat → A îl recomandă pe B → dacă B cumpără, A primește un certificat gratuit.",
+    time:"Termen: B trebuie să cumpere în 30 de zile de la click/introducerea codului.",
+    limit2:"Limită: până la 3 certificate gratuite/persoană.",
+    qual:"Eligibilitate: B este client nou (email/portofel/IBAN nou). Certificatele gratuite se emit după plată.",
+    abuse:"Protecție abuz: fără auto-recomandări, fără cumul cu alte coduri; verificare manuală.",
+    faq1q:"Cum funcționează?",
+    faq1a:"Distribuie linkul sau codul tău. Dacă prietenul cumpără în 30 de zile, primești un certificat gratuit.",
+    faq2q:"Ce certificat este gratuit?",
+    faq2a:"Implicit: același nivel ca achiziția prietenului, până la nivelul maxim permis.",
+    faq3q:"Când îl primesc?",
+    faq3a:"După plată și verificare — te anunțăm prin email.",
+    faq4q:"Restricții?",
+    faq4a:"Da: fără auto-recomandări, max 3 certificate gratuite/persoană, doar clienți noi; abuzul duce la excludere.",
+    legal_t:"Legal (scurt)",
+    legal:"Nu este consultanță financiară. Participarea este supusă verificării. Putem modifica/încheia promoția. Confidențialitate: nu trimitem invitații în numele tău — partajezi tu linkul.",
+    refSaved:(d)=>`Recomandare salvată — valabilă ${d} zile`,
+    copy:"Copiază", email:"Email", share:"Distribuie", wa:"WhatsApp", tg:"Telegram", x:"X"
+  }
+};
+let LANG='de';
+function i18nApply(){
+  const t=T[LANG];
+  document.documentElement.lang = LANG;
+  // Hero
+  q('#h_title').textContent=t.title;
+  q('#h_sub').textContent=t.sub;
+  q('#btnGetLink').textContent=t.btnGet;
+  q('#btnVisit').textContent=t.btnVisit;
+  // Generator
+  q('#gen_title').textContent=t.gen_title;
+  q('#gen_desc').textContent=t.gen_desc;
+  q('#limitNote').textContent=t.limit;
+  q('#copy').textContent=t.copy;
+  q('#mail').textContent=t.email;
+  q('#share').textContent=t.share;
+  // Regeln
+  q('#how_title').textContent=t.how_title;
+  q('#rule_mech').textContent=t.mech;
+  q('#rule_time').textContent=t.time;
+  q('#rule_limit').textContent=t.limit2;
+  q('#rule_qual').textContent=t.qual;
+  q('#rule_abuse').textContent=t.abuse;
+  // FAQ
+  q('#q1').textContent=t.faq1q; q('#a1').textContent=t.faq1a;
+  q('#q2').textContent=t.faq2q; q('#a2').textContent=t.faq2a;
+  q('#q3').textContent=t.faq3q; q('#a3').textContent=t.faq3a;
+  q('#q4').textContent=t.faq4q; q('#a4').textContent=t.faq4a;
+  // Legal
+  q('#legal_title').textContent=t.legal_t;
+  q('#legal_text').textContent=t.legal;
+  // Refbanner ggf. Text neu setzen (wenn sichtbar, wird unten aktualisiert)
+}
+function setLang(l){
+  LANG = ['de','en','ro'].includes(l)?l:'de';
+  dqa('.lang').forEach(b=> b.classList.toggle('active', b.dataset.lang===LANG));
+  i18nApply();
+}
+
+/* ========= Utils ========= */
+const q =(s)=>document.querySelector(s);
+const dqa=(s)=>document.querySelectorAll(s);
+const encode=(s)=>encodeURIComponent(s);
+
+/* ========= Referral: Erzeugen, Teilen, Tracken ========= */
+function genCode(){
+  const a = new Uint8Array(8);
+  crypto.getRandomValues(a);
+  return [...a].map(b=>b.toString(16).padStart(2,'0')).join('');
+}
+function daysLeft(ts){
+  const ms = 30*24*60*60*1000;
+  const left = Math.max(0, (ts+ms) - Date.now());
+  return Math.ceil(left/ (24*60*60*1000));
+}
+function saveSelf(code, nick){
+  localStorage.setItem(STORAGE_KEY_SELF, JSON.stringify({code, nick, ts:Date.now()}));
+}
+function getSelf(){
+  try{ return JSON.parse(localStorage.getItem(STORAGE_KEY_SELF)) || null }catch{ return null }
+}
+function captureClick(ref){
+  const rec = {ref, ts:Date.now()};
+  localStorage.setItem(STORAGE_KEY_CLICK, JSON.stringify(rec));
+  return rec;
+}
+function getClick(){
+  try{ return JSON.parse(localStorage.getItem(STORAGE_KEY_CLICK)) || null }catch{ return null }
+}
+function inviteLink(code){
+  // Link führt auf die Hauptseite mit ?ref=CODE (kannst du auf Crowdfunding-Checkout ändern)
+  return TARGET_URL + (TARGET_URL.includes('?')?'&':'?') + 'ref=' + code;
+}
+
+/* Prefilled Email (Benutzer trägt NUR die Freund:in-Adresse ein) */
+function mailtoInvite(link, nick){
+  const t = T[LANG];
+  const subject = {
+    de:`Einladung zu DIA-10 – Zertifikat gratis für dich & mich`,
+    en:`Join DIA-10 – free certificate for you & me`,
+    ro:`Alătură-te DIA-10 – certificat gratuit pentru noi`
+  }[LANG];
+  const body = {
+    de:`Hi,\n\nich möchte dir DIA-10 empfehlen. Wenn du innerhalb von 30 Tagen ein Zertifikat kaufst, bekomme ich eins gratis – und du profitierst vom Programm.\n\nInfos & Link: ${link}\n\n${nick?('— '+nick+'\n'):''}Hinweis: fair, transparent; Limit 3 pro Person.\n`,
+    en:`Hey,\n\nI'd like to recommend DIA-10. If you buy a certificate within 30 days, I get one for free — and you benefit from the program.\n\nInfo & link: ${link}\n\n${nick?('— '+nick+'\n'):''}Note: fair, transparent; limit 3 per person.\n`,
+    ro:`Salut,\n\nÎți recomand DIA-10. Dacă achiziționezi un certificat în 30 de zile, eu primesc unul gratuit — și beneficiezi și tu.\n\nInfo & link: ${link}\n\n${nick?('— '+nick+'\n'):''}Notă: corect, transparent; limită 3/persoană.\n`
+  }[LANG];
+  return `mailto:?subject=${encode(subject)}&body=${encode(body)}`;
+}
+
+/* Social share links */
+function buildShares(link, text){
+  q('#whatsapp').href = 'https://wa.me/?text=' + encode(`${text} ${link}`);
+  q('#telegram').href = 'https://t.me/share/url?url=' + encode(link) + '&text=' + encode(text);
+  q('#xshare').href = 'https://twitter.com/intent/tweet?text=' + encode(text + ' ') + '&url=' + encode(link);
+}
+
+
+
+/* ========= Hero Canvas Animation ========= */
+(function heroFX(){
+  const c = q('#heroFx'); const ctx = c.getContext('2d');
+  let W=0,H=0,parts=[];
+  function resize(){ W=c.clientWidth; H=c.clientHeight; c.width=W; c.height=H; parts = spawn(); }
+  function spawn(){
+    const arr=[], n=22;
+    for(let i=0;i<n;i++){
+      arr.push({
+        x: Math.random()*W,
+        y: H + Math.random()*H*0.6,
+        s: 10+Math.random()*24,
+        v: 0.15+Math.random()*0.35,
+        a: Math.random()*Math.PI
+      });
+    }
+    return arr;
+  }
+  function diamond(x,y,s){
+    ctx.beginPath();
+    ctx.moveTo(x, y-s);
+    ctx.lineTo(x+s, y);
+    ctx.lineTo(x, y+s);
+    ctx.lineTo(x-s, y);
+    ctx.closePath();
+  }
+  function tick(){
+    ctx.clearRect(0,0,W,H);
+    parts.forEach(p=>{
+      p.y -= p.v;
+      p.x += Math.sin(p.a+=0.01)*0.2;
+      if(p.y < -p.s) { p.y = H + p.s; p.x = Math.random()*W; }
+      // glow
+      ctx.fillStyle='rgba(116,199,255,0.08)';
+      for(let g=0; g<3; g++){
+        diamond(p.x, p.y, p.s + g*6);
+        ctx.fill();
+      }
+      // stroke
+      ctx.strokeStyle='rgba(116,199,255,0.45)';
+      ctx.lineWidth=1;
+      diamond(p.x, p.y, p.s);
+      ctx.stroke();
+    });
+    requestAnimationFrame(tick);
+  }
+  window.addEventListener('resize', resize);
+  resize(); tick();
+})();
+
+/* ========= Language Wiring ========= */
+dqa('.lang').forEach(b=> b.addEventListener('click', ()=> setLang(b.dataset.lang)));
+setLang((new URLSearchParams(location.search)).get('lang') || 'de');
+
+/* ========= Referral capture (bei Besuch mit ?ref=) ========= */
+(function captureRefOnLoad(){
+  const ref = new URLSearchParams(location.search).get('ref');
+  if(ref){
+    const rec=captureClick(ref);
+    const days = daysLeft(rec.ts);
+    const t=T[LANG];
+    const banner = q('#refBanner');
+    banner.textContent = t.refSaved(days);
+    banner.style.display='inline-flex';
+  }else{
+    // Falls bereits gespeichert, zeige Restlaufzeit
+    const rec=getClick();
+    if(rec){
+      const days=daysLeft(rec.ts);
+      if(days>0){
+        const banner = q('#refBanner');
+        banner.textContent = T[LANG].refSaved(days);
+        banner.style.display='inline-flex';
+      }
+    }
+  }
+})();
+
+/* ========= Generator + Sharing ========= */
+function revealBox(){ q('#box').style.display='flex'; q('#quickShare').style.display='flex'; }
+
+q('#btnGetLink').addEventListener('click', ()=> q('#btnGenerate').click());
+q('#btnGenerate').addEventListener('click', ()=>{
+  const self = getSelf();
+  const nick = q('#nick').value.trim();
+  const code = self?.code || genCode();
+  if(!self) saveSelf(code, nick||'');
+  const link = inviteLink(code);
+  q('#code').textContent = link;
+  buildShares(link, T[LANG].sub);
+  revealBox();
+});
+
+q('#copy').addEventListener('click', async ()=>{
+  try{ await navigator.clipboard.writeText(q('#code').textContent.trim()); q('#copy').textContent='✓'; setTimeout(()=> q('#copy').textContent=T[LANG].copy,900); }
+  catch{ q('#copy').textContent='⛔'; setTimeout(()=> q('#copy').textContent=T[LANG].copy,900); }
+});
+
+q('#mail').addEventListener('click', ()=>{
+  const link = q('#code').textContent.trim() || inviteLink((getSelf()?.code)||genCode());
+  const nick = q('#nick').value.trim() || (getSelf()?.nick)||'';
+  location.href = mailtoInvite(link, nick);
+});
+
+q('#share').addEventListener('click', async ()=>{
+  const link = q('#code').textContent.trim() || inviteLink((getSelf()?.code)||genCode());
+  const text = T[LANG].sub;
+  if(navigator.share){
+    try{ await navigator.share({title:'DIA-10', text, url:link}); }catch{}
+  }else{
+    buildShares(link, text);
+    revealBox();
+  }
+});
+
+/* Footer Jahr */
+q('#y').textContent = new Date().getFullYear();
+</script>
+
+<button id="ccTrigger" class="cc-trigger" type="button" aria-haspopup="dialog" aria-controls="ccOverlay">
+  <!-- gear icon -->
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <circle cx="12" cy="12" r="3"></circle>
+    <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09a1.65 1.65 0 0 0 1.51-1 1.65 1.65 0 0 0-.33-1.82l-.06-.06A2 2 0 1 1 7.04 3.3l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9c0 .64.38 1.22 1 1.51.18.08.37.12.57.12H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+  </svg>
+  <span>Cookie settings</span>
+</button>
+
+<div id="ccOverlay" class="cc-overlay" role="dialog" aria-modal="true" aria-labelledby="ccTitle" aria-describedby="ccDesc">
+  <div class="cc-card" role="document">
+    <div class="cc-top">
+      <div class="cc-icon" aria-hidden="true">
+        <!-- cookie icon -->
+        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#ffffff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20 12a8 8 0 1 1-8-8 3 3 0 0 0 3 3 3 3 0 0 0 3 3 3 3 0 0 0 2 2z"/>
+          <circle cx="8.5" cy="13.5" r="1.25"/>
+          <circle cx="12" cy="9" r="1.25"/>
+          <circle cx="14.5" cy="15" r="1.25"/>
+        </svg>
+      </div>
+      <div>
+        <h2 id="ccTitle" class="cc-title">We use cookies</h2>
+        <p id="ccDesc" class="cc-text">
+          We use necessary cookies for site functionality. With your consent we also use analytics and marketing cookies.
+          See our <span class="cc-links"><a href="https://99-i.com/dia10/#privacy" target="_blank" rel="noopener">Privacy Policy</a></span>.
+        </p>
+
+        <div class="cc-cats">
+          <label class="cc-cat cc-lock" title="Always on">
+            <input class="cc-switch" type="checkbox" checked disabled aria-label="Necessary cookies">
+            <span>Necessary</span>
+          </label>
+          <label class="cc-cat">
+            <input id="ccAnalytics" class="cc-switch" type="checkbox" aria-label="Analytics cookies">
+            <span>Analytics</span>
+          </label>
+          <label class="cc-cat">
+            <input id="ccMarketing" class="cc-switch" type="checkbox" aria-label="Marketing cookies">
+            <span>Marketing</span>
+          </label>
+        </div>
+
+        <div class="cc-controls">
+          <button id="ccReject" class="cc-btn ghost" type="button">Reject all</button>
+          <button id="ccSave" class="cc-btn" type="button">Save selection</button>
+          <div class="cc-spacer"></div>
+          <button id="ccAccept" class="cc-btn primary" type="button">Accept all</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ---------- Cookie Consent Controller ---------- */
+const CC_KEY='dia10Consent';
+const $ = (q)=>document.querySelector(q);
+const trigger = $('#ccTrigger'), overlay = $('#ccOverlay');
+const a = $('#ccAnalytics'), m = $('#ccMarketing');
+const bAccept = $('#ccAccept'), bSave = $('#ccSave'), bReject = $('#ccReject');
+
+function showCC(){ overlay.classList.add('show'); }
+function hideCC(){ overlay.classList.remove('show'); }
+
+function readConsent(){ try{ return JSON.parse(localStorage.getItem(CC_KEY))||null }catch{ return null } }
+function writeConsent(c){ localStorage.setItem(CC_KEY, JSON.stringify({...c, ts:Date.now()})); }
+
+function applyConsent(c){
+  // Analytics (Beispiel: GA4 nur laden, wenn erlaubt)
+  if(c.analytics){ enableGA(); }
+  // Marketing: hier ggf. Ad/Pixel-Lader hinterlegen
+}
+
+function enableGA(){
+  if(window._gaLoaded) return;
+  window._gaLoaded = true;
+  // TODO: ersetze G-XXXXXXX durch deine ID oder entferne diesen Block
+  const s=document.createElement('script');
+  s.async=true; s.src='https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX';
+  document.head.appendChild(s);
+  window.dataLayer=window.dataLayer||[];
+  window.gtag=function(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXX', {anonymize_ip:true});
+}
+
+// Initialisieren
+document.addEventListener('DOMContentLoaded', ()=>{
+  // Trigger öffnen
+  trigger.addEventListener('click', showCC);
+  // Overlay klick außerhalb schließt
+  overlay.addEventListener('click', (e)=>{ if(e.target===overlay) hideCC(); });
+
+  const saved = readConsent();
+  if(saved){
+    // Switches spiegeln
+    a.checked = !!saved.analytics;
+    m.checked = !!saved.marketing;
+    applyConsent(saved);
+  }else{
+    // Erstbesuch → Banner zeigen
+    showCC();
+  }
+
+  bAccept.addEventListener('click', ()=>{
+    const c={necessary:true, analytics:true, marketing:true};
+    writeConsent(c); applyConsent(c); hideCC();
+  });
+  bReject.addEventListener('click', ()=>{
+    const c={necessary:true, analytics:false, marketing:false};
+    writeConsent(c); applyConsent(c); hideCC();
+  });
+  bSave.addEventListener('click', ()=>{
+    const c={necessary:true, analytics:a.checked, marketing:m.checked};
+    writeConsent(c); applyConsent(c); hideCC();
+  });
+});
+
+/* ---------- dein bestehender Chart-Code (unverändert) ---------- */
+let currentRaised=125000, targetCommunity=1500, courseCompletions=320;
+document.addEventListener('DOMContentLoaded', ()=>{
+  document.getElementById('kpi1').textContent=new Intl.NumberFormat('de-DE',{style:'currency',currency:'EUR'}).format(currentRaised);
+  document.getElementById('kpi2').textContent=new Intl.NumberFormat('de-DE').format(targetCommunity);
+  document.getElementById('kpi3').textContent=new Intl.NumberFormat('de-DE').format(courseCompletions);
+  const opts={responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{enabled:false}},elements:{point:{radius:0},line:{tension:.35}}};
+  new Chart(document.getElementById('c1').getContext('2d'),{type:'line',data:{labels:[1,2,3,4,5,6,7,8,9,10,11,12],datasets:[{data:[10,18,22,30,45,62,74,90,105,116,121,125].map(x=>x*1000)}]},options:opts});
+  new Chart(document.getElementById('c2').getContext('2d'),{type:'line',data:{labels:[1,2,3,4,5,6,7,8,9,10,11,12],datasets:[{data:[120,200,260,330,420,520,680,820,980,1150,1350,1500]}]},options:opts});
+});
+</script>
+
+</body>
+</html>

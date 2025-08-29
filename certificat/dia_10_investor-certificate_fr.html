@@ -1,0 +1,228 @@
+<!-- Hello, my name is Markus Goffin 
+🇩🇪 Deutsch
+
+Ideen- und Konzeptinhaber von DIA-10
+Markus Goffin ist der alleinige Urheber und Inhaber der ursprünglichen Idee, des Namens, des Konzepts sowie der Markenidentität von DIA-10 – einer diamant­inspirierten Kryptowährung. Die Entwicklung, Gestaltung und strategische Ausrichtung des Projekts basieren ausschließlich auf seiner kreativen und unternehmerischen Arbeit.
+
+🇬🇧 English
+
+Creator and Concept Owner of DIA-10
+Markus Goffin is the sole originator and owner of the idea, name, concept, and brand identity of DIA-10 — a diamond-inspired cryptocurrency. The project’s development, design, and strategic direction are entirely based on his creative vision and entrepreneurial expertise.
+
+🇷🇴 Română
+
+Autor și deținător al conceptului DIA-10
+Markus Goffin este inițiatorul și proprietarul exclusiv al ideii, numelui, conceptului și identității de brand DIA-10 — o criptomonedă inspirată de diamante. Dezvoltarea, designul și direcția strategică a proiectului se bazează în întregime pe viziunea sa creativă și expertiza sa antreprenorială.
+--> 
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<title>Certificat d'Investisseur DIA-10</title>
+<meta name="description" content="Certificat de participation DIA-10 – numéroté automatiquement, au format PDF, avec brouillon d'e-mail." />
+<meta charset="by Markus Goffin, 09.08.2025"> 
+<meta charset="last update Markus Goffin, 11.08.2025">
+<meta name="description" content="99i Investment Company offers smart investment solutions to help you secure your financial future. Learn more about our services and investment strategies.">
+<link rel="icon" type="image/x-icon" href="../images/99i_favicon_16x16.ico" sizes="16x16">
+<link rel="icon" type="image/x-icon" href="../images/99i_favicon_32x32.ico" sizes="32x32">
+<link rel="icon" type="image/x-icon" href="../images/99i_favicon_48x48.ico" sizes="48x48">
+
+<!-- jsPDF & html2canvas -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" defer></script>
+
+<style>
+  :root { --brand:#0A1E3F; --silver:#C0C0C0; }
+  * { box-sizing: border-box; }
+  body { font-family: Georgia, "Times New Roman", serif; background:#f4f4f4; color:var(--brand); margin:0; padding:24px; text-align:center; }
+  .certificate { background:#fff; width:1000px; max-width:100%; margin:0 auto; padding:48px 56px; border:8px double var(--silver); box-shadow:0 8px 22px rgba(0,0,0,.18); }
+  .logo { height:82px; margin-bottom:18px; }
+  h1 { font-size:30px; margin:0 0 4px; letter-spacing:.5px; }
+  h2 { font-size:20px; margin:4px 0 10px; color:#4b5a75; font-weight:700; }
+  .number { font-weight:700; color:#7f8aa3; margin:6px 0 14px; }
+  .muted { color:#667; }
+  .input-section { margin:16px 0 6px; }
+  label { display:inline-block; width:130px; text-align:right; margin-right:10px; }
+  input { padding:8px 10px; font-size:16px; width:260px; border:1px solid #bcc7d8; border-radius:6px; }
+  small { color:#6b7892 }
+  .details { text-align:left; margin-top:18px; line-height:1.55; }
+  .row { display:flex; justify-content:space-between; align-items:flex-end; gap:24px; margin-top:24px; flex-wrap: wrap; }
+  .sign-block { text-align:right; }
+  .sign { height:48px; display:block; margin-left:auto; filter: drop-shadow(0 1px 0 rgba(0,0,0,.05)); }
+  .sign-name { margin-top:6px; font-weight:700; }
+  .sign-role { color:#6b7892; font-size:14px; }
+  .btn { background:var(--brand); color:#fff; border:none; padding:12px 18px; font-size:16px; border-radius:10px; cursor:pointer; }
+  .btn:hover { filter:brightness(1.05); }
+  .cta { margin-top:18px }
+  .foot-note { margin-top:14px; font-style:italic; color:#445; }
+</style>
+</head>
+<body>
+
+<div class="certificate" id="certificateContent">
+  <h1>CERTIFICAT D'INVESTISSEUR</h1>
+  <h2>Participation DIA-10</h2>
+
+  <div class="number">
+    N° de certificat : <span id="certNumber"></span> · Date : <span id="certDate"></span>
+  </div>
+
+  <p>Ce document confirme l’acquisition de parts DIA-10.</p>
+
+  <div class="input-section">
+    <p>
+      <label>Votre nom&nbsp;:</label>
+      <input type="text" id="investorName" placeholder="Jean Dupont">
+    </p>
+    <p>
+      <label>Montant (€)&nbsp;:</label>
+      <input type="number" id="amount" value="100" min="1" step="1" oninput="calcShares()">
+    </p>
+    <small>(Prix par part : 10 €)</small>
+    <p>Parts&nbsp;: <b><span id="shares">10.00</span></b></p>
+  </div>
+
+  <div class="details">
+    <strong>Émetteur&nbsp;:</strong> Markus Goffin – MAGO SERVICE TRADE SRL<br>
+    Aleea Textilistilor N° 1 – BL. MY1, Sc. 1, App. 16, Secteur 3 · 032801 Bucarest (RO)<br>
+    Registre du Commerce&nbsp;: J40/5941/2015 · N° Fiscal&nbsp;: CUI–34523632<br><br>
+
+    <strong>Contact&nbsp;:</strong> Tél.&nbsp;: +40 (0) 752-30 77 11 · Email&nbsp;: mgoffin@web.de · Web&nbsp;: https://99-i.com/<br><br>
+
+    <strong>Compte bancaire&nbsp;:</strong> BRD – Bucarest · IBAN&nbsp;: RO34BRDE426SV66680914260 · BIC&nbsp;: BRDEROBU
+  </div>
+
+  <div class="row">
+    <div class="issued muted">
+      Émis à Bucarest · Valable après réception du paiement.<br>
+      Veuillez indiquer le <b>N° de certificat</b> dans le motif du virement.
+    </div>
+    <div class="sign-block">
+      <div class="sign-name">Markus Goffin</div>
+      <div class="sign-role">Fondateur · DIA-10</div>
+    </div>
+  </div>
+
+  <p class="foot-note">
+    Veuillez envoyer le certificat par e-mail et le conserver dans un endroit sûr.
+  </p>
+</div>
+
+<div class="cta">
+  <button class="btn" id="makePdfBtn">📄 Télécharger le certificat en PDF</button>
+</div>
+<br>
+<a href="certificate_overview.html" class="btn">Accueil</a>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js" defer></script>
+
+<script>
+  // Initialisierung nach Script-Load
+  window.addEventListener('DOMContentLoaded', () => {
+    const CERT_NO = Date.now(); // fortlaufend
+    document.getElementById('certNumber').textContent = CERT_NO;
+    document.getElementById('certDate').textContent =
+      new Intl.DateTimeFormat('de-DE',{day:'2-digit',month:'2-digit',year:'numeric'}).format(new Date());
+
+    document.getElementById('makePdfBtn').addEventListener('click', generatePDF);
+    calcShares();
+  });
+
+  function calcShares(){
+    const v = parseFloat(document.getElementById('amount').value || '0');
+    document.getElementById('shares').textContent = (v/10).toFixed(2);
+  }
+
+  async function generatePDF(){
+    const name   = document.getElementById('investorName').value.trim();
+    const amount = parseFloat(document.getElementById('amount').value || '0');
+    if(!name){ alert('Bitte Ihren Namen eingeben.'); return; }
+    if(amount <= 0){ alert('Bitte einen Betrag > 0 eingeben.'); return; }
+
+    const node   = document.getElementById('certificateContent');
+    const certNr = document.getElementById('certNumber').textContent;
+    const shares = Number((amount/10).toFixed(2)); // wie in calcShares()
+
+    /* ---------- QR-Payload + Link ---------- */
+    const payload = {
+      cert: `DIA10-${certNr}`,
+      amt: Number(amount.toFixed(2)),
+      shares,
+      ts: Date.now()
+    };
+    const payloadStr = JSON.stringify(payload);
+    const b64 = btoa(unescape(encodeURIComponent(payloadStr)))
+      .replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,''); // base64url
+    const verifyUrl = `https://99-i.com/dia10/verify.html#${b64}`;
+
+    // QR in verstecktem DIV rendern und als DataURL holen
+    let qrDataUrl = null;
+    try {
+      const tmp = document.createElement('div');
+      tmp.style.position='fixed'; tmp.style.left='-9999px';
+      document.body.appendChild(tmp);
+      const qr = new QRCode(tmp, { text: verifyUrl, width:120, height:120, correctLevel: QRCode.CorrectLevel.M });
+      const qrCanvas = tmp.querySelector('canvas');
+      if(qrCanvas) qrDataUrl = qrCanvas.toDataURL('image/png');
+      document.body.removeChild(tmp);
+    } catch(e){ console.warn('QR-Erzeugung fehlgeschlagen:', e); }
+
+    /* ---------- Zertifikats-Element zu Bild ---------- */
+    const canvas = await html2canvas(node, {
+      scale: 2,
+      useCORS: true,
+      backgroundColor: '#ffffff',
+      imageTimeout: 0
+    });
+
+    const { jsPDF } = window.jspdf;
+    const pdf = new jsPDF({ orientation: 'landscape', unit: 'pt', format: 'a4' });
+
+    const pageW = pdf.internal.pageSize.getWidth();
+    const pageH = pdf.internal.pageSize.getHeight();
+    const margin = 18;
+
+    // Bild proportional einpassen
+    const maxW = pageW - margin * 2;
+    const maxH = pageH - margin * 2;
+    const imgRatio = canvas.width / canvas.height;
+    let drawW = maxW, drawH = drawW / imgRatio;
+    if (drawH > maxH) { drawH = maxH; drawW = drawH * imgRatio; }
+    const dx = (pageW - drawW) / 2;
+    const dy = (pageH - drawH) / 2;
+
+    pdf.addImage(canvas.toDataURL('image/png'), 'PNG', dx, dy, drawW, drawH, undefined, 'FAST');
+
+/* ---------- Verify-Text + QR sauber platzieren ---------- */
+// QR-Größe & Innenabstand im Zertifikat
+const qrSize = 80;          // Punkte (~28 mm). Bei Bedarf 72–90 testen.
+const inset  = 16;          // Innenabstand zum Zertifikatsrand
+
+// Position BOTTOM-LEFT innerhalb des gerenderten Zertifikats
+// (dx, dy, drawW, drawH stammen aus deinem Fit-to-page Code)
+const qrX = dx + drawW - qrSize - inset;
+const qrY = dy + inset;
+
+if (qrDataUrl) {
+  pdf.addImage(qrDataUrl, 'PNG', qrX, qrY, qrSize, qrSize);
+  // QR klickbar machen (ohne sichtbare URL):
+  pdf.link(qrX, qrY, qrSize, qrSize, { url: verifyUrl });
+}
+
+// Kleines Label neben/unter dem QR – mit KURZEM Linktext
+const labelY = qrY + qrSize + 12;
+pdf.setFontSize(9);
+pdf.setTextColor(140,160,185);
+pdf.text('Verify:', qrX, labelY);
+pdf.setTextColor(70,140,255);
+// nur kurzer Anzeigetext, Link-Ziel bleibt die lange URL
+pdf.textWithLink('verify page', qrX + 34, labelY, { url: verifyUrl });
+
+
+    pdf.save(`DIA10-Zertifikat-${certNr}.pdf`);
+  }
+</script>
+
+
+</body>
+</html>

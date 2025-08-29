@@ -1,0 +1,577 @@
+<!-- Hello, my name is Markus Goffin 
+🇩🇪 Deutsch
+
+Ideen- und Konzeptinhaber von DIA-10
+Markus Goffin ist der alleinige Urheber und Inhaber der ursprünglichen Idee, des Namens, des Konzepts sowie der Markenidentität von DIA-10 – einer diamant­inspirierten Kryptowährung. Die Entwicklung, Gestaltung und strategische Ausrichtung des Projekts basieren ausschließlich auf seiner kreativen und unternehmerischen Arbeit.
+
+🇬🇧 English
+
+Creator and Concept Owner of DIA-10
+Markus Goffin is the sole originator and owner of the idea, name, concept, and brand identity of DIA-10 — a diamond-inspired cryptocurrency. The project’s development, design, and strategic direction are entirely based on his creative vision and entrepreneurial expertise.
+
+🇷🇴 Română
+
+Autor și deținător al conceptului DIA-10
+Markus Goffin este inițiatorul și proprietarul exclusiv al ideii, numelui, conceptului și identității de brand DIA-10 — o criptomonedă inspirată de diamante. Dezvoltarea, designul și direcția strategică a proiectului se bazează în întregime pe viziunea sa creativă și expertiza sa antreprenorială.
+--> 
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>DIA-10 — Marketing & Konzeptkarte</title>
+<meta charset="by Markus Goffin, 01.08.2025"> 
+<meta charset="last update Markus Goffin, 05.08.2025">
+<meta name="description" content="99i Investment Company offers smart investment solutions to help you secure your financial future. Learn more about our services and investment strategies.">
+<link rel="icon" type="image/x-icon" href="../images/99i_favicon_16x16.ico" sizes="16x16">
+<link rel="icon" type="image/x-icon" href="../images/99i_favicon_32x32.ico" sizes="32x32">
+<link rel="icon" type="image/x-icon" href="../images/99i_favicon_48x48.ico" sizes="48x48">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet">
+<!-- Charts + PDF -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" defer></script>
+<style>
+  :root{
+    --bg:#0a1430; --panel:#0d1a3a; --ink:#f3f7ff; --muted:#b9c7da;
+    --blue:#1b6fff; --cyan:#74c7ff; --silver:#c9d3df;
+    --radius:18px; --shadow:0 10px 28px rgba(0,0,0,.35);
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0; font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,"Noto Sans","Noto Sans SC","Noto Sans JP",Arial,sans-serif; color:var(--ink);
+    background:
+      radial-gradient(900px 600px at 120% -10%, rgba(116,199,255,.12), transparent 60%),
+      radial-gradient(800px 500px at -20% 10%, rgba(27,111,255,.10), transparent 55%),
+      var(--bg);
+  }
+  a{color:var(--cyan); text-decoration:none}
+
+  .wrap{padding:22px 18px; display:flex; justify-content:center}
+  .card{
+    width:min(1200px,100%);
+    background:linear-gradient(180deg, rgba(255,255,255,.035), rgba(255,255,255,.01));
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:var(--radius);
+    box-shadow:var(--shadow);
+    overflow:hidden;
+  }
+
+  /* Header */
+  .head{
+    display:flex; align-items:center; justify-content:space-between; gap:16px;
+    padding:12px 14px; background:rgba(8,18,44,.6); backdrop-filter:blur(8px);
+    border-bottom:1px solid rgba(255,255,255,.08);
+  }
+  .brand{display:flex; align-items:center; gap:12px}
+  .glyph{
+    width:44px; height:44px; border-radius:12px; display:grid; place-items:center;
+    background:linear-gradient(135deg,#0a1d44,#1b6fff 70%,#74c7ff);
+    box-shadow:inset 0 0 0 2px rgba(255,255,255,.06), var(--shadow);
+  }
+  .brand h1{margin:0; font-size:22px; font-weight:900; letter-spacing:.3px}
+  .slogan{font-weight:800; color:#d8ebff}
+
+  .btns{display:flex; gap:10px; align-items:center}
+  .btn{
+    background:#12224a; color:var(--ink); border:1px solid rgba(255,255,255,.12);
+    padding:10px 14px; border-radius:12px; font-weight:800; cursor:pointer;
+  }
+  .btn.primary{background:linear-gradient(135deg,var(--blue),#0a84ff); border:none}
+  .btn:hover{filter:brightness(1.05)}
+
+  .lang{
+    display:flex; gap:6px; align-items:center; flex-wrap:wrap;
+    border:1px solid rgba(255,255,255,.08); border-radius:12px; padding:4px 6px; background:#0b1e46;
+  }
+  .lbtn{
+    background:transparent; color:#e6f2ff; border:1px solid transparent;
+    padding:6px 10px; border-radius:10px; font-weight:800; cursor:pointer; display:flex; gap:6px; align-items:center;
+  }
+  .lbtn .flag{font-size:16px}
+  .lbtn.active{border-color:rgba(116,199,255,.45); background:rgba(116,199,255,.1); color:#fff}
+
+  /* Grid content */
+  .content{padding:16px}
+  .grid{display:grid; grid-template-columns:1.2fr 1fr 1.1fr; gap:16px}
+  @media (max-width:980px){ .grid{grid-template-columns:1fr} }
+
+  .panel{
+    background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,0));
+    border:1px solid rgba(255,255,255,.07);
+    border-radius:14px; padding:16px;
+  }
+  .h2{margin:0 0 10px; font-size:20px; font-weight:900}
+  .muted{color:var(--muted)}
+  .kpi{display:flex; flex-wrap:wrap; gap:8px}
+  .tag{font-size:.92rem; padding:6px 10px; border-radius:10px; font-weight:700;
+       background:#0f224a; border:1px solid rgba(116,199,255,.28); color:#cfe6ff}
+  .big{font-size:40px; font-weight:900; line-height:1.05; margin:6px 0}
+  .sub{color:#cfe0ff; font-weight:600}
+  .list{display:grid; gap:8px; margin-top:8px}
+  .row{display:flex; gap:8px; align-items:flex-start}
+  .row .dot{width:10px; height:10px; border-radius:50%}
+  .note{font-size:.9rem; color:#c9d5e7}
+
+  .chart-wrap{
+    background:#0b1a38; border:1px solid rgba(255,255,255,.08);
+    border-radius:12px; padding:12px; margin-top:10px
+  }
+
+  .foot{
+    display:flex; justify-content:space-between; align-items:center; gap:12px;
+    padding:12px 14px; border-top:1px solid rgba(255,255,255,.08); color:#d8e6ff;
+  }
+  .foot small{color:#bcd0e8}
+
+  @media print{
+    body{background:#fff; color:#000}
+    .btns{display:none !important}
+    .card{box-shadow:none; border:1px solid #ddd}
+    .panel{border-color:#ddd}
+  }
+  
+    }
+  .nav-links{display:flex; gap:20px; align-items:center}
+  .nav-links a{font-weight:600; color:var(--ink); opacity:.85}
+  .nav-links a:hover{opacity:1}
+  .lang{display:flex; gap:8px}
+  .lang button{
+    background:#101521; color:var(--ink); border:1px solid rgba(255,255,255,.08);
+    padding:8px 12px; border-radius:10px; font-weight:600; cursor:pointer;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div id="mkcard" class="card" aria-label="DIA-10 Marketing & Konzeptkarte">
+    <!-- Header -->
+    <div class="head">
+      <div class="brand">
+        <div class="glyph" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 9l9-6 9 6-9 12-9-12zM12 3v18M3 9h18M7 9l5 12m5-12l-5 12"/>
+          </svg>
+        </div>
+        <div>
+          <h1>DIA-10</h1>
+          <div class="slogan" data-i18n="hdr_slogan">The Hardest Currency on Earth</div>
+        </div>
+      </div>
+      <div class="btns">
+        <div class="lang" aria-label="Sprache wählen">
+          <button class="lbtn" data-lang="de"><span class="flag">🇩🇪</span><span>DE</span></button>
+          <button class="lbtn" data-lang="en"><span class="flag">🇬🇧</span><span>EN</span></button>
+          <button class="lbtn" data-lang="ro"><span class="flag">🇷🇴</span><span>RO</span></button>
+          <button class="lbtn" data-lang="fr"><span class="flag">🇫🇷</span><span>FR</span></button>
+          <button class="lbtn" data-lang="it"><span class="flag">🇮🇹</span><span>IT</span></button>
+          <button class="lbtn" data-lang="es"><span class="flag">🇪🇸</span><span>ES</span></button>
+          <button class="lbtn" data-lang="zh"><span class="flag">🇨🇳</span><span>ZH</span></button>
+          <button class="lbtn" data-lang="ja"><span class="flag">🇯🇵</span><span>JA</span></button>
+        </div>
+        <button class="btn" id="printBtn" data-i18n="hdr_print">Drucken</button>
+        <button class="btn primary" id="pdfBtn" data-i18n="hdr_pdf">Druckbares PDF herunterladen</button>
+      </div>
+    </div>
+
+    <!-- Content -->
+    <div class="content">
+      <div class="grid">
+        <!-- Brand / Story -->
+        <section class="panel">
+          <div class="h2" data-i18n="brand_title">Marke & Story</div>
+          <div class="kpi">
+            <span class="tag" data-i18n="tag_luxury">Luxus · Stabilität · Seltenheit</span>
+            <span class="tag" data-i18n="tag_brandfirst">Brand-First Narrative</span>
+            <span class="tag" data-i18n="tag_mohs">Diamant · Mohs-Härte 10</span>
+          </div>
+          <p class="muted" style="margin-top:10px" data-i18n="brand_p">
+            DIA-10 ist ein diamantinspiriertes Digital-Asset mit klarer Knappheits-Story, moderner Transparenz und einer starken, zeitlosen Marke.
+          </p>
+          <div class="list">
+            <div class="row"><span class="dot" style="background:#74c7ff"></span><span data-i18n="brand_b1">Emotionales Luxus-Branding statt rein technischer Token</span></div>
+            <div class="row"><span class="dot" style="background:#1b6fff"></span><span data-i18n="brand_b2">Storytelling rund um Diamant & Unzerstörbarkeit</span></div>
+            <div class="row"><span class="dot" style="background:#11d09a"></span><span data-i18n="brand_b3">Community-First: klare Kommunikation & Policies</span></div>
+          </div>
+        </section>
+
+        <!-- Tokenomics -->
+        <section class="panel">
+          <div class="h2" data-i18n="tokenomics_t">Tokenomics</div>
+          <div class="big">1,000,000</div>
+          <div class="sub" data-i18n="initial_line">Initiale Menge · 18 Decimals</div>
+          <div class="list" style="margin-top:10px">
+            <div class="row"><span class="dot" style="background:#74c7ff"></span><span data-i18n="chain_line">Chain: Ethereum oder Polygon</span></div>
+            <div class="row"><span class="dot" style="background:#1b6fff"></span><span data-i18n="gov_mint">Governance-mintbar (kein Hard Cap)</span></div>
+            <div class="row"><span class="dot" style="background:#11d09a"></span><span data-i18n="treasury_policies">Transparente Treasury-/Wallet-Richtlinien</span></div>
+          </div>
+
+          <div class="chart-wrap">
+            <canvas id="pie" aria-label="Token-Verteilung" role="img"></canvas>
+          </div>
+          <div class="note" data-i18n="pie_note">*Illustratives Split der initialen 1,000,000: Community 40%, Treasury 25%, Liquidität 15%, Team 10%, Berater 5%, Reserve 5%.</div>
+        </section>
+
+        <!-- Positioning / Utility -->
+        <section class="panel">
+          <div class="h2" data-i18n="pos_title">Positionierung & Nutzen</div>
+          <div class="list">
+            <div class="row"><span class="dot" style="background:#74c7ff"></span><span data-i18n="pos_b1">Bonuswährung & Händlerzahlungen</span></div>
+            <div class="row"><span class="dot" style="background:#1b6fff"></span><span data-i18n="pos_b2">NFT-Diamanten mit Echtheitszertifikat</span></div>
+            <div class="row"><span class="dot" style="background:#11d09a"></span><span data-i18n="pos_b3">Wertspeicher ähnlich wie Gold</span></div>
+          </div>
+          <div class="panel" style="margin-top:12px">
+            <div class="h2" style="font-size:16px" data-i18n="usp_title">Kern-USP</div>
+            <div class="list">
+              <div class="row"><span class="dot" style="background:#ffd166"></span><span data-i18n="usp_b1">Luxus + Sicherheit → Symbol für Stärke, Stabilität, Wert</span></div>
+              <div class="row"><span class="dot" style="background:#8aa4ff"></span><span data-i18n="usp_b2">Direkte Verbindung zur Diamantenwelt & Partnernetz</span></div>
+              <div class="row"><span class="dot" style="background:#c4d0e0"></span><span data-i18n="usp_b3">Exklusives Branding, CI & narrative Disziplin</span></div>
+            </div>
+          </div>
+          <p class="note" style="margin-top:10px" data-i18n="road_note">Roadmap (Kurz): Brand & Community → Token-Launch & DEX → Utility & Partnerschaften → Skalierung.</p>
+        </section>
+      </div>
+    </div><br>
+	<center>
+	  <div class="nav-links">
+      <button class="btn" data-lang="de"><a href="DIA-10_Marketing_Konzeptmappe_DE.html" target="_blank">DIA-10 Marketing Konzeptmappe DE</a></button>
+      <button class="btn" data-lang="en"><a href="DIA-10_Marketing_Konzeptmappe_EN.html" target="_blank">DIA-10 Marketing concept pack EN</a></button>
+      <button class="btn" data-lang="ro"><a href="DIA-10_Marketing_Konzeptmappe_RO.html" target="_blank">DIA-10 Portofoliu de marketing RO</a></button>
+    </div></center><br>
+
+    <!-- Footer -->
+    <div class="foot">
+      <div data-i18n="footer_left"><strong>DIA-10</strong> · Marke, Tokenomics & Positionierung auf einen Blick</div>
+      <small>© Markus Goffin — MAGO SERVICE TRADE SRL</small>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ==========================
+   i18n Wörterbuch (DE, EN, RO, FR, IT, ES, ZH, JA)
+   ========================== */
+const I18N = {
+  de:{
+    hdr_slogan:"The Hardest Currency on Earth",
+    hdr_print:"Drucken",
+    hdr_pdf:"Druckbares PDF herunterladen",
+    brand_title:"Marke & Story",
+    tag_luxury:"Luxus · Stabilität · Seltenheit",
+    tag_brandfirst:"Brand-First Narrative",
+    tag_mohs:"Diamant · Mohs-Härte 10",
+    brand_p:"DIA-10 ist ein diamantinspiriertes Digital-Asset mit klarer Knappheits-Story, moderner Transparenz und einer starken, zeitlosen Marke.",
+    brand_b1:"Emotionales Luxus-Branding statt rein technischer Token",
+    brand_b2:"Storytelling rund um Diamant & Unzerstörbarkeit",
+    brand_b3:"Community-First: klare Kommunikation & Policies",
+    tokenomics_t:"Tokenomics",
+    initial_line:"Initiale Menge · 18 Decimals",
+    chain_line:"Chain: Ethereum oder Polygon",
+    gov_mint:"Governance-mintbar (kein Hard Cap)",
+    treasury_policies:"Transparente Treasury-/Wallet-Richtlinien",
+    pie_labels:["Community 40%","Treasury 25%","Liquidity 15%","Team 10%","Advisors 5%","Reserve 5%"],
+    pie_note:"*Illustratives Split der initialen 1,000,000: Community 40%, Treasury 25%, Liquidität 15%, Team 10%, Berater 5%, Reserve 5%.",
+    pos_title:"Positionierung & Nutzen",
+    pos_b1:"Bonuswährung & Händlerzahlungen",
+    pos_b2:"NFT-Diamanten mit Echtheitszertifikat",
+    pos_b3:"Wertspeicher ähnlich wie Gold",
+    usp_title:"Kern-USP",
+    usp_b1:"Luxus + Sicherheit → Symbol für Stärke, Stabilität, Wert",
+    usp_b2:"Direkte Verbindung zur Diamantenwelt & Partnernetz",
+    usp_b3:"Exklusives Branding, CI & narrative Disziplin",
+    road_note:"Roadmap (Kurz): Brand & Community → Token-Launch & DEX → Utility & Partnerschaften → Skalierung.",
+    footer_left:"<strong>DIA-10</strong> · Marke, Tokenomics & Positionierung auf einen Blick"
+  },
+  en:{
+    hdr_slogan:"The Hardest Currency on Earth",
+    hdr_print:"Print",
+    hdr_pdf:"Download printable PDF",
+    brand_title:"Brand & Story",
+    tag_luxury:"Luxury · Stability · Rarity",
+    tag_brandfirst:"Brand-first narrative",
+    tag_mohs:"Diamond · Mohs hardness 10",
+    brand_p:"DIA-10 is a diamond-inspired digital asset with a clear scarcity story, modern transparency and a strong, timeless brand.",
+    brand_b1:"Emotional luxury branding instead of purely technical tokens",
+    brand_b2:"Storytelling around diamonds & indestructibility",
+    brand_b3:"Community-first: clear communication & policies",
+    tokenomics_t:"Tokenomics",
+    initial_line:"Initial supply · 18 decimals",
+    chain_line:"Chain: Ethereum or Polygon",
+    gov_mint:"Governance-mintable (no hard cap)",
+    treasury_policies:"Transparent treasury / wallet policies",
+    pie_labels:["Community 40%","Treasury 25%","Liquidity 15%","Team 10%","Advisors 5%","Reserve 5%"],
+    pie_note:"*Illustrative split of the initial 1,000,000: Community 40%, Treasury 25%, Liquidity 15%, Team 10%, Advisors 5%, Reserve 5%.",
+    pos_title:"Positioning & Utility",
+    pos_b1:"Rewards currency & merchant payments",
+    pos_b2:"NFT diamonds with certificate of authenticity",
+    pos_b3:"Store of value similar to gold",
+    usp_title:"Core USP",
+    usp_b1:"Luxury + security → symbol of strength, stability, value",
+    usp_b2:"Direct link to the diamond world & partner network",
+    usp_b3:"Exclusive branding, CI & narrative discipline",
+    road_note:"Roadmap (short): Brand & community → Token launch & DEX → Utility & partnerships → Scale.",
+    footer_left:"<strong>DIA-10</strong> · Brand, tokenomics & positioning at a glance"
+  },
+  ro:{
+    hdr_slogan:"The Hardest Currency on Earth",
+    hdr_print:"Tipărește",
+    hdr_pdf:"Descarcă PDF pentru tipărire",
+    brand_title:"Brand & Poveste",
+    tag_luxury:"Lux · Stabilitate · Raritate",
+    tag_brandfirst:"Narațiune axată pe brand",
+    tag_mohs:"Diamant · duritate Mohs 10",
+    brand_p:"DIA-10 este un activ digital inspirat de diamante, cu o poveste clară a rarității, transparență modernă și un brand puternic.",
+    brand_b1:"Branding de lux emoțional, nu doar tehnic",
+    brand_b2:"Poveste despre diamante & indestructibilitate",
+    brand_b3:"Community-first: comunicare & politici clare",
+    tokenomics_t:"Tokenomics",
+    initial_line:"Supply inițial · 18 zecimale",
+    chain_line:"Chain: Ethereum sau Polygon",
+    gov_mint:"Mint prin guvernanță (fără hard cap)",
+    treasury_policies:"Politici transparente pentru trezorerie / wallet",
+    pie_labels:["Comunitate 40%","Trezorerie 25%","Lichiditate 15%","Echipă 10%","Consilieri 5%","Rezervă 5%"],
+    pie_note:"*Împărțire ilustrativă pentru 1.000.000 inițiale: Comunitate 40%, Trezorerie 25%, Lichiditate 15%, Echipă 10%, Consilieri 5%, Rezervă 5%.",
+    pos_title:"Poziționare & Utilitate",
+    pos_b1:"Monedă de recompense & plăți comercianți",
+    pos_b2:"Diamante NFT cu certificat de autenticitate",
+    pos_b3:"Depozit de valoare asemănător aurului",
+    usp_title:"USP principal",
+    usp_b1:"Lux + siguranță → simbol al forței, stabilității, valorii",
+    usp_b2:"Legătură directă cu industria diamantelor & rețeaua de parteneri",
+    usp_b3:"Branding exclusiv, CI & disciplină narativă",
+    road_note:"Roadmap (scurt): Brand & comunitate → Lansare token & DEX → Utilitate & parteneriate → Scalare.",
+    footer_left:"<strong>DIA-10</strong> · Brand, tokenomics & poziționare dintr-o privire"
+  },
+  fr:{
+    hdr_slogan:"The Hardest Currency on Earth",
+    hdr_print:"Imprimer",
+    hdr_pdf:"Télécharger le PDF imprimable",
+    brand_title:"Marque & Récit",
+    tag_luxury:"Luxe · Stabilité · Rareté",
+    tag_brandfirst:"Narratif orienté marque",
+    tag_mohs:"Diamant · dureté Mohs 10",
+    brand_p:"DIA-10 est un actif numérique inspiré du diamant, avec un récit clair de rareté, une transparence moderne et une marque forte.",
+    brand_b1:"Branding de luxe émotionnel plutôt que purement technique",
+    brand_b2:"Storytelling autour du diamant & de l’indestructibilité",
+    brand_b3:"Approche community-first : communication & politiques claires",
+    tokenomics_t:"Tokenomics",
+    initial_line:"Offre initiale · 18 décimales",
+    chain_line:"Chaîne : Ethereum ou Polygon",
+    gov_mint:"Émission via gouvernance (sans hard cap)",
+    treasury_policies:"Politiques de trésorerie / wallet transparentes",
+    pie_labels:["Communauté 40%","Trésorerie 25%","Liquidité 15%","Équipe 10%","Conseillers 5%","Réserve 5%"],
+    pie_note:"*Répartition illustrative des 1 000 000 initiaux : Communauté 40%, Trésorerie 25%, Liquidité 15%, Équipe 10%, Conseillers 5%, Réserve 5%.",
+    pos_title:"Positionnement & Utilité",
+    pos_b1:"Monnaie de récompense & paiements commerçants",
+    pos_b2:"Diamants NFT avec certificat d’authenticité",
+    pos_b3:"Réserve de valeur proche de l’or",
+    usp_title:"USP clé",
+    usp_b1:"Luxe + sécurité → symbole de force, stabilité, valeur",
+    usp_b2:"Lien direct avec l’univers du diamant & réseau de partenaires",
+    usp_b3:"Branding exclusif, CI & discipline narrative",
+    road_note:"Feuille de route (court) : Marque & communauté → Lancement du token & DEX → Utilité & partenariats → Échelle.",
+    footer_left:"<strong>DIA-10</strong> · Marque, tokenomics & positionnement en un coup d’œil"
+  },
+  it:{
+    hdr_slogan:"The Hardest Currency on Earth",
+    hdr_print:"Stampa",
+    hdr_pdf:"Scarica PDF stampabile",
+    brand_title:"Brand & Story",
+    tag_luxury:"Lusso · Stabilità · Rarità",
+    tag_brandfirst:"Narrazione brand-first",
+    tag_mohs:"Diamante · durezza Mohs 10",
+    brand_p:"DIA-10 è un asset digitale ispirato ai diamanti con chiara narrazione di scarsità, trasparenza moderna e brand forte.",
+    brand_b1:"Branding di lusso emozionale, non solo tecnico",
+    brand_b2:"Storytelling su diamanti & indistruttibilità",
+    brand_b3:"Community-first: comunicazione & policy chiare",
+    tokenomics_t:"Tokenomics",
+    initial_line:"Offerta iniziale · 18 decimali",
+    chain_line:"Chain: Ethereum o Polygon",
+    gov_mint:"Coniabile via governance (senza hard cap)",
+    treasury_policies:"Policy trasparenti di tesoreria/wallet",
+    pie_labels:["Comunità 40%","Tesoreria 25%","Liquidità 15%","Team 10%","Advisors 5%","Riserva 5%"],
+    pie_note:"*Ripartizione illustrativa dei 1.000.000 iniziali: Comunità 40%, Tesoreria 25%, Liquidità 15%, Team 10%, Advisors 5%, Riserva 5%.",
+    pos_title:"Posizionamento & Utilità",
+    pos_b1:"Valuta premi & pagamenti merchant",
+    pos_b2:"Diamanti NFT con certificato di autenticità",
+    pos_b3:"Riserva di valore simile all’oro",
+    usp_title:"USP principale",
+    usp_b1:"Lusso + sicurezza → simbolo di forza, stabilità, valore",
+    usp_b2:"Collegamento diretto al mondo dei diamanti & network partner",
+    usp_b3:"Branding esclusivo, CI & disciplina narrativa",
+    road_note:"Roadmap (breve): Brand & community → Lancio token & DEX → Utilità & partnership → Scala.",
+    footer_left:"<strong>DIA-10</strong> · Brand, tokenomics & posizionamento a colpo d’occhio"
+  },
+  es:{
+    hdr_slogan:"The Hardest Currency on Earth",
+    hdr_print:"Imprimir",
+    hdr_pdf:"Descargar PDF imprimible",
+    brand_title:"Marca & Historia",
+    tag_luxury:"Lujo · Estabilidad · Rareza",
+    tag_brandfirst:"Narrativa centrada en la marca",
+    tag_mohs:"Diamante · dureza Mohs 10",
+    brand_p:"DIA-10 es un activo digital inspirado en diamantes con narrativa clara de escasez, transparencia moderna y marca sólida.",
+    brand_b1:"Branding de lujo emocional en lugar de tokens puramente técnicos",
+    brand_b2:"Storytelling sobre diamantes e indestructibilidad",
+    brand_b3:"Community-first: comunicación y políticas claras",
+    tokenomics_t:"Tokenomics",
+    initial_line:"Suministro inicial · 18 decimales",
+    chain_line:"Cadena: Ethereum o Polygon",
+    gov_mint:"Acuñable por gobernanza (sin hard cap)",
+    treasury_policies:"Políticas transparentes de tesorería / wallet",
+    pie_labels:["Comunidad 40%","Tesorería 25%","Liquidez 15%","Equipo 10%","Asesores 5%","Reserva 5%"],
+    pie_note:"*Distribución ilustrativa de 1.000.000 iniciales: Comunidad 40%, Tesorería 25%, Liquidez 15%, Equipo 10%, Asesores 5%, Reserva 5%.",
+    pos_title:"Posicionamiento & Utilidad",
+    pos_b1:"Moneda de recompensas & pagos a comercios",
+    pos_b2:"Diamantes NFT con certificado de autenticidad",
+    pos_b3:"Reserva de valor similar al oro",
+    usp_title:"USP clave",
+    usp_b1:"Lujo + seguridad → símbolo de fuerza, estabilidad, valor",
+    usp_b2:"Vínculo directo con el mundo del diamante & red de partners",
+    usp_b3:"Branding exclusivo, CI & disciplina narrativa",
+    road_note:"Hoja de ruta (breve): Marca & comunidad → Lanzamiento del token & DEX → Utilidad & alianzas → Escalar.",
+    footer_left:"<strong>DIA-10</strong> · Marca, tokenomics y posicionamiento de un vistazo"
+  },
+  zh:{
+    hdr_slogan:"The Hardest Currency on Earth",
+    hdr_print:"打印",
+    hdr_pdf:"下载可打印 PDF",
+    brand_title:"品牌与故事",
+    tag_luxury:"奢华 · 稳定 · 稀缺",
+    tag_brandfirst:"品牌优先叙事",
+    tag_mohs:"钻石 · 莫氏硬度 10",
+    brand_p:"DIA-10 是受钻石启发的数字资产，具有清晰的稀缺性叙事、现代透明度与强大而永恒的品牌。",
+    brand_b1:"情感化奢侈品牌，而非单纯技术代币",
+    brand_b2:"围绕钻石与“不可毁”主题的叙事",
+    brand_b3:"社区优先：清晰沟通与政策",
+    tokenomics_t:"代币经济",
+    initial_line:"初始供应 · 18 位小数",
+    chain_line:"链：以太坊或 Polygon",
+    gov_mint:"治理增发（无硬上限）",
+    treasury_policies:"透明的金库/钱包政策",
+    pie_labels:["社区 40%","金库 25%","流动性 15%","团队 10%","顾问 5%","储备 5%"],
+    pie_note:"*100 万初始示例分配：社区 40%、金库 25%、流动性 15%、团队 10%、顾问 5%、储备 5%。",
+    pos_title:"定位与效用",
+    pos_b1:"奖励货币与商户支付",
+    pos_b2:"带溯源证书的 NFT 钻石",
+    pos_b3:"类似黄金的价值储藏",
+    usp_title:"核心卖点",
+    usp_b1:"奢华 + 安全 → 力量、稳定与价值的象征",
+    usp_b2:"与钻石行业和伙伴网络的直接连接",
+    usp_b3:"独家品牌、CI 与叙事纪律",
+    road_note:"路线图（简）：品牌与社区 → 代币上线与 DEX → 效用与合作 → 扩展。",
+    footer_left:"<strong>DIA-10</strong> · 品牌、代币经济与定位一目了然"
+  },
+  ja:{
+    hdr_slogan:"The Hardest Currency on Earth",
+    hdr_print:"印刷",
+    hdr_pdf:"印刷用PDFをダウンロード",
+    brand_title:"ブランド & ストーリー",
+    tag_luxury:"ラグジュアリー · 安定 · 希少性",
+    tag_brandfirst:"ブランド起点のナラティブ",
+    tag_mohs:"ダイヤモンド · モース硬度10",
+    brand_p:"DIA-10 はダイヤに着想を得たデジタル資産。明確な希少性ストーリー、透明性、時代を超えるブランド力を備えます。",
+    brand_b1:"感性に訴えるラグジュアリーブランディング（技術先行ではなく）",
+    brand_b2:"ダイヤ & 不壊性を核にしたストーリーテリング",
+    brand_b3:"コミュニティ第一：明快なコミュニケーションとポリシー",
+    tokenomics_t:"トークノミクス",
+    initial_line:"初期供給 · 小数18桁",
+    chain_line:"チェーン：Ethereum または Polygon",
+    gov_mint:"ガバナンスによるミント（ハードキャップなし）",
+    treasury_policies:"透明なトレジャリー／ウォレット方針",
+    pie_labels:["コミュニティ 40%","トレジャリー 25%","流動性 15%","チーム 10%","アドバイザー 5%","リザーブ 5%"],
+    pie_note:"*初期100万の想定配分：コミュニティ40%、トレジャリー25%、流動性15%、チーム10%、アドバイザー5%、リザーブ5%。",
+    pos_title:"ポジショニング & ユーティリティ",
+    pos_b1:"リワード通貨 & マーチャント決済",
+    pos_b2:"真正性証明付きNFTダイヤ",
+    pos_b3:"金に類する価値の保存",
+    usp_title:"コアUSP",
+    usp_b1:"ラグジュアリー + セキュリティ → 強さ・安定・価値の象徴",
+    usp_b2:"ダイヤ業界 & パートナーネットワークとの直接的な結びつき",
+    usp_b3:"独自ブランディング、CI、語りの規律",
+    road_note:"ロードマップ（短）：ブランド & コミュニティ → トークン・DEX → ユーティリティ & 提携 → スケール。",
+    footer_left:"<strong>DIA-10</strong> · ブランド、トークノミクス、ポジショニング一目で把握"
+  }
+};
+
+let CURRENT_LANG = localStorage.getItem('dia10_lang') || 'de';
+let pieChart = null;
+
+function applyLang(lang){
+  CURRENT_LANG = lang;
+  localStorage.setItem('dia10_lang', lang);
+  document.documentElement.lang = lang;
+
+  // Texte ersetzen
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const key = el.getAttribute('data-i18n');
+    const val = I18N[lang][key];
+    if(val !== undefined){
+      if(key === 'footer_left'){ el.innerHTML = val; }
+      else el.textContent = val;
+    }
+  });
+
+  // Buttons aktiv setzen
+  document.querySelectorAll('.lbtn').forEach(b=>{
+    b.classList.toggle('active', b.dataset.lang===lang);
+  });
+
+  // Chart-Labels aktualisieren
+  if(pieChart){
+    pieChart.data.labels = I18N[lang].pie_labels;
+    pieChart.update();
+  }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  // Chart
+  const pieEl = document.getElementById('pie');
+  pieChart = new Chart(pieEl, {
+    type:'pie',
+    data:{
+      labels: I18N[CURRENT_LANG].pie_labels,
+      datasets:[{
+        data:[40,25,15,10,5,5],
+        backgroundColor:['#1b6fff','#74c7ff','#11d09a','#8aa4ff','#ffd166','#c4d0e0'],
+        borderColor:'rgba(255,255,255,.12)', borderWidth:1
+      }]
+    },
+    options:{plugins:{legend:{labels:{color:'#e9f2ff', font:{weight:'600'}}}}}
+  });
+
+  // Lang Switch
+  document.querySelectorAll('.lbtn').forEach(btn=>{
+    btn.addEventListener('click', ()=>applyLang(btn.dataset.lang));
+  });
+  applyLang(CURRENT_LANG);
+
+  // Drucken
+  document.getElementById('printBtn').addEventListener('click', () => window.print());
+
+  // PDF Export (A4 Hochformat, aktuelle Sprache)
+  document.getElementById('pdfBtn').addEventListener('click', async () => {
+    await new Promise(r => setTimeout(r, 200)); // kurze Chart-Pause
+    const node = document.getElementById('mkcard');
+    const canvas = await html2canvas(node, {scale: 2, backgroundColor:'#ffffff'});
+    const imgData = canvas.toDataURL('image/png');
+    const { jsPDF } = window.jspdf;
+    const pdf = new jsPDF({ orientation:'portrait', unit:'pt', format:'a4' });
+    const pageW = pdf.internal.pageSize.getWidth();
+    const pageH = pdf.internal.pageSize.getHeight();
+    const margin = 18;
+    const maxW = pageW - margin*2;
+    const maxH = pageH - margin*2;
+    const ratio = canvas.width / canvas.height;
+    let w = maxW, h = w/ratio;
+    if(h > maxH){ h = maxH; w = h*ratio; }
+    const dx = (pageW - w)/2;
+    const dy = (pageH - h)/2;
+    pdf.addImage(imgData, 'PNG', dx, dy, w, h, undefined, 'FAST');
+    pdf.save(`DIA10-Marketing-Konzeptkarte-${CURRENT_LANG}.pdf`);
+  });
+});
+</script>
+</body>
+</html>

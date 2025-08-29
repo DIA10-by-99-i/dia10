@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>DIA-10 | Verify Certificate</title>
+<!-- Canonical & Hreflang (empfohlen: je Sprache eigene URL, z.B. /en/ /de/ /ro/) -->
+<link rel="canonical" href="https://99-i.com/dia10/">
+<link rel="alternate" hreflang="en" href="https://99-i.com/dia10/">
+<link rel="alternate" hreflang="de" href="https://99-i.com/dia10/">
+<link rel="alternate" hreflang="ro" href="https://99-i.com/dia10/">
+<link rel="alternate" hreflang="x-default" href="https://99-i.com/dia10/">
+
+<meta name="description" content="DIA-10 is a diamond-inspired digital asset designed for resilience and clarity. Learn about tokenomics, certificates and partners.">
+
+<!-- Open Graph / Twitter -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="DIA-10">
+<meta property="og:title" content="DIA-10 – Diamond-anchored digital value">
+<meta property="og:description" content="Diamond-inspired digital asset, transparent tokenomics and partner network.">
+<meta property="og:url" content="https://99-i.com/dia10/">
+<meta property="og:image" content="https://99-i.com/dia10/images/dia10.svg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@99iDia10">
+<meta name="theme-color" content="#0a0c10">
+
+<!-- Google Fonts: schneller laden -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700;800;900&display=swap" rel="stylesheet">
+<meta name="author" content="Markus Goffin">
+<meta name="last-modified" content="2025-08-24">
+<link rel="icon" type="image/x-icon" href="../images/99i_favicon_16x16.ico" sizes="16x16">
+<link rel="icon" type="image/x-icon" href="../images/99i_favicon_32x32.ico" sizes="32x32">
+<link rel="icon" type="image/x-icon" href="../images/99i_favicon_48x48.ico" sizes="48x48">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#0a0f18;--panel:#0f1624;--ink:#e6f2ff;--muted:#a7bde0;--ok:#14d19a;--warn:#ffce3a;--err:#ff6b6b;--acc:#58a6ff;--line:#1e2a45}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font:500 16px/1.5 Inter,system-ui,sans-serif}
+  a{color:var(--acc);text-decoration:none}
+  header{position:sticky;top:0;z-index:10;background:linear-gradient(180deg,rgba(10,15,24,.85),rgba(10,15,24,.6));border-bottom:1px solid var(--line);backdrop-filter:blur(10px)}
+  .nav{max-width:980px;margin:auto;padding:12px 18px;display:flex;align-items:center;gap:12px}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:900}
+  .logo{width:32px;height:32px;border-radius:8px;background:linear-gradient(135deg,#2a6cff,#7fb3ff)}
+  .wrap{max-width:980px;margin:22px auto;padding:0 18px}
+  .card{background:linear-gradient(180deg,#0f1624,#0c1320);border:1px solid var(--line);border-radius:14px;padding:18px;box-shadow:0 6px 30px rgba(0,0,0,.25)}
+  .row{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+  .kpi{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+  .b{background:#101b31;border:1px solid #223456;border-radius:10px;padding:10px}
+  .lab{font-size:12px;color:var(--muted)}
+  .val{font-weight:900;word-break:break-word}
+  .tag{display:inline-flex;align-items:center;gap:6px;padding:6px 10px;border-radius:999px;border:1px solid #2a3b5f;background:#0e1a33;font-size:13px}
+  .ok{color:var(--ok)} .warn{color:var(--warn)} .err{color:var(--err)}
+  code{font-family:ui-monospace,Consolas,monospace}
+</style>
+</head>
+<body>
+<header>
+  <nav class="nav">
+    <div class="brand"><div class="logo" aria-hidden="true"></div><span>DIA-10</span></div>
+  </nav>
+</header>
+
+<div class="wrap">
+  <h1 style="margin:0 0 10px">DIA-10 – Certificate Verify</h1>
+  <div id="msg" class="tag">Loading…</div>
+
+  <div class="card" style="margin-top:12px">
+    <div class="kpi">
+      <div class="b"><div class="lab">Certificate No.</div><div class="val" id="v_no">—</div></div>
+      <div class="b"><div class="lab">Amount (€)</div><div class="val" id="v_amt">—</div></div>
+      <div class="b"><div class="lab">Allocated Shares</div><div class="val" id="v_sh">—</div></div>
+      <div class="b"><div class="lab">Investor</div><div class="val" id="v_inv">—</div></div>
+      <div class="b"><div class="lab">Wallet (EVM)</div><div class="val" id="v_wa">—</div></div>
+      <div class="b"><div class="lab">Timestamp</div><div class="val" id="v_ts">—</div></div>
+    </div>
+
+    <div class="row" style="margin-top:12px">
+      <div class="tag"><span>Status:</span> <span id="v_status">—</span></div>
+      <div class="tag">
+        <span>Terms hash:</span>
+        <code id="v_th">—</code>
+        <span id="v_thchk"></span>
+      </div>
+      <div class="tag">
+        <span>Terms URL:</span>
+        <a id="v_tu" href="#" target="_blank" rel="noopener">—</a>
+      </div>
+    </div>
+
+    <div style="margin-top:10px;color:#a7bde0">
+      Note: This page is a technical proof. Binding terms are in the PDF.
+    </div>
+  </div>
+</div>
+
+<script>
+  // ------- helpers -------
+  const $ = (id)=>document.getElementById(id);
+  function euros(n){ return Number(n||0).toLocaleString(undefined,{style:'currency',currency:'EUR'}); }
+  function cut(a){ return a ? a.slice(0,6)+'…'+a.slice(-4) : '—'; }
+  function b64urlToStr(s){
+    s = (s||'').replace(/-/g,'+').replace(/_/g,'/'); const pad = s.length%4 ? '='.repeat(4-(s.length%4)) : '';
+    try{ return decodeURIComponent(escape(atob(s+pad))); }catch{ return ''; }
+  }
+  async function sha256HexFromUrl(url){
+    const r = await fetch(url,{cache:'no-store'}); const b = await r.arrayBuffer();
+    const d = await crypto.subtle.digest('SHA-256', b);
+    return Array.from(new Uint8Array(d)).map(x=>x.toString(16).padStart(2,'0')).join('');
+  }
+
+  // ------- read payload -------
+  const msg = $('msg');
+  const hash = location.hash.startsWith('#') ? location.hash.slice(1) : '';
+  let payload = null;
+  try{ payload = hash ? JSON.parse(b64urlToStr(hash)) : null; }catch{}
+
+  async function render(p){
+    if(!p){ msg.textContent = 'No payload found in URL hash.'; return; }
+
+    const { cert, amt, shares, inv, wa, ts, status, termsUrl, termsHash } = p;
+
+    $('v_no').textContent = cert || '—';
+    $('v_amt').textContent = (amt!=null) ? euros(amt) : '—';
+    $('v_sh').textContent  = (shares!=null) ? Number(shares).toLocaleString(undefined,{maximumFractionDigits:4}) : '—';
+    $('v_inv').textContent = inv || '—';
+    $('v_wa').textContent  = wa ? `${cut(wa)} (${wa})` : '—';
+    $('v_ts').textContent  = ts ? new Intl.DateTimeFormat(undefined,{dateStyle:'medium',timeStyle:'short'}).format(new Date(ts)) : '—';
+    $('v_status').textContent = status || 'pledged';
+
+    // terms URL clickable (or em dash)
+    if(termsUrl){ $('v_tu').textContent = termsUrl; $('v_tu').href = termsUrl; }
+    else{ $('v_tu').textContent = '—'; $('v_tu').removeAttribute('href'); }
+
+    $('v_th').textContent = termsHash || '—';
+    msg.textContent = '';
+
+    // ------- hash check -------
+    try{
+      if(termsUrl){
+        const liveHash = await sha256HexFromUrl(termsUrl);
+
+        if(termsHash && termsHash.length===64){
+          $('v_thchk').innerHTML = (termsHash === liveHash)
+            ? ' <span class="ok">✅ Hash OK</span>'
+            : ' <span class="err">❌ Hash mismatch</span>';
+        }else{
+          // no hash in payload → verify the file via URL and show computed hash
+          $('v_th').textContent = liveHash;
+          $('v_thchk').innerHTML = ' <span class="ok">✅ Verified (URL)</span>';
+        }
+      }else{
+        $('v_thchk').innerHTML = ' <span class="warn">⚠ not verifiable</span>';
+      }
+    }catch(e){
+      $('v_thchk').innerHTML = ' <span class="warn">⚠ not verifiable</span>';
+    }
+  }
+
+  render(payload);
+</script>
+</body>
+</html>

@@ -1,0 +1,169 @@
+<!-- Hello, my name is Markus Goffin -->
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>DIA‑10 Investoren‑Zertifikat</title>
+<meta name="description" content="DIA‑10 Beteiligungszertifikat – automatisch nummeriert, als PDF, mit Mail‑Vorlauf.">
+<link rel="icon" type="image/x-icon" href="../images/99i_favicon_32x32.ico">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<style>
+  :root { --brand:#0A1E3F; --silver:#C0C0C0; }
+  body { font-family: Georgia, "Times New Roman", serif; background:#f4f4f4; color:var(--brand); margin:0; padding:24px; text-align:center; }
+  .certificate { background:#fff; width:820px; max-width:100%; margin:0 auto; padding:42px 46px; border:8px double var(--silver); box-shadow:0 8px 22px rgba(0,0,0,.18); }
+  .logo { height:82px; margin-bottom:18px; }
+  h1 { font-size:30px; margin:0 0 4px; letter-spacing:.5px; }
+  h2 { font-size:20px; margin:4px 0 10px; color:#4b5a75; font-weight:700; }
+  .number { font-weight:700; color:#7f8aa3; margin:6px 0 14px; }
+  .muted { color:#667; }
+  .input-section { margin:16px 0 6px; }
+  label { display:inline-block; width:130px; text-align:right; margin-right:10px; }
+  input { padding:8px 10px; font-size:16px; width:260px; border:1px solid #bcc7d8; border-radius:6px; }
+  small { color:#6b7892 }
+  .details { text-align:left; margin-top:18px; line-height:1.55; }
+  .row { display:flex; justify-content:space-between; align-items:flex-end; gap:24px; margin-top:24px; }
+  .sign-block { text-align:right; }
+  .sign { height:48px; display:block; margin-left:auto; filter: drop-shadow(0 1px 0 rgba(0,0,0,.05)); }
+  .sign-name { margin-top:6px; font-weight:700; }
+  .sign-role { color:#6b7892; font-size:14px; }
+  .btn { background:var(--brand); color:#fff; border:none; padding:12px 18px; font-size:16px; border-radius:10px; cursor:pointer; }
+  .btn:hover { filter:brightness(1.05); }
+  .cta { margin-top:18px }
+  .foot-note { margin-top:14px; font-style:italic; color:#445; }
+</style>
+</head>
+<body>
+
+<div class="certificate" id="certificateContent">
+  <img src="../images/dia_10.png" alt="DIA‑10 Logo" class="logo">
+  <h1>INVESTOREN‑ZERTIFIKAT</h1>
+  <h2>DIA‑10 Beteiligung</h2>
+
+  <div class="number">
+    Zertifikats‑Nr.: <span id="certNumber"></span> · Datum: <span id="certDate"></span>
+  </div>
+
+  <p>Dies bestätigt den Erwerb von DIA‑10 Anteilen.<br>
+     <span class="muted">This confirms the acquisition of DIA‑10 shares.</span></p>
+
+  <div class="input-section">
+    <p>
+      <label>Ihr Name:</label>
+      <input type="text" id="investorName" placeholder="Max Mustermann">
+    </p>
+    <p>
+      <label>Betrag (€):</label>
+      <input type="number" id="amount" value="100" min="1" step="1" oninput="calcShares()">
+    </p>
+    <small>(Preis pro Anteil: 10 €)</small>
+    <p>Anteile: <b><span id="shares">10.00</span></b></p>
+  </div>
+
+  <div class="details">
+    <strong>Aussteller:</strong> Markus Goffin – MAGO SERVICE TRADE SRL<br>
+    Aleea Textilistilor Nr. 1 – BL. MY1, Sc. 1, App. 16, Sectorul 3 · 032801 București (RO)<br>
+    Handelsregister: J40/5941/2015 · Steuernummer: CUI–34523632<br><br>
+
+    <strong>Kontakt:</strong> Tel.: +40 (0) 752‑30 77 11 · E‑Mail: mgoffin@web.de · WEB: https://99‑i.com/<br><br>
+
+    <strong>Bankverbindung:</strong> BRD – Bukarest · IBAN: RO34BRDE426SV66680914260 · BIC: BRDEROBU
+  </div>
+
+  <div class="row">
+    <div class="issued muted">
+      Ausgestellt in Bukarest · Gültig nach Zahlungseingang.<br>
+      Bitte die <b>Zertifikats‑Nr.</b> im Verwendungszweck angeben.
+    </div>
+    <div class="sign-block">
+      <img src="../images/signature.png" alt="Unterschrift Markus Goffin" class="sign">
+      <div class="sign-name">Markus Goffin</div>
+      <div class="sign-role">Founder · DIA‑10</div>
+    </div>
+  </div>
+
+  <p class="foot-note">
+    Bitte senden Sie das Zertifikat per E‑Mail und bewahren Sie es sorgfältig auf.
+  </p>
+</div>
+
+<div class="cta">
+  <button class="btn" onclick="generateAndSend()">📄 Zertifikat erstellen & senden</button>
+</div>
+
+<script>
+  // Laufende Nummer + Datum
+  const certNumEl = document.getElementById('certNumber');
+  const todayEl   = document.getElementById('certDate');
+
+  // fortlaufend (lokal): speichert letzten Stand im Browser
+  const last = Number(localStorage.getItem('dia10_cert_seq') || '100000');
+  const next = last + 1;
+  localStorage.setItem('dia10_cert_seq', String(next));
+  certNumEl.textContent = next;
+
+  const now = new Date();
+  const d = String(now.getDate()).padStart(2,'0');
+  const m = String(now.getMonth()+1).padStart(2,'0');
+  const y = now.getFullYear();
+  todayEl.textContent = `${d}.${m}.${y}`;
+
+  // Anteilberechnung
+  function calcShares(){
+    const amount = parseFloat(document.getElementById('amount').value || '0');
+    const shares = amount / 10;
+    document.getElementById('shares').textContent = shares.toFixed(2);
+  }
+  calcShares();
+
+  // PDF erzeugen + Mailprogramm öffnen (mailto)
+  async function generateAndSend(){
+    const name   = document.getElementById('investorName').value.trim();
+    const amount = parseFloat(document.getElementById('amount').value || '0');
+    const shares = (amount/10).toFixed(2);
+    const certNr = document.getElementById('certNumber').textContent;
+
+    if(!name){ alert('Bitte Ihren Namen eingeben.'); return; }
+    if(amount <= 0){ alert('Bitte einen Betrag > 0 eingeben.'); return; }
+
+    // PDF bauen
+    const { jsPDF } = window.jspdf;
+    const pdf = new jsPDF({ orientation:'p', unit:'pt', format:'a4' });
+
+    // Ensures consistent rendering
+    await pdf.html(document.getElementById('certificateContent'), {
+      x: 20, y: 20, autoPaging: 'text', windowWidth: 900
+    });
+
+    const fileName = `DIA10-Zertifikat-${certNr}.pdf`;
+    pdf.save(fileName); // lädt die Datei herunter
+
+    // Mailto vorbereiten (Anhänge via mailto nicht möglich)
+    const to = 'mgoffin@web.de';
+    const subject = encodeURIComponent(`INVESTOREN-ZERTIFIKAT – DIA‑10 #${certNr}`);
+    const body = encodeURIComponent(
+`Sehr geehrte Damen und Herren,
+
+hiermit sende ich mein DIA‑10 Beteiligungszertifikat.
+
+Zertifikat: #${certNr}
+Name: ${name}
+Betrag: €${amount.toFixed(2)}
+Anteile: ${shares}
+
+Ich habe den Betrag überwiesen und bitte um Bestätigung.
+Das heruntergeladene PDF ist angehängt.
+
+Mit freundlichen Grüßen
+${name}`
+    );
+
+    // Mailprogramm des Käufers öffnen
+    window.location.href = `mailto:${to}?subject=${subject}&body=${body}`;
+
+    /* Optional: Wenn du zusätzlich serverseitig eine Kopie mit Anhang versenden willst,
+       kann ich dir eine sendCert.php bauen und hier per fetch() hochladen. */
+  }
+</script>
+
+</body>
+</html>

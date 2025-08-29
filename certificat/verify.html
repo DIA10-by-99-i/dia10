@@ -1,0 +1,31 @@
+<!DOCTYPE html><html lang="en"><meta charset="utf-8">
+<title>DIA-10 Certificate Verify</title>
+<style>
+  body{font:14px/1.4 system-ui,Segoe UI,Roboto,Arial; padding:24px; color:#0a0c10; background:#f6f9ff}
+  .card{max-width:680px; margin:auto; background:#fff; border:1px solid #e2ebf6; border-radius:12px; padding:18px}
+  .ok{color:#12a57a; font-weight:700} .warn{color:#c27d00; font-weight:700}
+</style>
+<div class="card">
+  <h2>DIA-10 Certificate Verification</h2>
+  <div id="out">Loading…</div>
+  <p style="color:#5b708b">Note: This basic verification only checks the integrity of the QR data. A ‘green’ check requires that the certificate number is registered in your internal ledger.</p>
+</div>
+<script>
+  function b64urlToStr(s){ s=s.replace(/-/g,'+').replace(/_/g,'/'); while(s.length%4) s+='='; return decodeURIComponent(escape(atob(s))); }
+  (function(){
+    const hash = location.hash.slice(1);
+    const out = document.getElementById('out');
+    if(!hash){ out.textContent='No payload found.'; return; }
+    try{
+      const data = JSON.parse(b64urlToStr(hash));
+      // TODO: Check against your backend/ledger (fetch('/api/verify?cert=...'))
+      out.innerHTML = `
+        <div><b>Certificate:</b> ${data.cert}</div>
+        <div><b>Amount:</b> € ${Number(data.amt).toLocaleString('de-DE')}</div>
+        <div><b>Shares:</b> ${data.shares}</div>
+        <div><b>Issued:</b> ${new Date(data.ts).toLocaleString()}</div>
+        <p class="ok">Structure OK. Please compare with internal list.</p>`;
+    }catch(e){ out.innerHTML = '<p class="warn">Invalid/defective QR-Payload.</p>'; }
+  })();
+</script>
+</html>
