@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>DIA-10 — Investor / Community Update</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --brand:#1b6fff; --ink:#0a0c10; --muted:#5b708b; --line:#e6edf5; --chip:#0f1626;
+    --ok:#14d19a; --warn:#ffce3a; --bad:#ff5d6c;
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0; font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif; color:var(--ink);
+    background:#f6f9ff;
+  }
+
+  /* Top controls (not printed) */
+  .toolbar{
+    position:sticky; top:0; z-index:10; display:flex; gap:8px; align-items:center; justify-content:space-between;
+    padding:10px 14px; background:rgba(255,255,255,.9); backdrop-filter:blur(8px); border-bottom:1px solid #dfe7f2;
+  }
+  .left, .right{display:flex; gap:8px; align-items:center}
+  .btn{
+    border:1px solid #d1ddf0; background:white; padding:10px 14px; border-radius:10px; font-weight:800; cursor:pointer;
+  }
+  .btn.primary{background:linear-gradient(135deg,var(--brand),#0a84ff); color:#fff; border:none}
+  .btn.danger{background:#fff0f0; color:#b71f2b; border:1px solid #f3c6cb}
+
+  /* Page */
+  .sheet{
+    width:min(900px,94%); margin:22px auto 60px; background:white; border:1px solid #e7eef7; border-radius:16px;
+    box-shadow:0 12px 40px rgba(16,44,90,.08); padding:28px;
+  }
+  header{
+    display:flex; align-items:center; justify-content:space-between; gap:18px; border-bottom:2px solid var(--line); padding-bottom:16px;
+  }
+  .brand{
+    display:flex; align-items:center; gap:14px;
+  }
+  .logo{width:46px; height:46px; border-radius:12px; position:relative; overflow:hidden; background:conic-gradient(from 210deg,#0a84ff,#49b3ff,#7dd3fc,#0a84ff)}
+  .logo::after{content:""; position:absolute; inset:22% 22% 36% 22%; background:linear-gradient(145deg,#e9f3ff,#9cc9ff);
+    clip-path:polygon(50% 0%,100% 45%,80% 100%,20% 100%,0% 45%);}
+  .title{font-size:26px; font-weight:900; letter-spacing:.2px}
+  .meta{display:flex; gap:10px; flex-wrap:wrap; color:#3d4f68}
+  .chip{background:#eef4ff; color:#244166; border:1px solid #d6e6ff; padding:6px 10px; border-radius:999px; font-weight:700; font-size:.85rem}
+
+  h2{font-size:18px; margin:18px 0 10px}
+  p{margin:8px 0}
+  section{margin-top:18px}
+  .grid{display:grid; grid-template-columns:1fr 1fr; gap:16px}
+  .grid3{display:grid; grid-template-columns:repeat(3,1fr); gap:12px}
+  .card{
+    border:1px solid var(--line); border-radius:12px; padding:14px;
+  }
+  .kpi{display:flex; flex-direction:column; gap:4px}
+  .kpi b{font-size:22px}
+  .muted{color:var(--muted); font-size:.95rem}
+  .list{display:grid; gap:8px; margin-top:6px}
+  .row{display:flex; align-items:center; justify-content:space-between; gap:10px}
+  .tag{background:#eef4ff; border:1px solid #d6e6ff; color:#244166; padding:4px 8px; border-radius:8px; font-size:.8rem; font-weight:700}
+
+  table{width:100%; border-collapse:separate; border-spacing:0; border:1px solid var(--line); border-radius:12px; overflow:hidden}
+  th,td{padding:10px 12px; border-bottom:1px solid var(--line); text-align:left}
+  th{background:#f3f7ff; font-weight:800}
+  tr:last-child td{border-bottom:none}
+
+  /* Editable hints */
+  [contenteditable="true"]{outline:2px dashed transparent; transition:outline-color .15s ease}
+  body.editing [contenteditable="true"]{outline-color:#cfe2ff}
+
+  /* Print styles */
+  @media print{
+    .toolbar{display:none !important}
+    body{background:white}
+    .sheet{box-shadow:none; border:none; margin:0 auto}
+    @page{size:A4; margin:14mm}
+  }
+</style>
+</head>
+<body>
+
+<!-- Controls -->
+<div class="toolbar">
+  <div class="left">
+    <button class="btn" id="toggleEdit">✏️ Edit mode: Off</button>
+    <button class="btn" id="saveDraft">💾 Save draft</button>
+    <button class="btn" id="loadDraft">📥 Load draft</button>
+    <button class="btn danger" id="clearDraft">🗑️ Clear</button>
+  </div>
+  <div class="right">
+    <button class="btn primary" onclick="window.print()">🖨️ Print / Save as PDF</button>
+  </div>
+</div>
+
+<!-- Page -->
+<div class="sheet" id="content">
+  <header>
+    <div class="brand">
+      <div class="logo" aria-hidden="true"></div>
+      <div>
+        <div class="title" contenteditable="true">DIA-10 — Investor / Community Update</div>
+        <div class="meta">
+          <span class="chip" id="dateChip">Date: —</span>
+          <span class="chip" id="qChip">Quarter: —</span>
+          <span class="chip" contenteditable="true">Issue #001</span>
+        </div>
+      </div>
+    </div>
+    <div style="text-align:right">
+      <div class="muted">Contact</div>
+      <div contenteditable="true"><b>Markus Goffin</b> — Founder</div>
+      <div class="muted" contenteditable="true">mgoffin@web.de • 99-i.com</div>
+    </div>
+  </header>
+
+  <!-- 1) Highlights -->
+  <section class="card">
+    <h2>Top Highlights (this period)</h2>
+    <div class="list">
+      <div contenteditable="true">✅ Partnership signed with <b>[Partner Name]</b> for sourcing & audits.</div>
+      <div contenteditable="true">🚀 Prototype of DIA-10 Club Pass live (gated docs + perks).</div>
+      <div contenteditable="true">📈 Community grew to <b>[X]</b> subscribers / <b>[Y]</b> wallet connects.</div>
+    </div>
+  </section>
+
+  <!-- 2) Key Metrics -->
+  <section class="grid">
+    <div class="card">
+      <h2>Key Metrics</h2>
+      <div class="grid3">
+        <div class="kpi"><span class="muted">Total Supply</span><b contenteditable="true">1,000,000</b><span class="muted">DIA-10</span></div>
+        <div class="kpi"><span class="muted">Holders</span><b contenteditable="true">—</b><span class="muted">Mainnet planned</span></div>
+        <div class="kpi"><span class="muted">Active Wallets (30d)</span><b contenteditable="true">—</b><span class="muted">testnet</span></div>
+        <div class="kpi"><span class="muted">Treasury</span><b contenteditable="true">€ —</b><span class="muted">multi-sig</span></div>
+        <div class="kpi"><span class="muted">Runway</span><b contenteditable="true">— months</b><span class="muted">at current burn</span></div>
+        <div class="kpi"><span class="muted">M/M Growth</span><b contenteditable="true">—%</b><span class="muted">members</span></div>
+      </div>
+    </div>
+    <div class="card">
+      <h2>Roadmap — Progress</h2>
+      <div class="list">
+        <div class="row"><span class="tag">Q1</span><div contenteditable="true">Brand & token design ✅</div></div>
+        <div class="row"><span class="tag">Q2</span><div contenteditable="true">Treasury policy + staking draft 🔄</div></div>
+        <div class="row"><span class="tag">Q3</span><div contenteditable="true">NFT tie-in + crowdfund rails ⏳</div></div>
+        <div class="row"><span class="tag">Q4</span><div contenteditable="true">RWA bridge feasibility 🧪</div></div>
+      </div>
+      <p class="muted" contenteditable="true">*timeline indicative; may adjust with community input.</p>
+    </div>
+  </section>
+
+  <!-- 3) Treasury Snapshot -->
+  <section class="card">
+    <h2>Treasury Snapshot (public)</h2>
+    <table>
+      <thead><tr><th>Wallet / Account</th><th>Network</th><th>Balance</th><th>Notes</th></tr></thead>
+      <tbody contenteditable="true">
+        <tr><td>0x…Treasury</td><td>Sepolia</td><td>— ETH / — DIA-10</td><td>Operational (testnet)</td></tr>
+        <tr><td>Bank (BRD)</td><td>EUR</td><td>— €</td><td>Operating account</td></tr>
+      </tbody>
+    </table>
+    <p class="muted" contenteditable="true">Next step: quarterly statement + optional proof-of-reserves attestation.</p>
+  </section>
+
+  <!-- 4) Product & Tech -->
+  <section class="grid">
+    <div class="card">
+      <h2>Product & Tech</h2>
+      <div class="list" contenteditable="true">
+        <div>Club Pass MVP (gated docs, perks, emailing) — live on testnet.</div>
+        <div>Certificate PDF flow — numbering & export ✅</div>
+        <div>Wallet connect + token import + balance — implemented.</div>
+      </div>
+    </div>
+    <div class="card">
+      <h2>Compliance & Risk</h2>
+      <div class="list" contenteditable="true">
+        <div>Utility vs. security classification — counsel engaged.</div>
+        <div>Public policies: treasury, conflict-of-interest — drafting.</div>
+        <div>Audit plan before mainnet — scoping vendors.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5) Partnerships -->
+  <section class="card">
+    <h2>Partnerships</h2>
+    <div class="list" contenteditable="true">
+      <div>Jewelry partner — NDA signed, pilot in planning.</div>
+      <div>Compliance/advisory — shortlist prepared.</div>
+      <div>Educational content collab — Q&A series incoming.</div>
+    </div>
+  </section>
+
+  <!-- 6) The Next 30 Days -->
+  <section class="grid">
+    <div class="card">
+      <h2>Next 30 Days — Deliverables</h2>
+      <div class="list" contenteditable="true">
+        <div>[ ] Publish treasury policy (v1)</div>
+        <div>[ ] Launch newsletter (weekly cadence)</div>
+        <div>[ ] 1st partner announcement + FAQ</div>
+      </div>
+    </div>
+    <div class="card">
+      <h2>Asks (How you can help)</h2>
+      <div class="list" contenteditable="true">
+        <div>Warm intros: auditors / reputable custodians</div>
+        <div>Community — share the update; feedback on Club Pass</div>
+        <div>Legal/Reg — template suggestions welcome</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7) Key Links -->
+  <section class="card">
+    <h2>Key Links</h2>
+    <div class="list" contenteditable="true">
+      <div>Website — https://99-i.com/dia10/</div>
+      <div>Whitepaper — /whitepaper.html</div>
+      <div>Sepolia Token — (link to Etherscan)</div>
+      <div>Support — mgoffin@web.de</div>
+    </div>
+  </section>
+
+  <section class="muted" style="text-align:center;

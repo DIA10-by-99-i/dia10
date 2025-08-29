@@ -1,0 +1,956 @@
+<!-- Hello, my name is Markus Goffin 
+🇩🇪 Deutsch
+
+Ideen- und Konzeptinhaber von DIA-10
+Markus Goffin ist der alleinige Urheber und Inhaber der ursprünglichen Idee, des Namens, des Konzepts sowie der Markenidentität von DIA-10 – einer diamant­inspirierten Kryptowährung. Die Entwicklung, Gestaltung und strategische Ausrichtung des Projekts basieren ausschließlich auf seiner kreativen und unternehmerischen Arbeit.
+
+🇬🇧 English
+
+Creator and Concept Owner of DIA-10
+Markus Goffin is the sole originator and owner of the idea, name, concept, and brand identity of DIA-10 — a diamond-inspired cryptocurrency. The project’s development, design, and strategic direction are entirely based on his creative vision and entrepreneurial expertise.
+
+🇷🇴 Română
+
+Autor și deținător al conceptului DIA-10
+Markus Goffin este inițiatorul și proprietarul exclusiv al ideii, numelui, conceptului și identității de brand DIA-10 — o criptomonedă inspirată de diamante. Dezvoltarea, designul și direcția strategică a proiectului se bazează în întregime pe viziunea sa creativă și expertiza sa antreprenorială.
+-->  
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>DIA‑10 | Diamond‑backed Vision</title>
+<meta charset="by Markus Goffin, 01.08.2025"> 
+<meta charset="last update Markus Goffin, 09.08.2025">
+<meta name="description" content="99i Investment Company offers smart investment solutions to help you secure your financial future. Learn more about our services and investment strategies.">
+<link rel="icon" type="image/x-icon" href="images/99i_favicon_16x16.ico" sizes="16x16">
+<link rel="icon" type="image/x-icon" href="images/99i_favicon_32x32.ico" sizes="32x32">
+<link rel="icon" type="image/x-icon" href="images/99i_favicon_48x48.ico" sizes="48x48">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0a0c10;        /* deep black-blue */
+    --panel:#0f1218;     /* card bg */
+    --ink:#eaf6ff;       /* near-white */
+    --muted:#9fb3c8;
+    --accent:#49b3ff;    /* 99‑i vibe cyan/blue */
+    --accent-2:#7dd3fc;  /* lighter cyan */
+    --silver:#c0cad6;
+    --brand:#1b6fff;     /* DIA‑10 deep blue */
+    --ok:#14d19a;
+    --warn:#ffce3a;
+    --danger:#ff5d6c;
+    --radius:16px;
+    --shadow:0 10px 30px rgba(0,0,0,.35);
+  }
+
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0; background:radial-gradient(1200px 800px at 80% -10%, rgba(73,179,255,.08), transparent 60%), var(--bg);
+    color:var(--ink); font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  }
+  a{color:var(--accent); text-decoration:none}
+  a:hover{color:#bfe6ff}
+
+  /* Top Nav */
+  .nav{
+    position:fixed; inset:0 0 auto 0; height:72px; display:flex; align-items:center; justify-content:space-between;
+    padding:0 20px; z-index:50; backdrop-filter: blur(8px);
+    background:linear-gradient(to bottom, rgba(10,12,16,.85), rgba(10,12,16,.35) 70%, transparent);
+    border-bottom:1px solid rgba(255,255,255,.06);
+  }
+  .brand{display:flex; align-items:center; gap:12px; font-weight:800; letter-spacing:.5px}
+  .brand-logo{
+    width:42px; aspect-ratio:1; border-radius:12px;
+    background: conic-gradient(from 210deg, #0a84ff, #49b3ff, #7dd3fc, #0a84ff);
+    box-shadow: inset 0 0 0 2px rgba(255,255,255,.06), var(--shadow);
+    position:relative; overflow:hidden;
+  }
+  /* Stylized diamond glyph */
+  .brand-logo::after{
+    content:""; position:absolute; inset:20% 20% 35% 20%;
+    background: linear-gradient(145deg,#e9f3ff,#9cc9ff);
+    clip-path: polygon(50% 0%, 100% 45%, 80% 100%, 20% 100%, 0% 45%);
+    opacity:.95;
+  }
+  .nav-links{display:flex; gap:20px; align-items:center}
+  .nav-links a{font-weight:600; color:var(--ink); opacity:.85}
+  .nav-links a:hover{opacity:1}
+  .lang{display:flex; gap:8px}
+  .lang button{
+    background:#101521; color:var(--ink); border:1px solid rgba(255,255,255,.08);
+    padding:8px 12px; border-radius:10px; font-weight:600; cursor:pointer;
+  }
+  .lang button.active{border-color:var(--accent); color:#dff4ff}
+  .login-btn{
+    background:linear-gradient(135deg, var(--brand), #0a84ff);
+    color:white; padding:10px 16px; border:none; border-radius:12px; font-weight:800; cursor:pointer;
+    box-shadow:0 10px 20px rgba(27,111,255,.3);
+  }
+
+  /* Hero */
+  .hero{
+    position:relative; padding-top:120px; min-height:92vh; display:grid; place-items:center; text-align:center;
+  }
+  canvas#bgParticles{position:absolute; inset:0; z-index:0}
+  .hero-inner{position:relative; z-index:1; max-width:1100px; padding:0 20px}
+  .suptitle{
+    color:var(--silver); font-weight:700; letter-spacing:.18em; text-transform:uppercase; font-size:.85rem; opacity:.9
+  }
+  .title{
+    font-size:clamp(40px,7vw,92px); line-height:1.02; margin:12px 0 10px; font-weight:900;
+    background:linear-gradient(180deg,#ffffff, #bfe6ff 60%, #7dd3fc);
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+    text-shadow: 0 2px 40px rgba(73,179,255,.25);
+  }
+  .subtitle{
+    font-size:clamp(18px,2.2vw,28px); color:var(--muted); font-weight:500; margin:0 auto 26px; max-width:900px;
+  }
+  .cta{display:flex; gap:14px; justify-content:center; flex-wrap:wrap}
+  .btn{
+    background:#121722; color:#eaf6ff; border:1px solid rgba(255,255,255,.08);
+    padding:14px 18px; border-radius:14px; font-weight:800; letter-spacing:.3px;
+  }
+  .btn.primary{background:linear-gradient(135deg, var(--brand), #0a84ff); border:none}
+  .btn.ghost:hover{border-color:var(--accent); color:#dff4ff}
+
+  /* Sections */
+  section{padding:80px 20px; display:flex; justify-content:center}
+  .container{width:min(1200px,100%); display:grid; gap:26px}
+  .panel{
+    background:linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,0));
+    border:1px solid rgba(255,255,255,.07); border-radius:var(--radius); padding:28px; box-shadow:var(--shadow)
+  }
+  .section-title{font-size:32px; font-weight:900; margin:0 0 8px}
+  .section-copy{color:var(--muted); margin:0 0 16px}
+  .grid-2{display:grid; grid-template-columns:1.2fr .8fr; gap:22px}
+  .grid-3{display:grid; grid-template-columns:repeat(3,1fr); gap:22px}
+  @media (max-width:980px){ .grid-2, .grid-3{grid-template-columns:1fr} }
+
+  .list{
+    display:grid; gap:12px; margin:14px 0 0;
+  }
+  .list .row{display:flex; align-items:center; gap:12px}
+  .tag{font-size:.8rem; background:#122032; color:#bfe6ff; border:1px solid rgba(98,184,255,.25); padding:6px 10px; border-radius:10px}
+  .note{font-size:.9rem; color:#9fb3c8}
+
+  /* Login Modal */
+  .modal{
+    position:fixed; inset:0; display:none; place-items:center; background:rgba(0,0,0,.6); z-index:100;
+  }
+  .modal.open{display:grid}
+  .card{
+    width:min(480px,92%); background:var(--panel); border:1px solid rgba(255,255,255,.08); border-radius:16px; padding:24px;
+    box-shadow:0 20px 60px rgba(0,0,0,.6);
+  }
+  .field{display:grid; gap:6px; margin-top:14px}
+  .field label{font-weight:700; color:#d9ecff}
+  .field input{
+    background:#0c1119; border:1px solid rgba(255,255,255,.1); color:#eaf6ff; padding:12px 14px; border-radius:12px; outline:none;
+  }
+  .row-between{display:flex; align-items:center; justify-content:space-between; gap:12px}
+  .caps{letter-spacing:.12em; text-transform:uppercase; color:#9fb3c8; font-weight:700; font-size:.8rem}
+  .err{color:var(--danger); font-weight:700; min-height:1.2em}
+
+  /* Footer */
+  footer{padding:60px 20px; text-align:center; color:#7e93a8}
+  .logos{display:flex; justify-content:center; gap:16px; filter:grayscale(100%); opacity:.8}
+  .tiny{font-size:.8rem; color:#7e93a8; margin-top:12px}
+
+  /* Micro interactions */
+  .panel:hover{transform:translateY(-2px); transition:transform .25s ease}
+  .btn,.login-btn{transition:transform .15s ease}
+  .btn:active,.login-btn:active{transform:translateY(1px)}
+  
+  /* ===== Sponsors / Investor Logos ===== */
+.sponsors { padding-top: 20px }
+.sponsors .section-title { display:flex; align-items:center; gap:10px }
+/* ===== Sponsors / Investor Logos (fix) ===== */
+html,body{overflow-x:hidden} /* falls Browser minimalen Overflow erzeugt */
+
+.sponsor-marquee{
+  --gap:18px; --card-bg:#0f1624; --card-line:#1e2a45;
+  --speed:42s; --fade:0%;
+  margin-top:10px; position:relative; overflow:hidden; border-radius:16px;
+  border:1px solid rgba(255,255,255,.07);
+  background:linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,0));
+  padding:0;                 
+  -webkit-mask-image:none;   
+  mask-image:none;
+}
+
+.sponsor-track{
+  display:flex; gap:var(--gap); padding:12px 16px; /* symmetrischer Innenabstand */
+  will-change:transform;
+  animation:sponsor-scroll var(--speed) linear infinite;
+}
+
+@keyframes sponsor-scroll{
+  from{transform:translateX(0)}
+  to  {transform:translateX(calc(-1 * var(--loop-distance, 50%)))} /* per JS gesetzt */
+}
+
+/* Optional: Panel clippt jeden Pixel-Drift */
+.sponsors .panel{overflow:hidden}
+
+
+
+.sponsor-card{
+  display:flex; align-items:center; gap:12px;
+  padding:12px 14px; border-radius:14px; min-width:240px; max-width:380px;
+  background: var(--card-bg); border:1px solid var(--card-line);
+  text-decoration:none; color:var(--ink);
+  transition:transform .15s ease, box-shadow .2s ease, border-color .2s ease;
+}
+.sponsor-card:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(73,179,255,.18);
+  border-color: rgba(98,184,255,.35);
+}
+.sponsor-logo-wrap{
+  width:64px; height:64px; border-radius:14px; position:relative; flex:0 0 64px;
+  background: radial-gradient(circle at 30% 30%, #8fb8ff33 0 40%, transparent 45% 100%),
+              linear-gradient(135deg, #2a6cff33, #7fb3ff33);
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.06);
+}
+.sponsor-logo{
+  width:100%; height:100%; object-fit:contain; padding:10px; filter: saturate(1.05) contrast(1.05);
+}
+.sponsor-meta{ display:flex; flex-direction:column; gap:4px; min-width:0 }
+.sponsor-name{ font-weight:800; letter-spacing:.2px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis }
+.sponsor-tag{ color:var(--muted); font-size:.9rem; line-height:1.25; white-space:nowrap; overflow:hidden; text-overflow:ellipsis }
+
+
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="brand">
+    <div class="brand-logo" aria-hidden="true"></div>
+    <div>DIA‑10</div>
+  </div>
+  <div class="nav-links">
+    <a href="#markus" data-i18n="nav_markus">About Markus</a>
+    <a href="index.html" data-i18n="home">Home</a>
+    <a href="#docs" data-i18n="nav_docs">Documents</a>
+    <a href="#nft" data-i18n="nav_nft">NFT</a>
+    <a href="#crowd" data-i18n="nav_crowd">Crowdfunding</a>
+    <a href="live_metrics.html" data-i18n="live_metrics">Live Metrics</a>
+    <a href="#contact" data-i18n="nav_contact">Contact</a>
+    <div class="lang">
+      <button class="langbtn" data-lang="de">DE</button>
+      <button class="langbtn active" data-lang="en">EN</button>
+      <button class="langbtn" data-lang="ro">RO</button>
+    </div>
+    <button class="login-btn" id="openLogin" data-i18n="login">Login</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero" id="top">
+  <canvas id="bgParticles"></canvas>
+  <div class="hero-inner">
+    <div class="suptitle" data-i18n="hero_sup">Diamond‑anchored digital value</div>
+    <h1 class="title">DIA‑10</h1>
+    <p class="subtitle" data-i18n="hero_sub">
+      A modern, transparent asset layer inspired by the timeless resilience of diamonds. Built for real‑world utility, trust, and long‑term alignment.
+    </p>
+    <div class="cta">
+      <a href="#about" class="btn primary" data-i18n="cta_learn">Learn more</a>
+      <a href="whitepaper.html" class="btn ghost" data-i18n="cta_docs">Whitepaper & Marketing Map</a>
+      <a href="#cert" class="btn ghost" data-i18n="cta_cert">Investor Certificate</a>
+    </div>
+  </div>
+</header>
+
+
+<!-- ABOUT MARKUS -->
+<section id="markus">
+  <div class="container grid-2">
+    <!-- Linke Spalte: Laufbahn / Timeline -->
+    <div class="panel">
+      <h2 class="section-title" data-i18n="markus_title">Über Markus</h2>
+      <div id="mk_timeline" class="section-copy"></div>
+	  <img src="images/walter_goffin.png" alt="Walter Goffin" style="width:100%; border-radius:12px; margin-bottom:18px">
+    </div>
+
+    <!-- Rechte Spalte: Foto + Bio -->
+    <div class="panel">
+      <!-- Foto -->
+      <img src="images/markus_goffin.jpg" alt="Markus Goffin" style="width:100%; border-radius:12px; margin-bottom:18px">
+      <h3 class="section-title" data-i18n="markus_bio_t">Profil & Kompetenz</h3>
+      <div id="mk_bio" class="section-copy"></div>
+
+      <h3 class="section-title" style="margin-top:18px" data-i18n="markus_core_t">Kernkompetenzen</h3>
+      <ul id="mk_core" class="list"></ul>
+
+      <p class="section-copy" style="margin-top:16px">
+        <b>Web:</b> <a href="https://99-i.com/" target="_blank">99‑i.com</a><br>
+        <b>Portfolio:</b> <a href="https://mgoffin.com/" target="_blank">mgoffin.com</a><br>
+        <b>E‑Mail:</b> <a href="mailto:mgoffin@web.de">mgoffin@web.de</a>
+      </p>
+    </div>
+  </div>
+</section>
+
+
+<!-- DOCS -->
+<section id="docs">
+  <div class="container grid-3">
+    <div class="panel">
+      <h3 class="section-title" data-i18n="docs_map_t">Marketing & Concept Map</h3>
+      <p class="section-copy" data-i18n="docs_map_d">Download the printable PDF—brand, tokenomics, and positioning at a glance.</p>
+      <a class="btn primary" href="marketing/marketing_concept_map.html" target="_blank">Open</a>
+    </div>
+    <div class="panel">
+      <h3 class="section-title">Whitepaper</h3>
+      <p class="section-copy" data-i18n="docs_wp_d">Full rationale, mechanics, and roadmap. Updated iteratively.</p>
+      <a class="btn primary" href="whitepaper.html" target="_blank">Open</a>
+    </div>
+    <div class="panel" id="cert">
+      <h3 class="section-title" data-i18n="docs_cert_t">Investor Certificate</h3>
+      <p class="section-copy" data-i18n="docs_cert_d">Generate a numbered PDF certificate after purchase confirmation.</p>
+      <a class="btn primary" href="certificat/certificate_overview.html" data-i18n="open">Open</a>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- CROWDFUND -->
+<section id="crowd">
+  <div class="container">
+    <div class="panel">
+      <h3 class="section-title" data-i18n="crowd_t">Crowdfunding</h3>
+      <p class="section-copy" data-i18n="crowd_d">
+        Tiered allocations, vesting options, and transparent dashboards. Join the waitlist to be notified on launch.
+      </p>
+      <div class="row-between">
+        <a class="btn primary" href="crowdfunding/crowdfunding.html" data-i18n="Join">Join</a>
+      </div>
+      <div class="note" id="waitMsg"></div>
+    </div>
+  </div>
+</section>
+
+<!-- SPONSORS / INVESTOR LOGOS -->
+<section id="sponsors" class="sponsors">
+  <div class="container">
+    <div class="panel">
+      <h3 class="section-title" data-i18n="sponsors_t">Partners & Diamond Suppliers</h3>
+      <p class="section-copy" data-i18n="sponsors_d">
+        We showcase investors and sourcing partners. Click a logo to visit their website.
+      </p>
+      <div class="sponsor-marquee" aria-label="DIA-10 sponsor logos scrolling">
+        <div class="sponsor-track" id="sponsorTrack">
+          <!-- Wird per JS befüllt & dupliziert -->
+          <noscript>
+            <!-- Fallback ohne JS -->
+            <a class="sponsor-card" href="#" aria-label="Your Company" onclick="return false">
+              <div class="sponsor-logo-wrap">
+                <img class="sponsor-logo" alt="Your Company logo"
+                     src="data:image/svg+xml;utf8,
+                     <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 80'>
+                       <defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'>
+                         <stop offset='0' stop-color='%238fb8ff'/><stop offset='1' stop-color='%237fb3ff'/></linearGradient></defs>
+                       <rect width='200' height='80' rx='12' fill='url(%23g)'/>
+                       <text x='100' y='46' font-family='Inter, Arial' font-size='16' font-weight='800'
+                             fill='white' text-anchor='middle'>YOUR COMPANY</text>
+                     </svg>" />
+              </div>
+              <div class="sponsor-meta">
+                <div class="sponsor-name">Your Company</div>
+                <div class="sponsor-tag">Diamonds • Antwerp</div>
+              </div>
+            </a>
+          </noscript>
+        </div>
+      </div>
+      <div class="tiny" style="margin-top:10px">
+        <span data-i18n="sponsors_note">Interested? Become a DIA-10 partner and appear here.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container grid-2">
+    <div class="panel">
+      <h3 class="section-title" data-i18n="contact_t">Contact</h3>
+      <p class="section-copy">
+        MAGO SERVICE TRADE SRL<br>
+        Aleea Textilistilor Nr.1 – BL. MY1, Sc.1, App. 16, Sectorul 3<br>
+        032801 Bucuresti / Bucharest — Romania<br><br>
+        <b>Phone:</b> +40 (0) 752 30 77 11<br>
+        <b>Web:</b> <a href="https://99-i.com/" target="_blank">99‑i.com</a><br>
+        <b>Mail:</b> <a href="mailto:mgoffin@web.de">mgoffin@web.de</a>
+      </p>
+    </div>
+    <div class="panel">
+      <h3 class="section-title">Banking</h3>
+      <p class="section-copy">
+        BRD – Bucharest<br>
+        IBAN: RO34BRDE426SV66680914260<br>
+        BIC: BRDEROBU
+      </p>
+      <div class="logos">
+        <img alt="BRD" src="https://dummyimage.com/120x36/1b2330/8fa9c7.png&text=BRD" />
+        <img alt="Visa" src="https://dummyimage.com/90x36/1b2330/8fa9c7.png&text=VISA" />
+        <img alt="Mastercard" src="https://dummyimage.com/120x36/1b2330/8fa9c7.png&text=MC" />
+      </div>
+      <div class="tiny">Logos for illustration only.</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  © <span id="year"></span> DIA‑10. All rights reserved.
+</footer>
+
+<!-- LOGIN MODAL -->
+<div class="modal" id="loginModal" aria-hidden="true">
+  <div class="card">
+    <div class="row-between">
+      <div class="caps" data-i18n="login_title">Member Login</div>
+      <button class="btn" id="closeLogin">✕</button>
+    </div>
+    <div class="field">
+      <label data-i18n="login_user">Email</label>
+      <input id="loginEmail" type="email" placeholder="you@example.com">
+    </div>
+    <div class="field">
+      <label data-i18n="login_pass">Password</label>
+      <input id="loginPass" type="password" placeholder="••••••••">
+    </div>
+    <div class="err" id="loginErr"></div>
+    <div class="row-between" style="margin-top:12px">
+      <div class="caps"><input type="checkbox" id="remember"> <label for="remember" data-i18n="remember">Remember</label></div>
+      <button class="login-btn" id="doLogin" data-i18n="login_btn">Login</button>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ========= Language/i18n ========= */
+const i18n = {
+  en:{
+    nav_about:"Overview", nav_docs:"Documents", nav_nft:"NFT", nav_crowd:"Crowdfunding", nav_contact:"Contact",
+    login:"Login",
+    hero_sup:"Diamond‑anchored digital value",
+    hero_sub:"A modern, transparent asset layer inspired by the timeless resilience of diamonds. Built for real‑world utility, trust, and long‑term alignment.",
+    cta_learn:"Learn more", cta_docs:"Whitepaper & Marketing Map", cta_cert:"Investor Certificate",
+    about_title:"Why DIA‑10", about_copy:"Simple thesis: strong brand + disciplined tokenomics + clear backing narrative. DIA‑10 aims to blend scarcity signals (diamonds) with modern, auditable rails.",
+    about_t1:"1,000,000 max supply, 18 decimals", about_t2:"Access, staking, gated docs, governance experiments", about_t3:"NFT tie‑ins, crowdfund rails, optional RWA bridges",
+    about_pitch_t:"Elevator Pitch", about_pitch:"DIA‑10 is a diamond‑inspired digital asset designed for resilience and clarity. We pair a timeless store‑of‑value narrative with practical web3 tooling—so individuals and partners can coordinate, fund, and build with confidence.",
+    about_note:"*Not financial advice. DIA‑10 is an experimental project; always assess risks.",
+    docs_map_t:"Marketing & Concept Map", docs_map_d:"Download the printable PDF—brand, tokenomics, and positioning at a glance.", download:"Download", docs_wp_d:"Full rationale, mechanics, and roadmap. Updated iteratively.",
+    docs_cert_t:"Investor Certificate", docs_cert_d:"Generate a numbered PDF certificate after purchase confirmation.", open:"Open",
+    nft_d:"Branded DIA‑10 collectibles with on‑chain provenance. Early supporter perks and gated utilities.", view_gallery:"View gallery",
+    live_t:"Live Data", live_d:"Pull basic chain data (placeholder). Replace with your RPC & contract.",
+    crowd_t:"Crowdfunding (coming soon)", crowd_d:"Tiered allocations, vesting options, and transparent dashboards. Join the waitlist to be notified on launch.", join:"Join",
+    contact_t:"Contact",
+    login_title:"Member Login", login_user:"Email", login_pass:"Password", remember:"Remember", login_btn:"Login",
+	// innerhalb i18n.en
+nav_markus:"About Markus",
+markus_title:"About Markus Goffin",
+markus_intro:"With 35+ years in jewelry & diamonds, I blend product, brand and go‑to‑market with an international network (Antwerp & Israel). I’ve built companies, positioned brands, and shipped innovations—now focused on DIA‑10.",
+markus_highlights_t:"Highlights",
+markus_h1:"Innovation: “Ruby in the ring’s inner rail®” (international patent) & “The ring that attracts®”.",
+markus_h2:"Company building: MODEGO, AMORE DUE®, co‑owner DORA® (Istanbul); CI/marketing leadership & trade shows.",
+markus_h3:"Network: deep ties across Antwerp & Israel for diamond trade & expertise.",
+markus_h4:"Education: Diamonds, gemstones, goldsmithing & watchmaking; marketing, web design & consulting.",
+markus_h5:"Bridge builder: real‑world value (diamonds) × modern blockchain — clear narrative, audited processes.",
+markus_motto:"Motto: “Real values deserve real vision.”",
+markus_profile_t:"Profile & Contact",
+markus_role:"Founder & Strategy Lead DIA‑10",
+markus_expertise:"Diamonds, Branding, Tokenomics, GTM",
+markus_network:"Antwerp • Israel • EU",
+markus_cv:"Download Profile (PDF)",
+markus_contact:"Contact"
+  },
+  de:{
+    nav_about:"Überblick", nav_docs:"Dokumente", nav_nft:"NFT", nav_crowd:"Crowdfunding", nav_contact:"Kontakt",
+    login:"Login",
+    hero_sup:"Diamant‑gestützter digitaler Wert",
+    hero_sub:"Ein modernes, transparentes Asset‑Layer – inspiriert von der Beständigkeit von Diamanten. Für Praxisnutzen, Vertrauen und Langfristorientierung.",
+    cta_learn:"Mehr erfahren", cta_docs:"Whitepaper & Marketing‑Mappe", cta_cert:"Investor‑Zertifikat",
+    about_title:"Warum DIA‑10", about_copy:"Einfache These: starke Marke + disziplinierte Tokenomics + klares Narrativ. DIA‑10 verbindet Knappheitssignale (Diamanten) mit modernen, prüfbaren Rails.",
+    about_t1:"1.000.000 Max Supply, 18 Dezimalstellen", about_t2:"Access, Staking, geschützte Dokumente, Governance‑Experimente", about_t3:"NFT‑Anbindung, Crowdfunding‑Rails, optionale RWA‑Brücken",
+    about_pitch_t:"Elevator Pitch", about_pitch:"DIA‑10 ist ein diamantinspiriertes Digital‑Asset für Resilienz und Klarheit. Zeitloses Value‑Narrativ trifft auf praktisches Web3‑Tooling – für koordiniertes Bauen und Finanzieren.",
+    about_note:"*Keine Anlageberatung. DIA‑10 ist experimentell; Risiken eigenständig prüfen.",
+    docs_map_t:"Marketing‑ & Konzeptmappe", docs_map_d:"Druckbares PDF – Marke, Tokenomics & Positionierung auf einen Blick.", download:"Download", docs_wp_d:"Begründung, Mechanik, Roadmap – iterativ aktualisiert.",
+    docs_cert_t:"Investor‑Zertifikat", docs_cert_d:"Nummeriertes PDF‑Zertifikat nach Zahlungseingang generieren.", open:"Öffnen",
+    nft_d:"Gebrandete DIA‑10‑Collectibles mit On‑Chain‑Provenienz. Perks für Early Supporter und gated Utilities.", view_gallery:"Galerie ansehen",
+    live_t:"Live‑Daten", live_d:"Einfache Chain‑Daten (Platzhalter). Mit deinem RPC & Vertrag ersetzen.",
+    crowd_t:"Crowdfunding (bald)", crowd_d:"Gestaffelte Allokationen, Vesting und transparente Dashboards. Warteliste beitreten.", join:"Beitreten",
+    contact_t:"Kontakt",
+    login_title:"Login", login_user:"E‑Mail", login_pass:"Passwort", remember:"Merken", login_btn:"Login",
+	// innerhalb i18n.de
+nav_markus:"Über Markus",
+markus_title:"Über Markus Goffin",
+markus_intro:"Über 35 Jahre Schmuck‑ & Diamantenpraxis: Produkt, Marke, Vertrieb und internationales Netzwerk (Antwerpen & Israel). Ich habe Unternehmen aufgebaut, Marken positioniert und Innovationen umgesetzt – heute fokussiert in DIA‑10.",
+markus_highlights_t:"Highlights",
+markus_h1:"Innovation: „Rubin in der Ringinnenschiene®“ (internationales Patent) & „Der Trauring der anzieht®“.",
+markus_h2:"Unternehmensaufbau: MODEGO, AMORE DUE®, Mitinhaber DORA® (Istanbul); CI/Marketing‑Leitung & Messen.",
+markus_h3:"Netzwerk: starke Verbindungen nach Antwerpen & Israel (Diamantenhandel/Expertise).",
+markus_h4:"Weiterbildung: Diamant‑, Edelstein‑, Goldschmiede‑ & Uhrmacherkunde; Marketing, Webdesign & Beratung.",
+markus_h5:"Brückenbauer: echte Werte (Diamanten) × moderne Blockchain – klares Narrativ, geprüfte Prozesse.",
+markus_motto:"Motto: „Echte Werte verdienen echte Visionen.“",
+markus_profile_t:"Kurzprofil & Kontakt",
+markus_role:"Gründer & Strategy Lead DIA‑10",
+markus_expertise:"Diamanten, Branding, Tokenomics, Go‑to‑Market",
+markus_network:"Antwerpen • Israel • EU",
+markus_cv:"Profil als PDF",
+markus_contact:"Kontakt"
+  },
+  ro:{
+    nav_about:"Prezentare", nav_docs:"Documente", nav_nft:"NFT", nav_crowd:"Crowdfunding", nav_contact:"Contact",
+    login:"Autentificare",
+    hero_sup:"Valoare digitală ancorată în diamant",
+    hero_sub:"Un strat modern, transparent, inspirat de reziliența atemporală a diamantelor. Utilitate reală, încredere și aliniere pe termen lung.",
+    cta_learn:"Află mai mult", cta_docs:"Whitepaper & Harta Marketing", cta_cert:"Certificat Investitor",
+    about_title:"De ce DIA‑10", about_copy:"Teză simplă: brand puternic + tokenomics disciplinat + narativ clar. DIA‑10 combină semnalele de raritate (diamante) cu infrastructură modernă și auditabilă.",
+    about_t1:"1.000.000 supply maxim, 18 zecimale", about_t2:"Access, staking, documente restricționate, experimente de guvernanță", about_t3:"NFT, mecanisme de crowdfunding, punți RWA opționale",
+    about_pitch_t:"Elevator Pitch", about_pitch:"DIA‑10 este un activ digital inspirat de diamante, creat pentru reziliență și claritate. Îmbină o poveste de valoare atemporală cu instrumente web3 practice.",
+    about_note:"*Nu constituie consultanță financiară. Proiect experimental; evaluați riscurile.",
+    docs_map_t:"Harta Marketing & Concept", docs_map_d:"PDF imprimabil — brand, tokenomics și poziționare pe scurt.", download:"Descarcă", docs_wp_d:"Raționament, mecanică și roadmap — actualizări iterative.",
+    docs_cert_t:"Certificat Investitor", docs_cert_d:"Generează PDF numerotat după confirmarea plății.", open:"Deschide",
+    nft_d:"Colecții DIA‑10 cu proveniență on‑chain. Beneficii pentru susținătorii timpurii.", view_gallery:"Vezi galeria",
+    live_t:"Date Live", live_d:"Date on‑chain de bază (exemplu). Înlocuiește cu RPC/contractul tău.",
+    crowd_t:"Crowdfunding (în curând)", crowd_d:"Alocări pe niveluri, vesting și dashboard transparent. Înscrie‑te pe lista de așteptare.", join:"Înscrie‑mă",
+    contact_t:"Contact",
+    login_title:"Autentificare", login_user:"Email", login_pass:"Parolă", remember:"Reține", login_btn:"Intră",
+	// innerhalb i18n.ro
+nav_markus:"Despre Markus",
+markus_title:"Despre Markus Goffin",
+markus_intro:"Peste 35 de ani în bijuterii & diamante: produs, brand, vânzări și rețea internațională (Anvers & Israel). Am construit companii, am poziționat branduri și am livrat inovații — acum, focalizat pe DIA‑10.",
+markus_highlights_t:"Repere",
+markus_h1:"Inovație: „Rubin pe șina interioară a inelului®” (patent internațional) & „Inelul care atrage®”.",
+markus_h2:"Construirea afacerii: MODEGO, AMORE DUE®, co‑owner DORA® (Istanbul); leadership CI/marketing & târguri.",
+markus_h3:"Rețea: conexiuni solide în Anvers & Israel pentru tranzacții și expertiză în diamante.",
+markus_h4:"Formare: diamante, pietre prețioase, orfevrărie & ceasornicărie; marketing, web design & consultanță.",
+markus_h5:"Conector: valoare reală (diamante) × blockchain modern — narativ clar, procese auditate.",
+markus_motto:"Motto: „Valorile reale merită viziuni reale.”",
+markus_profile_t:"Profil & Contact",
+markus_role:"Fondator & Strategy Lead DIA‑10",
+markus_expertise:"Diamante, Branding, Tokenomics, GTM",
+markus_network:"Anvers • Israel • UE",
+markus_cv:"Descarcă Profil (PDF)",
+markus_contact:"Contact"
+  }
+};
+let currentLang = 'en';
+function applyLang(lang){
+  currentLang = lang;
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+
+    const key = el.getAttribute('data-i18n');
+    if(i18n[lang][key]) el.textContent = i18n[lang][key];
+  });
+  document.querySelectorAll('.langbtn').forEach(b=>b.classList.toggle('active', b.dataset.lang===lang));
+}
+document.querySelectorAll('.langbtn').forEach(btn=>btn.addEventListener('click',()=>applyLang(btn.dataset.lang)));
+applyLang('en');
+
+document.getElementById('year').textContent = new Date().getFullYear();
+
+/* ========= Login (demo) ========= */
+const modal = document.getElementById('loginModal');
+document.getElementById('openLogin').onclick = () => modal.classList.add('open');
+document.getElementById('closeLogin').onclick = () => modal.classList.remove('open');
+document.getElementById('doLogin').onclick = () => {
+  const email = document.getElementById('loginEmail').value.trim();
+  const pass = document.getElementById('loginPass').value.trim();
+  const err = document.getElementById('loginErr');
+  if(!email || !pass){ err.textContent = 'Missing credentials.'; return; }
+  err.textContent = '';
+  if(document.getElementById('remember').checked){
+    localStorage.setItem('dia10_user', email);
+  }
+  modal.classList.remove('open');
+  alert('Logged in (demo). Gate your premium pages here.');
+};
+
+/* ========= Waitlist (demo) ========= */
+document.getElementById('joinWait').onclick = ()=>{
+  const email = document.getElementById('waitEmail').value.trim();
+  const msg = document.getElementById('waitMsg');
+  if(!email){ msg.textContent = 'Enter a valid email.'; return; }
+  msg.textContent = 'Thanks! You are on the list.';
+};
+
+/* ========= Particles Background ========= */
+const c = document.getElementById('bgParticles');
+const ctx = c.getContext('2d');
+let w,h,particles=[];
+function resize(){ w = c.width = window.innerWidth; h = c.height = Math.max(window.innerHeight*0.92, 560); }
+window.addEventListener('resize', resize); resize();
+
+function makeParticles(){
+  particles = Array.from({length: 90}, ()=>({
+    x: Math.random()*w,
+    y: Math.random()*h,
+    r: Math.random()*2 + .6,
+    vx: (Math.random()-.5)*0.4,
+    vy: (Math.random()-.5)*0.4
+  }));
+}
+makeParticles();
+
+function step(){
+  ctx.clearRect(0,0,w,h);
+  // draw links
+  for(let i=0;i<particles.length;i++){
+    const p = particles[i];
+    p.x+=p.vx; p.y+=p.vy;
+    if(p.x<0||p.x>w) p.vx*=-1;
+    if(p.y<0||p.y>h) p.vy*=-1;
+    ctx.beginPath();
+    ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+    ctx.fillStyle = 'rgba(121, 196, 255,.9)';
+    ctx.fill();
+    // connections
+    for(let j=i+1;j<particles.length;j++){
+      const q = particles[j];
+      const dx = p.x-q.x, dy = p.y-q.y;
+      const dist = Math.hypot(dx,dy);
+      if(dist<110){
+        ctx.strokeStyle = 'rgba(121,196,255,.07)';
+        ctx.lineWidth=1;
+        ctx.beginPath();
+        ctx.moveTo(p.x,p.y); ctx.lineTo(q.x,q.y); ctx.stroke();
+      }
+    }
+  }
+  requestAnimationFrame(step);
+}
+step();
+
+/* ========= Live Data placeholders ========= */
+/* Replace with a real call to your backend or RPC */
+document.getElementById('netName').textContent = 'Ethereum (demo)';
+document.getElementById('totSupply').textContent = '1,000,000 DIA‑10';
+document.getElementById('holders').textContent = '—';
+
+/* Smooth scroll (for nicer feel) */
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click', e=>{
+    const id = a.getAttribute('href');
+    if(id.length>1){
+      e.preventDefault();
+      document.querySelector(id).scrollIntoView({behavior:'smooth', block:'start'});
+    }
+  });
+});
+</script>
+
+<script>
+/* ========= Über Markus: Inhalte in 3 Sprachen ========= */
+const mkContent = {
+  de: {
+    timeline: `
+<b>1985–2001 — Juwelier Walter Goffin (Düsseldorf)</b><br>
+Einzelhandelskaufmann. Umbau & Aufbau des Unternehmens (hochwertiger Juwelenschmuck).<br>
+• Gründung MODEGO (Import/Verkauf Modeschmuck, Seoul)<br>
+• 1994 Prokura<br>
+• Gründung AMORE DUE® (Trauring‑Großhandel; Produktion/Import Istanbul)<br>
+• Erfinder: <i>Rubin in der Ringinnenschiene®</i> (internationales Patent)<br>
+• Mitinhaber Trauringfirma DORA® (Istanbul)<br><br>
+
+<b>2001–2003 — Inhaber Juwelier Walter Goffin</b><br><br>
+
+<b>2003–2004 — M&H/Goffin (Neuss) — Berater/Vertriebsmanager</b><br>
+• Regionale Leitung Einzelhandel (hochwertiger Echtschmuck), Groß‑ & Einzelhandel<br>
+• Beratung/Kontaktvermittlung für Priyal’s Import/Export (Düsseldorf) — Türkei→China<br>
+• Betreuung von ~100 Juwelieren (Trauring‑Großhandel)<br><br>
+
+<b>2004–2009 — Moderne Juwelier/Goffin (Düsseldorf/Neuss)</b><br>
+Leitender/beratender Mitarbeiter: Konzept, Umsetzung, Marketingleitung, Filialaufbau Düsseldorf & Neuss.<br>
+Neues Verkaufstraining → deutliche Rentabilitätssteigerung.<br><br>
+
+<b>2009–2010 — H&S/Goffin (Neuss) — Beratung & Design</b><br>
+Konzept/Umsetzung/Marketing, Verkaufsschulung, Mitinhaber (Schmuckdesigner), Aufbau Designerlabel & Onlineshop.<br><br>
+
+<b>07–12/2010 — CILOR® Trauringe (Pohlheim) — Projekt‑Vertrieb & Marketingdirektor</b><br>
+• Erfinder: <i>DER TRAURING DER ANZIEHT®</i> (magnetische Trauringe)<br>
+• Neues CI, Web‑Auftritt (Lead‑Design), Regie Kino‑Spots MAGNAT®<br>
+• Messeplanung (Leipzig/Salzburg/München), Personaltraining, Vertriebsleitung<br>
+• Aussprache‑/Rhetoriktraining (Geschäftsführung)<br><br>
+
+<b>Zusatzausbildung</b><br>
+Diamanten‑/Edelsteinkunde (Antwerpen, Idar‑Oberstein), Goldschmiede‑ & Uhrmacherkunde (Pforzheim, Düsseldorf), Marketing/Webdesign, Import‑Export, IHK Rhetorik, Management‑Motivation.<br>
+Spezialgebiet: Konzepte, Marketing, Unternehmensberatung, Verkaufsstrategien.<br>
+Mehr: <a href="https://99-i.com/about.html" target="_blank">99‑i.com/about</a> • <a href="https://mgoffin.com/" target="_blank">mgoffin.com</a>
+    `,
+    bio: `
+<b>Markus Goffin – Visionär, Stratege und Innovator in der Welt der Wertschöpfung</b><br>
+Mit über 35&nbsp;Jahren Erfahrung in der Schmuck- und Diamantenbranche vereine ich tiefes Fachwissen über Edelmetalle, Edelsteine und Diamanten mit einer nachweislichen Erfolgsbilanz in Unternehmensaufbau, Markenentwicklung und internationalen Handelsbeziehungen.<br><br>
+Bereits in den 1980er-Jahren begann ich meine Karriere bei Juwelier Walter Goffin in Düsseldorf, wo ich nicht nur den Umbau und die strategische Neupositionierung leitete, sondern auch innovative Produkte wie den „Rubin in der Ringinnenschiene®“ entwickelte und erfolgreich international patentieren ließ. Meine engen Geschäftsbeziehungen nach Antwerpen und Israel, den weltweit führenden Handelszentren für Diamanten, bildeten die Grundlage für ein belastbares globales Netzwerk, das bis heute besteht.<br><br>
+Im Laufe meiner Karriere habe ich:<br>
+• Mehrere eigene Unternehmen gegründet, darunter MODEGO, AMORE DUE® und DORA® – vom Design über Produktion bis hin zum internationalen Vertrieb.<br>
+• Innovationen wie den TRAURING DER ANZIEHT® (magnetische Trauringe) entwickelt und erfolgreich vermarktet.<br>
+• Große Marken beim Aufbau ihrer Corporate Identity, Marketingstrategien und Verkaufsprozesse beraten.<br>
+• Internationale Messen geplant, geleitet und durch gezielte Kampagnen die Marktpräsenz erheblich gesteigert.<br><br>
+Neben meiner Praxis habe ich mich kontinuierlich weitergebildet – in Diamantenkunde (Antwerpen), Edelsteinkunde (Idar-Oberstein), Goldschmiedekunst, Uhrmacherkunde, Marketing, Webdesign und Unternehmensberatung. Diese einzigartige Mischung aus technischem Fachwissen und unternehmerischer Kompetenz ermöglicht es mir, komplexe Projekte von der Idee bis zur globalen Markteinführung zu steuern.<br><br>
+Mit DIA-10 verbinde ich mein tiefes Verständnis für den tatsächlichen Wert von Diamanten mit den Möglichkeiten der Blockchain-Technologie. Mein Ziel ist es, eine Kryptowährung zu schaffen, die nicht nur digital innovativ, sondern auch durch die zeitlose Stabilität und Seltenheit von Diamanten inspiriert ist – ein Projekt, das Anlegern Vertrauen, Transparenz und nachhaltigen Wert bietet.
+    `,
+    core: [
+      "Strategische Markenentwicklung & Corporate Identity",
+      "Internationale Handels- und Lieferkettenkoordination",
+      "Innovationsmanagement & Produktentwicklung",
+      "Marketingstrategien mit psychologischer Wirkung",
+      "Blockchain-Integration im Bereich wertbasierter Assets",
+      "Investor Relations & Business Development",
+      "Motto: „Echte Werte verdienen echte Visionen.“"
+    ]
+  },
+  en: {
+    timeline: `
+<b>1985–2001 — Walter Goffin Jeweler (Düsseldorf)</b><br>
+Retail specialist; rebuilt & repositioned a high‑end jewelry house.<br>
+• Founded MODEGO (fashion jewelry imports, Seoul)<br>
+• Procuration in 1994<br>
+• Founded AMORE DUE® (wedding bands wholesale; Istanbul production/import)<br>
+• Inventor: <i>Ruby set inside the ring band®</i> (international patent)<br>
+• Co‑owner of DORA® wedding bands (Istanbul)<br><br>
+
+<b>2001–2003 — Owner, Walter Goffin Jeweler</b><br><br>
+
+<b>2003–2004 — M&H/Goffin (Neuss) — Consultant / Sales Manager</b><br>
+• Regional retail lead (fine jewelry), B2B & B2C<br>
+• Consulting for Priyal’s Import/Export (Düsseldorf) — Turkey → China<br>
+• Managed ~100 jewelers (wedding bands wholesale)<br><br>
+
+<b>2004–2009 — Moderne Juwelier/Goffin (Düsseldorf/Neuss)</b><br>
+Lead advisor: concept, execution, marketing, store roll‑outs; sales training with significant profitability uplift.<br><br>
+
+<b>2009–2010 — H&S/Goffin (Neuss)</b><br>
+Concept, go‑to‑market, marketing leadership, sales training; co‑owner & jewelry designer; built designer label & e‑commerce.<br><br>
+
+<b>07–12/2010 — CILOR® Wedding Bands (Pohlheim) — Project Sales & Marketing Director</b><br>
+• Inventor: <i>THE RING THAT ATTRACTS®</i> (magnetic bands)<br>
+• New CI, web lead‑design, cinema spots (MAGNAT®) direction<br>
+• Trade fairs (Leipzig/Salzburg/Munich), training, sales leadership<br>
+• Executive speech/rhetoric coaching<br><br>
+
+<b>Further training</b><br>
+Diamonds/Gemology (Antwerp, Idar‑Oberstein), goldsmithing & watchmaking, marketing/web, import‑export, public speaking, management motivation. Focus: concept creation, brand/marketing, consulting, sales strategies.<br>
+More: <a href="https://99-i.com/about.html" target="_blank">99‑i.com/about</a> • <a href="https://mgoffin.com/" target="_blank">mgoffin.com</a>
+    `,
+    bio: `
+<b>Markus Goffin – Visionary, Strategist, and Innovator in the World of Value Creation</b><br>
+With over 35&nbsp;years in the jewelry and diamond industry, I combine deep expertise in precious metals, gemstones, and diamonds with a proven track record in business development, brand building, and international trade relations.<br><br>
+My career began in the 1980s at Walter Goffin Jeweler in Düsseldorf, where I not only led the restructuring and strategic repositioning of the business but also developed innovative products such as the “Ruby inside the ring band®”, securing an international patent. My close business relationships with Antwerp and Israel — the world’s leading diamond trading hubs — laid the foundation for a robust global network that continues today.<br><br>
+Throughout my career I have:<br>
+• Founded multiple companies, including MODEGO, AMORE DUE®, and DORA® — from design and production to international sales.<br>
+• Created and successfully marketed innovations such as THE RING THAT ATTRACTS® (magnetic wedding bands).<br>
+• Advised major brands on corporate identity, marketing strategies, and sales processes.<br>
+• Planned and directed international trade fairs, significantly increasing market presence through targeted campaigns.<br><br>
+In addition to hands-on work, I have continuously trained in diamond grading (Antwerp), gemology (Idar-Oberstein), goldsmithing, watchmaking, marketing, web design, and business consulting. This unique combination of technical mastery and entrepreneurial competence allows me to steer complex projects from concept to global launch.<br><br>
+With DIA-10, I merge my deep understanding of the intrinsic value of diamonds with the capabilities of blockchain technology. My goal is to create a cryptocurrency that is not only digitally innovative but also inspired by the timeless stability and rarity of diamonds — a project offering investors trust, transparency, and lasting value.
+    `,
+    core: [
+      "Strategic brand development & corporate identity",
+      "International trade and supply-chain coordination",
+      "Innovation management & product development",
+      "Psychology-driven marketing strategies",
+      "Blockchain integration for value-based assets",
+      "Investor relations & business development",
+      "Motto: “True values deserve true visions.”"
+    ]
+  },
+
+  ro: {
+    timeline: `
+<b>1985–2001 — Bijutier Walter Goffin (Düsseldorf)</b><br>
+Comerț cu amănuntul; reconstrucție & repoziționare a unei case de bijuterii high‑end.<br>
+• Fondator MODEGO (import bijuterii fashion, Seul)<br>
+• Procură în 1994<br>
+• Fondator AMORE DUE® (verighete angro; producție/import Istanbul)<br>
+• Inventator: <i>Rubin în interiorul inelului®</i> (brevet internațional)<br>
+• Co‑proprietar DORA® (verighete, Istanbul)<br><br>
+
+<b>2001–2003 — Proprietar, Bijutier Walter Goffin</b><br><br>
+
+<b>2003–2004 — M&H/Goffin (Neuss) — Consultant / Manager vânzări</b><br>
+• Coordonare regională retail (bijuterii fine), B2B & B2C<br>
+• Consultanță pentru Priyal’s Import/Export (Düsseldorf) — Turcia → China<br>
+• ~100 bijutieri gestionați (angro verighete)<br><br>
+
+<b>2004–2009 — Moderne Juwelier/Goffin (Düsseldorf/Neuss)</b><br>
+Consultant principal: concept, execuție, marketing, deschidere magazine; training vânzări cu creștere semnificativă a profitabilității.<br><br>
+
+<b>2009–2010 — H&S/Goffin (Neuss)</b><br>
+Concept, go‑to‑market, marketing, training; co‑proprietar & designer; label de design & e‑commerce.<br><br>
+
+<b>07–12/2010 — CILOR® Verighete (Pohlheim) — Director proiecte vânzări & marketing</b><br>
+• Inventator: <i>INELELE CARE ATRAG®</i> (verighete magnetice)<br>
+• CI nou, web lead‑design, spoturi cinema (MAGNAT®)<br>
+• Târguri (Leipzig/Salzburg/München), training, leadership vânzări<br>
+• Coaching vorbire/retorică management<br><br>
+
+<b>Formare suplimentară</b><br>
+Diamantologie/Gemologie (Anvers, Idar‑Oberstein), orfevrerie & ceasornicărie, marketing/web, import‑export, vorbire publică. Focus: concepte, brand/marketing, consultanță, strategii de vânzare.<br>
+Mai mult: <a href="https://99-i.com/about.html" target="_blank">99‑i.com/about</a> • <a href="https://mgoffin.com/" target="_blank">mgoffin.com</a>
+    `,
+    bio: `
+<b>Markus Goffin – Vizionar, strateg și inovator în lumea creării de valoare</b><br>
+Cu peste 35&nbsp;de ani în industria bijuteriilor și diamantelor, combin expertiza profundă în metale prețioase, pietre prețioase și diamante cu un istoric dovedit în dezvoltarea afacerilor, crearea de branduri și relații comerciale internaționale.<br><br>
+Cariera mea a început în anii 1980 la Bijutierul Walter Goffin din Düsseldorf, unde nu doar am condus restructurarea și repoziționarea strategică a afacerii, ci am dezvoltat și produse inovatoare precum „Rubinul în interiorul inelului®”, obținând un brevet internațional. Relațiile mele strânse cu Anvers și Israel — principalele centre comerciale de diamante din lume — au pus bazele unei rețele globale solide care continuă și astăzi.<br><br>
+De-a lungul carierei mele am:<br>
+• Fondat mai multe companii, inclusiv MODEGO, AMORE DUE® și DORA® — de la design și producție la vânzări internaționale.<br>
+• Creat și comercializat cu succes inovații precum INELUL CARE ATRAGE® (verighete magnetice).<br>
+• Consiliat branduri importante în dezvoltarea identității corporative, strategii de marketing și procese de vânzări.<br>
+• Planificat și condus târguri internaționale, crescând semnificativ prezența pe piață prin campanii direcționate.<br><br>
+Pe lângă activitatea practică, m-am format continuu în diamantologie (Anvers), gemologie (Idar-Oberstein), orfevrerie, ceasornicărie, marketing, design web și consultanță de afaceri. Această combinație unică de competență tehnică și spirit antreprenorial îmi permite să gestionez proiecte complexe de la idee până la lansarea globală.<br><br>
+Cu DIA-10 îmbin înțelegerea mea profundă a valorii intrinseci a diamantelor cu posibilitățile tehnologiei blockchain. Obiectivul meu este să creez o criptomonedă nu doar inovatoare digital, ci și inspirată de stabilitatea și raritatea atemporală a diamantelor — un proiect care oferă investitorilor încredere, transparență și valoare durabilă.
+    `,
+    core: [
+      "Dezvoltarea strategică a brandului & identitate corporativă",
+      "Comerț internațional și coordonarea lanțului de aprovizionare",
+      "Managementul inovației & dezvoltare de produs",
+      "Strategii de marketing cu impact psihologic",
+      "Integrare blockchain pentru active bazate pe valoare",
+      "Relații cu investitorii & dezvoltarea afacerii",
+      "Motto: „Valorile reale merită viziuni reale.”"
+    ]
+  }
+};
+
+function renderMarkus(lang='en'){
+  const t = mkContent[lang] || mkContent.en;
+  document.getElementById('mk_timeline').innerHTML = t.timeline;
+  document.getElementById('mk_bio').innerHTML = t.bio;
+
+  const core = document.getElementById('mk_core');
+  core.innerHTML = '';
+  t.core.forEach(item=>{
+    const li = document.createElement('li');
+    li.textContent = item;
+    core.appendChild(li);
+  });
+}
+
+/* Beim Sprachwechsel zusätzlich den Markus‑Block erneuern */
+const _applyLangOriginal = applyLang;
+applyLang = function(lang){
+  _applyLangOriginal(lang);
+  renderMarkus(lang);
+};
+
+/* Initial rendern passend zur Startsprache */
+renderMarkus(currentLang || 'en');
+</script>
+
+<script>
+/* ===== Sponsors Data =====
+   Einfach neue Einträge ergänzen: { name, url, tag_de/en/ro, logo }
+   - logo: Pfad (z.B. "images/partners/acme.svg") oder Data-URI
+*/
+const SPONSORS = [
+  {
+    name: "Your Company",
+    url: "https://example.com",
+    tag_en: "Diamond dealer • Antwerp",
+    tag_de: "Diamanthändler • Antwerpen",
+    tag_ro: "Dealer de diamante • Anvers",
+    logo: "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 80'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0' stop-color='%238fb8ff'/><stop offset='1' stop-color='%237fb3ff'/></linearGradient></defs><rect width='200' height='80' rx='12' fill='url(%23g)'/><text x='100' y='46' font-family='Inter, Arial' font-size='16' font-weight='800' fill='white' text-anchor='middle'>YOUR COMPANY</text></svg>"
+  },
+  {
+    name: "Antwerp Diamonds Group",
+    url: "https://example.com/adg",
+    tag_en: "Tier-1 sourcing partner",
+    tag_de: "Tier-1 Sourcing-Partner",
+    tag_ro: "Partener de sourcing Tier-1",
+    logo: "partners/images/dia10.svg"
+  },
+  {
+    name: "Bursa Tel-Aviv Gems",
+    url: "https://example.com/btg",
+    tag_en: "Cut & certification",
+    tag_de: "Schliff & Zertifizierung",
+    tag_ro: "Șlefuire & certificare",
+    logo: "partners/images/DIA10_the_hardest_currency_on_earth_by_markus_goffin.png"
+  }
+];
+
+/* ===== Build marquee ===== */
+function sponsorTaglineFor(lang, item){
+  if(lang==='de' && item.tag_de) return item.tag_de;
+  if(lang==='ro' && item.tag_ro) return item.tag_ro;
+  return item.tag_en || item.tag_de || item.tag_ro || '';
+}
+function buildSponsors(){
+  const track = document.getElementById('sponsorTrack');
+  if(!track) return;
+  const lang = (window.currentLang || 'en').toLowerCase();
+  // Clear
+  track.innerHTML = '';
+  // Create one set
+  const fragment = document.createDocumentFragment();
+  for(const s of SPONSORS){
+    const a = document.createElement('a');
+    a.className = 'sponsor-card'; a.href = s.url; a.target = '_blank'; a.rel = 'noopener';
+    a.setAttribute('aria-label', s.name);
+
+    const wrap = document.createElement('div');
+    wrap.className = 'sponsor-logo-wrap';
+    const img = document.createElement('img');
+    img.className = 'sponsor-logo';
+    img.alt = `${s.name} logo`;
+    img.src = s.logo;
+    wrap.appendChild(img);
+
+    const meta = document.createElement('div'); meta.className='sponsor-meta';
+    const n = document.createElement('div'); n.className='sponsor-name'; n.textContent = s.name;
+    const t = document.createElement('div'); t.className='sponsor-tag'; t.textContent = sponsorTaglineFor(lang, s);
+    meta.append(n,t);
+
+    a.append(wrap, meta);
+    fragment.appendChild(a);
+  }
+  // Duplicate for seamless loop (total width ≈ 2x)
+  const set1 = document.createElement('div');
+  const set2 = document.createElement('div');
+  set1.style.display = set2.style.display = 'contents'; // keep flex children
+  set1.appendChild(fragment);
+  // clone nodes for second set
+  set2.innerHTML = set1.innerHTML;
+  track.append(set1, set2);
+
+  // Dynamische Geschwindigkeit: 12s pro 1000px (gefühlt)
+  requestAnimationFrame(()=>{
+    const totalWidth = [...track.children].reduce((w,child)=>w + child.getBoundingClientRect().width, 0);
+    const px = track.scrollWidth || totalWidth;
+    const seconds = Math.max(18, Math.round(px * 0.012)); // 12ms/px ≈ 12s/1000px
+    track.style.setProperty('--speed', seconds+'s');
+  });
+}
+// Pause bei Touch (mobil)
+(function(){
+  const track = document.getElementById('sponsorTrack');
+  if(!track) return;
+  let touching=false;
+  track.addEventListener('touchstart', ()=>{ touching=true; track.style.animationPlayState='paused'; }, {passive:true});
+  track.addEventListener('touchend',   ()=>{ touching=false; track.style.animationPlayState='running'; }, {passive:true});
+})();
+
+// Rebuild on language change (dein applyLang setzt window.currentLang)
+(function hookLang(){
+  const btns = document.querySelectorAll('.langbtn');
+  btns.forEach(b=> b.addEventListener('click', ()=> setTimeout(buildSponsors, 0)));
+})();
+window.addEventListener('load', buildSponsors);
+window.addEventListener('resize', ()=>{
+  // nur Geschwindigkeit neu berechnen, ohne Animation zu entfernen
+  buildSponsors();
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,521 @@
+<!-- Hello, my name is Markus Goffin 
+🇩🇪 Deutsch
+
+Ideen- und Konzeptinhaber von DIA-10
+Markus Goffin ist der alleinige Urheber und Inhaber der ursprünglichen Idee, des Namens, des Konzepts sowie der Markenidentität von DIA-10 – einer diamant­inspirierten Kryptowährung. Die Entwicklung, Gestaltung und strategische Ausrichtung des Projekts basieren ausschließlich auf seiner kreativen und unternehmerischen Arbeit.
+
+🇬🇧 English
+
+Creator and Concept Owner of DIA-10
+Markus Goffin is the sole originator and owner of the idea, name, concept, and brand identity of DIA-10 — a diamond-inspired cryptocurrency. The project’s development, design, and strategic direction are entirely based on his creative vision and entrepreneurial expertise.
+
+🇷🇴 Română
+
+Autor și deținător al conceptului DIA-10
+Markus Goffin este inițiatorul și proprietarul exclusiv al ideii, numelui, conceptului și identității de brand DIA-10 — o criptomonedă inspirată de diamante. Dezvoltarea, designul și direcția strategică a proiectului se bazează în întregime pe viziunea sa creativă și expertiza sa antreprenorială.
+--> 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<meta charset="by Markus Goffin, 09.08.2025"> 
+<meta charset="last update Markus Goffin, 10.08.2025">
+<meta name="description" content="99i Investment Company offers smart investment solutions to help you secure your financial future. Learn more about our services and investment strategies.">
+<link rel="icon" type="image/x-icon" href="images/99i_favicon_16x16.ico" sizes="16x16">
+<link rel="icon" type="image/x-icon" href="images/99i_favicon_32x32.ico" sizes="32x32">
+<link rel="icon" type="image/x-icon" href="images/99i_favicon_48x48.ico" sizes="48x48">
+<title>DIA‑10 — Whitepaper</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700;800;900&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+<style>
+  :root{
+    --bg:#0a1430;           /* deep navy */
+    --panel:#0d1a3a;        /* card bg */
+    --ink:#f3f7ff;          /* near white */
+    --muted:#b9c7da;
+    --blue:#1b6fff;         /* brand */
+    --cyan:#74c7ff;         /* accent */
+    --silver:#c9d3df;
+    --ok:#11d09a; --warn:#ffcf4a; --bad:#ff6b7a;
+    --radius:16px; --shadow:0 10px 28px rgba(0,0,0,.35);
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0; font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+    background:
+     radial-gradient(900px 600px at 120% -10%, rgba(116,199,255,.12), transparent 60%),
+     radial-gradient(800px 500px at -20% 10%, rgba(27,111,255,.10), transparent 55%),
+     var(--bg);
+    color:var(--ink);
+  }
+  a{color:var(--cyan); text-decoration:none}
+  a:hover{color:#d7eeff}
+
+  /* Top bar */
+  .nav{
+    position:sticky; top:0; z-index:50;
+    display:flex; align-items:center; justify-content:space-between; gap:18px;
+    padding:14px 18px; background:rgba(8,18,44,.7); backdrop-filter:blur(8px);
+    border-bottom:1px solid rgba(255,255,255,.08);
+  }
+  .brand{display:flex; align-items:center; gap:12px; font-weight:900; letter-spacing:.4px}
+  .logo{
+    width:40px; height:40px; border-radius:10px; display:grid; place-items:center;
+    background:linear-gradient(135deg,#0a1d44,#1b6fff 70%,#74c7ff);
+    box-shadow:inset 0 0 0 2px rgba(255,255,255,.06), var(--shadow);
+  }
+  .logo svg{width:26px; height:26px; filter:drop-shadow(0 1px 2px rgba(0,0,0,.4))}
+  .lang{display:flex; gap:8px}
+  .lang button{
+    background:#0a1d44; color:var(--ink); border:1px solid rgba(255,255,255,.12);
+    padding:8px 12px; border-radius:10px; font-weight:700; cursor:pointer
+  }
+  .lang button.active{border-color:var(--cyan); color:#e8f5ff}
+  .btn{
+    background:#12224a; color:var(--ink); border:1px solid rgba(255,255,255,.08);
+    padding:12px 16px; border-radius:12px; font-weight:800; cursor:pointer;
+  }
+  .btn.primary{background:linear-gradient(135deg,var(--blue),#0a84ff); border:none}
+  .btn.print{background:linear-gradient(135deg,#5e738a,#aebccc); color:#0b1329; font-weight:900}
+
+  /* Hero */
+  .hero{
+    padding:40px 18px 0; display:grid; grid-template-columns:1.2fr .8fr; gap:26px;
+  }
+  .hero-card{
+    background:linear-gradient(180deg, rgba(255,255,255,.04), transparent 70%);
+    border:1px solid rgba(255,255,255,.08); border-radius:var(--radius); padding:24px; box-shadow:var(--shadow);
+  }
+  .title{
+    font-size:clamp(42px,7vw,84px); line-height:1.02; margin:10px 0 6px; font-weight:900;
+    background:linear-gradient(180deg,#fff,#d6e9ff 60%,#9dd8ff);
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+  }
+  .subtitle{color:var(--muted); font-size:clamp(18px,2.2vw,24px)}
+  .meta{display:flex; gap:12px; flex-wrap:wrap; margin-top:12px}
+  .tag{font-size:.85rem; background:#0f224a; color:#cfe6ff; border:1px solid rgba(116,199,255,.3); padding:6px 10px; border-radius:10px}
+  .founder{
+    display:grid; grid-template-columns:120px 1fr; gap:16px; align-items:center; margin-top:18px;
+    background:rgba(255,255,255,.02); border:1px solid rgba(255,255,255,.06); border-radius:14px; padding:12px;
+  }
+  .founder img{width:120px; height:120px; object-fit:cover; border-radius:12px; border:2px solid rgba(255,255,255,.08)}
+  .founder .name{font-weight:900; font-size:18px}
+  .founder .role{color:#b9c7da; font-weight:700; font-size:.95rem}
+
+  /* Sections */
+  section{padding:26px 18px; display:flex; justify-content:center}
+  .container{width:min(1200px,100%); display:grid; gap:20px}
+  .panel{
+    background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,0));
+    border:1px solid rgba(255,255,255,.07); border-radius:16px; padding:22px; box-shadow:var(--shadow)
+  }
+  .h2{font-size:28px; font-weight:900; margin:0 0 10px}
+  .p{color:#c9d5e7; margin:0 0 10px}
+  .grid-2{display:grid; grid-template-columns:1fr 1fr; gap:18px}
+  .grid-3{display:grid; grid-template-columns:repeat(3,1fr); gap:18px}
+  @media (max-width:980px){ .hero{grid-template-columns:1fr} .grid-2,.grid-3{grid-template-columns:1fr} }
+
+  .list{display:grid; gap:10px; margin-top:6px}
+  .row{display:flex; align-items:center; gap:10px}
+  .metric{display:flex; flex-direction:column; gap:4px}
+  .metric b{font-size:22px}
+  .small{font-size:.9rem; color:#a7bad1}
+
+  /* Charts wrap */
+  .chart-wrap{background:#0b1a38; border:1px solid rgba(255,255,255,.08); border-radius:14px; padding:14px}
+
+  /* Founder long bio */
+  .bio-cols{display:grid; grid-template-columns:1.1fr .9fr; gap:18px}
+  .bio-img img{width:100%; border-radius:12px; display:block}
+
+  /* Print */
+  @media print{
+    .nav,.btns{display:none !important}
+    body{background:white; color:#000}
+    .panel,.hero-card{box-shadow:none; border:1px solid #ddd}
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<div class="nav">
+  <div class="brand">
+    <div class="logo" aria-hidden="true">
+      <!-- simple diamond glyph -->
+      <svg viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M3 9l9-6 9 6-9 12-9-12zM12 3v18M3 9h18M7 9l5 12m5-12l-5 12"/>
+      </svg>
+    </div>
+    <div>DIA‑10</div>
+  </div>
+  <div class="lang">
+    <button class="lbtn active" data-lang="en">EN</button>
+    <button class="lbtn" data-lang="de">DE</button>
+    <button class="lbtn" data-lang="ro">RO</button>
+  </div>
+  <div class="btns">
+    <a href="index.html" class="btn print">Home</a>&nbsp;&nbsp;
+    <button class="btn print" onclick="window.print()" data-i18n="download_pdf">Download PDF</button>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-card">
+    <div class="tag" data-i18n="whitepaper">Whitepaper</div>
+    <h1 class="title">DIA‑10</h1>
+    <div class="subtitle" data-i18n="tagline">
+      Diamond‑anchored digital value for real‑world trust and long‑term alignment.
+    </div>
+    <div class="meta">
+      <span class="tag" data-i18n="version">v1.0 (Draft)</span>
+      <span class="tag">Ethereum ERC‑20</span>
+      <span class="tag" data-i18n="initial_supply">Initial Supply: 1,000,000</span>
+      <span class="tag">18 decimals</span>
+    </div>
+
+    <div class="founder" style="margin-top:16px">
+      <img src="images/markus_goffin.jpg" alt="Founder portrait"/>
+      <div>
+        <div class="name">Markus Goffin</div>
+        <div class="role" data-i18n="founder_role">Founder & Vision Lead — DIA‑10</div>
+        <div class="small" data-i18n="founder_tag">
+          35+ years in jewelry & diamonds, brand building, and international trade.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-card">
+    <div class="h2" data-i18n="exec_summary_t">Executive Summary</div>
+    <p class="p" data-i18n="exec_summary_1">
+      DIA‑10 proposes a diamond‑inspired digital asset designed to combine a clear scarcity signal with modern, auditable token rails. The project targets practical utility (access control, governance experiments, staking) and a transparent brand narrative.
+    </p>
+    <div class="list">
+      <div class="row"><span class="tag">Utility</span><span class="small" data-i18n="exec_u1">Access to gated resources, staking, governance pilots</span></div>
+      <div class="row"><span class="tag">Tokenomics</span><span class="small" data-i18n="exec_u2">Initial 1,000,000 DIA‑10; future minting via on‑chain governance (no hard cap)</span></div>
+      <div class="row"><span class="tag">Roadmap</span><span class="small" data-i18n="exec_u3">NFT tie‑ins, crowdfunding rails, optional RWA bridges</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEM / SOLUTION -->
+
+<section>
+  <div class="container grid-2">
+    <div class="panel">
+      <div class="h2" data-i18n="problem_t">Problem</div>
+      <p class="p" data-i18n="problem_1">
+        Retail users and partners need assets that are simple to understand, auditable, and culturally resonant. Many tokens lack credible narrative, brand discipline, or clear long‑term alignment.
+      </p>
+    </div>
+    <div class="panel">
+      <div class="h2" data-i18n="solution_t">Solution</div>
+      <p class="p" data-i18n="solution_1">
+        DIA‑10 pairs a diamond‑anchored story with transparent issuance, published wallets/treasury policies, and community‑first distribution—prioritizing trust, clarity, and utility over hype.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- TOKENOMICS & CHARTS -->
+<section>
+  <div class="container grid-2">
+    <div class="panel">
+      <div class="h2" data-i18n="tokenomics_t">Tokenomics</div>
+      <div class="list">
+        <div class="metric"><b>1,000,000</b><span class="small" data-i18n="tok_init">Initial DIA‑10 supply at TGE</span></div>
+        <div class="metric"><b data-i18n="tok_mint_b">Governance‑mintable</b><span class="small" data-i18n="tok_mint">No hard cap; any future issuance requires on‑chain vote & public policy</span></div>
+        <div class="metric"><b>18</b><span class="small">Decimals</span></div>
+      </div>
+      <div class="chart-wrap" style="margin-top:12px">
+        <canvas id="pie"></canvas>
+      </div>
+      <div class="small" style="margin-top:8px" data-i18n="pie_note">
+        *Illustrative split for the initial 1,000,000: Community 40%, Treasury 25%, Liquidity 15%, Team 10%, Advisors 5%, Reserve 5%.
+      </div>
+    </div>
+
+    <div class="panel">
+      <div class="h2" data-i18n="roadmap_t">Roadmap</div>
+      <div class="chart-wrap">
+        <canvas id="roadmap"></canvas>
+      </div>
+      <div class="small" style="margin-top:8px" data-i18n="road_note">
+        Timeline example; dates and scopes may evolve with community input.
+      </div>
+      <div class="h2" style="margin-top:16px" data-i18n="market_t">Market Opportunity</div>
+      <div class="chart-wrap">
+        <canvas id="market"></canvas>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOUNDER LONG BIO (tri‑language) -->
+<section id="founder">
+  <div class="container">
+    <div class="panel">
+      <div class="h2" data-i18n="founder_bio_t">Founder Profile</div>
+      <div class="bio-cols">
+        <div class="bio-img">
+          <img src="images/markus_goffin.jpg" alt="Markus Goffin portrait">
+        </div>
+        <div>
+          <p class="p" data-i18n="bio_lead">
+            Markus Goffin – visionary, strategist and innovator with 35+ years across jewelry & diamonds, brand building, and international trade.
+          </p>
+          <p class="p" data-i18n="bio_long_1">
+            Starting at Juwelier Walter Goffin (Düsseldorf), Markus led repositioning and launched innovations like the internationally patented “Ruby in the ring inner band®”. Long‑standing ties to Antwerp and Israel underpin a resilient global network.
+          </p>
+          <p class="p" data-i18n="bio_long_2">
+            He founded/grew MODEGO, AMORE DUE® and DORA®, managed CI/marketing for renowned brands, directed trade‑show campaigns, and introduced sales trainings that materially lifted profitability.
+          </p>
+          <p class="p" data-i18n="bio_long_3">
+            Continuous education spans diamondology (Antwerp), gemology (Idar‑Oberstein), goldsmithing, watchmaking, marketing, web design, and corporate consulting—enabling concept‑to‑market leadership.
+          </p>
+          <p class="p" data-i18n="bio_long_4">
+            With DIA‑10, Markus fuses real‑world value knowledge with blockchain tooling—aiming for a transparent, durable digital asset inspired by the scarcity and timelessness of diamonds.
+          </p>
+          <div class="list">
+            <div class="row"><span class="tag" data-i18n="k1">Brand & Identity</span><span class="small" data-i18n="k1d">Strategy, CI, narrative discipline</span></div>
+            <div class="row"><span class="tag" data-i18n="k2">Global Trade</span><span class="small" data-i18n="k2d">Supply‑chain & vendor relations</span></div>
+            <div class="row"><span class="tag" data-i18n="k3">Innovation</span><span class="small" data-i18n="k3d">Product, IP, go‑to‑market</span></div>
+            <div class="row"><span class="tag" data-i18n="k4">Web3</span><span class="small" data-i18n="k4d">Token design, governance, community</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Legal / Ownership statement -->
+    <div class="panel">
+      <div class="h2" data-i18n="ownership_t">Intellectual Property & Project Ownership</div>
+      <p class="p" data-i18n="ownership_p">
+        DIA‑10 — the concept, brand name, logo design, token narrative and associated materials — was conceived and initiated by Markus Goffin. Unless otherwise licensed or transferred by written agreement, all associated IP rights remain with the founder and authorized project entities.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section>
+  <div class="container grid-3">
+    <div class="panel">
+      <div class="h2" data-i18n="contact_t">Contact</div>
+      <p class="p">
+        MAGO SERVICE TRADE SRL<br>
+        Aleea Textilistilor Nr.1 – BL. MY1, Sc.1, App. 16, Sectorul 3<br>
+        032801 Bucuresti / Bucharest — Romania<br><br>
+        <b>Phone:</b> +40 (0) 752 30 77 11<br>
+        <b>Web:</b> <a href="https://99-i.com/" target="_blank">99‑i.com</a><br>
+        <b>Mail:</b> <a href="mailto:mgoffin@web.de">mgoffin@web.de</a>
+      </p>
+    </div>
+    <div class="panel">
+      <div class="h2">Bank</div>
+      <p class="p">
+        BRD – Bucharest<br>
+        IBAN: RO34BRDE426SV66680914260<br>
+        BIC: BRDEROBU
+      </p>
+    </div>
+    <div class="panel">
+      <div class="h2" data-i18n="disclaimer_t">Disclaimer</div>
+      <p class="p" data-i18n="disclaimer_p">
+        This document is for informational purposes only and does not constitute financial advice, a solicitation or an offer. Digital assets are risky; do your own research.
+      </p>
+    </div>
+  </div>
+</section>
+
+<script>
+/* ==========================
+   i18n dictionary (EN/DE/RO)
+   ========================== */
+const I18N = {
+  en:{
+    download_pdf:"Download PDF",
+    whitepaper:"Whitepaper",
+    tagline:"Diamond‑anchored digital value for real‑world trust and long‑term alignment.",
+    version:"v1.0 (Draft)",
+    initial_supply:"Initial Supply: 1,000,000",
+    founder_role:"Founder & Vision Lead — DIA‑10",
+    founder_tag:"35+ years in jewelry & diamonds, brand building, and international trade.",
+    exec_summary_t:"Executive Summary",
+    exec_summary_1:"DIA‑10 proposes a diamond‑inspired digital asset designed to combine a clear scarcity signal with modern, auditable token rails. The project targets practical utility (access control, governance experiments, staking) and a transparent brand narrative.",
+    exec_u1:"Access to gated resources, staking, governance pilots",
+    exec_u2:"Initial 1,000,000 DIA‑10; future minting via on‑chain governance (no hard cap)",
+    exec_u3:"NFT tie‑ins, crowdfunding rails, optional RWA bridges",
+    problem_t:"Problem",
+    problem_1:"Retail users and partners need assets that are simple to understand, auditable, and culturally resonant. Many tokens lack credible narrative, brand discipline, or clear long‑term alignment.",
+    solution_t:"Solution",
+    solution_1:"DIA‑10 pairs a diamond‑anchored story with transparent issuance, published wallets/treasury policies, and community‑first distribution—prioritizing trust, clarity, and utility over hype.",
+    tokenomics_t:"Tokenomics",
+    tok_init:"Initial DIA‑10 supply at TGE",
+    tok_mint_b:"Governance‑mintable",
+    tok_mint:"No hard cap; any future issuance requires on‑chain vote & public policy",
+    pie_note:"*Illustrative split for the initial 1,000,000: Community 40%, Treasury 25%, Liquidity 15%, Team 10%, Advisors 5%, Reserve 5%.",
+    roadmap_t:"Roadmap",
+    road_note:"Timeline example; dates and scopes may evolve with community input.",
+    market_t:"Market Opportunity",
+    founder_bio_t:"Founder Profile",
+    bio_lead:"Markus Goffin – visionary, strategist and innovator with 35+ years across jewelry & diamonds, brand building, and international trade.",
+    bio_long_1:"Starting at Juwelier Walter Goffin (Düsseldorf), Markus led repositioning and launched innovations like the internationally patented “Ruby in the ring inner band®”. Long‑standing ties to Antwerp and Israel underpin a resilient global network.",
+    bio_long_2:"He founded/grew MODEGO, AMORE DUE® and DORA®, managed CI/marketing for renowned brands, directed trade‑show campaigns, and introduced sales trainings that materially lifted profitability.",
+    bio_long_3:"Continuous education spans diamondology (Antwerp), gemology (Idar‑Oberstein), goldsmithing, watchmaking, marketing, web design, and corporate consulting—enabling concept‑to‑market leadership.",
+    bio_long_4:"With DIA‑10, Markus fuses real‑world value knowledge with blockchain tooling—aiming for a transparent, durable digital asset inspired by the scarcity and timelessness of diamonds.",
+    k1:"Brand & Identity", k1d:"Strategy, CI, narrative discipline",
+    k2:"Global Trade", k2d:"Supply‑chain & vendor relations",
+    k3:"Innovation", k3d:"Product, IP, go‑to‑market",
+    k4:"Web3", k4d:"Token design, governance, community",
+    ownership_t:"Intellectual Property & Project Ownership",
+    ownership_p:"DIA‑10 — the concept, brand name, logo design, token narrative and associated materials — was conceived and initiated by Markus Goffin. Unless otherwise licensed or transferred by written agreement, all associated IP rights remain with the founder and authorized project entities.",
+    contact_t:"Contact",
+    disclaimer_t:"Disclaimer",
+    disclaimer_p:"This document is for informational purposes only and does not constitute financial advice, a solicitation or an offer. Digital assets are risky; do your own research."
+  },
+  de:{
+    download_pdf:"Als PDF speichern",
+    whitepaper:"Whitepaper",
+    tagline:"Diamant‑gestützter digitaler Wert für Vertrauen und Langfristorientierung.",
+    version:"v1.0 (Entwurf)",
+    initial_supply:"Initiale Menge: 1.000.000",
+    founder_role:"Gründer & Vision Lead — DIA‑10",
+    founder_tag:"35+ Jahre Schmuck & Diamanten, Markenaufbau und internationaler Handel.",
+    exec_summary_t:"Management Summary",
+    exec_summary_1:"DIA‑10 ist ein diamantinspiriertes Digital‑Asset, das ein klares Knappheitssignal mit modernen, auditierbaren Token‑Rails verbindet. Fokus: praktische Utility (Zugriffssteuerung, Governance‑Experimente, Staking) und ein transparentes Markennarrativ.",
+    exec_u1:"Zugang zu geschützten Inhalten, Staking, Governance‑Piloten",
+    exec_u2:"Initial 1.000.000 DIA‑10; zukünftiges Minting per On‑Chain‑Abstimmung (kein Hard Cap)",
+    exec_u3:"NFT‑Anbindung, Crowdfunding‑Rails, optionale RWA‑Brücken",
+    problem_t:"Problem",
+    problem_1:"Nutzer & Partner brauchen verständliche, auditierbare und kulturell anschlussfähige Assets. Viele Tokens haben kein glaubwürdiges Narrativ oder keine disziplinierte Marke.",
+    solution_t:"Lösung",
+    solution_1:"DIA‑10 kombiniert eine diamantbasierte Story mit transparenter Emission, veröffentlichten Treasury‑Regeln und Community‑First‑Distribution—Vertrauen & Klarheit statt Hype.",
+    tokenomics_t:"Tokenomics",
+    tok_init:"Initiale DIA‑10‑Menge zum TGE",
+    tok_mint_b:"Governance‑mintbar",
+    tok_mint:"Kein Hard Cap; zukünftige Emission nur per On‑Chain‑Votum & klarer Policy",
+    pie_note:"*Illustratives Split der initialen 1.000.000: Community 40%, Treasury 25%, Liquidität 15%, Team 10%, Berater 5%, Reserve 5%.",
+    roadmap_t:"Roadmap",
+    road_note:"Beispiel‑Zeitplan; Inhalte entwickeln sich mit der Community.",
+    market_t:"Marktchance",
+    founder_bio_t:"Gründerprofil",
+    bio_lead:"Markus Goffin – Visionär, Stratege und Innovator mit 35+ Jahren in Schmuck & Diamanten, Markenaufbau und internationalem Handel.",
+    bio_long_1:"Bei Juwelier Walter Goffin (Düsseldorf) leitete Markus die Neupositionierung und lancierte Innovationen wie den international patentierten „Rubin in der Ringinnenschiene®“. Langjährige Verbindungen nach Antwerpen und Israel bilden ein belastbares globales Netzwerk.",
+    bio_long_2:"Er gründete/skalierte MODEGO, AMORE DUE® und DORA®, verantwortete CI/Marketing, steuerte Messekampagnen und führte Verkaufstrainings ein, die die Profitabilität deutlich steigerten.",
+    bio_long_3:"Fortbildungen u. a. in Diamantenkunde (Antwerpen), Edelsteinkunde (Idar‑Oberstein), Goldschmiede‑ & Uhrmacherkunde, Marketing, Webdesign und Beratung—für Führung „von Idee zu Markt“.",
+    bio_long_4:"Mit DIA‑10 verbindet Markus realen Wert mit Blockchain‑Tooling—für ein transparentes, robustes Digital‑Asset, inspiriert von Knappheit und Zeitlosigkeit der Diamanten.",
+    k1:"Brand & Identity", k1d:"Strategie, CI, narratives Handwerk",
+    k2:"Global Trade", k2d:"Supply‑Chain & Partner",
+    k3:"Innovation", k3d:"Produkte, IP, Go‑to‑Market",
+    k4:"Web3", k4d:"Token‑Design, Governance, Community",
+    ownership_t:"Urheber‑ & Projektinhaberschaft",
+    ownership_p:"DIA‑10—Konzept, Markenname, Logo, Token‑Narrativ und Materialien—wurden von Markus Goffin konzipiert. Sofern nicht schriftlich lizensiert/übertragen, verbleiben die Rechte beim Gründer bzw. autorisierten Projektträgern.",
+    contact_t:"Kontakt",
+    disclaimer_t:"Hinweis",
+    disclaimer_p:"Dieses Dokument dient nur Informationszwecken und ist keine Finanzberatung oder Aufforderung. Digitale Assets sind riskant; bitte eigene Prüfung vornehmen."
+  },
+  ro:{
+    download_pdf:"Descarcă PDF",
+    whitepaper:"Whitepaper",
+    tagline:"Valoare digitală ancorată în diamant — pentru încredere și aliniere pe termen lung.",
+    version:"v1.0 (Draft)",
+    initial_supply:"Supply inițial: 1.000.000",
+    founder_role:"Fondator & Vision Lead — DIA‑10",
+    founder_tag:"35+ ani în bijuterii & diamante, brand‑building și comerț internațional.",
+    exec_summary_t:"Rezumat Executiv",
+    exec_summary_1:"DIA‑10 propune un activ digital inspirat de diamante, care combină semnalul clar de raritate cu infrastructură token auditabilă.  Ținta: utilitate practică (acces, guvernanță, staking) și un brand transparent.",
+    exec_u1:"Acces la resurse restricționate, staking, proiecte pilot de guvernanță",
+    exec_u2:"Inițial 1.000.000 DIA‑10; mint viitor prin guvernanță on‑chain (fără hard cap)",
+    exec_u3:"Integrare NFT, mecanisme de crowdfunding, punți RWA opționale",
+    problem_t:"Problemă",
+    problem_1:"Utilizatorii și partenerii au nevoie de active ușor de înțeles, auditabile și cu rezonanță culturală. Multe tokenuri duc lipsă de narațiune credibilă sau de disciplină de brand.",
+    solution_t:"Soluție",
+    solution_1:"DIA‑10 combină o poveste ancorată în diamant cu emisie transparentă, politici clare de trezorerie și distribuție orientată către comunitate—punând accent pe încredere și claritate.",
+    tokenomics_t:"Tokenomics",
+    tok_init:"Supply inițial la TGE",
+    tok_mint_b:"Mint prin guvernanță",
+    tok_mint:"Fără hard cap; emisiile viitoare necesită vot on‑chain și politici publice",
+    pie_note:"*Împărțire ilustrativă pentru 1.000.000 inițiale: Comunitate 40%, Trezorerie 25%, Lichiditate 15%, Echipa 10%, Consilieri 5%, Rezervă 5%.",
+    roadmap_t:"Roadmap",
+    road_note:"Exemplu; poate evolua cu feedbackul comunității.",
+    market_t:"Oportunitate de piață",
+    founder_bio_t:"Profil Fondator",
+    bio_lead:"Markus Goffin – vizionar, strateg și inovator cu 35+ ani în bijuterii & diamante, brand‑building și comerț internațional.",
+    bio_long_1:"Pornind de la Juwelier Walter Goffin (Düsseldorf), Markus a condus repoziționarea și a lansat inovații precum „Rubin în interiorul inelului®”, brevetat internațional. Legăturile cu Anvers și Israel susțin o rețea globală solidă.",
+    bio_long_2:"A fondat/dezvoltat MODEGO, AMORE DUE® și DORA®, a gestionat CI/marketing, a coordonat târguri și a introdus traininguri de vânzări care au crescut profitabilitatea.",
+    bio_long_3:"Educație continuă: diamantologie (Anvers), gemologie (Idar‑Oberstein), orfevrărie, orologerie, marketing, web design și consultanță—pentru leadership de la concept la piață.",
+    bio_long_4:"Cu DIA‑10, Markus unește cunoașterea valorii reale cu instrumente blockchain—vizând un activ digital transparent și durabil, inspirat de raritatea și atemporalitatea diamantelor.",
+    k1:"Brand & Identitate", k1d:"Strategie, CI, narațiune",
+    k2:"Comerț Global", k2d:"Lanț de aprovizionare & parteneriate",
+    k3:"Inovație", k3d:"Produs, IP, go‑to‑market",
+    k4:"Web3", k4d:"Design token, guvernanță, comunitate",
+    ownership_t:"Drepturi de Proprietate & Deținere Proiect",
+    ownership_p:"DIA‑10 — conceptul, numele, logo‑ul, narațiunea tokenului și materialele aferente — au fost concepute și inițiate de Markus Goffin. Dacă nu este licențiat sau transferat prin acord scris, drepturile rămân la fondator și entitățile autorizate.",
+    contact_t:"Contact",
+    disclaimer_t:"Declinare",
+    disclaimer_p:"Acest document este informativ și nu constituie consultanță financiară sau ofertă. Activele digitale implică riscuri; faceți propria cercetare."
+  }
+};
+
+function applyLang(lang){
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const k = el.getAttribute('data-i18n');
+    if(I18N[lang][k]) el.textContent = I18N[lang][k];
+  });
+  document.querySelectorAll('.lbtn').forEach(b=>b.classList.toggle('active', b.dataset.lang===lang));
+  document.documentElement.lang = lang;
+}
+document.querySelectorAll('.lbtn').forEach(b=>b.addEventListener('click',()=>applyLang(b.dataset.lang)));
+applyLang('en');
+
+/* ==========================
+   Charts
+   ========================== */
+const pie = new Chart(document.getElementById('pie'),{
+  type:'pie',
+  data:{
+    labels:['Community 40%','Treasury 25%','Liquidity 15%','Team 10%','Advisors 5%','Reserve 5%'],
+    datasets:[{data:[40,25,15,10,5,5], backgroundColor:[
+      '#1b6fff','#74c7ff','#11d09a','#8aa4ff','#ffd166','#c4d0e0'
+    ], borderColor:'rgba(255,255,255,.12)', borderWidth:1}]
+  },
+  options:{plugins:{legend:{labels:{color:'#e9f2ff'}}}}
+});
+
+const roadmap = new Chart(document.getElementById('roadmap'),{
+  type:'bar',
+  data:{
+    labels:['Q1: Brand & Token','Q2: Treasury & Staking','Q3: NFT & Crowdfund','Q4: RWA Bridges'],
+    datasets:[{
+      label:'Progress (plan)',
+      data:[100,70,40,20],
+      backgroundColor:'#74c7ff'
+    }]
+  },
+  options:{
+    indexAxis:'y',
+    scales:{x:{ticks:{color:'#dbe9ff'}},y:{ticks:{color:'#dbe9ff'}}},
+    plugins:{legend:{labels:{color:'#e9f2ff'}}}
+  }
+});
+
+const market = new Chart(document.getElementById('market'),{
+  type:'line',
+  data:{
+    labels:['Year 1','Year 2','Year 3','Year 4','Year 5'],
+    datasets:[
+      {label:'DIA‑10 adoption (est.)', data:[1,3,7,12,18], borderColor:'#1b6fff', backgroundColor:'rgba(27,111,255,.2)', fill:true, tension:.35},
+      {label:'Benchmark (index)', data:[1,2,3,5,7], borderColor:'#11d09a', backgroundColor:'rgba(17,208,154,.15)', fill:true, tension:.35}
+    ]
+  },
+  options:{plugins:{legend:{labels:{color:'#e9f2ff'}}}, scales:{x:{ticks:{color:'#dbe9ff'}}, y:{ticks:{color:'#dbe9ff'}}}}
+});
+</script>
+</body>
+</html>
+
